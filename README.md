@@ -1,4 +1,4 @@
-This is still a **work-in-progress*. Check back soon for more a more complete package & better instructions on how to get started!
+This is still a **work-in-progress**. Check back soon for more a more complete package & better instructions on how to get started!
 
 -----------
 
