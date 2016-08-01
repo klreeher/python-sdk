@@ -26,7 +26,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "OrderCloud"
-VERSION = "1.0.0"
+VERSION = "0.0.1"
 
 # To install the library, run the following
 #
@@ -40,14 +40,15 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 setup(
     name=NAME,
     version=VERSION,
-    description="OrderCloud",
+    description="A Python SDK for the OrderCloud API",
     author_email="ordercloud@four51.com",
-    url="http://public.four51.com/",
-    keywords=["Swagger", "OrderCloud"],
+    url = 'https://github.com/ordercloud-api/python-sdk', # use the URL to the github repo
+    download_url = 'https://github.com/ordercloud-api/python-sdk/tarball/0.1', #To create a link like this, create a git tag
+    keywords=["OrderCloud","ecommerce"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    A full ecommerce backend as a service.
+    A Python SDK for the OrderCloud API. A full ecommerce backend as a service.
     """
 )
