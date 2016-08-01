@@ -4,7 +4,7 @@ A full ecommerce backend as a service.
 For more information, see the official [OrderCloud](https://devcenter.ordercloud.io) website.
 
 - API version: 0.1
-- Build date: 2016-08-01T20:35:46.401Z
+- Build date: 2016-08-01T20:49:10.167Z
 
 ## Requirements.
 
