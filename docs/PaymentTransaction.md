@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **type** | **str** |  | [optional] 
-**date_executed** | **date** |  | [optional] 
+**date_executed** | **str** |  | [optional] 
 **amount** | **float** |  | [optional] 
 **succeeded** | **bool** |  | [optional] 
 **result_code** | **str** |  | [optional] 

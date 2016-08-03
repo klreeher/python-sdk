@@ -13,9 +13,11 @@ Name | Type | Description | Notes
 **inventory_enabled** | **bool** |  | [optional] 
 **inventory_notification_point** | **int** |  | [optional] 
 **variant_level_inventory** | **bool** |  | [optional] 
+**spec_count** | **int** |  | [optional] 
 **xp** | **object** |  | [optional] 
 **allow_order_exceed_inventory** | **bool** |  | [optional] 
 **inventory_visible** | **bool** |  | [optional] 
+**variant_count** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

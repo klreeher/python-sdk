@@ -3,8 +3,8 @@ A full ecommerce backend as a service.
 
 For more information, see the official [OrderCloud](https://devcenter.ordercloud.io) website.
 
-- API version: 0.1
-- Build date: 2016-08-01T20:49:10.167Z
+- API version: 1.0
+- Build date: 2016-08-03T17:17:18.035Z
 
 ## Requirements.
 
@@ -76,6 +76,12 @@ Class | Method | HTTP request | Description
 *AddressApi* | [**patch**](docs/AddressApi.md#patch) | **PATCH** /buyers/{buyerID}/addresses/{addressID} | 
 *AddressApi* | [**save_assignment**](docs/AddressApi.md#save_assignment) | **POST** /buyers/{buyerID}/addresses/assignments | 
 *AddressApi* | [**update**](docs/AddressApi.md#update) | **PUT** /buyers/{buyerID}/addresses/{addressID} | 
+*AdminAddressApi* | [**create**](docs/AdminAddressApi.md#create) | **POST** /addresses | 
+*AdminAddressApi* | [**delete**](docs/AdminAddressApi.md#delete) | **DELETE** /addresses/{addressID} | 
+*AdminAddressApi* | [**get**](docs/AdminAddressApi.md#get) | **GET** /addresses/{addressID} | 
+*AdminAddressApi* | [**list**](docs/AdminAddressApi.md#list) | **GET** /addresses | 
+*AdminAddressApi* | [**patch**](docs/AdminAddressApi.md#patch) | **PATCH** /addresses/{addressID} | 
+*AdminAddressApi* | [**update**](docs/AdminAddressApi.md#update) | **PUT** /addresses/{addressID} | 
 *AdminUserApi* | [**create**](docs/AdminUserApi.md#create) | **POST** /adminusers | 
 *AdminUserApi* | [**delete**](docs/AdminUserApi.md#delete) | **DELETE** /adminusers/{userID} | 
 *AdminUserApi* | [**get**](docs/AdminUserApi.md#get) | **GET** /adminusers/{userID} | 
@@ -92,6 +98,7 @@ Class | Method | HTTP request | Description
 *BuyerApi* | [**delete**](docs/BuyerApi.md#delete) | **DELETE** /buyers/{buyerID} | 
 *BuyerApi* | [**get**](docs/BuyerApi.md#get) | **GET** /buyers/{buyerID} | 
 *BuyerApi* | [**list**](docs/BuyerApi.md#list) | **GET** /buyers | 
+*BuyerApi* | [**patch**](docs/BuyerApi.md#patch) | **PATCH** /buyers/{buyerID} | 
 *BuyerApi* | [**update**](docs/BuyerApi.md#update) | **PUT** /buyers/{buyerID} | 
 *CategoryApi* | [**create**](docs/CategoryApi.md#create) | **POST** /buyers/{buyerID}/categories | 
 *CategoryApi* | [**delete**](docs/CategoryApi.md#delete) | **DELETE** /buyers/{buyerID}/categories/{categoryID} | 
@@ -100,7 +107,6 @@ Class | Method | HTTP request | Description
 *CategoryApi* | [**get**](docs/CategoryApi.md#get) | **GET** /buyers/{buyerID}/categories/{categoryID} | 
 *CategoryApi* | [**list**](docs/CategoryApi.md#list) | **GET** /buyers/{buyerID}/categories | 
 *CategoryApi* | [**list_assignments**](docs/CategoryApi.md#list_assignments) | **GET** /buyers/{buyerID}/categories/assignments | 
-*CategoryApi* | [**list_children**](docs/CategoryApi.md#list_children) | **GET** /buyers/{buyerID}/categories/{parentID}/categories | 
 *CategoryApi* | [**list_product_assignments**](docs/CategoryApi.md#list_product_assignments) | **GET** /buyers/{buyerID}/categories/productassignments | 
 *CategoryApi* | [**patch**](docs/CategoryApi.md#patch) | **PATCH** /buyers/{buyerID}/categories/{categoryID} | 
 *CategoryApi* | [**save_assignment**](docs/CategoryApi.md#save_assignment) | **POST** /buyers/{buyerID}/categories/assignments | 
@@ -159,7 +165,6 @@ Class | Method | HTTP request | Description
 *MeApi* | [**list_products**](docs/MeApi.md#list_products) | **GET** /me/products | 
 *MeApi* | [**list_promotions**](docs/MeApi.md#list_promotions) | **GET** /me/promotions | 
 *MeApi* | [**list_specs**](docs/MeApi.md#list_specs) | **GET** /me/products/{productID}/specs | 
-*MeApi* | [**list_subcategories**](docs/MeApi.md#list_subcategories) | **GET** /me/categories/{parentID}/categories | 
 *MeApi* | [**list_user_groups**](docs/MeApi.md#list_user_groups) | **GET** /me/usergroups | 
 *MeApi* | [**patch**](docs/MeApi.md#patch) | **PATCH** /me | 
 *MeApi* | [**patch_address**](docs/MeApi.md#patch_address) | **PATCH** /me/addresses/{addressID} | 
@@ -238,8 +243,11 @@ Class | Method | HTTP request | Description
 *PromotionApi* | [**patch**](docs/PromotionApi.md#patch) | **PATCH** /promotions/{promotionID} | 
 *PromotionApi* | [**save_assignment**](docs/PromotionApi.md#save_assignment) | **POST** /promotions/assignments | 
 *PromotionApi* | [**update**](docs/PromotionApi.md#update) | **PUT** /promotions/{promotionID} | 
+*SecurityProfileApi* | [**delete_assignment**](docs/SecurityProfileApi.md#delete_assignment) | **DELETE** /SecurityProfiles/{securityProfileID}/assignments | 
 *SecurityProfileApi* | [**get**](docs/SecurityProfileApi.md#get) | **GET** /SecurityProfiles/{securityProfileID} | 
 *SecurityProfileApi* | [**list**](docs/SecurityProfileApi.md#list) | **GET** /SecurityProfiles | 
+*SecurityProfileApi* | [**list_assignments**](docs/SecurityProfileApi.md#list_assignments) | **GET** /SecurityProfiles/assignments | 
+*SecurityProfileApi* | [**save_assignment**](docs/SecurityProfileApi.md#save_assignment) | **POST** /SecurityProfiles/assignments | 
 *ShipmentApi* | [**create**](docs/ShipmentApi.md#create) | **POST** /buyers/{buyerID}/shipments | 
 *ShipmentApi* | [**delete**](docs/ShipmentApi.md#delete) | **DELETE** /buyers/{buyerID}/shipments/{shipmentID} | 
 *ShipmentApi* | [**delete_item**](docs/ShipmentApi.md#delete_item) | **DELETE** /buyers/{buyerID}/shipments/{shipmentID}/items/{orderID}/{lineItemID} | 
@@ -292,12 +300,18 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AccessToken](docs/AccessToken.md)
  - [Address](docs/Address.md)
  - [AddressAssignment](docs/AddressAssignment.md)
+ - [AdminCompany](docs/AdminCompany.md)
+ - [AdminModelOnView](docs/AdminModelOnView.md)
  - [ApprovalRule](docs/ApprovalRule.md)
+ - [BaseSpec](docs/BaseSpec.md)
  - [Buyer](docs/Buyer.md)
  - [BuyerAddress](docs/BuyerAddress.md)
  - [BuyerCreditCard](docs/BuyerCreditCard.md)
+ - [BuyerProduct](docs/BuyerProduct.md)
+ - [BuyerSpec](docs/BuyerSpec.md)
  - [Category](docs/Category.md)
  - [CategoryAssignment](docs/CategoryAssignment.md)
  - [CategoryProductAssignment](docs/CategoryProductAssignment.md)
@@ -306,20 +320,27 @@ Class | Method | HTTP request | Description
  - [CreditCard](docs/CreditCard.md)
  - [CreditCardAssignment](docs/CreditCardAssignment.md)
  - [EmailTemplate](docs/EmailTemplate.md)
+ - [File](docs/File.md)
  - [ImpersonateTokenRequest](docs/ImpersonateTokenRequest.md)
+ - [Inventory](docs/Inventory.md)
  - [LineItem](docs/LineItem.md)
+ - [LineItemSpec](docs/LineItemSpec.md)
  - [Order](docs/Order.md)
- - [Partial1](docs/Partial1.md)
+ - [OrderApproval](docs/OrderApproval.md)
+ - [OrderPromotion](docs/OrderPromotion.md)
  - [PasswordReset](docs/PasswordReset.md)
  - [PasswordResetRequest](docs/PasswordResetRequest.md)
  - [Payment](docs/Payment.md)
  - [PaymentTransaction](docs/PaymentTransaction.md)
+ - [PingResponse](docs/PingResponse.md)
  - [PriceBreak](docs/PriceBreak.md)
  - [PriceSchedule](docs/PriceSchedule.md)
  - [Product](docs/Product.md)
  - [ProductAssignment](docs/ProductAssignment.md)
  - [Promotion](docs/Promotion.md)
  - [PromotionAssignment](docs/PromotionAssignment.md)
+ - [SecurityProfile](docs/SecurityProfile.md)
+ - [SecurityProfileAssignment](docs/SecurityProfileAssignment.md)
  - [Shipment](docs/Shipment.md)
  - [ShipmentItem](docs/ShipmentItem.md)
  - [Spec](docs/Spec.md)
@@ -331,57 +352,64 @@ Class | Method | HTTP request | Description
  - [UserGroup](docs/UserGroup.md)
  - [UserGroupAssignment](docs/UserGroupAssignment.md)
  - [Variant](docs/Variant.md)
+ - [WebHook](docs/WebHook.md)
+ - [WebHookRoute](docs/WebHookRoute.md)
+ - [XpIndex](docs/XpIndex.md)
 
 
 ## Documentation For Authorization
 
 
-## auth
+## oauth2
 
 - **Type**: OAuth
 - **Flow**: password
 - **Authorization URL**: https://auth.ordercloud.io/oauth/token
 - **Scopes**: 
- - **FullAccess**: Full access of the security profile.
- - **ProductAdmin**: Product admin of the security profile.
- - **ProductReader**: Product reader of the security profile.
- - **InventoryAdmin**: Inventory admin of the security profile.
- - **ProductAssignmentAdmin**: Product assignment admin of the security profile.
- - **BuyerAdmin**: Buyer admin of the security profile.
- - **BuyerReader**: Buyer reader of the security profile.
- - **CategoryAdmin**: Category admin of the security profile.
- - **CategoryReader**: Category reader of the security profile.
- - **AddressAdmin**: Address admin of the security profile.
- - **AddressReader**: Address reader of the security profile.
- - **CostCenterAdmin**: Cost center admin of the security profile.
- - **CostCenterReader**: Cost center reader of the security profile.
- - **PromotionAdmin**: Promotion admin of the security profile.
- - **PromotionReader**: Promotion reader of the security profile.
- - **CreditCardAdmin**: Credit card admin of the security profile.
- - **CreditCardReader**: Credit card reader of the security profile.
- - **EmailTemplateAdmin**: Email template admin of the security profile.
- - **EmailTemplateReader**: Email template reader of the security profile.
- - **PriceScheduleAdmin**: Price schedule admin of the security profile.
- - **PriceScheduleReader**: Price schedule reader of the security profile.
- - **SpendingAccountAdmin**: Spending account admin of the security profile.
- - **SpendingAccountReader**: Spending account reader of the security profile.
- - **BuyerUserAdmin**: Buyer user admin of the security profile.
- - **BuyerUserReader**: Buyer user reader of the security profile.
- - **UserGroupAdmin**: User group admin of the security profile.
- - **UserGroupReader**: User group reader of the security profile.
- - **ApprovalRuleAdmin**: Approval rule admin of the security profile.
- - **ApprovalRuleReader**: Approval rule reader of the security profile.
- - **PermissionAdmin**: Permission admin of the security profile.
- - **OrderAdmin**: Order admin of the security profile.
- - **OrderReader**: Order reader of the security profile.
- - **UnsubmittedOrderReader**: Unsubmitted order reader of the security profile.
- - **MeAdmin**: Me admin of the security profile.
- - **MeXpAdmin**: Me xp admin of the security profile.
- - **MeAddressAdmin**: Me address admin of the security profile.
- - **MeCreditCardAdmin**: Me credit card admin of the security profile.
- - **OverrideUnitPrice**: Override unit price of the security profile.
- - **OverrideShipping**: Override shipping of the security profile.
- - **OverrideTax**: Override tax of the security profile.
+ - **AddressAdmin**: 
+ - **AddressReader**: 
+ - **ApprovalRuleAdmin**: 
+ - **ApprovalRuleReader**: 
+ - **BuyerAdmin**: 
+ - **BuyerReader**: 
+ - **BuyerUserAdmin**: 
+ - **BuyerUserReader**: 
+ - **CategoryAdmin**: 
+ - **CategoryReader**: 
+ - **CostCenterAdmin**: 
+ - **CostCenterReader**: 
+ - **CreditCardAdmin**: 
+ - **CreditCardReader**: 
+ - **DevCenter**: 
+ - **DevCenterImpersonate**: 
+ - **DevCenterPasswordReset**: 
+ - **EmailTemplateAdmin**: 
+ - **EmailTemplateReader**: 
+ - **FullAccess**: 
+ - **GrantForAnyRole**: 
+ - **InventoryAdmin**: 
+ - **MeAddressAdmin**: 
+ - **MeAdmin**: 
+ - **MeCreditCardAdmin**: 
+ - **MeXpAdmin**: 
+ - **OrderAdmin**: 
+ - **OrderReader**: 
+ - **OverrideShipping**: 
+ - **OverrideTax**: 
+ - **OverrideUnitPrice**: 
+ - **PermissionAdmin**: 
+ - **PriceScheduleAdmin**: 
+ - **PriceScheduleReader**: 
+ - **ProductAdmin**: 
+ - **ProductAssignmentAdmin**: 
+ - **ProductReader**: 
+ - **PromotionAdmin**: 
+ - **PromotionReader**: 
+ - **SpendingAccountAdmin**: 
+ - **SpendingAccountReader**: 
+ - **UnsubmittedOrderReader**: 
+ - **UserGroupAdmin**: 
+ - **UserGroupReader**: 
 
 
 ## Author

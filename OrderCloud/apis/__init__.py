@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 # import apis into api package
 from .address_api import AddressApi
+from .admin_address_api import AdminAddressApi
 from .admin_user_api import AdminUserApi
 from .approval_rule_api import ApprovalRuleApi
 from .buyer_api import BuyerApi

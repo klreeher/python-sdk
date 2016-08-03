@@ -4,20 +4,71 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**delete_assignment**](SecurityProfileApi.md#delete_assignment) | **DELETE** /SecurityProfiles/{securityProfileID}/assignments | 
 [**get**](SecurityProfileApi.md#get) | **GET** /SecurityProfiles/{securityProfileID} | 
 [**list**](SecurityProfileApi.md#list) | **GET** /SecurityProfiles | 
+[**list_assignments**](SecurityProfileApi.md#list_assignments) | **GET** /SecurityProfiles/assignments | 
+[**save_assignment**](SecurityProfileApi.md#save_assignment) | **POST** /SecurityProfiles/assignments | 
 
 
-# **get**
-> object get(security_profile_id)
+# **delete_assignment**
+> delete_assignment(buyer_id, security_profile_id, user_id=user_id, user_group_id=user_group_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+
+# create an instance of the API class
+SecurityProfileApi = OrderCloud.SecurityProfileApi()
+buyer_id = 'buyer_id_example' # str | ID of the buyer.
+security_profile_id = 'security_profile_id_example' # str | ID of the security profile.
+user_id = 'user_id_example' # str | ID of the user. (optional)
+user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
+
+try: 
+    SecurityProfileApi.delete_assignment(buyer_id, security_profile_id, user_id=user_id, user_group_id=user_group_id)
+except ApiException as e:
+    print("Exception when calling SecurityProfileApi->delete_assignment: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **buyer_id** | **str**| ID of the buyer. | 
+ **security_profile_id** | **str**| ID of the security profile. | 
+ **user_id** | **str**| ID of the user. | [optional] 
+ **user_group_id** | **str**| ID of the user group. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get**
+> SecurityProfile get(security_profile_id)
+
+
+
+### Example 
+```python
+import OrderCloud as oc
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 SecurityProfileApi = OrderCloud.SecurityProfileApi()
@@ -38,29 +89,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**SecurityProfile**](SecurityProfile.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[SecurityProfile] list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 SecurityProfileApi = OrderCloud.SecurityProfileApi()
@@ -69,9 +120,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = SecurityProfileApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = SecurityProfileApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling SecurityProfileApi->list: %s\n" % e)
@@ -86,19 +138,117 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[SecurityProfile]**](SecurityProfile.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_assignments**
+> list[SecurityProfileAssignment] list_assignments(buyer_id, security_profile_id=security_profile_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud as oc
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+
+# create an instance of the API class
+SecurityProfileApi = OrderCloud.SecurityProfileApi()
+buyer_id = 'buyer_id_example' # str | ID of the buyer.
+security_profile_id = 'security_profile_id_example' # str | ID of the security profile. (optional)
+user_id = 'user_id_example' # str | ID of the user. (optional)
+user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
+level = 'level_example' # str | Level of the security profile. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+
+try: 
+    response = SecurityProfileApi.list_assignments(buyer_id, security_profile_id=security_profile_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling SecurityProfileApi->list_assignments: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **buyer_id** | **str**| ID of the buyer. | 
+ **security_profile_id** | **str**| ID of the security profile. | [optional] 
+ **user_id** | **str**| ID of the user. | [optional] 
+ **user_group_id** | **str**| ID of the user group. | [optional] 
+ **level** | **str**| Level of the security profile. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+
+### Return type
+
+[**list[SecurityProfileAssignment]**](SecurityProfileAssignment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **save_assignment**
+> save_assignment(assignment)
+
+
+
+### Example 
+```python
+import OrderCloud as oc
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+
+# create an instance of the API class
+SecurityProfileApi = OrderCloud.SecurityProfileApi()
+assignment = OrderCloud.SecurityProfileAssignment() # SecurityProfileAssignment | 
+
+try: 
+    SecurityProfileApi.save_assignment(assignment)
+except ApiException as e:
+    print("Exception when calling SecurityProfileApi->save_assignment: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **assignment** | [**SecurityProfileAssignment**](SecurityProfileAssignment.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

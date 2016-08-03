@@ -24,7 +24,6 @@ Method | HTTP request | Description
 [**list_products**](MeApi.md#list_products) | **GET** /me/products | 
 [**list_promotions**](MeApi.md#list_promotions) | **GET** /me/promotions | 
 [**list_specs**](MeApi.md#list_specs) | **GET** /me/products/{productID}/specs | 
-[**list_subcategories**](MeApi.md#list_subcategories) | **GET** /me/categories/{parentID}/categories | 
 [**list_user_groups**](MeApi.md#list_user_groups) | **GET** /me/usergroups | 
 [**patch**](MeApi.md#patch) | **PATCH** /me | 
 [**patch_address**](MeApi.md#patch_address) | **PATCH** /me/addresses/{addressID} | 
@@ -35,15 +34,15 @@ Method | HTTP request | Description
 
 
 # **create_address**
-> object create_address(address)
+> BuyerAddress create_address(address)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -64,29 +63,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**BuyerAddress**](BuyerAddress.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_credit_card**
-> object create_credit_card(credit_card)
+> BuyerCreditCard create_credit_card(credit_card)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -107,16 +106,16 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**BuyerCreditCard**](BuyerCreditCard.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -127,9 +126,9 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -153,12 +152,12 @@ void (empty response body)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -169,9 +168,9 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -195,25 +194,25 @@ void (empty response body)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> object get()
+> User get()
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -230,29 +229,29 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**object**
+[**User**](User.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_address**
-> object get_address(address_id)
+> BuyerAddress get_address(address_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -273,29 +272,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**BuyerAddress**](BuyerAddress.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_credit_card**
-> object get_credit_card(creditcard_id)
+> BuyerCreditCard get_credit_card(creditcard_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -316,29 +315,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**BuyerCreditCard**](BuyerCreditCard.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_order**
-> object get_order(order_id)
+> Order get_order(order_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -359,29 +358,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Order**](Order.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_product**
-> object get_product(product_id)
+> BuyerProduct get_product(product_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -402,29 +401,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**BuyerProduct**](BuyerProduct.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_promotion**
-> object get_promotion(promotion_id)
+> Promotion get_promotion(promotion_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -445,29 +444,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_spec**
-> object get_spec(product_id, spec_id)
+> BuyerSpec get_spec(product_id, spec_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -490,29 +489,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**BuyerSpec**](BuyerSpec.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_addresses**
-> object list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[BuyerAddress] list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -521,9 +520,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_addresses: %s\n" % e)
@@ -538,32 +538,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[BuyerAddress]**](BuyerAddress.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_categories**
-> object list_categories(depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[Category] list_categories(depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -573,9 +574,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_categories(depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_categories(depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_categories: %s\n" % e)
@@ -591,32 +593,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[Category]**](Category.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_cost_centers**
-> object list_cost_centers(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[CostCenter] list_cost_centers(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -625,9 +628,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_cost_centers(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_cost_centers(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_cost_centers: %s\n" % e)
@@ -642,32 +646,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[CostCenter]**](CostCenter.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_credit_cards**
-> object list_credit_cards(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[BuyerCreditCard] list_credit_cards(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -676,9 +681,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_credit_cards(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_credit_cards(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_credit_cards: %s\n" % e)
@@ -693,32 +699,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[BuyerCreditCard]**](BuyerCreditCard.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_incoming_orders**
-> object list_incoming_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[Order] list_incoming_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -729,9 +736,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_incoming_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_incoming_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_incoming_orders: %s\n" % e)
@@ -748,32 +756,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[Order]**](Order.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_outgoing_orders**
-> object list_outgoing_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[Order] list_outgoing_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -784,9 +793,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_outgoing_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_outgoing_orders(_from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_outgoing_orders: %s\n" % e)
@@ -803,32 +813,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[Order]**](Order.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_products**
-> object list_products(category_id=category_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[BuyerProduct] list_products(category_id=category_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -838,9 +849,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_products(category_id=category_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_products(category_id=category_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_products: %s\n" % e)
@@ -856,32 +868,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[BuyerProduct]**](BuyerProduct.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_promotions**
-> object list_promotions(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[Promotion] list_promotions(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -890,9 +903,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_promotions(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_promotions(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_promotions: %s\n" % e)
@@ -907,32 +921,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[Promotion]**](Promotion.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_specs**
-> object list_specs(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[BuyerSpec] list_specs(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -942,9 +957,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_specs(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_specs(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_specs: %s\n" % e)
@@ -960,87 +976,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[BuyerSpec]**](BuyerSpec.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_subcategories**
-> object list_subcategories(parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-MeApi = OrderCloud.MeApi()
-parent_id = 'parent_id_example' # str | ID of the parent.
-depth = 'depth_example' # str | Depth of the category. (optional)
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-
-try: 
-    response = MeApi.list_subcategories(parent_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    print(response)
-except ApiException as e:
-    print("Exception when calling MeApi->list_subcategories: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **parent_id** | **str**| ID of the parent. | 
- **depth** | **str**| Depth of the category. | [optional] 
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
-
-### Return type
-
-**object**
-
-### Authorization
-
-[auth](../README.md#auth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_user_groups**
-> object list_user_groups(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[UserGroup] list_user_groups(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -1049,9 +1011,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_user_groups(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = MeApi.list_user_groups(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_user_groups: %s\n" % e)
@@ -1066,32 +1029,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[UserGroup]**](UserGroup.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> object patch(user)
+> User patch(user)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -1112,16 +1076,16 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**User**](User.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1132,14 +1096,14 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
 address_id = 'address_id_example' # str | ID of the address.
-address = OrderCloud.BuyerAddress() # BuyerAddress | 
+address = OrderCloud.Address() # Address | 
 
 try: 
     MeApi.patch_address(address_id, address)
@@ -1152,7 +1116,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address_id** | **str**| ID of the address. | 
- **address** | [**BuyerAddress**](BuyerAddress.md)|  | 
+ **address** | [**Address**](Address.md)|  | 
 
 ### Return type
 
@@ -1160,12 +1124,12 @@ void (empty response body)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1176,14 +1140,14 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
 creditcard_id = 'creditcard_id_example' # str | ID of the creditcard.
-credit_card = OrderCloud.BuyerCreditCard() # BuyerCreditCard | 
+credit_card = OrderCloud.CreditCard() # CreditCard | 
 
 try: 
     MeApi.patch_credit_card(creditcard_id, credit_card)
@@ -1196,7 +1160,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **creditcard_id** | **str**| ID of the creditcard. | 
- **credit_card** | [**BuyerCreditCard**](BuyerCreditCard.md)|  | 
+ **credit_card** | [**CreditCard**](CreditCard.md)|  | 
 
 ### Return type
 
@@ -1204,25 +1168,25 @@ void (empty response body)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> object update(user)
+> User update(user)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -1243,29 +1207,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**User**](User.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_address**
-> object update_address(address_id, address)
+> BuyerAddress update_address(address_id, address)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -1288,29 +1252,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**BuyerAddress**](BuyerAddress.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_credit_card**
-> object update_credit_card(creditcard_id, credit_card)
+> BuyerCreditCard update_credit_card(creditcard_id, credit_card)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 MeApi = OrderCloud.MeApi()
@@ -1333,16 +1297,16 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**BuyerCreditCard**](BuyerCreditCard.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

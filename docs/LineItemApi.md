@@ -15,15 +15,15 @@ Method | HTTP request | Description
 
 
 # **create**
-> object create(buyer_id, order_id, line_item)
+> LineItem create(buyer_id, order_id, line_item)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi()
@@ -48,16 +48,16 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**LineItem**](LineItem.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -68,9 +68,9 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi()
@@ -98,25 +98,25 @@ void (empty response body)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> object get(buyer_id, order_id, line_item_id)
+> LineItem get(buyer_id, order_id, line_item_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi()
@@ -141,29 +141,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**LineItem**](LineItem.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[LineItem] list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi()
@@ -174,9 +174,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = LineItemApi.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = LineItemApi.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->list: %s\n" % e)
@@ -193,32 +194,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[LineItem]**](LineItem.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> object patch(buyer_id, order_id, line_item_id, partial_line_item)
+> LineItem patch(buyer_id, order_id, line_item_id, partial_line_item)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi()
@@ -245,39 +247,39 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**LineItem**](LineItem.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_shipping_address**
-> object patch_shipping_address(buyer_id, order_id, line_item_id, address)
+> LineItem patch_shipping_address(buyer_id, order_id, line_item_id, partial_address)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi()
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
-address = OrderCloud.Address() # Address | 
+partial_address = OrderCloud.Address() # Address | 
 
 try: 
-    response = LineItemApi.patch_shipping_address(buyer_id, order_id, line_item_id, address)
+    response = LineItemApi.patch_shipping_address(buyer_id, order_id, line_item_id, partial_address)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->patch_shipping_address: %s\n" % e)
@@ -290,33 +292,33 @@ Name | Type | Description  | Notes
  **buyer_id** | **str**| ID of the buyer. | 
  **order_id** | **str**| ID of the order. | 
  **line_item_id** | **str**| ID of the line item. | 
- **address** | [**Address**](Address.md)|  | 
+ **partial_address** | [**Address**](Address.md)|  | 
 
 ### Return type
 
-**object**
+[**LineItem**](LineItem.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_shipping_address**
-> object set_shipping_address(buyer_id, order_id, line_item_id, address)
+> LineItem set_shipping_address(buyer_id, order_id, line_item_id, address)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi()
@@ -343,29 +345,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**LineItem**](LineItem.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> object update(buyer_id, order_id, line_item_id, line_item)
+> LineItem update(buyer_id, order_id, line_item_id, line_item)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi()
@@ -392,16 +394,16 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**LineItem**](LineItem.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

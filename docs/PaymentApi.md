@@ -17,15 +17,15 @@ Method | HTTP request | Description
 
 
 # **create**
-> object create(buyer_id, order_id, payment)
+> Payment create(buyer_id, order_id, payment)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -50,29 +50,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Payment**](Payment.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_transaction**
-> object create_transaction(buyer_id, order_id, payment_id, transaction)
+> Payment create_transaction(buyer_id, order_id, payment_id, transaction)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -99,16 +99,16 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Payment**](Payment.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -119,9 +119,9 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -149,12 +149,12 @@ void (empty response body)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -165,9 +165,9 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -197,25 +197,25 @@ void (empty response body)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> object get(buyer_id, order_id, payment_id)
+> Payment get(buyer_id, order_id, payment_id)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -240,29 +240,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Payment**](Payment.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> object list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+> list[Payment] list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -273,9 +273,10 @@ search_on = 'search_on_example' # str | Comma-delimited list of fields to search
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = PaymentApi.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = PaymentApi.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling PaymentApi->list: %s\n" % e)
@@ -292,32 +293,33 @@ Name | Type | Description  | Notes
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
-**object**
+[**list[Payment]**](Payment.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> object patch(buyer_id, order_id, payment_id, partial_payment)
+> Payment patch(buyer_id, order_id, payment_id, partial_payment)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -344,29 +346,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Payment**](Payment.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_transaction**
-> object patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction)
+> Payment patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -395,29 +397,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Payment**](Payment.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> object update(buyer_id, order_id, payment_id, payment)
+> Payment update(buyer_id, order_id, payment_id, payment)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -444,29 +446,29 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Payment**](Payment.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_transaction**
-> object update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction)
+> Payment update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction)
 
 
 
 ### Example 
 ```python
-import OrderCloud
+import OrderCloud as oc
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi()
@@ -495,16 +497,16 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**Payment**](Payment.md)
 
 ### Authorization
 
-[auth](../README.md#auth)
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

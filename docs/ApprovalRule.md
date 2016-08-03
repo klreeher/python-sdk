@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **scope** | **str** |  | [optional] 
 **scope_time_unit** | **str** |  | [optional] 
 **scope_time_number** | **int** |  | [optional] 
-**scope_start_date** | **date** |  | [optional] 
+**scope_start_date** | **str** |  | [optional] 
 **expire_after_time_unit** | **str** |  | [optional] 
 **expire_after_number** | **int** |  | [optional] 
 **approve_on_expire** | **bool** |  | [optional] 

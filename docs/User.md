@@ -10,10 +10,9 @@ Name | Type | Description | Notes
 **last_name** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
-**terms_accepted** | **date** |  | [optional] 
+**terms_accepted** | **str** |  | [optional] 
 **active** | **bool** |  | [optional] 
 **xp** | **object** |  | [optional] 
-**security_profile_id** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
