@@ -22,12 +22,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 group = OrderCloud.UserGroup() # UserGroup | 
 
@@ -67,12 +67,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group.
 
@@ -111,12 +111,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group.
 user_id = 'user_id_example' # str | ID of the user.
@@ -157,12 +157,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group.
 
@@ -196,18 +196,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[UserGroup] list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListUserGroup list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -237,7 +237,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[UserGroup]**](UserGroup.md)
+[**ListUserGroup**](ListUserGroup.md)
 
 ### Authorization
 
@@ -251,18 +251,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_user_assignments**
-> list[UserGroupAssignment] list_user_assignments(buyer_id, user_group_id=user_group_id, user_id=user_id, page=page, page_size=page_size)
+> ListUserGroupAssignment list_user_assignments(buyer_id, user_group_id=user_group_id, user_id=user_id, page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[UserGroupAssignment]**](UserGroupAssignment.md)
+[**ListUserGroupAssignment**](ListUserGroupAssignment.md)
 
 ### Authorization
 
@@ -308,12 +308,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group.
 group = OrderCloud.UserGroup() # UserGroup | 
@@ -354,12 +354,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_assignment = OrderCloud.UserGroupAssignment() # UserGroupAssignment | 
 
@@ -398,12 +398,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserGroupApi = OrderCloud.UserGroupApi()
+UserGroupApi = OrderCloud.UserGroupApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group.
 group = OrderCloud.UserGroup() # UserGroup | 

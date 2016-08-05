@@ -21,12 +21,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-LineItemApi = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item = OrderCloud.LineItem() # LineItem | 
@@ -68,12 +68,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-LineItemApi = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
@@ -114,12 +114,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-LineItemApi = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
@@ -155,18 +155,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[LineItem] list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListLineItem list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-LineItemApi = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[LineItem]**](LineItem.md)
+[**ListLineItem**](ListLineItem.md)
 
 ### Authorization
 
@@ -218,12 +218,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-LineItemApi = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
@@ -267,12 +267,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-LineItemApi = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
@@ -316,12 +316,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-LineItemApi = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
@@ -365,12 +365,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-LineItemApi = OrderCloud.LineItemApi()
+LineItemApi = OrderCloud.LineItemApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.

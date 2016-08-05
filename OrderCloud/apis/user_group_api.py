@@ -524,7 +524,7 @@ class UserGroupApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[UserGroup]
+        :return: ListUserGroup
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -557,7 +557,7 @@ class UserGroupApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[UserGroup]
+        :return: ListUserGroup
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -625,7 +625,7 @@ class UserGroupApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[UserGroup]',
+                                            response_type='ListUserGroup',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -650,7 +650,7 @@ class UserGroupApi(object):
         :param str user_id: ID of the user.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: list[UserGroupAssignment]
+        :return: ListUserGroupAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -681,7 +681,7 @@ class UserGroupApi(object):
         :param str user_id: ID of the user.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: list[UserGroupAssignment]
+        :return: ListUserGroupAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -745,7 +745,7 @@ class UserGroupApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[UserGroupAssignment]',
+                                            response_type='ListUserGroupAssignment',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

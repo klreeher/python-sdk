@@ -33,12 +33,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product = OrderCloud.Product() # Product | 
 
 try: 
@@ -76,12 +76,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 
 try: 
@@ -118,12 +118,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 product_id = 'product_id_example' # str | ID of the product.
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -166,12 +166,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 overwrite_existing = true # bool | Overwrite existing of the product. (optional)
 
@@ -211,12 +211,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 
 try: 
@@ -254,12 +254,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 
 try: 
@@ -297,12 +297,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 variant_id = 'variant_id_example' # str | ID of the variant.
 
@@ -342,12 +342,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 variant_id = 'variant_id_example' # str | ID of the variant.
 
@@ -381,18 +381,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[Product] list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListProduct list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Product]**](Product.md)
+[**ListProduct**](ListProduct.md)
 
 ### Authorization
 
@@ -434,18 +434,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
-> list[ProductAssignment] list_assignments(product_id=product_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, price_schedule_id=price_schedule_id, page=page, page_size=page_size)
+> ListProductAssignment list_assignments(product_id=product_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, price_schedule_id=price_schedule_id, page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product. (optional)
 buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[ProductAssignment]**](ProductAssignment.md)
+[**ListProductAssignment**](ListProductAssignment.md)
 
 ### Authorization
 
@@ -491,18 +491,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_inventory**
-> list[Inventory] list_inventory(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListInventory list_inventory(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -530,7 +530,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Inventory]**](Inventory.md)
+[**ListInventory**](ListInventory.md)
 
 ### Authorization
 
@@ -544,18 +544,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_variant_inventory**
-> list[Inventory] list_variant_inventory(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListInventory list_variant_inventory(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -585,7 +585,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Inventory]**](Inventory.md)
+[**ListInventory**](ListInventory.md)
 
 ### Authorization
 
@@ -599,18 +599,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_variants**
-> list[Variant] list_variants(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListVariant list_variants(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -640,7 +640,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Variant]**](Variant.md)
+[**ListVariant**](ListVariant.md)
 
 ### Authorization
 
@@ -660,12 +660,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 product = OrderCloud.Product() # Product | 
 
@@ -704,12 +704,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 variant_id = 'variant_id_example' # str | ID of the variant.
 variant = OrderCloud.Variant() # Variant | 
@@ -751,12 +751,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_assignment = OrderCloud.ProductAssignment() # ProductAssignment | 
 
 try: 
@@ -793,12 +793,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 product = OrderCloud.Product() # Product | 
 
@@ -838,12 +838,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 inventory = 56 # int | Inventory of the product.
 
@@ -883,12 +883,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 variant_id = 'variant_id_example' # str | ID of the variant.
 variant = OrderCloud.Variant() # Variant | 
@@ -930,12 +930,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-ProductApi = OrderCloud.ProductApi()
+ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
 variant_id = 'variant_id_example' # str | ID of the variant.
 inventory = 56 # int | Inventory of the product.

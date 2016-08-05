@@ -16,12 +16,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-FileApi = OrderCloud.FileApi()
+FileApi = OrderCloud.FileApi
 file_id = 'file_id_example' # str | ID of the file.
 
 try: 
@@ -53,18 +53,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[File] list(page=page, page_size=page_size)
+> ListFile list(page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-FileApi = OrderCloud.FileApi()
+FileApi = OrderCloud.FileApi
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[File]**](File.md)
+[**ListFile**](ListFile.md)
 
 ### Authorization
 
@@ -104,12 +104,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-FileApi = OrderCloud.FileApi()
+FileApi = OrderCloud.FileApi
 filename = 'filename_example' # str | Filename of the file. (optional)
 
 try: 

@@ -384,7 +384,7 @@ class AdminUserApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[User]
+        :return: ListUser
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -416,7 +416,7 @@ class AdminUserApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[User]
+        :return: ListUser
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -479,7 +479,7 @@ class AdminUserApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[User]',
+                                            response_type='ListUser',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

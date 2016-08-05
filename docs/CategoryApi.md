@@ -25,12 +25,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category = OrderCloud.Category() # Category | 
 
@@ -70,12 +70,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 
@@ -114,12 +114,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -162,12 +162,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 product_id = 'product_id_example' # str | ID of the product.
@@ -208,12 +208,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 
@@ -247,18 +247,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[Category] list(buyer_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListCategory list(buyer_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 depth = 'depth_example' # str | Depth of the category. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Category]**](Category.md)
+[**ListCategory**](ListCategory.md)
 
 ### Authorization
 
@@ -304,18 +304,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
-> list[CategoryAssignment] list_assignments(buyer_id, category_id=category_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+> ListCategoryAssignment list_assignments(buyer_id, category_id=category_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[CategoryAssignment]**](CategoryAssignment.md)
+[**ListCategoryAssignment**](ListCategoryAssignment.md)
 
 ### Authorization
 
@@ -359,18 +359,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_product_assignments**
-> list[CategoryProductAssignment] list_product_assignments(buyer_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
+> ListCategoryProductAssignment list_product_assignments(buyer_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category. (optional)
 product_id = 'product_id_example' # str | ID of the product. (optional)
@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[CategoryProductAssignment]**](CategoryProductAssignment.md)
+[**ListCategoryProductAssignment**](ListCategoryProductAssignment.md)
 
 ### Authorization
 
@@ -416,12 +416,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 category = OrderCloud.Category() # Category | 
@@ -462,12 +462,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_assignment = OrderCloud.CategoryAssignment() # CategoryAssignment | 
 
@@ -506,12 +506,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 product_assignment = OrderCloud.CategoryProductAssignment() # CategoryProductAssignment | 
 
@@ -550,12 +550,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi()
+CategoryApi = OrderCloud.CategoryApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 category_id = 'category_id_example' # str | ID of the category.
 category = OrderCloud.Category() # Category | 

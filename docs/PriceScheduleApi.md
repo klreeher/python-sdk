@@ -21,12 +21,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PriceScheduleApi = OrderCloud.PriceScheduleApi()
+PriceScheduleApi = OrderCloud.PriceScheduleApi
 price_schedule = OrderCloud.PriceSchedule() # PriceSchedule | 
 
 try: 
@@ -64,12 +64,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PriceScheduleApi = OrderCloud.PriceScheduleApi()
+PriceScheduleApi = OrderCloud.PriceScheduleApi
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
 
 try: 
@@ -106,12 +106,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PriceScheduleApi = OrderCloud.PriceScheduleApi()
+PriceScheduleApi = OrderCloud.PriceScheduleApi
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
 quantity = 56 # int | Quantity of the price schedule.
 
@@ -150,12 +150,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PriceScheduleApi = OrderCloud.PriceScheduleApi()
+PriceScheduleApi = OrderCloud.PriceScheduleApi
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
 
 try: 
@@ -187,18 +187,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[PriceSchedule] list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListPriceSchedule list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PriceScheduleApi = OrderCloud.PriceScheduleApi()
+PriceScheduleApi = OrderCloud.PriceScheduleApi
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[PriceSchedule]**](PriceSchedule.md)
+[**ListPriceSchedule**](ListPriceSchedule.md)
 
 ### Authorization
 
@@ -246,12 +246,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PriceScheduleApi = OrderCloud.PriceScheduleApi()
+PriceScheduleApi = OrderCloud.PriceScheduleApi
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
 price_schedule = OrderCloud.PriceSchedule() # PriceSchedule | 
 
@@ -291,12 +291,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PriceScheduleApi = OrderCloud.PriceScheduleApi()
+PriceScheduleApi = OrderCloud.PriceScheduleApi
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
 price_break = OrderCloud.PriceBreak() # PriceBreak | 
 
@@ -336,12 +336,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PriceScheduleApi = OrderCloud.PriceScheduleApi()
+PriceScheduleApi = OrderCloud.PriceScheduleApi
 price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule.
 price_schedule = OrderCloud.PriceSchedule() # PriceSchedule | 
 

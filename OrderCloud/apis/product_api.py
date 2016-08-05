@@ -937,7 +937,7 @@ class ProductApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[Product]
+        :return: ListProduct
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -969,7 +969,7 @@ class ProductApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[Product]
+        :return: ListProduct
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1032,7 +1032,7 @@ class ProductApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[Product]',
+                                            response_type='ListProduct',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -1060,7 +1060,7 @@ class ProductApi(object):
         :param str price_schedule_id: ID of the price schedule.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: list[ProductAssignment]
+        :return: ListProductAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1094,7 +1094,7 @@ class ProductApi(object):
         :param str price_schedule_id: ID of the price schedule.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: list[ProductAssignment]
+        :return: ListProductAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1161,7 +1161,7 @@ class ProductApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[ProductAssignment]',
+                                            response_type='ListProductAssignment',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -1187,7 +1187,7 @@ class ProductApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[Inventory]
+        :return: ListInventory
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1219,7 +1219,7 @@ class ProductApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[Inventory]
+        :return: ListInventory
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1282,7 +1282,7 @@ class ProductApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[Inventory]',
+                                            response_type='ListInventory',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -1309,7 +1309,7 @@ class ProductApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[Inventory]
+        :return: ListInventory
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1342,7 +1342,7 @@ class ProductApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[Inventory]
+        :return: ListInventory
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1410,7 +1410,7 @@ class ProductApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[Inventory]',
+                                            response_type='ListInventory',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -1437,7 +1437,7 @@ class ProductApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[Variant]
+        :return: ListVariant
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1470,7 +1470,7 @@ class ProductApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[Variant]
+        :return: ListVariant
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1538,7 +1538,7 @@ class ProductApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[Variant]',
+                                            response_type='ListVariant',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

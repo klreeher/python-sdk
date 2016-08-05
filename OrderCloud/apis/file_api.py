@@ -172,7 +172,7 @@ class FileApi(object):
             for asynchronous request. (optional)
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: list[File]
+        :return: ListFile
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -200,7 +200,7 @@ class FileApi(object):
             for asynchronous request. (optional)
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: list[File]
+        :return: ListFile
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -255,7 +255,7 @@ class FileApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[File]',
+                                            response_type='ListFile',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

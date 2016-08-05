@@ -4,7 +4,7 @@ A full ecommerce backend as a service.
 For more information, see the official [OrderCloud](https://devcenter.ordercloud.io) website.
 
 - API version: 1.0
-- Build date: 2016-08-03T17:17:18.035Z
+- Build date: 2016-08-05T19:21:42.860Z
 
 ## Requirements.
 
@@ -53,11 +53,9 @@ oc.configuration.scopes = ["FullAccess"]
 #This is a shortcut for authenticating with the password grant type
 oc.auth.login("USERNAME","PASSWORD")
 #This will acquire an access token and store it in oc.configuration.access_token
-#If you want to use a different grant type, you'll have to make an http request,
-# grab the access token, and store it in oc.configuration.access_token
 
 #Now we can use the API, to check if everything worked, this should return the currently authenticated user.
-print(oc.MeApi().get())
+print(oc.MeApi.get())
 
 ```
 
@@ -325,6 +323,52 @@ Class | Method | HTTP request | Description
  - [Inventory](docs/Inventory.md)
  - [LineItem](docs/LineItem.md)
  - [LineItemSpec](docs/LineItemSpec.md)
+ - [ListAddress](docs/ListAddress.md)
+ - [ListAddressAssignment](docs/ListAddressAssignment.md)
+ - [ListAdminCompany](docs/ListAdminCompany.md)
+ - [ListApiClient](docs/ListApiClient.md)
+ - [ListApprovalRule](docs/ListApprovalRule.md)
+ - [ListBuyer](docs/ListBuyer.md)
+ - [ListBuyerAddress](docs/ListBuyerAddress.md)
+ - [ListBuyerCreditCard](docs/ListBuyerCreditCard.md)
+ - [ListBuyerProduct](docs/ListBuyerProduct.md)
+ - [ListBuyerSpec](docs/ListBuyerSpec.md)
+ - [ListCategory](docs/ListCategory.md)
+ - [ListCategoryAssignment](docs/ListCategoryAssignment.md)
+ - [ListCategoryProductAssignment](docs/ListCategoryProductAssignment.md)
+ - [ListCostCenter](docs/ListCostCenter.md)
+ - [ListCostCenterAssignment](docs/ListCostCenterAssignment.md)
+ - [ListCreditCard](docs/ListCreditCard.md)
+ - [ListCreditCardAssignment](docs/ListCreditCardAssignment.md)
+ - [ListDevAccessibleCompany](docs/ListDevAccessibleCompany.md)
+ - [ListFile](docs/ListFile.md)
+ - [ListInventory](docs/ListInventory.md)
+ - [ListLineItem](docs/ListLineItem.md)
+ - [ListOrder](docs/ListOrder.md)
+ - [ListOrderApproval](docs/ListOrderApproval.md)
+ - [ListOrderPromotion](docs/ListOrderPromotion.md)
+ - [ListPayment](docs/ListPayment.md)
+ - [ListPriceSchedule](docs/ListPriceSchedule.md)
+ - [ListProduct](docs/ListProduct.md)
+ - [ListProductAssignment](docs/ListProductAssignment.md)
+ - [ListPromotion](docs/ListPromotion.md)
+ - [ListPromotionAssignment](docs/ListPromotionAssignment.md)
+ - [ListSecurityProfile](docs/ListSecurityProfile.md)
+ - [ListSecurityProfileAssignment](docs/ListSecurityProfileAssignment.md)
+ - [ListShipment](docs/ListShipment.md)
+ - [ListSpec](docs/ListSpec.md)
+ - [ListSpecOption](docs/ListSpecOption.md)
+ - [ListSpecProductAssignment](docs/ListSpecProductAssignment.md)
+ - [ListSpendingAccount](docs/ListSpendingAccount.md)
+ - [ListSpendingAccountAssignment](docs/ListSpendingAccountAssignment.md)
+ - [ListUser](docs/ListUser.md)
+ - [ListUserGroup](docs/ListUserGroup.md)
+ - [ListUserGroupAssignment](docs/ListUserGroupAssignment.md)
+ - [ListVariant](docs/ListVariant.md)
+ - [ListWebHook](docs/ListWebHook.md)
+ - [ListWebHookRoute](docs/ListWebHookRoute.md)
+ - [ListXpIndex](docs/ListXpIndex.md)
+ - [Meta](docs/Meta.md)
  - [Order](docs/Order.md)
  - [OrderApproval](docs/OrderApproval.md)
  - [OrderPromotion](docs/OrderPromotion.md)
@@ -358,6 +402,42 @@ Class | Method | HTTP request | Description
 
 
 ## Documentation For Authorization
+
+There are four ways to authenticate into an app. All of them acquire an access token and store it in `OrderCloud.configuration.access_token`. 
+
+### Simple user/pass 
+
+This is most commonly used when a human user is logging into the app:
+
+```python
+OrderCloud.auth.login(user,password)
+```
+
+### Elevated user/pass
+
+This is a more stricter form for when you have a `client_secret` set up for your app in the developer center and it needs to be pass in:
+
+```python
+OrderCloud.auth.login(user,password,client_secret)
+```
+
+### Client secret 
+
+This is for when a backend system needs to interact with the app:
+
+```python
+OrderCloud.auth.authenticate(client_secret)
+```
+
+### Anonymous shopping
+
+For when you need to allow anyone to publically access the app:
+
+```python
+OrderCloud.auth.authenticate()
+```
+
+Check the OrderCloud [Authentication guide](https://devcenter.ordercloud.io/docs/guides/authentication/workflows) for more detailed information!
 
 
 ## oauth2

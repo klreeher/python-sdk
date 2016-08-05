@@ -525,7 +525,7 @@ class CostCenterApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[CostCenter]
+        :return: ListCostCenter
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -558,7 +558,7 @@ class CostCenterApi(object):
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: list[CostCenter]
+        :return: ListCostCenter
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -626,7 +626,7 @@ class CostCenterApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[CostCenter]',
+                                            response_type='ListCostCenter',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -653,7 +653,7 @@ class CostCenterApi(object):
         :param str level: Level of the cost center.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: list[CostCenterAssignment]
+        :return: ListCostCenterAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -686,7 +686,7 @@ class CostCenterApi(object):
         :param str level: Level of the cost center.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: list[CostCenterAssignment]
+        :return: ListCostCenterAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -754,7 +754,7 @@ class CostCenterApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='list[CostCenterAssignment]',
+                                            response_type='ListCostCenterAssignment',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

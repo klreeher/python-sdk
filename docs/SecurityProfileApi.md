@@ -18,12 +18,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SecurityProfileApi = OrderCloud.SecurityProfileApi()
+SecurityProfileApi = OrderCloud.SecurityProfileApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 security_profile_id = 'security_profile_id_example' # str | ID of the security profile.
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -66,12 +66,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SecurityProfileApi = OrderCloud.SecurityProfileApi()
+SecurityProfileApi = OrderCloud.SecurityProfileApi
 security_profile_id = 'security_profile_id_example' # str | ID of the security profile.
 
 try: 
@@ -103,18 +103,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[SecurityProfile] list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListSecurityProfile list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SecurityProfileApi = OrderCloud.SecurityProfileApi()
+SecurityProfileApi = OrderCloud.SecurityProfileApi
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -142,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[SecurityProfile]**](SecurityProfile.md)
+[**ListSecurityProfile**](ListSecurityProfile.md)
 
 ### Authorization
 
@@ -156,18 +156,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
-> list[SecurityProfileAssignment] list_assignments(buyer_id, security_profile_id=security_profile_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+> ListSecurityProfileAssignment list_assignments(buyer_id, security_profile_id=security_profile_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SecurityProfileApi = OrderCloud.SecurityProfileApi()
+SecurityProfileApi = OrderCloud.SecurityProfileApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 security_profile_id = 'security_profile_id_example' # str | ID of the security profile. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[SecurityProfileAssignment]**](SecurityProfileAssignment.md)
+[**ListSecurityProfileAssignment**](ListSecurityProfileAssignment.md)
 
 ### Authorization
 
@@ -217,12 +217,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SecurityProfileApi = OrderCloud.SecurityProfileApi()
+SecurityProfileApi = OrderCloud.SecurityProfileApi
 assignment = OrderCloud.SecurityProfileAssignment() # SecurityProfileAssignment | 
 
 try: 

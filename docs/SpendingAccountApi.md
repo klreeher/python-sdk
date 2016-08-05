@@ -22,12 +22,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account = OrderCloud.SpendingAccount() # SpendingAccount | 
 
@@ -67,12 +67,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 
@@ -111,12 +111,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -159,12 +159,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 
@@ -198,18 +198,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[SpendingAccount] list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListSpendingAccount list(buyer_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[SpendingAccount]**](SpendingAccount.md)
+[**ListSpendingAccount**](ListSpendingAccount.md)
 
 ### Authorization
 
@@ -253,18 +253,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
-> list[SpendingAccountAssignment] list_assignments(buyer_id, spending_account_id=spending_account_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+> ListSpendingAccountAssignment list_assignments(buyer_id, spending_account_id=spending_account_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[SpendingAccountAssignment]**](SpendingAccountAssignment.md)
+[**ListSpendingAccountAssignment**](ListSpendingAccountAssignment.md)
 
 ### Authorization
 
@@ -314,12 +314,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 spending_account = OrderCloud.SpendingAccount() # SpendingAccount | 
@@ -361,12 +361,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 assignment = OrderCloud.SpendingAccountAssignment() # SpendingAccountAssignment | 
 
@@ -405,12 +405,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpendingAccountApi = OrderCloud.SpendingAccountApi()
+SpendingAccountApi = OrderCloud.SpendingAccountApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
 spending_account = OrderCloud.SpendingAccount() # SpendingAccount | 

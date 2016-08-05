@@ -22,12 +22,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 promo = OrderCloud.Promotion() # Promotion | 
 
 try: 
@@ -65,12 +65,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 
 try: 
@@ -107,12 +107,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -155,12 +155,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 
 try: 
@@ -192,18 +192,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[Promotion] list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListPromotion list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Promotion]**](Promotion.md)
+[**ListPromotion**](ListPromotion.md)
 
 ### Authorization
 
@@ -245,18 +245,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
-> list[PromotionAssignment] list_assignments(buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+> ListPromotionAssignment list_assignments(buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 promotion_id = 'promotion_id_example' # str | ID of the promotion. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[PromotionAssignment]**](PromotionAssignment.md)
+[**ListPromotionAssignment**](ListPromotionAssignment.md)
 
 ### Authorization
 
@@ -306,12 +306,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 partial_promotion = OrderCloud.Promotion() # Promotion | 
 
@@ -351,12 +351,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 assignment = OrderCloud.PromotionAssignment() # PromotionAssignment | 
 
 try: 
@@ -393,12 +393,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi()
+PromotionApi = OrderCloud.PromotionApi
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 promo = OrderCloud.Promotion() # Promotion | 
 

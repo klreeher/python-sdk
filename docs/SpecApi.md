@@ -28,12 +28,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec = OrderCloud.Spec() # Spec | 
 
 try: 
@@ -71,12 +71,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 option = OrderCloud.SpecOption() # SpecOption | 
 
@@ -116,12 +116,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 
 try: 
@@ -158,12 +158,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 
@@ -202,12 +202,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 product_id = 'product_id_example' # str | ID of the product.
 
@@ -246,12 +246,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 
 try: 
@@ -289,12 +289,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 
@@ -328,18 +328,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[Spec] list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListSpec list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[Spec]**](Spec.md)
+[**ListSpec**](ListSpec.md)
 
 ### Authorization
 
@@ -381,18 +381,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_options**
-> list[SpecOption] list_options(spec_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListSpecOption list_options(spec_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[SpecOption]**](SpecOption.md)
+[**ListSpecOption**](ListSpecOption.md)
 
 ### Authorization
 
@@ -436,18 +436,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_product_assignments**
-> list[SpecProductAssignment] list_product_assignments(spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
+> ListSpecProductAssignment list_product_assignments(spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec. (optional)
 product_id = 'product_id_example' # str | ID of the product. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
@@ -471,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[SpecProductAssignment]**](SpecProductAssignment.md)
+[**ListSpecProductAssignment**](ListSpecProductAssignment.md)
 
 ### Authorization
 
@@ -491,12 +491,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 spec = OrderCloud.Spec() # Spec | 
 
@@ -536,12 +536,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 option = OrderCloud.SpecOption() # SpecOption | 
@@ -583,12 +583,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 product_assignment = OrderCloud.SpecProductAssignment() # SpecProductAssignment | 
 
 try: 
@@ -625,12 +625,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 spec = OrderCloud.Spec() # Spec | 
 
@@ -670,12 +670,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-SpecApi = OrderCloud.SpecApi()
+SpecApi = OrderCloud.SpecApi
 spec_id = 'spec_id_example' # str | ID of the spec.
 option_id = 'option_id_example' # str | ID of the option.
 option = OrderCloud.SpecOption() # SpecOption | 

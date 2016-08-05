@@ -20,12 +20,12 @@ Method | HTTP request | Description
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserApi = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user = OrderCloud.User() # User | 
 
@@ -65,12 +65,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserApi = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 
@@ -109,12 +109,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserApi = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 
@@ -154,12 +154,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserApi = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 token_request = OrderCloud.ImpersonateTokenRequest() # ImpersonateTokenRequest | 
@@ -195,18 +195,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> list[User] list(buyer_id, user_group_id=user_group_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListUser list(buyer_id, user_group_id=user_group_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserApi = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[User]**](User.md)
+[**ListUser**](ListUser.md)
 
 ### Authorization
 
@@ -258,12 +258,12 @@ Name | Type | Description  | Notes
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserApi = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 user = OrderCloud.User() # User | 
@@ -304,12 +304,12 @@ void (empty response body)
 
 ### Example 
 ```python
-import OrderCloud as oc
+import OrderCloud
 from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an acess_token (see the Getting Started guide)
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
 
 # create an instance of the API class
-UserApi = OrderCloud.UserApi()
+UserApi = OrderCloud.UserApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 user_id = 'user_id_example' # str | ID of the user.
 user = OrderCloud.User() # User | 
