@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(buyer_id, user_group_id, group)
+> UserGroup patch(buyer_id, user_group_id, group)
 
 
 
@@ -319,7 +319,8 @@ user_group_id = 'user_group_id_example' # str | ID of the user group.
 group = OrderCloud.UserGroup() # UserGroup | 
 
 try: 
-    UserGroupApi.patch(buyer_id, user_group_id, group)
+    response = UserGroupApi.patch(buyer_id, user_group_id, group)
+    print(response)
 except ApiException as e:
     print("Exception when calling UserGroupApi->patch: %s\n" % e)
 ```
@@ -334,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**UserGroup**](UserGroup.md)
 
 ### Authorization
 

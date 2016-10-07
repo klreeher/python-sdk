@@ -654,7 +654,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(product_id, product)
+> Product patch(product_id, product)
 
 
 
@@ -670,7 +670,8 @@ product_id = 'product_id_example' # str | ID of the product.
 product = OrderCloud.Product() # Product | 
 
 try: 
-    ProductApi.patch(product_id, product)
+    response = ProductApi.patch(product_id, product)
+    print(response)
 except ApiException as e:
     print("Exception when calling ProductApi->patch: %s\n" % e)
 ```
@@ -684,7 +685,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Product**](Product.md)
 
 ### Authorization
 

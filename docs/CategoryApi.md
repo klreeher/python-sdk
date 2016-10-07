@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(buyer_id, category_id, category)
+> Category patch(buyer_id, category_id, category)
 
 
 
@@ -427,7 +427,8 @@ category_id = 'category_id_example' # str | ID of the category.
 category = OrderCloud.Category() # Category | 
 
 try: 
-    CategoryApi.patch(buyer_id, category_id, category)
+    response = CategoryApi.patch(buyer_id, category_id, category)
+    print(response)
 except ApiException as e:
     print("Exception when calling CategoryApi->patch: %s\n" % e)
 ```
@@ -442,7 +443,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**Category**](Category.md)
 
 ### Authorization
 

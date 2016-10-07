@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> patch(user_id, user)
+> User patch(user_id, user)
 
 
 
@@ -210,7 +210,8 @@ user_id = 'user_id_example' # str | ID of the user.
 user = OrderCloud.User() # User | 
 
 try: 
-    AdminUserApi.patch(user_id, user)
+    response = AdminUserApi.patch(user_id, user)
+    print(response)
 except ApiException as e:
     print("Exception when calling AdminUserApi->patch: %s\n" % e)
 ```
@@ -224,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**User**](User.md)
 
 ### Authorization
 

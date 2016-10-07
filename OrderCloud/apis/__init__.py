@@ -4,15 +4,15 @@ from __future__ import absolute_import
 from .address_api import AddressApi
 from .admin_address_api import AdminAddressApi
 from .admin_user_api import AdminUserApi
+from .admin_user_group_api import AdminUserGroupApi
 from .approval_rule_api import ApprovalRuleApi
 from .buyer_api import BuyerApi
 from .category_api import CategoryApi
 from .cost_center_api import CostCenterApi
 from .credit_card_api import CreditCardApi
-from .email_template_api import EmailTemplateApi
-from .file_api import FileApi
 from .line_item_api import LineItemApi
 from .me_api import MeApi
+from .message_senders_api import MessageSendersApi
 from .order_api import OrderApi
 from .password_reset_api import PasswordResetApi
 from .payment_api import PaymentApi
