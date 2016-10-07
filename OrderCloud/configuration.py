@@ -285,11 +285,11 @@ class Auth(object):
         # Token url to authenticate
         self.tokenurl = "https://auth.ordercloud.io/oauth/token"
 
-    def __body_to_string(self, body)
+    def __body_to_string(self, body):
       # As found on http://codereview.stackexchange.com/questions/7953/flattening-a-dictionary-into-a-string
       return '&'.join("{!s}={!r}".format(key,val) for (key,val) in body.items()) 
 
-    def __base_body_for_auth(self, client_id, grant_type, scopes, client_secret = None)
+    def __base_body_for_auth(self, client_id, grant_type, scopes, client_secret = None):
       body = {
         "client_id" : client_id,
         "grant_type" : grant_type,
