@@ -191,7 +191,7 @@ from .configuration import Configuration
 configuration = Configuration()
 
 #import the auth class
-from .configuration import Auth
-from .configuration import Impersonation
+from .api_auth import Auth
+from .api_auth import Impersonation
 auth = Auth()
 impersonation = Impersonation()
