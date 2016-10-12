@@ -26,7 +26,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "OrderCloud"
-VERSION = "0.0.2"
+VERSION = "0.0.3"
 
 # To install the library, run the following
 #
