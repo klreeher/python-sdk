@@ -4,20 +4,17 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](PaymentApi.md#create) | **POST** /buyers/{buyerID}/orders/{orderID}/payments | 
-[**create_transaction**](PaymentApi.md#create_transaction) | **POST** /buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions | 
-[**delete**](PaymentApi.md#delete) | **DELETE** /buyers/{buyerID}/orders/{orderID}/payments/{paymentID} | 
-[**delete_transaction**](PaymentApi.md#delete_transaction) | **DELETE** /buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions/{transactionID} | 
-[**get**](PaymentApi.md#get) | **GET** /buyers/{buyerID}/orders/{orderID}/payments/{paymentID} | 
-[**list**](PaymentApi.md#list) | **GET** /buyers/{buyerID}/orders/{orderID}/payments | 
-[**patch**](PaymentApi.md#patch) | **PATCH** /buyers/{buyerID}/orders/{orderID}/payments/{paymentID} | 
-[**patch_transaction**](PaymentApi.md#patch_transaction) | **PATCH** /buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions/{transactionID} | 
-[**update**](PaymentApi.md#update) | **PUT** /buyers/{buyerID}/orders/{orderID}/payments/{paymentID} | 
-[**update_transaction**](PaymentApi.md#update_transaction) | **PUT** /buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions/{transactionID} | 
+[**create**](PaymentApi.md#create) | **POST** /orders/{direction}/{orderID}/payments | 
+[**create_transaction**](PaymentApi.md#create_transaction) | **POST** /orders/{direction}/{orderID}/payments/{paymentID}/transactions | 
+[**delete**](PaymentApi.md#delete) | **DELETE** /orders/{direction}/{orderID}/payments/{paymentID} | 
+[**delete_transaction**](PaymentApi.md#delete_transaction) | **DELETE** /orders/{direction}/{orderID}/payments/{paymentID}/transactions/{transactionID} | 
+[**get**](PaymentApi.md#get) | **GET** /orders/{direction}/{orderID}/payments/{paymentID} | 
+[**list**](PaymentApi.md#list) | **GET** /orders/{direction}/{orderID}/payments | 
+[**patch**](PaymentApi.md#patch) | **PATCH** /orders/{direction}/{orderID}/payments/{paymentID} | 
 
 
 # **create**
-> Payment create(buyer_id, order_id, payment)
+> Payment create(direction, order_id, payment)
 
 
 
@@ -29,12 +26,12 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 payment = OrderCloud.Payment() # Payment | 
 
 try: 
-    response = PaymentApi.create(buyer_id, order_id, payment)
+    response = PaymentApi.create(direction, order_id, payment)
     print(response)
 except ApiException as e:
     print("Exception when calling PaymentApi->create: %s\n" % e)
@@ -44,7 +41,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **payment** | [**Payment**](Payment.md)|  | 
 
@@ -64,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_transaction**
-> Payment create_transaction(buyer_id, order_id, payment_id, transaction)
+> Payment create_transaction(direction, order_id, payment_id, transaction)
 
 
 
@@ -76,13 +73,13 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
 
 try: 
-    response = PaymentApi.create_transaction(buyer_id, order_id, payment_id, transaction)
+    response = PaymentApi.create_transaction(direction, order_id, payment_id, transaction)
     print(response)
 except ApiException as e:
     print("Exception when calling PaymentApi->create_transaction: %s\n" % e)
@@ -92,7 +89,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
  **transaction** | [**PaymentTransaction**](PaymentTransaction.md)|  | 
@@ -113,7 +110,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> delete(buyer_id, order_id, payment_id)
+> delete(direction, order_id, payment_id)
 
 
 
@@ -125,12 +122,12 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 
 try: 
-    PaymentApi.delete(buyer_id, order_id, payment_id)
+    PaymentApi.delete(direction, order_id, payment_id)
 except ApiException as e:
     print("Exception when calling PaymentApi->delete: %s\n" % e)
 ```
@@ -139,7 +136,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
 
@@ -159,7 +156,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_transaction**
-> delete_transaction(buyer_id, order_id, payment_id, transaction_id)
+> delete_transaction(direction, order_id, payment_id, transaction_id)
 
 
 
@@ -171,13 +168,13 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 transaction_id = 'transaction_id_example' # str | ID of the transaction.
 
 try: 
-    PaymentApi.delete_transaction(buyer_id, order_id, payment_id, transaction_id)
+    PaymentApi.delete_transaction(direction, order_id, payment_id, transaction_id)
 except ApiException as e:
     print("Exception when calling PaymentApi->delete_transaction: %s\n" % e)
 ```
@@ -186,7 +183,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
  **transaction_id** | **str**| ID of the transaction. | 
@@ -207,7 +204,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> Payment get(buyer_id, order_id, payment_id)
+> Payment get(direction, order_id, payment_id)
 
 
 
@@ -219,12 +216,12 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 
 try: 
-    response = PaymentApi.get(buyer_id, order_id, payment_id)
+    response = PaymentApi.get(direction, order_id, payment_id)
     print(response)
 except ApiException as e:
     print("Exception when calling PaymentApi->get: %s\n" % e)
@@ -234,7 +231,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
 
@@ -254,7 +251,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> ListPayment list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListPayment list(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
@@ -266,7 +263,7 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -276,7 +273,7 @@ page_size = 56 # int | Number of results to return per page. Default: 20, max: 1
 filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = PaymentApi.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+    response = PaymentApi.list(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling PaymentApi->list: %s\n" % e)
@@ -286,7 +283,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
@@ -311,7 +308,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> Payment patch(buyer_id, order_id, payment_id, partial_payment)
+> Payment patch(direction, order_id, payment_id, partial_payment)
 
 
 
@@ -323,13 +320,13 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 partial_payment = OrderCloud.Payment() # Payment | 
 
 try: 
-    response = PaymentApi.patch(buyer_id, order_id, payment_id, partial_payment)
+    response = PaymentApi.patch(direction, order_id, payment_id, partial_payment)
     print(response)
 except ApiException as e:
     print("Exception when calling PaymentApi->patch: %s\n" % e)
@@ -339,161 +336,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
  **partial_payment** | [**Payment**](Payment.md)|  | 
-
-### Return type
-
-[**Payment**](Payment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch_transaction**
-> Payment patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-payment_id = 'payment_id_example' # str | ID of the payment.
-transaction_id = 'transaction_id_example' # str | ID of the transaction.
-partial_transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
-
-try: 
-    response = PaymentApi.patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction)
-    print(response)
-except ApiException as e:
-    print("Exception when calling PaymentApi->patch_transaction: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **payment_id** | **str**| ID of the payment. | 
- **transaction_id** | **str**| ID of the transaction. | 
- **partial_transaction** | [**PaymentTransaction**](PaymentTransaction.md)|  | 
-
-### Return type
-
-[**Payment**](Payment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update**
-> Payment update(buyer_id, order_id, payment_id, payment)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-payment_id = 'payment_id_example' # str | ID of the payment.
-payment = OrderCloud.Payment() # Payment | 
-
-try: 
-    response = PaymentApi.update(buyer_id, order_id, payment_id, payment)
-    print(response)
-except ApiException as e:
-    print("Exception when calling PaymentApi->update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **payment_id** | **str**| ID of the payment. | 
- **payment** | [**Payment**](Payment.md)|  | 
-
-### Return type
-
-[**Payment**](Payment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_transaction**
-> Payment update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PaymentApi = OrderCloud.PaymentApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-payment_id = 'payment_id_example' # str | ID of the payment.
-transaction_id = 'transaction_id_example' # str | ID of the transaction.
-transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
-
-try: 
-    response = PaymentApi.update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction)
-    print(response)
-except ApiException as e:
-    print("Exception when calling PaymentApi->update_transaction: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **payment_id** | **str**| ID of the payment. | 
- **transaction_id** | **str**| ID of the transaction. | 
- **transaction** | [**PaymentTransaction**](PaymentTransaction.md)|  | 
 
 ### Return type
 

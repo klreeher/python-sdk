@@ -51,7 +51,7 @@ class PasswordResetApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def reset_password(self, verification_code, password_reset, **kwargs):
+    def reset_password_by_verification_code(self, verification_code, password_reset, **kwargs):
         """
         
         
@@ -62,7 +62,7 @@ class PasswordResetApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.reset_password(verification_code, password_reset, callback=callback_function)
+        >>> thread = api.reset_password_by_verification_code(verification_code, password_reset, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -74,12 +74,12 @@ class PasswordResetApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.reset_password_with_http_info(verification_code, password_reset, **kwargs)
+            return self.reset_password_by_verification_code_with_http_info(verification_code, password_reset, **kwargs)
         else:
-            (data) = self.reset_password_with_http_info(verification_code, password_reset, **kwargs)
+            (data) = self.reset_password_by_verification_code_with_http_info(verification_code, password_reset, **kwargs)
             return data
 
-    def reset_password_with_http_info(self, verification_code, password_reset, **kwargs):
+    def reset_password_by_verification_code_with_http_info(self, verification_code, password_reset, **kwargs):
         """
         
         
@@ -90,7 +90,7 @@ class PasswordResetApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.reset_password_with_http_info(verification_code, password_reset, callback=callback_function)
+        >>> thread = api.reset_password_by_verification_code_with_http_info(verification_code, password_reset, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -110,16 +110,16 @@ class PasswordResetApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method reset_password" % key
+                    " to method reset_password_by_verification_code" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'verification_code' is set
         if ('verification_code' not in params) or (params['verification_code'] is None):
-            raise ValueError("Missing the required parameter `verification_code` when calling `reset_password`")
+            raise ValueError("Missing the required parameter `verification_code` when calling `reset_password_by_verification_code`")
         # verify the required parameter 'password_reset' is set
         if ('password_reset' not in params) or (params['password_reset'] is None):
-            raise ValueError("Missing the required parameter `password_reset` when calling `reset_password`")
+            raise ValueError("Missing the required parameter `password_reset` when calling `reset_password_by_verification_code`")
 
         resource_path = '/password/reset/{verificationCode}'.replace('{format}', 'json')
         path_params = {}

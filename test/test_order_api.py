@@ -98,6 +98,14 @@ class TestOrderApi(unittest.TestCase):
         """
         pass
 
+    def test_list(self):
+        """
+        Test case for list
+
+        
+        """
+        pass
+
     def test_list_approvals(self):
         """
         Test case for list_approvals
@@ -109,22 +117,6 @@ class TestOrderApi(unittest.TestCase):
     def test_list_eligible_approvers(self):
         """
         Test case for list_eligible_approvers
-
-        
-        """
-        pass
-
-    def test_list_incoming(self):
-        """
-        Test case for list_incoming
-
-        
-        """
-        pass
-
-    def test_list_outgoing(self):
-        """
-        Test case for list_outgoing
 
         
         """
@@ -197,14 +189,6 @@ class TestOrderApi(unittest.TestCase):
     def test_submit(self):
         """
         Test case for submit
-
-        
-        """
-        pass
-
-    def test_transfer_temp_user_order(self):
-        """
-        Test case for transfer_temp_user_order
 
         
         """

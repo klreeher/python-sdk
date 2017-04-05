@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
-> ListSecurityProfileAssignment list_assignments(buyer_id=buyer_id, security_profile_id=security_profile_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+> ListSecurityProfileAssignment list_assignments(buyer_id=buyer_id, supplier_id=supplier_id, security_profile_id=security_profile_id, user_id=user_id, user_group_id=user_group_id, commerce_role=commerce_role, level=level, page=page, page_size=page_size)
 
 
 
@@ -169,15 +169,17 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 SecurityProfileApi = OrderCloud.SecurityProfileApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
+supplier_id = 'supplier_id_example' # str | ID of the supplier. (optional)
 security_profile_id = 'security_profile_id_example' # str | ID of the security profile. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
+commerce_role = 'commerce_role_example' # str | Commerce role of the security profile. (optional)
 level = 'level_example' # str | Level of the security profile. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    response = SecurityProfileApi.list_assignments(buyer_id=buyer_id, security_profile_id=security_profile_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    response = SecurityProfileApi.list_assignments(buyer_id=buyer_id, supplier_id=supplier_id, security_profile_id=security_profile_id, user_id=user_id, user_group_id=user_group_id, commerce_role=commerce_role, level=level, page=page, page_size=page_size)
     print(response)
 except ApiException as e:
     print("Exception when calling SecurityProfileApi->list_assignments: %s\n" % e)
@@ -188,9 +190,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **buyer_id** | **str**| ID of the buyer. | [optional] 
+ **supplier_id** | **str**| ID of the supplier. | [optional] 
  **security_profile_id** | **str**| ID of the security profile. | [optional] 
  **user_id** | **str**| ID of the user. | [optional] 
  **user_group_id** | **str**| ID of the user group. | [optional] 
+ **commerce_role** | **str**| Commerce role of the security profile. | [optional] 
  **level** | **str**| Level of the security profile. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 

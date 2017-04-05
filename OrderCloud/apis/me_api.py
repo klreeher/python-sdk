@@ -772,7 +772,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get_order(self, order_id, **kwargs):
+    def get_product(self, catalog_id, product_id, **kwargs):
         """
         
         
@@ -783,114 +783,11 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_order(order_id, callback=callback_function)
+        >>> thread = api.get_product(catalog_id, product_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str order_id: ID of the order. (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_order_with_http_info(order_id, **kwargs)
-        else:
-            (data) = self.get_order_with_http_info(order_id, **kwargs)
-            return data
-
-    def get_order_with_http_info(self, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_order_with_http_info(order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str order_id: ID of the order. (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['order_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_order" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `get_order`")
-
-        resource_path = '/me/orders/{orderID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def get_product(self, product_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_product(product_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
         :param str product_id: ID of the product. (required)
         :return: BuyerProduct
                  If the method is called asynchronously,
@@ -898,12 +795,12 @@ class MeApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_product_with_http_info(product_id, **kwargs)
+            return self.get_product_with_http_info(catalog_id, product_id, **kwargs)
         else:
-            (data) = self.get_product_with_http_info(product_id, **kwargs)
+            (data) = self.get_product_with_http_info(catalog_id, product_id, **kwargs)
             return data
 
-    def get_product_with_http_info(self, product_id, **kwargs):
+    def get_product_with_http_info(self, catalog_id, product_id, **kwargs):
         """
         
         
@@ -914,17 +811,18 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_product_with_http_info(product_id, callback=callback_function)
+        >>> thread = api.get_product_with_http_info(catalog_id, product_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
         :param str product_id: ID of the product. (required)
         :return: BuyerProduct
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['product_id']
+        all_params = ['catalog_id', 'product_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -937,12 +835,17 @@ class MeApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `get_product`")
         # verify the required parameter 'product_id' is set
         if ('product_id' not in params) or (params['product_id'] is None):
             raise ValueError("Missing the required parameter `product_id` when calling `get_product`")
 
-        resource_path = '/me/products/{productID}'.replace('{format}', 'json')
+        resource_path = '/me/catalogs/{catalogID}/products/{productID}'.replace('{format}', 'json')
         path_params = {}
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'product_id' in params:
             path_params['productID'] = params['product_id']
 
@@ -1084,7 +987,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get_spec(self, product_id, spec_id, **kwargs):
+    def get_shipment(self, shipment_id, **kwargs):
         """
         
         
@@ -1095,10 +998,115 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_spec(product_id, spec_id, callback=callback_function)
+        >>> thread = api.get_shipment(shipment_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str shipment_id: ID of the shipment. (required)
+        :return: BuyerShipment
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_shipment_with_http_info(shipment_id, **kwargs)
+        else:
+            (data) = self.get_shipment_with_http_info(shipment_id, **kwargs)
+            return data
+
+    def get_shipment_with_http_info(self, shipment_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_shipment_with_http_info(shipment_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str shipment_id: ID of the shipment. (required)
+        :return: BuyerShipment
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['shipment_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_shipment" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'shipment_id' is set
+        if ('shipment_id' not in params) or (params['shipment_id'] is None):
+            raise ValueError("Missing the required parameter `shipment_id` when calling `get_shipment`")
+
+        resource_path = '/me/shipments/{shipmentID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'shipment_id' in params:
+            path_params['shipmentID'] = params['shipment_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='BuyerShipment',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def get_spec(self, catalog_id, product_id, spec_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_spec(catalog_id, product_id, spec_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
         :param str product_id: ID of the product. (required)
         :param str spec_id: ID of the spec. (required)
         :return: BuyerSpec
@@ -1107,12 +1115,12 @@ class MeApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_spec_with_http_info(product_id, spec_id, **kwargs)
+            return self.get_spec_with_http_info(catalog_id, product_id, spec_id, **kwargs)
         else:
-            (data) = self.get_spec_with_http_info(product_id, spec_id, **kwargs)
+            (data) = self.get_spec_with_http_info(catalog_id, product_id, spec_id, **kwargs)
             return data
 
-    def get_spec_with_http_info(self, product_id, spec_id, **kwargs):
+    def get_spec_with_http_info(self, catalog_id, product_id, spec_id, **kwargs):
         """
         
         
@@ -1123,10 +1131,11 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_spec_with_http_info(product_id, spec_id, callback=callback_function)
+        >>> thread = api.get_spec_with_http_info(catalog_id, product_id, spec_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
         :param str product_id: ID of the product. (required)
         :param str spec_id: ID of the spec. (required)
         :return: BuyerSpec
@@ -1134,7 +1143,7 @@ class MeApi(object):
                  returns the request thread.
         """
 
-        all_params = ['product_id', 'spec_id']
+        all_params = ['catalog_id', 'product_id', 'spec_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1147,6 +1156,9 @@ class MeApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `get_spec`")
         # verify the required parameter 'product_id' is set
         if ('product_id' not in params) or (params['product_id'] is None):
             raise ValueError("Missing the required parameter `product_id` when calling `get_spec`")
@@ -1154,8 +1166,10 @@ class MeApi(object):
         if ('spec_id' not in params) or (params['spec_id'] is None):
             raise ValueError("Missing the required parameter `spec_id` when calling `get_spec`")
 
-        resource_path = '/me/products/{productID}/specs/{specID}'.replace('{format}', 'json')
+        resource_path = '/me/catalogs/{catalogID}/products/{productID}/specs/{specID}'.replace('{format}', 'json')
         path_params = {}
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'product_id' in params:
             path_params['productID'] = params['product_id']
         if 'spec_id' in params:
@@ -1416,6 +1430,135 @@ class MeApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='ListBuyerAddress',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list_approvable_orders(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_approvable_orders(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str _from: Lower bound of date range that the order was created (if outgoing) or submitted (if incoming).
+        :param str to: Upper bound of date range that the order was created (if outgoing) or submitted (if incoming).
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListOrder
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_approvable_orders_with_http_info(**kwargs)
+        else:
+            (data) = self.list_approvable_orders_with_http_info(**kwargs)
+            return data
+
+    def list_approvable_orders_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_approvable_orders_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str _from: Lower bound of date range that the order was created (if outgoing) or submitted (if incoming).
+        :param str to: Upper bound of date range that the order was created (if outgoing) or submitted (if incoming).
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListOrder
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['_from', 'to', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_approvable_orders" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/me/orders/approvable'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if '_from' in params:
+            query_params['from'] = params['_from']
+        if 'to' in params:
+            query_params['to'] = params['to']
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListOrder',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
@@ -1791,7 +1934,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list_incoming_orders(self, **kwargs):
+    def list_orders(self, **kwargs):
         """
         
         
@@ -1802,7 +1945,7 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_incoming_orders(callback=callback_function)
+        >>> thread = api.list_orders(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -1820,12 +1963,12 @@ class MeApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_incoming_orders_with_http_info(**kwargs)
+            return self.list_orders_with_http_info(**kwargs)
         else:
-            (data) = self.list_incoming_orders_with_http_info(**kwargs)
+            (data) = self.list_orders_with_http_info(**kwargs)
             return data
 
-    def list_incoming_orders_with_http_info(self, **kwargs):
+    def list_orders_with_http_info(self, **kwargs):
         """
         
         
@@ -1836,7 +1979,7 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_incoming_orders_with_http_info(callback=callback_function)
+        >>> thread = api.list_orders_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -1862,141 +2005,12 @@ class MeApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_incoming_orders" % key
+                    " to method list_orders" % key
                 )
             params[key] = val
         del params['kwargs']
 
-        resource_path = '/me/orders/incoming'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if '_from' in params:
-            query_params['from'] = params['_from']
-        if 'to' in params:
-            query_params['to'] = params['to']
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-        if 'filters' in params:
-            query_params['filters'] = params['filters']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListOrder',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list_outgoing_orders(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_outgoing_orders(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str _from: Lower bound of date range that the order was created (if outgoing) or submitted (if incoming).
-        :param str to: Upper bound of date range that the order was created (if outgoing) or submitted (if incoming).
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListOrder
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.list_outgoing_orders_with_http_info(**kwargs)
-        else:
-            (data) = self.list_outgoing_orders_with_http_info(**kwargs)
-            return data
-
-    def list_outgoing_orders_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_outgoing_orders_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str _from: Lower bound of date range that the order was created (if outgoing) or submitted (if incoming).
-        :param str to: Upper bound of date range that the order was created (if outgoing) or submitted (if incoming).
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListOrder
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['_from', 'to', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_outgoing_orders" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/me/orders/outgoing'.replace('{format}', 'json')
+        resource_path = '/me/orders'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
@@ -2064,8 +2078,9 @@ class MeApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str category_id: ID of the category.
         :param str catalog_id: ID of the catalog.
+        :param str category_id: ID of the category.
+        :param str depth: Depth of the product.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -2098,8 +2113,9 @@ class MeApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str category_id: ID of the category.
         :param str catalog_id: ID of the catalog.
+        :param str category_id: ID of the category.
+        :param str depth: Depth of the product.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -2111,7 +2127,7 @@ class MeApi(object):
                  returns the request thread.
         """
 
-        all_params = ['category_id', 'catalog_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params = ['catalog_id', 'category_id', 'depth', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -2129,10 +2145,12 @@ class MeApi(object):
         path_params = {}
 
         query_params = {}
-        if 'category_id' in params:
-            query_params['categoryID'] = params['category_id']
         if 'catalog_id' in params:
             query_params['catalogID'] = params['catalog_id']
+        if 'category_id' in params:
+            query_params['categoryID'] = params['category_id']
+        if 'depth' in params:
+            query_params['depth'] = params['depth']
         if 'search' in params:
             query_params['search'] = params['search']
         if 'search_on' in params:
@@ -2299,7 +2317,7 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list_specs(self, product_id, **kwargs):
+    def list_shipments(self, **kwargs):
         """
         
         
@@ -2310,10 +2328,136 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_specs(product_id, callback=callback_function)
+        >>> thread = api.list_shipments(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str order_id: ID of the order.
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListBuyerShipment
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_shipments_with_http_info(**kwargs)
+        else:
+            (data) = self.list_shipments_with_http_info(**kwargs)
+            return data
+
+    def list_shipments_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_shipments_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str order_id: ID of the order.
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListBuyerShipment
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_shipments" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/me/shipments'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'order_id' in params:
+            query_params['orderID'] = params['order_id']
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListBuyerShipment',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list_specs(self, catalog_id, product_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_specs(catalog_id, product_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
         :param str product_id: ID of the product. (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -2327,12 +2471,12 @@ class MeApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_specs_with_http_info(product_id, **kwargs)
+            return self.list_specs_with_http_info(catalog_id, product_id, **kwargs)
         else:
-            (data) = self.list_specs_with_http_info(product_id, **kwargs)
+            (data) = self.list_specs_with_http_info(catalog_id, product_id, **kwargs)
             return data
 
-    def list_specs_with_http_info(self, product_id, **kwargs):
+    def list_specs_with_http_info(self, catalog_id, product_id, **kwargs):
         """
         
         
@@ -2343,10 +2487,11 @@ class MeApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_specs_with_http_info(product_id, callback=callback_function)
+        >>> thread = api.list_specs_with_http_info(catalog_id, product_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
         :param str product_id: ID of the product. (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -2359,7 +2504,7 @@ class MeApi(object):
                  returns the request thread.
         """
 
-        all_params = ['product_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params = ['catalog_id', 'product_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -2372,12 +2517,17 @@ class MeApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `list_specs`")
         # verify the required parameter 'product_id' is set
         if ('product_id' not in params) or (params['product_id'] is None):
             raise ValueError("Missing the required parameter `product_id` when calling `list_specs`")
 
-        resource_path = '/me/products/{productID}/specs'.replace('{format}', 'json')
+        resource_path = '/me/catalogs/{catalogID}/products/{productID}/specs'.replace('{format}', 'json')
         path_params = {}
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'product_id' in params:
             path_params['productID'] = params['product_id']
 
@@ -2984,6 +3134,325 @@ class MeApi(object):
         auth_settings = ['oauth2']
 
         return self.api_client.call_api(resource_path, 'PATCH',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def register(self, anon_user_token, user, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.register(anon_user_token, user, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str anon_user_token: Anon user token of the me. (required)
+        :param User user:  (required)
+        :return: object
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.register_with_http_info(anon_user_token, user, **kwargs)
+        else:
+            (data) = self.register_with_http_info(anon_user_token, user, **kwargs)
+            return data
+
+    def register_with_http_info(self, anon_user_token, user, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.register_with_http_info(anon_user_token, user, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str anon_user_token: Anon user token of the me. (required)
+        :param User user:  (required)
+        :return: object
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['anon_user_token', 'user']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method register" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'anon_user_token' is set
+        if ('anon_user_token' not in params) or (params['anon_user_token'] is None):
+            raise ValueError("Missing the required parameter `anon_user_token` when calling `register`")
+        # verify the required parameter 'user' is set
+        if ('user' not in params) or (params['user'] is None):
+            raise ValueError("Missing the required parameter `user` when calling `register`")
+
+        resource_path = '/me/register'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'anon_user_token' in params:
+            query_params['anonUserToken'] = params['anon_user_token']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'user' in params:
+            body_params = params['user']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'PUT',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='object',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def reset_password_by_token(self, reset, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.reset_password_by_token(reset, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param TokenPasswordReset reset:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.reset_password_by_token_with_http_info(reset, **kwargs)
+        else:
+            (data) = self.reset_password_by_token_with_http_info(reset, **kwargs)
+            return data
+
+    def reset_password_by_token_with_http_info(self, reset, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.reset_password_by_token_with_http_info(reset, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param TokenPasswordReset reset:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['reset']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method reset_password_by_token" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'reset' is set
+        if ('reset' not in params) or (params['reset'] is None):
+            raise ValueError("Missing the required parameter `reset` when calling `reset_password_by_token`")
+
+        resource_path = '/me/password'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'reset' in params:
+            body_params = params['reset']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def transfer_anon_user_order(self, anon_user_token, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.transfer_anon_user_order(anon_user_token, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str anon_user_token: Anon user token of the me. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.transfer_anon_user_order_with_http_info(anon_user_token, **kwargs)
+        else:
+            (data) = self.transfer_anon_user_order_with_http_info(anon_user_token, **kwargs)
+            return data
+
+    def transfer_anon_user_order_with_http_info(self, anon_user_token, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.transfer_anon_user_order_with_http_info(anon_user_token, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str anon_user_token: Anon user token of the me. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['anon_user_token']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method transfer_anon_user_order" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'anon_user_token' is set
+        if ('anon_user_token' not in params) or (params['anon_user_token'] is None):
+            raise ValueError("Missing the required parameter `anon_user_token` when calling `transfer_anon_user_order`")
+
+        resource_path = '/me/orders'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'anon_user_token' in params:
+            query_params['anonUserToken'] = params['anon_user_token']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'PUT',
                                             path_params,
                                             query_params,
                                             header_params,

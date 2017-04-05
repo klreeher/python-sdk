@@ -74,9 +74,25 @@ class TestShipmentApi(unittest.TestCase):
         """
         pass
 
+    def test_get_item(self):
+        """
+        Test case for get_item
+
+        
+        """
+        pass
+
     def test_list(self):
         """
         Test case for list
+
+        
+        """
+        pass
+
+    def test_list_items(self):
+        """
+        Test case for list_items
 
         
         """

@@ -4,18 +4,18 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](LineItemApi.md#create) | **POST** /buyers/{buyerID}/orders/{orderID}/lineitems | 
-[**delete**](LineItemApi.md#delete) | **DELETE** /buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID} | 
-[**get**](LineItemApi.md#get) | **GET** /buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID} | 
-[**list**](LineItemApi.md#list) | **GET** /buyers/{buyerID}/orders/{orderID}/lineitems | 
-[**patch**](LineItemApi.md#patch) | **PATCH** /buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID} | 
-[**patch_shipping_address**](LineItemApi.md#patch_shipping_address) | **PATCH** /buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID}/shipto | 
-[**set_shipping_address**](LineItemApi.md#set_shipping_address) | **PUT** /buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID}/shipto | 
-[**update**](LineItemApi.md#update) | **PUT** /buyers/{buyerID}/orders/{orderID}/lineitems/{lineItemID} | 
+[**create**](LineItemApi.md#create) | **POST** /orders/{direction}/{orderID}/lineitems | 
+[**delete**](LineItemApi.md#delete) | **DELETE** /orders/{direction}/{orderID}/lineitems/{lineItemID} | 
+[**get**](LineItemApi.md#get) | **GET** /orders/{direction}/{orderID}/lineitems/{lineItemID} | 
+[**list**](LineItemApi.md#list) | **GET** /orders/{direction}/{orderID}/lineitems | 
+[**patch**](LineItemApi.md#patch) | **PATCH** /orders/{direction}/{orderID}/lineitems/{lineItemID} | 
+[**patch_shipping_address**](LineItemApi.md#patch_shipping_address) | **PATCH** /orders/{direction}/{orderID}/lineitems/{lineItemID}/shipto | 
+[**set_shipping_address**](LineItemApi.md#set_shipping_address) | **PUT** /orders/{direction}/{orderID}/lineitems/{lineItemID}/shipto | 
+[**update**](LineItemApi.md#update) | **PUT** /orders/{direction}/{orderID}/lineitems/{lineItemID} | 
 
 
 # **create**
-> LineItem create(buyer_id, order_id, line_item)
+> LineItem create(direction, order_id, line_item)
 
 
 
@@ -27,12 +27,12 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the line item. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 line_item = OrderCloud.LineItem() # LineItem | 
 
 try: 
-    response = LineItemApi.create(buyer_id, order_id, line_item)
+    response = LineItemApi.create(direction, order_id, line_item)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->create: %s\n" % e)
@@ -42,7 +42,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the line item. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **line_item** | [**LineItem**](LineItem.md)|  | 
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete**
-> delete(buyer_id, order_id, line_item_id)
+> delete(direction, order_id, line_item_id)
 
 
 
@@ -74,12 +74,12 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the line item. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 
 try: 
-    LineItemApi.delete(buyer_id, order_id, line_item_id)
+    LineItemApi.delete(direction, order_id, line_item_id)
 except ApiException as e:
     print("Exception when calling LineItemApi->delete: %s\n" % e)
 ```
@@ -88,7 +88,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the line item. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **line_item_id** | **str**| ID of the line item. | 
 
@@ -108,7 +108,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get**
-> LineItem get(buyer_id, order_id, line_item_id)
+> LineItem get(direction, order_id, line_item_id)
 
 
 
@@ -120,12 +120,12 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the line item. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 
 try: 
-    response = LineItemApi.get(buyer_id, order_id, line_item_id)
+    response = LineItemApi.get(direction, order_id, line_item_id)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->get: %s\n" % e)
@@ -135,7 +135,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the line item. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **line_item_id** | **str**| ID of the line item. | 
 
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
-> ListLineItem list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListLineItem list(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
@@ -167,7 +167,7 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the line item. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
@@ -177,7 +177,7 @@ page_size = 56 # int | Number of results to return per page. Default: 20, max: 1
 filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = LineItemApi.list(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+    response = LineItemApi.list(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->list: %s\n" % e)
@@ -187,7 +187,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the line item. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch**
-> LineItem patch(buyer_id, order_id, line_item_id, partial_line_item)
+> LineItem patch(direction, order_id, line_item_id, partial_line_item)
 
 
 
@@ -224,13 +224,13 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the line item. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 partial_line_item = OrderCloud.LineItem() # LineItem | 
 
 try: 
-    response = LineItemApi.patch(buyer_id, order_id, line_item_id, partial_line_item)
+    response = LineItemApi.patch(direction, order_id, line_item_id, partial_line_item)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->patch: %s\n" % e)
@@ -240,7 +240,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the line item. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **line_item_id** | **str**| ID of the line item. | 
  **partial_line_item** | [**LineItem**](LineItem.md)|  | 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_shipping_address**
-> LineItem patch_shipping_address(buyer_id, order_id, line_item_id, partial_address)
+> LineItem patch_shipping_address(direction, order_id, line_item_id, partial_address)
 
 
 
@@ -273,13 +273,13 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the line item. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 partial_address = OrderCloud.Address() # Address | 
 
 try: 
-    response = LineItemApi.patch_shipping_address(buyer_id, order_id, line_item_id, partial_address)
+    response = LineItemApi.patch_shipping_address(direction, order_id, line_item_id, partial_address)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->patch_shipping_address: %s\n" % e)
@@ -289,7 +289,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the line item. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **line_item_id** | **str**| ID of the line item. | 
  **partial_address** | [**Address**](Address.md)|  | 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_shipping_address**
-> LineItem set_shipping_address(buyer_id, order_id, line_item_id, address)
+> LineItem set_shipping_address(direction, order_id, line_item_id, address)
 
 
 
@@ -322,13 +322,13 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the line item. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 address = OrderCloud.Address() # Address | 
 
 try: 
-    response = LineItemApi.set_shipping_address(buyer_id, order_id, line_item_id, address)
+    response = LineItemApi.set_shipping_address(direction, order_id, line_item_id, address)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->set_shipping_address: %s\n" % e)
@@ -338,7 +338,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the line item. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **line_item_id** | **str**| ID of the line item. | 
  **address** | [**Address**](Address.md)|  | 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update**
-> LineItem update(buyer_id, order_id, line_item_id, line_item)
+> LineItem update(direction, order_id, line_item_id, line_item)
 
 
 
@@ -371,13 +371,13 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 LineItemApi = OrderCloud.LineItemApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the line item. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 line_item_id = 'line_item_id_example' # str | ID of the line item.
 line_item = OrderCloud.LineItem() # LineItem | 
 
 try: 
-    response = LineItemApi.update(buyer_id, order_id, line_item_id, line_item)
+    response = LineItemApi.update(direction, order_id, line_item_id, line_item)
     print(response)
 except ApiException as e:
     print("Exception when calling LineItemApi->update: %s\n" % e)
@@ -387,7 +387,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the line item. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **line_item_id** | **str**| ID of the line item. | 
  **line_item** | [**LineItem**](LineItem.md)|  | 

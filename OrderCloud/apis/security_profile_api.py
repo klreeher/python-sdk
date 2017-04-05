@@ -408,9 +408,11 @@ class SecurityProfileApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer.
+        :param str supplier_id: ID of the supplier.
         :param str security_profile_id: ID of the security profile.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
+        :param str commerce_role: Commerce role of the security profile.
         :param str level: Level of the security profile.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
@@ -441,9 +443,11 @@ class SecurityProfileApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer.
+        :param str supplier_id: ID of the supplier.
         :param str security_profile_id: ID of the security profile.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
+        :param str commerce_role: Commerce role of the security profile.
         :param str level: Level of the security profile.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
@@ -452,7 +456,7 @@ class SecurityProfileApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'security_profile_id', 'user_id', 'user_group_id', 'level', 'page', 'page_size']
+        all_params = ['buyer_id', 'supplier_id', 'security_profile_id', 'user_id', 'user_group_id', 'commerce_role', 'level', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -472,12 +476,16 @@ class SecurityProfileApi(object):
         query_params = {}
         if 'buyer_id' in params:
             query_params['buyerID'] = params['buyer_id']
+        if 'supplier_id' in params:
+            query_params['supplierID'] = params['supplier_id']
         if 'security_profile_id' in params:
             query_params['securityProfileID'] = params['security_profile_id']
         if 'user_id' in params:
             query_params['userID'] = params['user_id']
         if 'user_group_id' in params:
             query_params['userGroupID'] = params['user_group_id']
+        if 'commerce_role' in params:
+            query_params['commerceRole'] = params['commerce_role']
         if 'level' in params:
             query_params['level'] = params['level']
         if 'page' in params:

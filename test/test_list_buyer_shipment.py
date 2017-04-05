@@ -30,11 +30,11 @@ import unittest
 
 import OrderCloud
 from OrderCloud.rest import ApiException
-from OrderCloud.models.list_inventory import ListInventory
+from OrderCloud.models.list_buyer_shipment import ListBuyerShipment
 
 
-class TestListInventory(unittest.TestCase):
-    """ ListInventory unit test stubs """
+class TestListBuyerShipment(unittest.TestCase):
+    """ ListBuyerShipment unit test stubs """
 
     def setUp(self):
         pass
@@ -42,11 +42,11 @@ class TestListInventory(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testListInventory(self):
+    def testListBuyerShipment(self):
         """
-        Test ListInventory
+        Test ListBuyerShipment
         """
-        model = OrderCloud.models.list_inventory.ListInventory()
+        model = OrderCloud.models.list_buyer_shipment.ListBuyerShipment()
 
 
 if __name__ == '__main__':

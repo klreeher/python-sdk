@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
+**active** | **bool** |  | [optional] 
 **category_count** | **int** |  | [optional] 
 **xp** | **object** |  | [optional] 
 

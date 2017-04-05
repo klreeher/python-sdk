@@ -66,6 +66,14 @@ class TestCatalogApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_product_assignment(self):
+        """
+        Test case for delete_product_assignment
+
+        
+        """
+        pass
+
     def test_get(self):
         """
         Test case for get
@@ -90,6 +98,14 @@ class TestCatalogApi(unittest.TestCase):
         """
         pass
 
+    def test_list_product_assignments(self):
+        """
+        Test case for list_product_assignments
+
+        
+        """
+        pass
+
     def test_patch(self):
         """
         Test case for patch
@@ -101,6 +117,14 @@ class TestCatalogApi(unittest.TestCase):
     def test_save_assignment(self):
         """
         Test case for save_assignment
+
+        
+        """
+        pass
+
+    def test_save_product_assignment(self):
+        """
+        Test case for save_product_assignment
 
         
         """

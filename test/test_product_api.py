@@ -82,25 +82,9 @@ class TestProductApi(unittest.TestCase):
         """
         pass
 
-    def test_get_inventory(self):
-        """
-        Test case for get_inventory
-
-        
-        """
-        pass
-
     def test_get_variant(self):
         """
         Test case for get_variant
-
-        
-        """
-        pass
-
-    def test_get_variant_inventory(self):
-        """
-        Test case for get_variant_inventory
 
         
         """
@@ -122,17 +106,9 @@ class TestProductApi(unittest.TestCase):
         """
         pass
 
-    def test_list_inventory(self):
+    def test_list_suppliers(self):
         """
-        Test case for list_inventory
-
-        
-        """
-        pass
-
-    def test_list_variant_inventory(self):
-        """
-        Test case for list_variant_inventory
+        Test case for list_suppliers
 
         
         """
@@ -162,9 +138,25 @@ class TestProductApi(unittest.TestCase):
         """
         pass
 
+    def test_remove_supplier(self):
+        """
+        Test case for remove_supplier
+
+        
+        """
+        pass
+
     def test_save_assignment(self):
         """
         Test case for save_assignment
+
+        
+        """
+        pass
+
+    def test_save_supplier(self):
+        """
+        Test case for save_supplier
 
         
         """
@@ -178,25 +170,9 @@ class TestProductApi(unittest.TestCase):
         """
         pass
 
-    def test_update_inventory(self):
-        """
-        Test case for update_inventory
-
-        
-        """
-        pass
-
     def test_update_variant(self):
         """
         Test case for update_variant
-
-        
-        """
-        pass
-
-    def test_update_variant_inventory(self):
-        """
-        Test case for update_variant_inventory
 
         
         """

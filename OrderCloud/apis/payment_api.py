@@ -51,7 +51,7 @@ class PaymentApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, buyer_id, order_id, payment, **kwargs):
+    def create(self, direction, order_id, payment, **kwargs):
         """
         
         
@@ -62,11 +62,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(buyer_id, order_id, payment, callback=callback_function)
+        >>> thread = api.create(direction, order_id, payment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param Payment payment:  (required)
         :return: Payment
@@ -75,12 +75,12 @@ class PaymentApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(buyer_id, order_id, payment, **kwargs)
+            return self.create_with_http_info(direction, order_id, payment, **kwargs)
         else:
-            (data) = self.create_with_http_info(buyer_id, order_id, payment, **kwargs)
+            (data) = self.create_with_http_info(direction, order_id, payment, **kwargs)
             return data
 
-    def create_with_http_info(self, buyer_id, order_id, payment, **kwargs):
+    def create_with_http_info(self, direction, order_id, payment, **kwargs):
         """
         
         
@@ -91,11 +91,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(buyer_id, order_id, payment, callback=callback_function)
+        >>> thread = api.create_with_http_info(direction, order_id, payment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param Payment payment:  (required)
         :return: Payment
@@ -103,7 +103,7 @@ class PaymentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'payment']
+        all_params = ['direction', 'order_id', 'payment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -116,9 +116,9 @@ class PaymentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `create`")
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `create`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
             raise ValueError("Missing the required parameter `order_id` when calling `create`")
@@ -126,10 +126,10 @@ class PaymentApi(object):
         if ('payment' not in params) or (params['payment'] is None):
             raise ValueError("Missing the required parameter `payment` when calling `create`")
 
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/payments'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
         if 'order_id' in params:
             path_params['orderID'] = params['order_id']
 
@@ -169,7 +169,7 @@ class PaymentApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def create_transaction(self, buyer_id, order_id, payment_id, transaction, **kwargs):
+    def create_transaction(self, direction, order_id, payment_id, transaction, **kwargs):
         """
         
         
@@ -180,11 +180,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_transaction(buyer_id, order_id, payment_id, transaction, callback=callback_function)
+        >>> thread = api.create_transaction(direction, order_id, payment_id, transaction, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :param PaymentTransaction transaction:  (required)
@@ -194,12 +194,12 @@ class PaymentApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_transaction_with_http_info(buyer_id, order_id, payment_id, transaction, **kwargs)
+            return self.create_transaction_with_http_info(direction, order_id, payment_id, transaction, **kwargs)
         else:
-            (data) = self.create_transaction_with_http_info(buyer_id, order_id, payment_id, transaction, **kwargs)
+            (data) = self.create_transaction_with_http_info(direction, order_id, payment_id, transaction, **kwargs)
             return data
 
-    def create_transaction_with_http_info(self, buyer_id, order_id, payment_id, transaction, **kwargs):
+    def create_transaction_with_http_info(self, direction, order_id, payment_id, transaction, **kwargs):
         """
         
         
@@ -210,11 +210,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_transaction_with_http_info(buyer_id, order_id, payment_id, transaction, callback=callback_function)
+        >>> thread = api.create_transaction_with_http_info(direction, order_id, payment_id, transaction, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :param PaymentTransaction transaction:  (required)
@@ -223,7 +223,7 @@ class PaymentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'payment_id', 'transaction']
+        all_params = ['direction', 'order_id', 'payment_id', 'transaction']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -236,9 +236,9 @@ class PaymentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `create_transaction`")
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `create_transaction`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
             raise ValueError("Missing the required parameter `order_id` when calling `create_transaction`")
@@ -249,10 +249,10 @@ class PaymentApi(object):
         if ('transaction' not in params) or (params['transaction'] is None):
             raise ValueError("Missing the required parameter `transaction` when calling `create_transaction`")
 
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/payments/{paymentID}/transactions'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
         if 'order_id' in params:
             path_params['orderID'] = params['order_id']
         if 'payment_id' in params:
@@ -294,7 +294,7 @@ class PaymentApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def delete(self, buyer_id, order_id, payment_id, **kwargs):
+    def delete(self, direction, order_id, payment_id, **kwargs):
         """
         
         
@@ -305,11 +305,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete(buyer_id, order_id, payment_id, callback=callback_function)
+        >>> thread = api.delete(direction, order_id, payment_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :return: None
@@ -318,12 +318,12 @@ class PaymentApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_with_http_info(buyer_id, order_id, payment_id, **kwargs)
+            return self.delete_with_http_info(direction, order_id, payment_id, **kwargs)
         else:
-            (data) = self.delete_with_http_info(buyer_id, order_id, payment_id, **kwargs)
+            (data) = self.delete_with_http_info(direction, order_id, payment_id, **kwargs)
             return data
 
-    def delete_with_http_info(self, buyer_id, order_id, payment_id, **kwargs):
+    def delete_with_http_info(self, direction, order_id, payment_id, **kwargs):
         """
         
         
@@ -334,11 +334,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_with_http_info(buyer_id, order_id, payment_id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(direction, order_id, payment_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :return: None
@@ -346,7 +346,7 @@ class PaymentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'payment_id']
+        all_params = ['direction', 'order_id', 'payment_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -359,9 +359,9 @@ class PaymentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `delete`")
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `delete`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
             raise ValueError("Missing the required parameter `order_id` when calling `delete`")
@@ -369,10 +369,10 @@ class PaymentApi(object):
         if ('payment_id' not in params) or (params['payment_id'] is None):
             raise ValueError("Missing the required parameter `payment_id` when calling `delete`")
 
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/payments/{paymentID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
         if 'order_id' in params:
             path_params['orderID'] = params['order_id']
         if 'payment_id' in params:
@@ -412,7 +412,7 @@ class PaymentApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def delete_transaction(self, buyer_id, order_id, payment_id, transaction_id, **kwargs):
+    def delete_transaction(self, direction, order_id, payment_id, transaction_id, **kwargs):
         """
         
         
@@ -423,11 +423,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_transaction(buyer_id, order_id, payment_id, transaction_id, callback=callback_function)
+        >>> thread = api.delete_transaction(direction, order_id, payment_id, transaction_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :param str transaction_id: ID of the transaction. (required)
@@ -437,12 +437,12 @@ class PaymentApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, **kwargs)
+            return self.delete_transaction_with_http_info(direction, order_id, payment_id, transaction_id, **kwargs)
         else:
-            (data) = self.delete_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, **kwargs)
+            (data) = self.delete_transaction_with_http_info(direction, order_id, payment_id, transaction_id, **kwargs)
             return data
 
-    def delete_transaction_with_http_info(self, buyer_id, order_id, payment_id, transaction_id, **kwargs):
+    def delete_transaction_with_http_info(self, direction, order_id, payment_id, transaction_id, **kwargs):
         """
         
         
@@ -453,11 +453,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, callback=callback_function)
+        >>> thread = api.delete_transaction_with_http_info(direction, order_id, payment_id, transaction_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :param str transaction_id: ID of the transaction. (required)
@@ -466,7 +466,7 @@ class PaymentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'payment_id', 'transaction_id']
+        all_params = ['direction', 'order_id', 'payment_id', 'transaction_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -479,9 +479,9 @@ class PaymentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `delete_transaction`")
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `delete_transaction`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
             raise ValueError("Missing the required parameter `order_id` when calling `delete_transaction`")
@@ -492,10 +492,10 @@ class PaymentApi(object):
         if ('transaction_id' not in params) or (params['transaction_id'] is None):
             raise ValueError("Missing the required parameter `transaction_id` when calling `delete_transaction`")
 
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions/{transactionID}'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/payments/{paymentID}/transactions/{transactionID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
         if 'order_id' in params:
             path_params['orderID'] = params['order_id']
         if 'payment_id' in params:
@@ -537,7 +537,7 @@ class PaymentApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get(self, buyer_id, order_id, payment_id, **kwargs):
+    def get(self, direction, order_id, payment_id, **kwargs):
         """
         
         
@@ -548,11 +548,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get(buyer_id, order_id, payment_id, callback=callback_function)
+        >>> thread = api.get(direction, order_id, payment_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :return: Payment
@@ -561,12 +561,12 @@ class PaymentApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_with_http_info(buyer_id, order_id, payment_id, **kwargs)
+            return self.get_with_http_info(direction, order_id, payment_id, **kwargs)
         else:
-            (data) = self.get_with_http_info(buyer_id, order_id, payment_id, **kwargs)
+            (data) = self.get_with_http_info(direction, order_id, payment_id, **kwargs)
             return data
 
-    def get_with_http_info(self, buyer_id, order_id, payment_id, **kwargs):
+    def get_with_http_info(self, direction, order_id, payment_id, **kwargs):
         """
         
         
@@ -577,11 +577,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_with_http_info(buyer_id, order_id, payment_id, callback=callback_function)
+        >>> thread = api.get_with_http_info(direction, order_id, payment_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :return: Payment
@@ -589,7 +589,7 @@ class PaymentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'payment_id']
+        all_params = ['direction', 'order_id', 'payment_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -602,9 +602,9 @@ class PaymentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `get`")
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `get`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
             raise ValueError("Missing the required parameter `order_id` when calling `get`")
@@ -612,10 +612,10 @@ class PaymentApi(object):
         if ('payment_id' not in params) or (params['payment_id'] is None):
             raise ValueError("Missing the required parameter `payment_id` when calling `get`")
 
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/payments/{paymentID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
         if 'order_id' in params:
             path_params['orderID'] = params['order_id']
         if 'payment_id' in params:
@@ -655,7 +655,7 @@ class PaymentApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, buyer_id, order_id, **kwargs):
+    def list(self, direction, order_id, **kwargs):
         """
         
         
@@ -666,11 +666,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(buyer_id, order_id, callback=callback_function)
+        >>> thread = api.list(direction, order_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -684,12 +684,12 @@ class PaymentApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(buyer_id, order_id, **kwargs)
+            return self.list_with_http_info(direction, order_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(buyer_id, order_id, **kwargs)
+            (data) = self.list_with_http_info(direction, order_id, **kwargs)
             return data
 
-    def list_with_http_info(self, buyer_id, order_id, **kwargs):
+    def list_with_http_info(self, direction, order_id, **kwargs):
         """
         
         
@@ -700,11 +700,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(buyer_id, order_id, callback=callback_function)
+        >>> thread = api.list_with_http_info(direction, order_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -717,7 +717,7 @@ class PaymentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params = ['direction', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -730,17 +730,17 @@ class PaymentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `list`")
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `list`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
             raise ValueError("Missing the required parameter `order_id` when calling `list`")
 
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/payments'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
         if 'order_id' in params:
             path_params['orderID'] = params['order_id']
 
@@ -790,7 +790,7 @@ class PaymentApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, buyer_id, order_id, payment_id, partial_payment, **kwargs):
+    def patch(self, direction, order_id, payment_id, partial_payment, **kwargs):
         """
         
         
@@ -801,11 +801,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(buyer_id, order_id, payment_id, partial_payment, callback=callback_function)
+        >>> thread = api.patch(direction, order_id, payment_id, partial_payment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :param Payment partial_payment:  (required)
@@ -815,12 +815,12 @@ class PaymentApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(buyer_id, order_id, payment_id, partial_payment, **kwargs)
+            return self.patch_with_http_info(direction, order_id, payment_id, partial_payment, **kwargs)
         else:
-            (data) = self.patch_with_http_info(buyer_id, order_id, payment_id, partial_payment, **kwargs)
+            (data) = self.patch_with_http_info(direction, order_id, payment_id, partial_payment, **kwargs)
             return data
 
-    def patch_with_http_info(self, buyer_id, order_id, payment_id, partial_payment, **kwargs):
+    def patch_with_http_info(self, direction, order_id, payment_id, partial_payment, **kwargs):
         """
         
         
@@ -831,11 +831,11 @@ class PaymentApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(buyer_id, order_id, payment_id, partial_payment, callback=callback_function)
+        >>> thread = api.patch_with_http_info(direction, order_id, payment_id, partial_payment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str direction: Direction of the payment. Possible values: Incoming, Outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param str payment_id: ID of the payment. (required)
         :param Payment partial_payment:  (required)
@@ -844,7 +844,7 @@ class PaymentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'order_id', 'payment_id', 'partial_payment']
+        all_params = ['direction', 'order_id', 'payment_id', 'partial_payment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -857,9 +857,9 @@ class PaymentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `patch`")
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `patch`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
             raise ValueError("Missing the required parameter `order_id` when calling `patch`")
@@ -870,10 +870,10 @@ class PaymentApi(object):
         if ('partial_payment' not in params) or (params['partial_payment'] is None):
             raise ValueError("Missing the required parameter `partial_payment` when calling `patch`")
 
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/payments/{paymentID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
         if 'order_id' in params:
             path_params['orderID'] = params['order_id']
         if 'payment_id' in params:
@@ -904,395 +904,6 @@ class PaymentApi(object):
         auth_settings = ['oauth2']
 
         return self.api_client.call_api(resource_path, 'PATCH',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Payment',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def patch_transaction(self, buyer_id, order_id, payment_id, transaction_id, partial_transaction, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.patch_transaction(buyer_id, order_id, payment_id, transaction_id, partial_transaction, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str order_id: ID of the order. (required)
-        :param str payment_id: ID of the payment. (required)
-        :param str transaction_id: ID of the transaction. (required)
-        :param PaymentTransaction partial_transaction:  (required)
-        :return: Payment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.patch_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, partial_transaction, **kwargs)
-        else:
-            (data) = self.patch_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, partial_transaction, **kwargs)
-            return data
-
-    def patch_transaction_with_http_info(self, buyer_id, order_id, payment_id, transaction_id, partial_transaction, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.patch_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, partial_transaction, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str order_id: ID of the order. (required)
-        :param str payment_id: ID of the payment. (required)
-        :param str transaction_id: ID of the transaction. (required)
-        :param PaymentTransaction partial_transaction:  (required)
-        :return: Payment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'order_id', 'payment_id', 'transaction_id', 'partial_transaction']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method patch_transaction" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `patch_transaction`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `patch_transaction`")
-        # verify the required parameter 'payment_id' is set
-        if ('payment_id' not in params) or (params['payment_id'] is None):
-            raise ValueError("Missing the required parameter `payment_id` when calling `patch_transaction`")
-        # verify the required parameter 'transaction_id' is set
-        if ('transaction_id' not in params) or (params['transaction_id'] is None):
-            raise ValueError("Missing the required parameter `transaction_id` when calling `patch_transaction`")
-        # verify the required parameter 'partial_transaction' is set
-        if ('partial_transaction' not in params) or (params['partial_transaction'] is None):
-            raise ValueError("Missing the required parameter `partial_transaction` when calling `patch_transaction`")
-
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions/{transactionID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-        if 'payment_id' in params:
-            path_params['paymentID'] = params['payment_id']
-        if 'transaction_id' in params:
-            path_params['transactionID'] = params['transaction_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'partial_transaction' in params:
-            body_params = params['partial_transaction']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PATCH',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Payment',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def update(self, buyer_id, order_id, payment_id, payment, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.update(buyer_id, order_id, payment_id, payment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str order_id: ID of the order. (required)
-        :param str payment_id: ID of the payment. (required)
-        :param Payment payment:  (required)
-        :return: Payment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.update_with_http_info(buyer_id, order_id, payment_id, payment, **kwargs)
-        else:
-            (data) = self.update_with_http_info(buyer_id, order_id, payment_id, payment, **kwargs)
-            return data
-
-    def update_with_http_info(self, buyer_id, order_id, payment_id, payment, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.update_with_http_info(buyer_id, order_id, payment_id, payment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str order_id: ID of the order. (required)
-        :param str payment_id: ID of the payment. (required)
-        :param Payment payment:  (required)
-        :return: Payment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'order_id', 'payment_id', 'payment']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `update`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `update`")
-        # verify the required parameter 'payment_id' is set
-        if ('payment_id' not in params) or (params['payment_id'] is None):
-            raise ValueError("Missing the required parameter `payment_id` when calling `update`")
-        # verify the required parameter 'payment' is set
-        if ('payment' not in params) or (params['payment'] is None):
-            raise ValueError("Missing the required parameter `payment` when calling `update`")
-
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-        if 'payment_id' in params:
-            path_params['paymentID'] = params['payment_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'payment' in params:
-            body_params = params['payment']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PUT',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Payment',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def update_transaction(self, buyer_id, order_id, payment_id, transaction_id, transaction, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.update_transaction(buyer_id, order_id, payment_id, transaction_id, transaction, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str order_id: ID of the order. (required)
-        :param str payment_id: ID of the payment. (required)
-        :param str transaction_id: ID of the transaction. (required)
-        :param PaymentTransaction transaction:  (required)
-        :return: Payment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.update_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, transaction, **kwargs)
-        else:
-            (data) = self.update_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, transaction, **kwargs)
-            return data
-
-    def update_transaction_with_http_info(self, buyer_id, order_id, payment_id, transaction_id, transaction, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.update_transaction_with_http_info(buyer_id, order_id, payment_id, transaction_id, transaction, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str order_id: ID of the order. (required)
-        :param str payment_id: ID of the payment. (required)
-        :param str transaction_id: ID of the transaction. (required)
-        :param PaymentTransaction transaction:  (required)
-        :return: Payment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'order_id', 'payment_id', 'transaction_id', 'transaction']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_transaction" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `update_transaction`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `update_transaction`")
-        # verify the required parameter 'payment_id' is set
-        if ('payment_id' not in params) or (params['payment_id'] is None):
-            raise ValueError("Missing the required parameter `payment_id` when calling `update_transaction`")
-        # verify the required parameter 'transaction_id' is set
-        if ('transaction_id' not in params) or (params['transaction_id'] is None):
-            raise ValueError("Missing the required parameter `transaction_id` when calling `update_transaction`")
-        # verify the required parameter 'transaction' is set
-        if ('transaction' not in params) or (params['transaction'] is None):
-            raise ValueError("Missing the required parameter `transaction` when calling `update_transaction`")
-
-        resource_path = '/buyers/{buyerID}/orders/{orderID}/payments/{paymentID}/transactions/{transactionID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-        if 'payment_id' in params:
-            path_params['paymentID'] = params['payment_id']
-        if 'transaction_id' in params:
-            path_params['transactionID'] = params['transaction_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'transaction' in params:
-            body_params = params['transaction']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PUT',
                                             path_params,
                                             query_params,
                                             header_params,

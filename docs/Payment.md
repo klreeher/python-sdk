@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **spending_account_id** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **amount** | **float** |  | [optional] 
+**accepted** | **bool** |  | [optional] 
 **xp** | **object** |  | [optional] 
 **transactions** | [**list[PaymentTransaction]**](PaymentTransaction.md) |  | [optional] 
 

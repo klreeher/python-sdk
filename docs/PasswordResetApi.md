@@ -4,12 +4,12 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**reset_password**](PasswordResetApi.md#reset_password) | **PUT** /password/reset/{verificationCode} | 
+[**reset_password_by_verification_code**](PasswordResetApi.md#reset_password_by_verification_code) | **PUT** /password/reset/{verificationCode} | 
 [**send_verification_code**](PasswordResetApi.md#send_verification_code) | **POST** /password/reset | 
 
 
-# **reset_password**
-> reset_password(verification_code, password_reset)
+# **reset_password_by_verification_code**
+> reset_password_by_verification_code(verification_code, password_reset)
 
 
 
@@ -25,9 +25,9 @@ verification_code = 'verification_code_example' # str | Verification code of the
 password_reset = OrderCloud.PasswordReset() # PasswordReset | 
 
 try: 
-    PasswordResetApi.reset_password(verification_code, password_reset)
+    PasswordResetApi.reset_password_by_verification_code(verification_code, password_reset)
 except ApiException as e:
-    print("Exception when calling PasswordResetApi->reset_password: %s\n" % e)
+    print("Exception when calling PasswordResetApi->reset_password_by_verification_code: %s\n" % e)
 ```
 
 ### Parameters

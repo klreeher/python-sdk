@@ -436,7 +436,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_product_assignments**
-> ListSpecProductAssignment list_product_assignments(spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
+> ListSpecProductAssignment list_product_assignments(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
@@ -448,13 +448,15 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 SpecApi = OrderCloud.SpecApi
-spec_id = 'spec_id_example' # str | ID of the spec. (optional)
-product_id = 'product_id_example' # str | ID of the product. (optional)
+search = 'search_example' # str | Word or phrase to search for. (optional)
+search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
+sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
 page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = SpecApi.list_product_assignments(spec_id=spec_id, product_id=product_id, page=page, page_size=page_size)
+    response = SpecApi.list_product_assignments(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling SpecApi->list_product_assignments: %s\n" % e)
@@ -464,10 +466,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **spec_id** | **str**| ID of the spec. | [optional] 
- **product_id** | **str**| ID of the product. | [optional] 
+ **search** | **str**| Word or phrase to search for. | [optional] 
+ **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
+ **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
  **page** | **int**| Page of results to return. Default: 1 | [optional] 
  **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 

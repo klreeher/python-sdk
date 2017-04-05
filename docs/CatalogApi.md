@@ -7,11 +7,14 @@ Method | HTTP request | Description
 [**create**](CatalogApi.md#create) | **POST** /catalogs | 
 [**delete**](CatalogApi.md#delete) | **DELETE** /catalogs/{catalogID} | 
 [**delete_assignment**](CatalogApi.md#delete_assignment) | **DELETE** /catalogs/{catalogID}/assignments | 
+[**delete_product_assignment**](CatalogApi.md#delete_product_assignment) | **DELETE** /catalogs/{catalogID}/productassignments/{productID} | 
 [**get**](CatalogApi.md#get) | **GET** /catalogs/{catalogID} | 
 [**list**](CatalogApi.md#list) | **GET** /catalogs | 
 [**list_assignments**](CatalogApi.md#list_assignments) | **GET** /catalogs/assignments | 
+[**list_product_assignments**](CatalogApi.md#list_product_assignments) | **GET** /catalogs/productassignments | 
 [**patch**](CatalogApi.md#patch) | **PATCH** /catalogs/{catalogID} | 
 [**save_assignment**](CatalogApi.md#save_assignment) | **POST** /catalogs/assignments | 
+[**save_product_assignment**](CatalogApi.md#save_product_assignment) | **POST** /catalogs/productassignments | 
 [**update**](CatalogApi.md#update) | **PUT** /catalogs/{catalogID} | 
 
 
@@ -128,6 +131,50 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalog_id** | **str**| ID of the catalog. | 
  **buyer_id** | **str**| ID of the buyer. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_product_assignment**
+> delete_product_assignment(catalog_id, product_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+CatalogApi = OrderCloud.CatalogApi
+catalog_id = 'catalog_id_example' # str | ID of the catalog.
+product_id = 'product_id_example' # str | ID of the product.
+
+try: 
+    CatalogApi.delete_product_assignment(catalog_id, product_id)
+except ApiException as e:
+    print("Exception when calling CatalogApi->delete_product_assignment: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **catalog_id** | **str**| ID of the catalog. | 
+ **product_id** | **str**| ID of the product. | 
 
 ### Return type
 
@@ -289,6 +336,55 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_product_assignments**
+> ListProductCatalogAssignment list_product_assignments(catalog_id=catalog_id, product_id=product_id, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+CatalogApi = OrderCloud.CatalogApi
+catalog_id = 'catalog_id_example' # str | ID of the catalog. (optional)
+product_id = 'product_id_example' # str | ID of the product. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+
+try: 
+    response = CatalogApi.list_product_assignments(catalog_id=catalog_id, product_id=product_id, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling CatalogApi->list_product_assignments: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **catalog_id** | **str**| ID of the catalog. | [optional] 
+ **product_id** | **str**| ID of the product. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+
+### Return type
+
+[**ListProductCatalogAssignment**](ListProductCatalogAssignment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patch**
 > Catalog patch(catalog_id, partial_catalog)
 
@@ -360,6 +456,48 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **assignment** | [**CatalogAssignment**](CatalogAssignment.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **save_product_assignment**
+> save_product_assignment(product_assignment)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+CatalogApi = OrderCloud.CatalogApi
+product_assignment = OrderCloud.ProductCatalogAssignment() # ProductCatalogAssignment | 
+
+try: 
+    CatalogApi.save_product_assignment(product_assignment)
+except ApiException as e:
+    print("Exception when calling CatalogApi->save_product_assignment: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_assignment** | [**ProductCatalogAssignment**](ProductCatalogAssignment.md)|  | 
 
 ### Return type
 

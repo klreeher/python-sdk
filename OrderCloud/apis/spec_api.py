@@ -1071,10 +1071,12 @@ class SpecApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str spec_id: ID of the spec.
-        :param str product_id: ID of the product.
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
         :return: ListSpecProductAssignment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1101,16 +1103,18 @@ class SpecApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str spec_id: ID of the spec.
-        :param str product_id: ID of the product.
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
         :param int page: Page of results to return. Default: 1
         :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
         :return: ListSpecProductAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['spec_id', 'product_id', 'page', 'page_size']
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1128,14 +1132,18 @@ class SpecApi(object):
         path_params = {}
 
         query_params = {}
-        if 'spec_id' in params:
-            query_params['specID'] = params['spec_id']
-        if 'product_id' in params:
-            query_params['productID'] = params['product_id']
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
         if 'page' in params:
             query_params['page'] = params['page']
         if 'page_size' in params:
             query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
 
         header_params = {}
 

@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**is_dev_profile** | **bool** |  | [optional] 
 **name** | **str** |  | [optional] 
 **roles** | **list[str]** |  | [optional] 
 
