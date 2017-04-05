@@ -43,7 +43,7 @@ class ImpersonateTokenRequest(object):
         """
         self.swagger_types = {
             'client_id': 'str',
-            'claims': 'str'
+            'claims': 'list[str]'
         }
 
         self.attribute_map = {
@@ -84,7 +84,7 @@ class ImpersonateTokenRequest(object):
 
 
         :return: The claims of this ImpersonateTokenRequest.
-        :rtype: str
+        :rtype: list[str]
         """
         return self._claims
 
@@ -95,7 +95,7 @@ class ImpersonateTokenRequest(object):
 
 
         :param claims: The claims of this ImpersonateTokenRequest.
-        :type: str
+        :type: list[str]
         """
 
         self._claims = claims

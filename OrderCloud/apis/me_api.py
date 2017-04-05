@@ -1195,6 +1195,110 @@ class MeApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
+    def get_spending_account(self, spending_account_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_spending_account(spending_account_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str spending_account_id: ID of the spending account. (required)
+        :return: SpendingAccount
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_spending_account_with_http_info(spending_account_id, **kwargs)
+        else:
+            (data) = self.get_spending_account_with_http_info(spending_account_id, **kwargs)
+            return data
+
+    def get_spending_account_with_http_info(self, spending_account_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_spending_account_with_http_info(spending_account_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str spending_account_id: ID of the spending account. (required)
+        :return: SpendingAccount
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['spending_account_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_spending_account" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'spending_account_id' is set
+        if ('spending_account_id' not in params) or (params['spending_account_id'] is None):
+            raise ValueError("Missing the required parameter `spending_account_id` when calling `get_spending_account`")
+
+        resource_path = '/me/spendingaccounts/{spendingAccountID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'spending_account_id' in params:
+            path_params['spendingAccountID'] = params['spending_account_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='SpendingAccount',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
     def list_addresses(self, **kwargs):
         """
         
@@ -1332,6 +1436,7 @@ class MeApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str depth: Depth of the category.
+        :param str catalog_id: ID of the catalog.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -1365,6 +1470,7 @@ class MeApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str depth: Depth of the category.
+        :param str catalog_id: ID of the catalog.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -1376,7 +1482,7 @@ class MeApi(object):
                  returns the request thread.
         """
 
-        all_params = ['depth', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params = ['depth', 'catalog_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1396,6 +1502,8 @@ class MeApi(object):
         query_params = {}
         if 'depth' in params:
             query_params['depth'] = params['depth']
+        if 'catalog_id' in params:
+            query_params['catalogID'] = params['catalog_id']
         if 'search' in params:
             query_params['search'] = params['search']
         if 'search_on' in params:
@@ -1957,6 +2065,7 @@ class MeApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str category_id: ID of the category.
+        :param str catalog_id: ID of the catalog.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -1990,6 +2099,7 @@ class MeApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str category_id: ID of the category.
+        :param str catalog_id: ID of the catalog.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
         :param str sort_by: Comma-delimited list of fields to sort by.
@@ -2001,7 +2111,7 @@ class MeApi(object):
                  returns the request thread.
         """
 
-        all_params = ['category_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params = ['category_id', 'catalog_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -2021,6 +2131,8 @@ class MeApi(object):
         query_params = {}
         if 'category_id' in params:
             query_params['categoryID'] = params['category_id']
+        if 'catalog_id' in params:
+            query_params['catalogID'] = params['catalog_id']
         if 'search' in params:
             query_params['search'] = params['search']
         if 'search_on' in params:
@@ -2311,6 +2423,127 @@ class MeApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='ListBuyerSpec',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list_spending_accounts(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_spending_accounts(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListSpendingAccount
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_spending_accounts_with_http_info(**kwargs)
+        else:
+            (data) = self.list_spending_accounts_with_http_info(**kwargs)
+            return data
+
+    def list_spending_accounts_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_spending_accounts_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListSpendingAccount
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_spending_accounts" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/me/spendingAccounts'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListSpendingAccount',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

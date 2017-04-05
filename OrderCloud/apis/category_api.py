@@ -51,7 +51,7 @@ class CategoryApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, buyer_id, category, **kwargs):
+    def create(self, catalog_id, category, **kwargs):
         """
         
         
@@ -62,11 +62,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(buyer_id, category, callback=callback_function)
+        >>> thread = api.create(catalog_id, category, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param Category category:  (required)
         :return: Category
                  If the method is called asynchronously,
@@ -74,12 +74,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(buyer_id, category, **kwargs)
+            return self.create_with_http_info(catalog_id, category, **kwargs)
         else:
-            (data) = self.create_with_http_info(buyer_id, category, **kwargs)
+            (data) = self.create_with_http_info(catalog_id, category, **kwargs)
             return data
 
-    def create_with_http_info(self, buyer_id, category, **kwargs):
+    def create_with_http_info(self, catalog_id, category, **kwargs):
         """
         
         
@@ -90,18 +90,18 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(buyer_id, category, callback=callback_function)
+        >>> thread = api.create_with_http_info(catalog_id, category, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param Category category:  (required)
         :return: Category
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category']
+        all_params = ['catalog_id', 'category']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -114,17 +114,17 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `create`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `create`")
         # verify the required parameter 'category' is set
         if ('category' not in params) or (params['category'] is None):
             raise ValueError("Missing the required parameter `category` when calling `create`")
 
-        resource_path = '/buyers/{buyerID}/categories'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
 
         query_params = {}
 
@@ -162,7 +162,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def delete(self, buyer_id, category_id, **kwargs):
+    def delete(self, catalog_id, category_id, **kwargs):
         """
         
         
@@ -173,11 +173,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete(buyer_id, category_id, callback=callback_function)
+        >>> thread = api.delete(catalog_id, category_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :return: None
                  If the method is called asynchronously,
@@ -185,12 +185,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_with_http_info(buyer_id, category_id, **kwargs)
+            return self.delete_with_http_info(catalog_id, category_id, **kwargs)
         else:
-            (data) = self.delete_with_http_info(buyer_id, category_id, **kwargs)
+            (data) = self.delete_with_http_info(catalog_id, category_id, **kwargs)
             return data
 
-    def delete_with_http_info(self, buyer_id, category_id, **kwargs):
+    def delete_with_http_info(self, catalog_id, category_id, **kwargs):
         """
         
         
@@ -201,18 +201,18 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_with_http_info(buyer_id, category_id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(catalog_id, category_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_id']
+        all_params = ['catalog_id', 'category_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -225,17 +225,17 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `delete`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `delete`")
         # verify the required parameter 'category_id' is set
         if ('category_id' not in params) or (params['category_id'] is None):
             raise ValueError("Missing the required parameter `category_id` when calling `delete`")
 
-        resource_path = '/buyers/{buyerID}/categories/{categoryID}'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/{categoryID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'category_id' in params:
             path_params['categoryID'] = params['category_id']
 
@@ -273,7 +273,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def delete_assignment(self, buyer_id, category_id, **kwargs):
+    def delete_assignment(self, catalog_id, category_id, buyer_id, **kwargs):
         """
         
         
@@ -284,12 +284,13 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_assignment(buyer_id, category_id, callback=callback_function)
+        >>> thread = api.delete_assignment(catalog_id, category_id, buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
+        :param str buyer_id: ID of the buyer. (required)
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :return: None
@@ -298,12 +299,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_assignment_with_http_info(buyer_id, category_id, **kwargs)
+            return self.delete_assignment_with_http_info(catalog_id, category_id, buyer_id, **kwargs)
         else:
-            (data) = self.delete_assignment_with_http_info(buyer_id, category_id, **kwargs)
+            (data) = self.delete_assignment_with_http_info(catalog_id, category_id, buyer_id, **kwargs)
             return data
 
-    def delete_assignment_with_http_info(self, buyer_id, category_id, **kwargs):
+    def delete_assignment_with_http_info(self, catalog_id, category_id, buyer_id, **kwargs):
         """
         
         
@@ -314,12 +315,13 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_assignment_with_http_info(buyer_id, category_id, callback=callback_function)
+        >>> thread = api.delete_assignment_with_http_info(catalog_id, category_id, buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
+        :param str buyer_id: ID of the buyer. (required)
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :return: None
@@ -327,7 +329,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_id', 'user_id', 'user_group_id']
+        all_params = ['catalog_id', 'category_id', 'buyer_id', 'user_id', 'user_group_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -340,21 +342,26 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `delete_assignment`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `delete_assignment`")
         # verify the required parameter 'category_id' is set
         if ('category_id' not in params) or (params['category_id'] is None):
             raise ValueError("Missing the required parameter `category_id` when calling `delete_assignment`")
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `delete_assignment`")
 
-        resource_path = '/buyers/{buyerID}/categories/{categoryID}/assignments'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/{categoryID}/assignments'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'category_id' in params:
             path_params['categoryID'] = params['category_id']
 
         query_params = {}
+        if 'buyer_id' in params:
+            query_params['buyerID'] = params['buyer_id']
         if 'user_id' in params:
             query_params['userID'] = params['user_id']
         if 'user_group_id' in params:
@@ -392,7 +399,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def delete_product_assignment(self, buyer_id, category_id, product_id, **kwargs):
+    def delete_product_assignment(self, catalog_id, category_id, product_id, **kwargs):
         """
         
         
@@ -403,11 +410,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_product_assignment(buyer_id, category_id, product_id, callback=callback_function)
+        >>> thread = api.delete_product_assignment(catalog_id, category_id, product_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :param str product_id: ID of the product. (required)
         :return: None
@@ -416,12 +423,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_product_assignment_with_http_info(buyer_id, category_id, product_id, **kwargs)
+            return self.delete_product_assignment_with_http_info(catalog_id, category_id, product_id, **kwargs)
         else:
-            (data) = self.delete_product_assignment_with_http_info(buyer_id, category_id, product_id, **kwargs)
+            (data) = self.delete_product_assignment_with_http_info(catalog_id, category_id, product_id, **kwargs)
             return data
 
-    def delete_product_assignment_with_http_info(self, buyer_id, category_id, product_id, **kwargs):
+    def delete_product_assignment_with_http_info(self, catalog_id, category_id, product_id, **kwargs):
         """
         
         
@@ -432,11 +439,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_product_assignment_with_http_info(buyer_id, category_id, product_id, callback=callback_function)
+        >>> thread = api.delete_product_assignment_with_http_info(catalog_id, category_id, product_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :param str product_id: ID of the product. (required)
         :return: None
@@ -444,7 +451,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_id', 'product_id']
+        all_params = ['catalog_id', 'category_id', 'product_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -457,9 +464,9 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `delete_product_assignment`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `delete_product_assignment`")
         # verify the required parameter 'category_id' is set
         if ('category_id' not in params) or (params['category_id'] is None):
             raise ValueError("Missing the required parameter `category_id` when calling `delete_product_assignment`")
@@ -467,10 +474,10 @@ class CategoryApi(object):
         if ('product_id' not in params) or (params['product_id'] is None):
             raise ValueError("Missing the required parameter `product_id` when calling `delete_product_assignment`")
 
-        resource_path = '/buyers/{buyerID}/categories/{categoryID}/productassignments/{productID}'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/{categoryID}/productassignments/{productID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'category_id' in params:
             path_params['categoryID'] = params['category_id']
         if 'product_id' in params:
@@ -510,7 +517,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get(self, buyer_id, category_id, **kwargs):
+    def get(self, catalog_id, category_id, **kwargs):
         """
         
         
@@ -521,11 +528,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get(buyer_id, category_id, callback=callback_function)
+        >>> thread = api.get(catalog_id, category_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :return: Category
                  If the method is called asynchronously,
@@ -533,12 +540,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_with_http_info(buyer_id, category_id, **kwargs)
+            return self.get_with_http_info(catalog_id, category_id, **kwargs)
         else:
-            (data) = self.get_with_http_info(buyer_id, category_id, **kwargs)
+            (data) = self.get_with_http_info(catalog_id, category_id, **kwargs)
             return data
 
-    def get_with_http_info(self, buyer_id, category_id, **kwargs):
+    def get_with_http_info(self, catalog_id, category_id, **kwargs):
         """
         
         
@@ -549,18 +556,18 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_with_http_info(buyer_id, category_id, callback=callback_function)
+        >>> thread = api.get_with_http_info(catalog_id, category_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :return: Category
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_id']
+        all_params = ['catalog_id', 'category_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -573,17 +580,17 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `get`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `get`")
         # verify the required parameter 'category_id' is set
         if ('category_id' not in params) or (params['category_id'] is None):
             raise ValueError("Missing the required parameter `category_id` when calling `get`")
 
-        resource_path = '/buyers/{buyerID}/categories/{categoryID}'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/{categoryID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'category_id' in params:
             path_params['categoryID'] = params['category_id']
 
@@ -621,7 +628,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, buyer_id, **kwargs):
+    def list(self, catalog_id, **kwargs):
         """
         
         
@@ -632,11 +639,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(buyer_id, callback=callback_function)
+        >>> thread = api.list(catalog_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str depth: Depth of the category.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -650,12 +657,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_with_http_info(buyer_id, **kwargs)
+            return self.list_with_http_info(catalog_id, **kwargs)
         else:
-            (data) = self.list_with_http_info(buyer_id, **kwargs)
+            (data) = self.list_with_http_info(catalog_id, **kwargs)
             return data
 
-    def list_with_http_info(self, buyer_id, **kwargs):
+    def list_with_http_info(self, catalog_id, **kwargs):
         """
         
         
@@ -666,11 +673,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_with_http_info(buyer_id, callback=callback_function)
+        >>> thread = api.list_with_http_info(catalog_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str depth: Depth of the category.
         :param str search: Word or phrase to search for.
         :param str search_on: Comma-delimited list of fields to search on.
@@ -683,7 +690,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'depth', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params = ['catalog_id', 'depth', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -696,14 +703,14 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `list`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `list`")
 
-        resource_path = '/buyers/{buyerID}/categories'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
 
         query_params = {}
         if 'depth' in params:
@@ -753,7 +760,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list_assignments(self, buyer_id, **kwargs):
+    def list_assignments(self, catalog_id, **kwargs):
         """
         
         
@@ -764,12 +771,13 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments(buyer_id, callback=callback_function)
+        >>> thread = api.list_assignments(catalog_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category.
+        :param str buyer_id: ID of the buyer.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :param str level: Level of the category.
@@ -781,12 +789,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_assignments_with_http_info(buyer_id, **kwargs)
+            return self.list_assignments_with_http_info(catalog_id, **kwargs)
         else:
-            (data) = self.list_assignments_with_http_info(buyer_id, **kwargs)
+            (data) = self.list_assignments_with_http_info(catalog_id, **kwargs)
             return data
 
-    def list_assignments_with_http_info(self, buyer_id, **kwargs):
+    def list_assignments_with_http_info(self, catalog_id, **kwargs):
         """
         
         
@@ -797,12 +805,13 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments_with_http_info(buyer_id, callback=callback_function)
+        >>> thread = api.list_assignments_with_http_info(catalog_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category.
+        :param str buyer_id: ID of the buyer.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :param str level: Level of the category.
@@ -813,7 +822,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_id', 'user_id', 'user_group_id', 'level', 'page', 'page_size']
+        all_params = ['catalog_id', 'category_id', 'buyer_id', 'user_id', 'user_group_id', 'level', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -826,18 +835,20 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `list_assignments`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `list_assignments`")
 
-        resource_path = '/buyers/{buyerID}/categories/assignments'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/assignments'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
 
         query_params = {}
         if 'category_id' in params:
             query_params['categoryID'] = params['category_id']
+        if 'buyer_id' in params:
+            query_params['buyerID'] = params['buyer_id']
         if 'user_id' in params:
             query_params['userID'] = params['user_id']
         if 'user_group_id' in params:
@@ -881,7 +892,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list_product_assignments(self, buyer_id, **kwargs):
+    def list_product_assignments(self, catalog_id, **kwargs):
         """
         
         
@@ -892,11 +903,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_product_assignments(buyer_id, callback=callback_function)
+        >>> thread = api.list_product_assignments(catalog_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category.
         :param str product_id: ID of the product.
         :param int page: Page of results to return. Default: 1
@@ -907,12 +918,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_product_assignments_with_http_info(buyer_id, **kwargs)
+            return self.list_product_assignments_with_http_info(catalog_id, **kwargs)
         else:
-            (data) = self.list_product_assignments_with_http_info(buyer_id, **kwargs)
+            (data) = self.list_product_assignments_with_http_info(catalog_id, **kwargs)
             return data
 
-    def list_product_assignments_with_http_info(self, buyer_id, **kwargs):
+    def list_product_assignments_with_http_info(self, catalog_id, **kwargs):
         """
         
         
@@ -923,11 +934,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_product_assignments_with_http_info(buyer_id, callback=callback_function)
+        >>> thread = api.list_product_assignments_with_http_info(catalog_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category.
         :param str product_id: ID of the product.
         :param int page: Page of results to return. Default: 1
@@ -937,7 +948,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_id', 'product_id', 'page', 'page_size']
+        all_params = ['catalog_id', 'category_id', 'product_id', 'page', 'page_size']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -950,14 +961,14 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `list_product_assignments`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `list_product_assignments`")
 
-        resource_path = '/buyers/{buyerID}/categories/productassignments'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/productassignments'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
 
         query_params = {}
         if 'category_id' in params:
@@ -1001,7 +1012,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, buyer_id, category_id, category, **kwargs):
+    def patch(self, catalog_id, category_id, category, **kwargs):
         """
         
         
@@ -1012,11 +1023,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(buyer_id, category_id, category, callback=callback_function)
+        >>> thread = api.patch(catalog_id, category_id, category, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :param Category category:  (required)
         :return: Category
@@ -1025,12 +1036,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(buyer_id, category_id, category, **kwargs)
+            return self.patch_with_http_info(catalog_id, category_id, category, **kwargs)
         else:
-            (data) = self.patch_with_http_info(buyer_id, category_id, category, **kwargs)
+            (data) = self.patch_with_http_info(catalog_id, category_id, category, **kwargs)
             return data
 
-    def patch_with_http_info(self, buyer_id, category_id, category, **kwargs):
+    def patch_with_http_info(self, catalog_id, category_id, category, **kwargs):
         """
         
         
@@ -1041,11 +1052,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(buyer_id, category_id, category, callback=callback_function)
+        >>> thread = api.patch_with_http_info(catalog_id, category_id, category, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :param Category category:  (required)
         :return: Category
@@ -1053,7 +1064,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_id', 'category']
+        all_params = ['catalog_id', 'category_id', 'category']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1066,9 +1077,9 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `patch`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `patch`")
         # verify the required parameter 'category_id' is set
         if ('category_id' not in params) or (params['category_id'] is None):
             raise ValueError("Missing the required parameter `category_id` when calling `patch`")
@@ -1076,10 +1087,10 @@ class CategoryApi(object):
         if ('category' not in params) or (params['category'] is None):
             raise ValueError("Missing the required parameter `category` when calling `patch`")
 
-        resource_path = '/buyers/{buyerID}/categories/{categoryID}'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/{categoryID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'category_id' in params:
             path_params['categoryID'] = params['category_id']
 
@@ -1119,7 +1130,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def save_assignment(self, buyer_id, category_assignment, **kwargs):
+    def save_assignment(self, catalog_id, category_assignment, **kwargs):
         """
         
         
@@ -1130,11 +1141,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_assignment(buyer_id, category_assignment, callback=callback_function)
+        >>> thread = api.save_assignment(catalog_id, category_assignment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param CategoryAssignment category_assignment:  (required)
         :return: None
                  If the method is called asynchronously,
@@ -1142,12 +1153,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.save_assignment_with_http_info(buyer_id, category_assignment, **kwargs)
+            return self.save_assignment_with_http_info(catalog_id, category_assignment, **kwargs)
         else:
-            (data) = self.save_assignment_with_http_info(buyer_id, category_assignment, **kwargs)
+            (data) = self.save_assignment_with_http_info(catalog_id, category_assignment, **kwargs)
             return data
 
-    def save_assignment_with_http_info(self, buyer_id, category_assignment, **kwargs):
+    def save_assignment_with_http_info(self, catalog_id, category_assignment, **kwargs):
         """
         
         
@@ -1158,18 +1169,18 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_assignment_with_http_info(buyer_id, category_assignment, callback=callback_function)
+        >>> thread = api.save_assignment_with_http_info(catalog_id, category_assignment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param CategoryAssignment category_assignment:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_assignment']
+        all_params = ['catalog_id', 'category_assignment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1182,17 +1193,17 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `save_assignment`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `save_assignment`")
         # verify the required parameter 'category_assignment' is set
         if ('category_assignment' not in params) or (params['category_assignment'] is None):
             raise ValueError("Missing the required parameter `category_assignment` when calling `save_assignment`")
 
-        resource_path = '/buyers/{buyerID}/categories/assignments'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/assignments'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
 
         query_params = {}
 
@@ -1230,7 +1241,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def save_product_assignment(self, buyer_id, product_assignment, **kwargs):
+    def save_product_assignment(self, catalog_id, product_assignment, **kwargs):
         """
         
         
@@ -1241,11 +1252,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_product_assignment(buyer_id, product_assignment, callback=callback_function)
+        >>> thread = api.save_product_assignment(catalog_id, product_assignment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param CategoryProductAssignment product_assignment:  (required)
         :return: None
                  If the method is called asynchronously,
@@ -1253,12 +1264,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.save_product_assignment_with_http_info(buyer_id, product_assignment, **kwargs)
+            return self.save_product_assignment_with_http_info(catalog_id, product_assignment, **kwargs)
         else:
-            (data) = self.save_product_assignment_with_http_info(buyer_id, product_assignment, **kwargs)
+            (data) = self.save_product_assignment_with_http_info(catalog_id, product_assignment, **kwargs)
             return data
 
-    def save_product_assignment_with_http_info(self, buyer_id, product_assignment, **kwargs):
+    def save_product_assignment_with_http_info(self, catalog_id, product_assignment, **kwargs):
         """
         
         
@@ -1269,18 +1280,18 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_product_assignment_with_http_info(buyer_id, product_assignment, callback=callback_function)
+        >>> thread = api.save_product_assignment_with_http_info(catalog_id, product_assignment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param CategoryProductAssignment product_assignment:  (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'product_assignment']
+        all_params = ['catalog_id', 'product_assignment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1293,17 +1304,17 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `save_product_assignment`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `save_product_assignment`")
         # verify the required parameter 'product_assignment' is set
         if ('product_assignment' not in params) or (params['product_assignment'] is None):
             raise ValueError("Missing the required parameter `product_assignment` when calling `save_product_assignment`")
 
-        resource_path = '/buyers/{buyerID}/categories/productassignments'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/productassignments'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
 
         query_params = {}
 
@@ -1341,7 +1352,7 @@ class CategoryApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, buyer_id, category_id, category, **kwargs):
+    def update(self, catalog_id, category_id, category, **kwargs):
         """
         
         
@@ -1352,11 +1363,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(buyer_id, category_id, category, callback=callback_function)
+        >>> thread = api.update(catalog_id, category_id, category, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :param Category category:  (required)
         :return: Category
@@ -1365,12 +1376,12 @@ class CategoryApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(buyer_id, category_id, category, **kwargs)
+            return self.update_with_http_info(catalog_id, category_id, category, **kwargs)
         else:
-            (data) = self.update_with_http_info(buyer_id, category_id, category, **kwargs)
+            (data) = self.update_with_http_info(catalog_id, category_id, category, **kwargs)
             return data
 
-    def update_with_http_info(self, buyer_id, category_id, category, **kwargs):
+    def update_with_http_info(self, catalog_id, category_id, category, **kwargs):
         """
         
         
@@ -1381,11 +1392,11 @@ class CategoryApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(buyer_id, category_id, category, callback=callback_function)
+        >>> thread = api.update_with_http_info(catalog_id, category_id, category, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str catalog_id: ID of the catalog. (required)
         :param str category_id: ID of the category. (required)
         :param Category category:  (required)
         :return: Category
@@ -1393,7 +1404,7 @@ class CategoryApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'category_id', 'category']
+        all_params = ['catalog_id', 'category_id', 'category']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -1406,9 +1417,9 @@ class CategoryApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `update`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `update`")
         # verify the required parameter 'category_id' is set
         if ('category_id' not in params) or (params['category_id'] is None):
             raise ValueError("Missing the required parameter `category_id` when calling `update`")
@@ -1416,10 +1427,10 @@ class CategoryApi(object):
         if ('category' not in params) or (params['category'] is None):
             raise ValueError("Missing the required parameter `category` when calling `update`")
 
-        resource_path = '/buyers/{buyerID}/categories/{categoryID}'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/categories/{categoryID}'.replace('{format}', 'json')
         path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
         if 'category_id' in params:
             path_params['categoryID'] = params['category_id']
 

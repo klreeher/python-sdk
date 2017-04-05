@@ -36,6 +36,8 @@ from .buyer_address import BuyerAddress
 from .buyer_credit_card import BuyerCreditCard
 from .buyer_product import BuyerProduct
 from .buyer_spec import BuyerSpec
+from .catalog import Catalog
+from .catalog_assignment import CatalogAssignment
 from .category import Category
 from .category_assignment import CategoryAssignment
 from .category_product_assignment import CategoryProductAssignment
@@ -46,6 +48,7 @@ from .credit_card_assignment import CreditCardAssignment
 from .impersonate_token_request import ImpersonateTokenRequest
 from .inventory import Inventory
 from .line_item import LineItem
+from .line_item_product import LineItemProduct
 from .line_item_spec import LineItemSpec
 from .list_address import ListAddress
 from .list_address_assignment import ListAddressAssignment
@@ -56,6 +59,8 @@ from .list_buyer_address import ListBuyerAddress
 from .list_buyer_credit_card import ListBuyerCreditCard
 from .list_buyer_product import ListBuyerProduct
 from .list_buyer_spec import ListBuyerSpec
+from .list_catalog import ListCatalog
+from .list_catalog_assignment import ListCatalogAssignment
 from .list_category import ListCategory
 from .list_category_assignment import ListCategoryAssignment
 from .list_category_product_assignment import ListCategoryProductAssignment
@@ -66,7 +71,6 @@ from .list_credit_card_assignment import ListCreditCardAssignment
 from .list_inventory import ListInventory
 from .list_line_item import ListLineItem
 from .list_message_cc_listener_assignment import ListMessageCCListenerAssignment
-from .list_message_config import ListMessageConfig
 from .list_message_sender import ListMessageSender
 from .list_message_sender_assignment import ListMessageSenderAssignment
 from .list_order import ListOrder
@@ -90,11 +94,8 @@ from .list_user import ListUser
 from .list_user_group import ListUserGroup
 from .list_user_group_assignment import ListUserGroupAssignment
 from .list_variant import ListVariant
-from .list_web_hook import ListWebHook
-from .list_web_hook_route import ListWebHookRoute
 from .list_xp_index import ListXpIndex
 from .message_cc_listener_assignment import MessageCCListenerAssignment
-from .message_config import MessageConfig
 from .message_sender import MessageSender
 from .message_sender_assignment import MessageSenderAssignment
 from .meta import Meta
@@ -122,13 +123,8 @@ from .spec_product_assignment import SpecProductAssignment
 from .spending_account import SpendingAccount
 from .spending_account_assignment import SpendingAccountAssignment
 from .stripe_credit_card import StripeCreditCard
-from .usage import Usage
-from .usage_buyer import UsageBuyer
-from .usage_organization import UsageOrganization
 from .user import User
 from .user_group import UserGroup
 from .user_group_assignment import UserGroupAssignment
 from .variant import Variant
-from .web_hook import WebHook
-from .web_hook_route import WebHookRoute
 from .xp_index import XpIndex

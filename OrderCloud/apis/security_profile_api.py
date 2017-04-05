@@ -51,7 +51,7 @@ class SecurityProfileApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def delete_assignment(self, buyer_id, security_profile_id, **kwargs):
+    def delete_assignment(self, security_profile_id, **kwargs):
         """
         
         
@@ -62,12 +62,12 @@ class SecurityProfileApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_assignment(buyer_id, security_profile_id, callback=callback_function)
+        >>> thread = api.delete_assignment(security_profile_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
         :param str security_profile_id: ID of the security profile. (required)
+        :param str buyer_id: ID of the buyer.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :return: None
@@ -76,12 +76,12 @@ class SecurityProfileApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_assignment_with_http_info(buyer_id, security_profile_id, **kwargs)
+            return self.delete_assignment_with_http_info(security_profile_id, **kwargs)
         else:
-            (data) = self.delete_assignment_with_http_info(buyer_id, security_profile_id, **kwargs)
+            (data) = self.delete_assignment_with_http_info(security_profile_id, **kwargs)
             return data
 
-    def delete_assignment_with_http_info(self, buyer_id, security_profile_id, **kwargs):
+    def delete_assignment_with_http_info(self, security_profile_id, **kwargs):
         """
         
         
@@ -92,12 +92,12 @@ class SecurityProfileApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_assignment_with_http_info(buyer_id, security_profile_id, callback=callback_function)
+        >>> thread = api.delete_assignment_with_http_info(security_profile_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
         :param str security_profile_id: ID of the security profile. (required)
+        :param str buyer_id: ID of the buyer.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :return: None
@@ -105,7 +105,7 @@ class SecurityProfileApi(object):
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'security_profile_id', 'user_id', 'user_group_id']
+        all_params = ['security_profile_id', 'buyer_id', 'user_id', 'user_group_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -118,9 +118,6 @@ class SecurityProfileApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `delete_assignment`")
         # verify the required parameter 'security_profile_id' is set
         if ('security_profile_id' not in params) or (params['security_profile_id'] is None):
             raise ValueError("Missing the required parameter `security_profile_id` when calling `delete_assignment`")
@@ -395,7 +392,7 @@ class SecurityProfileApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list_assignments(self, buyer_id, **kwargs):
+    def list_assignments(self, **kwargs):
         """
         
         
@@ -406,11 +403,11 @@ class SecurityProfileApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments(buyer_id, callback=callback_function)
+        >>> thread = api.list_assignments(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str buyer_id: ID of the buyer.
         :param str security_profile_id: ID of the security profile.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
@@ -423,12 +420,12 @@ class SecurityProfileApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_assignments_with_http_info(buyer_id, **kwargs)
+            return self.list_assignments_with_http_info(**kwargs)
         else:
-            (data) = self.list_assignments_with_http_info(buyer_id, **kwargs)
+            (data) = self.list_assignments_with_http_info(**kwargs)
             return data
 
-    def list_assignments_with_http_info(self, buyer_id, **kwargs):
+    def list_assignments_with_http_info(self, **kwargs):
         """
         
         
@@ -439,11 +436,11 @@ class SecurityProfileApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments_with_http_info(buyer_id, callback=callback_function)
+        >>> thread = api.list_assignments_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
+        :param str buyer_id: ID of the buyer.
         :param str security_profile_id: ID of the security profile.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
@@ -468,9 +465,6 @@ class SecurityProfileApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `list_assignments`")
 
         resource_path = '/securityprofiles/assignments'.replace('{format}', 'json')
         path_params = {}

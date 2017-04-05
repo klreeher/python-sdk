@@ -7,6 +7,7 @@ from .admin_user_api import AdminUserApi
 from .admin_user_group_api import AdminUserGroupApi
 from .approval_rule_api import ApprovalRuleApi
 from .buyer_api import BuyerApi
+from .catalog_api import CatalogApi
 from .category_api import CategoryApi
 from .cost_center_api import CostCenterApi
 from .credit_card_api import CreditCardApi

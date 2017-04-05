@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **shipper** | **str** |  | [optional] 
 **date_shipped** | **str** |  | [optional] 
+**date_delivered** | **str** |  | [optional] 
 **tracking_number** | **str** |  | [optional] 
 **cost** | **float** |  | [optional] 
 **items** | [**list[ShipmentItem]**](ShipmentItem.md) |  | [optional] 

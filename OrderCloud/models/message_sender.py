@@ -44,7 +44,7 @@ class MessageSender(object):
         self.swagger_types = {
             'id': 'str',
             'name': 'str',
-            'message_types': 'str'
+            'message_types': 'list[str]'
         }
 
         self.attribute_map = {
@@ -110,7 +110,7 @@ class MessageSender(object):
 
 
         :return: The message_types of this MessageSender.
-        :rtype: str
+        :rtype: list[str]
         """
         return self._message_types
 
@@ -121,7 +121,7 @@ class MessageSender(object):
 
 
         :param message_types: The message_types of this MessageSender.
-        :type: str
+        :type: list[str]
         """
 
         self._message_types = message_types

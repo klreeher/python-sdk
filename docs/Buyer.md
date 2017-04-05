@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
+**default_catalog_id** | **str** |  | [optional] 
 **active** | **bool** |  | [optional] 
 **xp** | **object** |  | [optional] 
 

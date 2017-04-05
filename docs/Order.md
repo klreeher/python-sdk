@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
 **type** | **str** |  | [optional] 
+**from_company_id** | **str** |  | [optional] 
 **from_user_id** | **str** |  | [optional] 
 **from_user_first_name** | **str** |  | [optional] 
 **from_user_last_name** | **str** |  | [optional] 

@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**get_product**](MeApi.md#get_product) | **GET** /me/products/{productID} | 
 [**get_promotion**](MeApi.md#get_promotion) | **GET** /me/promotions/{promotionID} | 
 [**get_spec**](MeApi.md#get_spec) | **GET** /me/products/{productID}/specs/{specID} | 
+[**get_spending_account**](MeApi.md#get_spending_account) | **GET** /me/spendingaccounts/{spendingAccountID} | 
 [**list_addresses**](MeApi.md#list_addresses) | **GET** /me/addresses | 
 [**list_categories**](MeApi.md#list_categories) | **GET** /me/categories | 
 [**list_cost_centers**](MeApi.md#list_cost_centers) | **GET** /me/costcenters | 
@@ -24,6 +25,7 @@ Method | HTTP request | Description
 [**list_products**](MeApi.md#list_products) | **GET** /me/products | 
 [**list_promotions**](MeApi.md#list_promotions) | **GET** /me/promotions | 
 [**list_specs**](MeApi.md#list_specs) | **GET** /me/products/{productID}/specs | 
+[**list_spending_accounts**](MeApi.md#list_spending_accounts) | **GET** /me/spendingAccounts | 
 [**list_user_groups**](MeApi.md#list_user_groups) | **GET** /me/usergroups | 
 [**patch**](MeApi.md#patch) | **PATCH** /me | 
 [**patch_address**](MeApi.md#patch_address) | **PATCH** /me/addresses/{addressID} | 
@@ -502,6 +504,49 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_spending_account**
+> SpendingAccount get_spending_account(spending_account_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+MeApi = OrderCloud.MeApi
+spending_account_id = 'spending_account_id_example' # str | ID of the spending account.
+
+try: 
+    response = MeApi.get_spending_account(spending_account_id)
+    print(response)
+except ApiException as e:
+    print("Exception when calling MeApi->get_spending_account: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **spending_account_id** | **str**| ID of the spending account. | 
+
+### Return type
+
+[**SpendingAccount**](SpendingAccount.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_addresses**
 > ListBuyerAddress list_addresses(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
@@ -556,7 +601,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_categories**
-> ListCategory list_categories(depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListCategory list_categories(depth=depth, catalog_id=catalog_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
@@ -569,6 +614,7 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 MeApi = OrderCloud.MeApi
 depth = 'depth_example' # str | Depth of the category. (optional)
+catalog_id = 'catalog_id_example' # str | ID of the catalog. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -577,7 +623,7 @@ page_size = 56 # int | Number of results to return per page. Default: 20, max: 1
 filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_categories(depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+    response = MeApi.list_categories(depth=depth, catalog_id=catalog_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_categories: %s\n" % e)
@@ -588,6 +634,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **depth** | **str**| Depth of the category. | [optional] 
+ **catalog_id** | **str**| ID of the catalog. | [optional] 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
@@ -831,7 +878,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_products**
-> ListBuyerProduct list_products(category_id=category_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+> ListBuyerProduct list_products(category_id=category_id, catalog_id=catalog_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
@@ -844,6 +891,7 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 MeApi = OrderCloud.MeApi
 category_id = 'category_id_example' # str | ID of the category. (optional)
+catalog_id = 'catalog_id_example' # str | ID of the catalog. (optional)
 search = 'search_example' # str | Word or phrase to search for. (optional)
 search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
 sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
@@ -852,7 +900,7 @@ page_size = 56 # int | Number of results to return per page. Default: 20, max: 1
 filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = MeApi.list_products(category_id=category_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+    response = MeApi.list_products(category_id=category_id, catalog_id=catalog_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
     print("Exception when calling MeApi->list_products: %s\n" % e)
@@ -863,6 +911,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **category_id** | **str**| ID of the category. | [optional] 
+ **catalog_id** | **str**| ID of the catalog. | [optional] 
  **search** | **str**| Word or phrase to search for. | [optional] 
  **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
  **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
@@ -981,6 +1030,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListBuyerSpec**](ListBuyerSpec.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_spending_accounts**
+> ListSpendingAccount list_spending_accounts(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+MeApi = OrderCloud.MeApi
+search = 'search_example' # str | Word or phrase to search for. (optional)
+search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
+sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
+
+try: 
+    response = MeApi.list_spending_accounts(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+    print(response)
+except ApiException as e:
+    print("Exception when calling MeApi->list_spending_accounts: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | **str**| Word or phrase to search for. | [optional] 
+ **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
+ **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
+
+### Return type
+
+[**ListSpendingAccount**](ListSpendingAccount.md)
 
 ### Authorization
 

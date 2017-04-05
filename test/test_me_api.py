@@ -130,6 +130,14 @@ class TestMeApi(unittest.TestCase):
         """
         pass
 
+    def test_get_spending_account(self):
+        """
+        Test case for get_spending_account
+
+        
+        """
+        pass
+
     def test_list_addresses(self):
         """
         Test case for list_addresses
@@ -197,6 +205,14 @@ class TestMeApi(unittest.TestCase):
     def test_list_specs(self):
         """
         Test case for list_specs
+
+        
+        """
+        pass
+
+    def test_list_spending_accounts(self):
+        """
+        Test case for list_spending_accounts
 
         
         """

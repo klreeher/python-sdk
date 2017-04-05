@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
-> ListPromotionAssignment list_assignments(buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+> ListPromotionAssignment list_assignments(buyer_id=buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
 
 
 
@@ -257,7 +257,7 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PromotionApi = OrderCloud.PromotionApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
 promotion_id = 'promotion_id_example' # str | ID of the promotion. (optional)
 user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
@@ -266,7 +266,7 @@ page = 56 # int | Page of results to return. Default: 1 (optional)
 page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
 
 try: 
-    response = PromotionApi.list_assignments(buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    response = PromotionApi.list_assignments(buyer_id=buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
     print(response)
 except ApiException as e:
     print("Exception when calling PromotionApi->list_assignments: %s\n" % e)
@@ -276,7 +276,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **buyer_id** | **str**| ID of the buyer. | [optional] 
  **promotion_id** | **str**| ID of the promotion. | [optional] 
  **user_id** | **str**| ID of the user. | [optional] 
  **user_group_id** | **str**| ID of the user group. | [optional] 

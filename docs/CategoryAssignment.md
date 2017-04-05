@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **category_id** | **str** |  | [optional] 
+**buyer_id** | **str** |  | [optional] 
 **user_id** | **str** |  | [optional] 
 **user_group_id** | **str** |  | [optional] 
 

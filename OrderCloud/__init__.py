@@ -36,6 +36,8 @@ from .models.buyer_address import BuyerAddress
 from .models.buyer_credit_card import BuyerCreditCard
 from .models.buyer_product import BuyerProduct
 from .models.buyer_spec import BuyerSpec
+from .models.catalog import Catalog
+from .models.catalog_assignment import CatalogAssignment
 from .models.category import Category
 from .models.category_assignment import CategoryAssignment
 from .models.category_product_assignment import CategoryProductAssignment
@@ -46,6 +48,7 @@ from .models.credit_card_assignment import CreditCardAssignment
 from .models.impersonate_token_request import ImpersonateTokenRequest
 from .models.inventory import Inventory
 from .models.line_item import LineItem
+from .models.line_item_product import LineItemProduct
 from .models.line_item_spec import LineItemSpec
 from .models.list_address import ListAddress
 from .models.list_address_assignment import ListAddressAssignment
@@ -56,6 +59,8 @@ from .models.list_buyer_address import ListBuyerAddress
 from .models.list_buyer_credit_card import ListBuyerCreditCard
 from .models.list_buyer_product import ListBuyerProduct
 from .models.list_buyer_spec import ListBuyerSpec
+from .models.list_catalog import ListCatalog
+from .models.list_catalog_assignment import ListCatalogAssignment
 from .models.list_category import ListCategory
 from .models.list_category_assignment import ListCategoryAssignment
 from .models.list_category_product_assignment import ListCategoryProductAssignment
@@ -66,7 +71,6 @@ from .models.list_credit_card_assignment import ListCreditCardAssignment
 from .models.list_inventory import ListInventory
 from .models.list_line_item import ListLineItem
 from .models.list_message_cc_listener_assignment import ListMessageCCListenerAssignment
-from .models.list_message_config import ListMessageConfig
 from .models.list_message_sender import ListMessageSender
 from .models.list_message_sender_assignment import ListMessageSenderAssignment
 from .models.list_order import ListOrder
@@ -90,11 +94,8 @@ from .models.list_user import ListUser
 from .models.list_user_group import ListUserGroup
 from .models.list_user_group_assignment import ListUserGroupAssignment
 from .models.list_variant import ListVariant
-from .models.list_web_hook import ListWebHook
-from .models.list_web_hook_route import ListWebHookRoute
 from .models.list_xp_index import ListXpIndex
 from .models.message_cc_listener_assignment import MessageCCListenerAssignment
-from .models.message_config import MessageConfig
 from .models.message_sender import MessageSender
 from .models.message_sender_assignment import MessageSenderAssignment
 from .models.meta import Meta
@@ -122,15 +123,10 @@ from .models.spec_product_assignment import SpecProductAssignment
 from .models.spending_account import SpendingAccount
 from .models.spending_account_assignment import SpendingAccountAssignment
 from .models.stripe_credit_card import StripeCreditCard
-from .models.usage import Usage
-from .models.usage_buyer import UsageBuyer
-from .models.usage_organization import UsageOrganization
 from .models.user import User
 from .models.user_group import UserGroup
 from .models.user_group_assignment import UserGroupAssignment
 from .models.variant import Variant
-from .models.web_hook import WebHook
-from .models.web_hook_route import WebHookRoute
 from .models.xp_index import XpIndex
 
 # import apis into sdk package
@@ -146,6 +142,8 @@ from .apis.approval_rule_api import ApprovalRuleApi
 ApprovalRuleApi = ApprovalRuleApi()
 from .apis.buyer_api import BuyerApi
 BuyerApi = BuyerApi()
+from .apis.catalog_api import CatalogApi
+CatalogApi = CatalogApi()
 from .apis.category_api import CategoryApi
 CategoryApi = CategoryApi()
 from .apis.cost_center_api import CostCenterApi
