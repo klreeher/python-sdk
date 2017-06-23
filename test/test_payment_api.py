@@ -98,30 +98,6 @@ class TestPaymentApi(unittest.TestCase):
         """
         pass
 
-    def test_patch_transaction(self):
-        """
-        Test case for patch_transaction
-
-        
-        """
-        pass
-
-    def test_update(self):
-        """
-        Test case for update
-
-        
-        """
-        pass
-
-    def test_update_transaction(self):
-        """
-        Test case for update_transaction
-
-        
-        """
-        pass
-
 
 if __name__ == '__main__':
     unittest.main()

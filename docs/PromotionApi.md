@@ -4,19 +4,167 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](PromotionApi.md#create) | **POST** /promotions | 
-[**delete**](PromotionApi.md#delete) | **DELETE** /promotions/{promotionID} | 
-[**delete_assignment**](PromotionApi.md#delete_assignment) | **DELETE** /promotions/{promotionID}/assignments | 
-[**get**](PromotionApi.md#get) | **GET** /promotions/{promotionID} | 
-[**list**](PromotionApi.md#list) | **GET** /promotions | 
-[**list_assignments**](PromotionApi.md#list_assignments) | **GET** /promotions/assignments | 
-[**patch**](PromotionApi.md#patch) | **PATCH** /promotions/{promotionID} | 
-[**save_assignment**](PromotionApi.md#save_assignment) | **POST** /promotions/assignments | 
-[**update**](PromotionApi.md#update) | **PUT** /promotions/{promotionID} | 
+[**promotions_assignments_get**](PromotionApi.md#promotions_assignments_get) | **GET** /promotions/assignments | 
+[**promotions_assignments_post**](PromotionApi.md#promotions_assignments_post) | **POST** /promotions/assignments | 
+[**promotions_get**](PromotionApi.md#promotions_get) | **GET** /promotions | 
+[**promotions_post**](PromotionApi.md#promotions_post) | **POST** /promotions | 
+[**promotions_promotion_id_assignments_delete**](PromotionApi.md#promotions_promotion_id_assignments_delete) | **DELETE** /promotions/{promotionID}/assignments | 
+[**promotions_promotion_id_delete**](PromotionApi.md#promotions_promotion_id_delete) | **DELETE** /promotions/{promotionID} | 
+[**promotions_promotion_id_get**](PromotionApi.md#promotions_promotion_id_get) | **GET** /promotions/{promotionID} | 
+[**promotions_promotion_id_patch**](PromotionApi.md#promotions_promotion_id_patch) | **PATCH** /promotions/{promotionID} | 
+[**promotions_promotion_id_put**](PromotionApi.md#promotions_promotion_id_put) | **PUT** /promotions/{promotionID} | 
 
 
-# **create**
-> Promotion create(promo)
+# **promotions_assignments_get**
+> ListPromotionAssignment promotions_assignments_get(buyer_id=buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+PromotionApi = OrderCloud.PromotionApi
+buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
+promotion_id = 'promotion_id_example' # str | ID of the promotion. (optional)
+user_id = 'user_id_example' # str | ID of the user. (optional)
+user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
+level = 'level_example' # str | Level of the promotion. (optional)
+page = 56 # int | Page of the promotion. (optional)
+page_size = 56 # int | Page size of the promotion. (optional)
+
+try: 
+    response = PromotionApi.promotions_assignments_get(buyer_id=buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling PromotionApi->promotions_assignments_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **buyer_id** | **str**| ID of the buyer. | [optional] 
+ **promotion_id** | **str**| ID of the promotion. | [optional] 
+ **user_id** | **str**| ID of the user. | [optional] 
+ **user_group_id** | **str**| ID of the user group. | [optional] 
+ **level** | **str**| Level of the promotion. | [optional] 
+ **page** | **int**| Page of the promotion. | [optional] 
+ **page_size** | **int**| Page size of the promotion. | [optional] 
+
+### Return type
+
+[**ListPromotionAssignment**](ListPromotionAssignment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **promotions_assignments_post**
+> promotions_assignments_post(assignment)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+PromotionApi = OrderCloud.PromotionApi
+assignment = OrderCloud.PromotionAssignment() # PromotionAssignment | 
+
+try: 
+    PromotionApi.promotions_assignments_post(assignment)
+except ApiException as e:
+    print("Exception when calling PromotionApi->promotions_assignments_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **assignment** | [**PromotionAssignment**](PromotionAssignment.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **promotions_get**
+> ListPromotion promotions_get(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+PromotionApi = OrderCloud.PromotionApi
+search = 'search_example' # str | Search of the promotion. (optional)
+search_on = ['search_on_example'] # list[str] | Search on of the promotion. (optional)
+sort_by = ['sort_by_example'] # list[str] | Sort by of the promotion. (optional)
+page = 56 # int | Page of the promotion. (optional)
+page_size = 56 # int | Page size of the promotion. (optional)
+
+try: 
+    response = PromotionApi.promotions_get(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling PromotionApi->promotions_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | **str**| Search of the promotion. | [optional] 
+ **search_on** | [**list[str]**](str.md)| Search on of the promotion. | [optional] 
+ **sort_by** | [**list[str]**](str.md)| Sort by of the promotion. | [optional] 
+ **page** | **int**| Page of the promotion. | [optional] 
+ **page_size** | **int**| Page size of the promotion. | [optional] 
+
+### Return type
+
+[**ListPromotion**](ListPromotion.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **promotions_post**
+> Promotion promotions_post(promo)
 
 
 
@@ -31,10 +179,10 @@ PromotionApi = OrderCloud.PromotionApi
 promo = OrderCloud.Promotion() # Promotion | 
 
 try: 
-    response = PromotionApi.create(promo)
+    response = PromotionApi.promotions_post(promo)
     print(response)
 except ApiException as e:
-    print("Exception when calling PromotionApi->create: %s\n" % e)
+    print("Exception when calling PromotionApi->promotions_post: %s\n" % e)
 ```
 
 ### Parameters
@@ -58,50 +206,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete**
-> delete(promotion_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi
-promotion_id = 'promotion_id_example' # str | ID of the promotion.
-
-try: 
-    PromotionApi.delete(promotion_id)
-except ApiException as e:
-    print("Exception when calling PromotionApi->delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **promotion_id** | **str**| ID of the promotion. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_assignment**
-> delete_assignment(promotion_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
+# **promotions_promotion_id_assignments_delete**
+> promotions_promotion_id_assignments_delete(promotion_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
 
 
 
@@ -119,9 +225,9 @@ user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 
 try: 
-    PromotionApi.delete_assignment(promotion_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
+    PromotionApi.promotions_promotion_id_assignments_delete(promotion_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
 except ApiException as e:
-    print("Exception when calling PromotionApi->delete_assignment: %s\n" % e)
+    print("Exception when calling PromotionApi->promotions_promotion_id_assignments_delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -148,8 +254,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get**
-> Promotion get(promotion_id)
+# **promotions_promotion_id_delete**
+> promotions_promotion_id_delete(promotion_id)
 
 
 
@@ -164,10 +270,52 @@ PromotionApi = OrderCloud.PromotionApi
 promotion_id = 'promotion_id_example' # str | ID of the promotion.
 
 try: 
-    response = PromotionApi.get(promotion_id)
+    PromotionApi.promotions_promotion_id_delete(promotion_id)
+except ApiException as e:
+    print("Exception when calling PromotionApi->promotions_promotion_id_delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **promotion_id** | **str**| ID of the promotion. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **promotions_promotion_id_get**
+> Promotion promotions_promotion_id_get(promotion_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+PromotionApi = OrderCloud.PromotionApi
+promotion_id = 'promotion_id_example' # str | ID of the promotion.
+
+try: 
+    response = PromotionApi.promotions_promotion_id_get(promotion_id)
     print(response)
 except ApiException as e:
-    print("Exception when calling PromotionApi->get: %s\n" % e)
+    print("Exception when calling PromotionApi->promotions_promotion_id_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -191,116 +339,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list**
-> ListPromotion list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = PromotionApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling PromotionApi->list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListPromotion**](ListPromotion.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_assignments**
-> ListPromotionAssignment list_assignments(buyer_id=buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
-promotion_id = 'promotion_id_example' # str | ID of the promotion. (optional)
-user_id = 'user_id_example' # str | ID of the user. (optional)
-user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
-level = 'level_example' # str | Level of the promotion. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-
-try: 
-    response = PromotionApi.list_assignments(buyer_id=buyer_id, promotion_id=promotion_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
-    print(response)
-except ApiException as e:
-    print("Exception when calling PromotionApi->list_assignments: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | [optional] 
- **promotion_id** | **str**| ID of the promotion. | [optional] 
- **user_id** | **str**| ID of the user. | [optional] 
- **user_group_id** | **str**| ID of the user group. | [optional] 
- **level** | **str**| Level of the promotion. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
-
-### Return type
-
-[**ListPromotionAssignment**](ListPromotionAssignment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch**
-> Promotion patch(promotion_id, partial_promotion)
+# **promotions_promotion_id_patch**
+> Promotion promotions_promotion_id_patch(promotion_id, partial_promotion)
 
 
 
@@ -316,10 +356,10 @@ promotion_id = 'promotion_id_example' # str | ID of the promotion.
 partial_promotion = OrderCloud.Promotion() # Promotion | 
 
 try: 
-    response = PromotionApi.patch(promotion_id, partial_promotion)
+    response = PromotionApi.promotions_promotion_id_patch(promotion_id, partial_promotion)
     print(response)
 except ApiException as e:
-    print("Exception when calling PromotionApi->patch: %s\n" % e)
+    print("Exception when calling PromotionApi->promotions_promotion_id_patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -344,50 +384,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **save_assignment**
-> save_assignment(assignment)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PromotionApi = OrderCloud.PromotionApi
-assignment = OrderCloud.PromotionAssignment() # PromotionAssignment | 
-
-try: 
-    PromotionApi.save_assignment(assignment)
-except ApiException as e:
-    print("Exception when calling PromotionApi->save_assignment: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **assignment** | [**PromotionAssignment**](PromotionAssignment.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update**
-> Promotion update(promotion_id, promo)
+# **promotions_promotion_id_put**
+> Promotion promotions_promotion_id_put(promotion_id, promo)
 
 
 
@@ -403,10 +401,10 @@ promotion_id = 'promotion_id_example' # str | ID of the promotion.
 promo = OrderCloud.Promotion() # Promotion | 
 
 try: 
-    response = PromotionApi.update(promotion_id, promo)
+    response = PromotionApi.promotions_promotion_id_put(promotion_id, promo)
     print(response)
 except ApiException as e:
-    print("Exception when calling PromotionApi->update: %s\n" % e)
+    print("Exception when calling PromotionApi->promotions_promotion_id_put: %s\n" % e)
 ```
 
 ### Parameters

@@ -51,7 +51,7 @@ class AdminAddressApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, address, **kwargs):
+    def addresses_address_id_delete(self, address_id, **kwargs):
         """
         
         
@@ -62,111 +62,7 @@ class AdminAddressApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(address, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param Address address:  (required)
-        :return: Address
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.create_with_http_info(address, **kwargs)
-        else:
-            (data) = self.create_with_http_info(address, **kwargs)
-            return data
-
-    def create_with_http_info(self, address, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.create_with_http_info(address, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param Address address:  (required)
-        :return: Address
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['address']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'address' is set
-        if ('address' not in params) or (params['address'] is None):
-            raise ValueError("Missing the required parameter `address` when calling `create`")
-
-        resource_path = '/addresses'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'address' in params:
-            body_params = params['address']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Address',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def delete(self, address_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete(address_id, callback=callback_function)
+        >>> thread = api.addresses_address_id_delete(address_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -177,12 +73,12 @@ class AdminAddressApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_with_http_info(address_id, **kwargs)
+            return self.addresses_address_id_delete_with_http_info(address_id, **kwargs)
         else:
-            (data) = self.delete_with_http_info(address_id, **kwargs)
+            (data) = self.addresses_address_id_delete_with_http_info(address_id, **kwargs)
             return data
 
-    def delete_with_http_info(self, address_id, **kwargs):
+    def addresses_address_id_delete_with_http_info(self, address_id, **kwargs):
         """
         
         
@@ -193,7 +89,7 @@ class AdminAddressApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_with_http_info(address_id, callback=callback_function)
+        >>> thread = api.addresses_address_id_delete_with_http_info(address_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -212,13 +108,13 @@ class AdminAddressApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete" % key
+                    " to method addresses_address_id_delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'address_id' is set
         if ('address_id' not in params) or (params['address_id'] is None):
-            raise ValueError("Missing the required parameter `address_id` when calling `delete`")
+            raise ValueError("Missing the required parameter `address_id` when calling `addresses_address_id_delete`")
 
         resource_path = '/addresses/{addressID}'.replace('{format}', 'json')
         path_params = {}
@@ -259,7 +155,7 @@ class AdminAddressApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get(self, address_id, **kwargs):
+    def addresses_address_id_get(self, address_id, **kwargs):
         """
         
         
@@ -270,7 +166,7 @@ class AdminAddressApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get(address_id, callback=callback_function)
+        >>> thread = api.addresses_address_id_get(address_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -281,12 +177,12 @@ class AdminAddressApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_with_http_info(address_id, **kwargs)
+            return self.addresses_address_id_get_with_http_info(address_id, **kwargs)
         else:
-            (data) = self.get_with_http_info(address_id, **kwargs)
+            (data) = self.addresses_address_id_get_with_http_info(address_id, **kwargs)
             return data
 
-    def get_with_http_info(self, address_id, **kwargs):
+    def addresses_address_id_get_with_http_info(self, address_id, **kwargs):
         """
         
         
@@ -297,7 +193,7 @@ class AdminAddressApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_with_http_info(address_id, callback=callback_function)
+        >>> thread = api.addresses_address_id_get_with_http_info(address_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -316,13 +212,13 @@ class AdminAddressApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get" % key
+                    " to method addresses_address_id_get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'address_id' is set
         if ('address_id' not in params) or (params['address_id'] is None):
-            raise ValueError("Missing the required parameter `address_id` when calling `get`")
+            raise ValueError("Missing the required parameter `address_id` when calling `addresses_address_id_get`")
 
         resource_path = '/addresses/{addressID}'.replace('{format}', 'json')
         path_params = {}
@@ -363,7 +259,7 @@ class AdminAddressApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, **kwargs):
+    def addresses_address_id_patch(self, address_id, address, **kwargs):
         """
         
         
@@ -374,128 +270,7 @@ class AdminAddressApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListAddress
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.list_with_http_info(**kwargs)
-        else:
-            (data) = self.list_with_http_info(**kwargs)
-            return data
-
-    def list_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListAddress
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/addresses'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-        if 'filters' in params:
-            query_params['filters'] = params['filters']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListAddress',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def patch(self, address_id, address, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.patch(address_id, address, callback=callback_function)
+        >>> thread = api.addresses_address_id_patch(address_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -507,12 +282,12 @@ class AdminAddressApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(address_id, address, **kwargs)
+            return self.addresses_address_id_patch_with_http_info(address_id, address, **kwargs)
         else:
-            (data) = self.patch_with_http_info(address_id, address, **kwargs)
+            (data) = self.addresses_address_id_patch_with_http_info(address_id, address, **kwargs)
             return data
 
-    def patch_with_http_info(self, address_id, address, **kwargs):
+    def addresses_address_id_patch_with_http_info(self, address_id, address, **kwargs):
         """
         
         
@@ -523,7 +298,7 @@ class AdminAddressApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(address_id, address, callback=callback_function)
+        >>> thread = api.addresses_address_id_patch_with_http_info(address_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -543,16 +318,16 @@ class AdminAddressApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method patch" % key
+                    " to method addresses_address_id_patch" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'address_id' is set
         if ('address_id' not in params) or (params['address_id'] is None):
-            raise ValueError("Missing the required parameter `address_id` when calling `patch`")
+            raise ValueError("Missing the required parameter `address_id` when calling `addresses_address_id_patch`")
         # verify the required parameter 'address' is set
         if ('address' not in params) or (params['address'] is None):
-            raise ValueError("Missing the required parameter `address` when calling `patch`")
+            raise ValueError("Missing the required parameter `address` when calling `addresses_address_id_patch`")
 
         resource_path = '/addresses/{addressID}'.replace('{format}', 'json')
         path_params = {}
@@ -595,7 +370,7 @@ class AdminAddressApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, address_id, address, **kwargs):
+    def addresses_address_id_put(self, address_id, address, **kwargs):
         """
         
         
@@ -606,7 +381,7 @@ class AdminAddressApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(address_id, address, callback=callback_function)
+        >>> thread = api.addresses_address_id_put(address_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -618,12 +393,12 @@ class AdminAddressApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(address_id, address, **kwargs)
+            return self.addresses_address_id_put_with_http_info(address_id, address, **kwargs)
         else:
-            (data) = self.update_with_http_info(address_id, address, **kwargs)
+            (data) = self.addresses_address_id_put_with_http_info(address_id, address, **kwargs)
             return data
 
-    def update_with_http_info(self, address_id, address, **kwargs):
+    def addresses_address_id_put_with_http_info(self, address_id, address, **kwargs):
         """
         
         
@@ -634,7 +409,7 @@ class AdminAddressApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(address_id, address, callback=callback_function)
+        >>> thread = api.addresses_address_id_put_with_http_info(address_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -654,16 +429,16 @@ class AdminAddressApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
+                    " to method addresses_address_id_put" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'address_id' is set
         if ('address_id' not in params) or (params['address_id'] is None):
-            raise ValueError("Missing the required parameter `address_id` when calling `update`")
+            raise ValueError("Missing the required parameter `address_id` when calling `addresses_address_id_put`")
         # verify the required parameter 'address' is set
         if ('address' not in params) or (params['address'] is None):
-            raise ValueError("Missing the required parameter `address` when calling `update`")
+            raise ValueError("Missing the required parameter `address` when calling `addresses_address_id_put`")
 
         resource_path = '/addresses/{addressID}'.replace('{format}', 'json')
         path_params = {}
@@ -695,6 +470,227 @@ class AdminAddressApi(object):
         auth_settings = ['oauth2']
 
         return self.api_client.call_api(resource_path, 'PUT',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Address',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def addresses_get(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.addresses_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the admin address.
+        :param list[str] search_on: Search on of the admin address.
+        :param list[str] sort_by: Sort by of the admin address.
+        :param int page: Page of the admin address.
+        :param int page_size: Page size of the admin address.
+        :return: ListAddress
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.addresses_get_with_http_info(**kwargs)
+        else:
+            (data) = self.addresses_get_with_http_info(**kwargs)
+            return data
+
+    def addresses_get_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.addresses_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the admin address.
+        :param list[str] search_on: Search on of the admin address.
+        :param list[str] sort_by: Sort by of the admin address.
+        :param int page: Page of the admin address.
+        :param int page_size: Page size of the admin address.
+        :return: ListAddress
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method addresses_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/addresses'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListAddress',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def addresses_post(self, address, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.addresses_post(address, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Address address:  (required)
+        :return: Address
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.addresses_post_with_http_info(address, **kwargs)
+        else:
+            (data) = self.addresses_post_with_http_info(address, **kwargs)
+            return data
+
+    def addresses_post_with_http_info(self, address, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.addresses_post_with_http_info(address, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Address address:  (required)
+        :return: Address
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['address']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method addresses_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'address' is set
+        if ('address' not in params) or (params['address'] is None):
+            raise ValueError("Missing the required parameter `address` when calling `addresses_post`")
+
+        resource_path = '/addresses'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'address' in params:
+            body_params = params['address']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
                                             path_params,
                                             query_params,
                                             header_params,

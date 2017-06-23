@@ -51,7 +51,7 @@ class AdminUserGroupApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, group, **kwargs):
+    def usergroups_assignments_get(self, **kwargs):
         """
         
         
@@ -62,570 +62,26 @@ class AdminUserGroupApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(group, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param UserGroup group:  (required)
-        :return: UserGroup
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.create_with_http_info(group, **kwargs)
-        else:
-            (data) = self.create_with_http_info(group, **kwargs)
-            return data
-
-    def create_with_http_info(self, group, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.create_with_http_info(group, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param UserGroup group:  (required)
-        :return: UserGroup
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['group']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'group' is set
-        if ('group' not in params) or (params['group'] is None):
-            raise ValueError("Missing the required parameter `group` when calling `create`")
-
-        resource_path = '/usergroups'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'group' in params:
-            body_params = params['group']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='UserGroup',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def delete(self, user_group_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete(user_group_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str user_group_id: ID of the user group. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.delete_with_http_info(user_group_id, **kwargs)
-        else:
-            (data) = self.delete_with_http_info(user_group_id, **kwargs)
-            return data
-
-    def delete_with_http_info(self, user_group_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_with_http_info(user_group_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str user_group_id: ID of the user group. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['user_group_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'user_group_id' is set
-        if ('user_group_id' not in params) or (params['user_group_id'] is None):
-            raise ValueError("Missing the required parameter `user_group_id` when calling `delete`")
-
-        resource_path = '/usergroups/{userGroupID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'user_group_id' in params:
-            path_params['userGroupID'] = params['user_group_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def delete_user_assignment(self, user_group_id, user_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_user_assignment(user_group_id, user_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str user_group_id: ID of the user group. (required)
-        :param str user_id: ID of the user. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.delete_user_assignment_with_http_info(user_group_id, user_id, **kwargs)
-        else:
-            (data) = self.delete_user_assignment_with_http_info(user_group_id, user_id, **kwargs)
-            return data
-
-    def delete_user_assignment_with_http_info(self, user_group_id, user_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_user_assignment_with_http_info(user_group_id, user_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str user_group_id: ID of the user group. (required)
-        :param str user_id: ID of the user. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['user_group_id', 'user_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_user_assignment" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'user_group_id' is set
-        if ('user_group_id' not in params) or (params['user_group_id'] is None):
-            raise ValueError("Missing the required parameter `user_group_id` when calling `delete_user_assignment`")
-        # verify the required parameter 'user_id' is set
-        if ('user_id' not in params) or (params['user_id'] is None):
-            raise ValueError("Missing the required parameter `user_id` when calling `delete_user_assignment`")
-
-        resource_path = '/usergroups/{userGroupID}/assignments/{userID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'user_group_id' in params:
-            path_params['userGroupID'] = params['user_group_id']
-        if 'user_id' in params:
-            path_params['userID'] = params['user_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def get(self, user_group_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get(user_group_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str user_group_id: ID of the user group. (required)
-        :return: UserGroup
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_with_http_info(user_group_id, **kwargs)
-        else:
-            (data) = self.get_with_http_info(user_group_id, **kwargs)
-            return data
-
-    def get_with_http_info(self, user_group_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_with_http_info(user_group_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str user_group_id: ID of the user group. (required)
-        :return: UserGroup
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['user_group_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'user_group_id' is set
-        if ('user_group_id' not in params) or (params['user_group_id'] is None):
-            raise ValueError("Missing the required parameter `user_group_id` when calling `get`")
-
-        resource_path = '/usergroups/{userGroupID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'user_group_id' in params:
-            path_params['userGroupID'] = params['user_group_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='UserGroup',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListUserGroup
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.list_with_http_info(**kwargs)
-        else:
-            (data) = self.list_with_http_info(**kwargs)
-            return data
-
-    def list_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListUserGroup
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/usergroups'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-        if 'filters' in params:
-            query_params['filters'] = params['filters']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListUserGroup',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list_user_assignments(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_user_assignments(callback=callback_function)
+        >>> thread = api.usergroups_assignments_get(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str user_group_id: ID of the user group.
         :param str user_id: ID of the user.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param int page: Page of the admin user group.
+        :param int page_size: Page size of the admin user group.
         :return: ListUserGroupAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_user_assignments_with_http_info(**kwargs)
+            return self.usergroups_assignments_get_with_http_info(**kwargs)
         else:
-            (data) = self.list_user_assignments_with_http_info(**kwargs)
+            (data) = self.usergroups_assignments_get_with_http_info(**kwargs)
             return data
 
-    def list_user_assignments_with_http_info(self, **kwargs):
+    def usergroups_assignments_get_with_http_info(self, **kwargs):
         """
         
         
@@ -636,14 +92,14 @@ class AdminUserGroupApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_user_assignments_with_http_info(callback=callback_function)
+        >>> thread = api.usergroups_assignments_get_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str user_group_id: ID of the user group.
         :param str user_id: ID of the user.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param int page: Page of the admin user group.
+        :param int page_size: Page size of the admin user group.
         :return: ListUserGroupAssignment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -658,7 +114,7 @@ class AdminUserGroupApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_user_assignments" % key
+                    " to method usergroups_assignments_get" % key
                 )
             params[key] = val
         del params['kwargs']
@@ -708,7 +164,7 @@ class AdminUserGroupApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, user_group_id, group, **kwargs):
+    def usergroups_assignments_post(self, user_group_assignment, **kwargs):
         """
         
         
@@ -719,7 +175,651 @@ class AdminUserGroupApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(user_group_id, group, callback=callback_function)
+        >>> thread = api.usergroups_assignments_post(user_group_assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param UserGroupAssignment user_group_assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.usergroups_assignments_post_with_http_info(user_group_assignment, **kwargs)
+        else:
+            (data) = self.usergroups_assignments_post_with_http_info(user_group_assignment, **kwargs)
+            return data
+
+    def usergroups_assignments_post_with_http_info(self, user_group_assignment, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_assignments_post_with_http_info(user_group_assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param UserGroupAssignment user_group_assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user_group_assignment']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method usergroups_assignments_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'user_group_assignment' is set
+        if ('user_group_assignment' not in params) or (params['user_group_assignment'] is None):
+            raise ValueError("Missing the required parameter `user_group_assignment` when calling `usergroups_assignments_post`")
+
+        resource_path = '/usergroups/assignments'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'user_group_assignment' in params:
+            body_params = params['user_group_assignment']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def usergroups_get(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the admin user group.
+        :param list[str] search_on: Search on of the admin user group.
+        :param list[str] sort_by: Sort by of the admin user group.
+        :param int page: Page of the admin user group.
+        :param int page_size: Page size of the admin user group.
+        :return: ListUserGroup
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.usergroups_get_with_http_info(**kwargs)
+        else:
+            (data) = self.usergroups_get_with_http_info(**kwargs)
+            return data
+
+    def usergroups_get_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the admin user group.
+        :param list[str] search_on: Search on of the admin user group.
+        :param list[str] sort_by: Sort by of the admin user group.
+        :param int page: Page of the admin user group.
+        :param int page_size: Page size of the admin user group.
+        :return: ListUserGroup
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method usergroups_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/usergroups'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListUserGroup',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def usergroups_post(self, group, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_post(group, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param UserGroup group:  (required)
+        :return: UserGroup
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.usergroups_post_with_http_info(group, **kwargs)
+        else:
+            (data) = self.usergroups_post_with_http_info(group, **kwargs)
+            return data
+
+    def usergroups_post_with_http_info(self, group, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_post_with_http_info(group, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param UserGroup group:  (required)
+        :return: UserGroup
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['group']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method usergroups_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'group' is set
+        if ('group' not in params) or (params['group'] is None):
+            raise ValueError("Missing the required parameter `group` when calling `usergroups_post`")
+
+        resource_path = '/usergroups'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'group' in params:
+            body_params = params['group']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='UserGroup',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def usergroups_user_group_id_assignments_user_id_delete(self, user_group_id, user_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_user_group_id_assignments_user_id_delete(user_group_id, user_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user_group_id: ID of the user group. (required)
+        :param str user_id: ID of the user. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.usergroups_user_group_id_assignments_user_id_delete_with_http_info(user_group_id, user_id, **kwargs)
+        else:
+            (data) = self.usergroups_user_group_id_assignments_user_id_delete_with_http_info(user_group_id, user_id, **kwargs)
+            return data
+
+    def usergroups_user_group_id_assignments_user_id_delete_with_http_info(self, user_group_id, user_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_user_group_id_assignments_user_id_delete_with_http_info(user_group_id, user_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user_group_id: ID of the user group. (required)
+        :param str user_id: ID of the user. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user_group_id', 'user_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method usergroups_user_group_id_assignments_user_id_delete" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'user_group_id' is set
+        if ('user_group_id' not in params) or (params['user_group_id'] is None):
+            raise ValueError("Missing the required parameter `user_group_id` when calling `usergroups_user_group_id_assignments_user_id_delete`")
+        # verify the required parameter 'user_id' is set
+        if ('user_id' not in params) or (params['user_id'] is None):
+            raise ValueError("Missing the required parameter `user_id` when calling `usergroups_user_group_id_assignments_user_id_delete`")
+
+        resource_path = '/usergroups/{userGroupID}/assignments/{userID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'user_group_id' in params:
+            path_params['userGroupID'] = params['user_group_id']
+        if 'user_id' in params:
+            path_params['userID'] = params['user_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def usergroups_user_group_id_delete(self, user_group_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_user_group_id_delete(user_group_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user_group_id: ID of the user group. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.usergroups_user_group_id_delete_with_http_info(user_group_id, **kwargs)
+        else:
+            (data) = self.usergroups_user_group_id_delete_with_http_info(user_group_id, **kwargs)
+            return data
+
+    def usergroups_user_group_id_delete_with_http_info(self, user_group_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_user_group_id_delete_with_http_info(user_group_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user_group_id: ID of the user group. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user_group_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method usergroups_user_group_id_delete" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'user_group_id' is set
+        if ('user_group_id' not in params) or (params['user_group_id'] is None):
+            raise ValueError("Missing the required parameter `user_group_id` when calling `usergroups_user_group_id_delete`")
+
+        resource_path = '/usergroups/{userGroupID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'user_group_id' in params:
+            path_params['userGroupID'] = params['user_group_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def usergroups_user_group_id_get(self, user_group_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_user_group_id_get(user_group_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user_group_id: ID of the user group. (required)
+        :return: UserGroup
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.usergroups_user_group_id_get_with_http_info(user_group_id, **kwargs)
+        else:
+            (data) = self.usergroups_user_group_id_get_with_http_info(user_group_id, **kwargs)
+            return data
+
+    def usergroups_user_group_id_get_with_http_info(self, user_group_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_user_group_id_get_with_http_info(user_group_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user_group_id: ID of the user group. (required)
+        :return: UserGroup
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user_group_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method usergroups_user_group_id_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'user_group_id' is set
+        if ('user_group_id' not in params) or (params['user_group_id'] is None):
+            raise ValueError("Missing the required parameter `user_group_id` when calling `usergroups_user_group_id_get`")
+
+        resource_path = '/usergroups/{userGroupID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'user_group_id' in params:
+            path_params['userGroupID'] = params['user_group_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='UserGroup',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def usergroups_user_group_id_patch(self, user_group_id, group, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.usergroups_user_group_id_patch(user_group_id, group, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -731,12 +831,12 @@ class AdminUserGroupApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(user_group_id, group, **kwargs)
+            return self.usergroups_user_group_id_patch_with_http_info(user_group_id, group, **kwargs)
         else:
-            (data) = self.patch_with_http_info(user_group_id, group, **kwargs)
+            (data) = self.usergroups_user_group_id_patch_with_http_info(user_group_id, group, **kwargs)
             return data
 
-    def patch_with_http_info(self, user_group_id, group, **kwargs):
+    def usergroups_user_group_id_patch_with_http_info(self, user_group_id, group, **kwargs):
         """
         
         
@@ -747,7 +847,7 @@ class AdminUserGroupApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(user_group_id, group, callback=callback_function)
+        >>> thread = api.usergroups_user_group_id_patch_with_http_info(user_group_id, group, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -767,16 +867,16 @@ class AdminUserGroupApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method patch" % key
+                    " to method usergroups_user_group_id_patch" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'user_group_id' is set
         if ('user_group_id' not in params) or (params['user_group_id'] is None):
-            raise ValueError("Missing the required parameter `user_group_id` when calling `patch`")
+            raise ValueError("Missing the required parameter `user_group_id` when calling `usergroups_user_group_id_patch`")
         # verify the required parameter 'group' is set
         if ('group' not in params) or (params['group'] is None):
-            raise ValueError("Missing the required parameter `group` when calling `patch`")
+            raise ValueError("Missing the required parameter `group` when calling `usergroups_user_group_id_patch`")
 
         resource_path = '/usergroups/{userGroupID}'.replace('{format}', 'json')
         path_params = {}
@@ -819,7 +919,7 @@ class AdminUserGroupApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def save_user_assignment(self, user_group_assignment, **kwargs):
+    def usergroups_user_group_id_put(self, user_group_id, group, **kwargs):
         """
         
         
@@ -830,111 +930,7 @@ class AdminUserGroupApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_user_assignment(user_group_assignment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param UserGroupAssignment user_group_assignment:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.save_user_assignment_with_http_info(user_group_assignment, **kwargs)
-        else:
-            (data) = self.save_user_assignment_with_http_info(user_group_assignment, **kwargs)
-            return data
-
-    def save_user_assignment_with_http_info(self, user_group_assignment, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.save_user_assignment_with_http_info(user_group_assignment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param UserGroupAssignment user_group_assignment:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['user_group_assignment']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method save_user_assignment" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'user_group_assignment' is set
-        if ('user_group_assignment' not in params) or (params['user_group_assignment'] is None):
-            raise ValueError("Missing the required parameter `user_group_assignment` when calling `save_user_assignment`")
-
-        resource_path = '/usergroups/assignments'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'user_group_assignment' in params:
-            body_params = params['user_group_assignment']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def update(self, user_group_id, group, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.update(user_group_id, group, callback=callback_function)
+        >>> thread = api.usergroups_user_group_id_put(user_group_id, group, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -946,12 +942,12 @@ class AdminUserGroupApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(user_group_id, group, **kwargs)
+            return self.usergroups_user_group_id_put_with_http_info(user_group_id, group, **kwargs)
         else:
-            (data) = self.update_with_http_info(user_group_id, group, **kwargs)
+            (data) = self.usergroups_user_group_id_put_with_http_info(user_group_id, group, **kwargs)
             return data
 
-    def update_with_http_info(self, user_group_id, group, **kwargs):
+    def usergroups_user_group_id_put_with_http_info(self, user_group_id, group, **kwargs):
         """
         
         
@@ -962,7 +958,7 @@ class AdminUserGroupApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(user_group_id, group, callback=callback_function)
+        >>> thread = api.usergroups_user_group_id_put_with_http_info(user_group_id, group, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -982,16 +978,16 @@ class AdminUserGroupApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
+                    " to method usergroups_user_group_id_put" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'user_group_id' is set
         if ('user_group_id' not in params) or (params['user_group_id'] is None):
-            raise ValueError("Missing the required parameter `user_group_id` when calling `update`")
+            raise ValueError("Missing the required parameter `user_group_id` when calling `usergroups_user_group_id_put`")
         # verify the required parameter 'group' is set
         if ('group' not in params) or (params['group'] is None):
-            raise ValueError("Missing the required parameter `group` when calling `update`")
+            raise ValueError("Missing the required parameter `group` when calling `usergroups_user_group_id_put`")
 
         resource_path = '/usergroups/{userGroupID}'.replace('{format}', 'json')
         path_params = {}

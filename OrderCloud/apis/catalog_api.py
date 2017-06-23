@@ -51,7 +51,7 @@ class CatalogApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, catalog, **kwargs):
+    def catalogs_assignments_get(self, **kwargs):
         """
         
         
@@ -62,570 +62,26 @@ class CatalogApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(catalog, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param Catalog catalog:  (required)
-        :return: Catalog
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.create_with_http_info(catalog, **kwargs)
-        else:
-            (data) = self.create_with_http_info(catalog, **kwargs)
-            return data
-
-    def create_with_http_info(self, catalog, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.create_with_http_info(catalog, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param Catalog catalog:  (required)
-        :return: Catalog
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['catalog']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'catalog' is set
-        if ('catalog' not in params) or (params['catalog'] is None):
-            raise ValueError("Missing the required parameter `catalog` when calling `create`")
-
-        resource_path = '/catalogs'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'catalog' in params:
-            body_params = params['catalog']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Catalog',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def delete(self, catalog_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete(catalog_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str catalog_id: ID of the catalog. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.delete_with_http_info(catalog_id, **kwargs)
-        else:
-            (data) = self.delete_with_http_info(catalog_id, **kwargs)
-            return data
-
-    def delete_with_http_info(self, catalog_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_with_http_info(catalog_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str catalog_id: ID of the catalog. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['catalog_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'catalog_id' is set
-        if ('catalog_id' not in params) or (params['catalog_id'] is None):
-            raise ValueError("Missing the required parameter `catalog_id` when calling `delete`")
-
-        resource_path = '/catalogs/{catalogID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'catalog_id' in params:
-            path_params['catalogID'] = params['catalog_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def delete_assignment(self, catalog_id, buyer_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_assignment(catalog_id, buyer_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str catalog_id: ID of the catalog. (required)
-        :param str buyer_id: ID of the buyer. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.delete_assignment_with_http_info(catalog_id, buyer_id, **kwargs)
-        else:
-            (data) = self.delete_assignment_with_http_info(catalog_id, buyer_id, **kwargs)
-            return data
-
-    def delete_assignment_with_http_info(self, catalog_id, buyer_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_assignment_with_http_info(catalog_id, buyer_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str catalog_id: ID of the catalog. (required)
-        :param str buyer_id: ID of the buyer. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['catalog_id', 'buyer_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_assignment" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'catalog_id' is set
-        if ('catalog_id' not in params) or (params['catalog_id'] is None):
-            raise ValueError("Missing the required parameter `catalog_id` when calling `delete_assignment`")
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `delete_assignment`")
-
-        resource_path = '/catalogs/{catalogID}/assignments'.replace('{format}', 'json')
-        path_params = {}
-        if 'catalog_id' in params:
-            path_params['catalogID'] = params['catalog_id']
-
-        query_params = {}
-        if 'buyer_id' in params:
-            query_params['buyerID'] = params['buyer_id']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def get(self, catalog_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get(catalog_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str catalog_id: ID of the catalog. (required)
-        :return: Catalog
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_with_http_info(catalog_id, **kwargs)
-        else:
-            (data) = self.get_with_http_info(catalog_id, **kwargs)
-            return data
-
-    def get_with_http_info(self, catalog_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_with_http_info(catalog_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str catalog_id: ID of the catalog. (required)
-        :return: Catalog
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['catalog_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'catalog_id' is set
-        if ('catalog_id' not in params) or (params['catalog_id'] is None):
-            raise ValueError("Missing the required parameter `catalog_id` when calling `get`")
-
-        resource_path = '/catalogs/{catalogID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'catalog_id' in params:
-            path_params['catalogID'] = params['catalog_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Catalog',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListCatalog
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.list_with_http_info(**kwargs)
-        else:
-            (data) = self.list_with_http_info(**kwargs)
-            return data
-
-    def list_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListCatalog
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/catalogs'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-        if 'filters' in params:
-            query_params['filters'] = params['filters']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListCatalog',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list_assignments(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_assignments(callback=callback_function)
+        >>> thread = api.catalogs_assignments_get(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str catalog_id: ID of the catalog.
         :param str buyer_id: ID of the buyer.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param int page: Page of the catalog.
+        :param int page_size: Page size of the catalog.
         :return: ListCatalogAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_assignments_with_http_info(**kwargs)
+            return self.catalogs_assignments_get_with_http_info(**kwargs)
         else:
-            (data) = self.list_assignments_with_http_info(**kwargs)
+            (data) = self.catalogs_assignments_get_with_http_info(**kwargs)
             return data
 
-    def list_assignments_with_http_info(self, **kwargs):
+    def catalogs_assignments_get_with_http_info(self, **kwargs):
         """
         
         
@@ -636,14 +92,14 @@ class CatalogApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments_with_http_info(callback=callback_function)
+        >>> thread = api.catalogs_assignments_get_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str catalog_id: ID of the catalog.
         :param str buyer_id: ID of the buyer.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param int page: Page of the catalog.
+        :param int page_size: Page size of the catalog.
         :return: ListCatalogAssignment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -658,7 +114,7 @@ class CatalogApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_assignments" % key
+                    " to method catalogs_assignments_get" % key
                 )
             params[key] = val
         del params['kwargs']
@@ -708,7 +164,7 @@ class CatalogApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, catalog_id, partial_catalog, **kwargs):
+    def catalogs_assignments_post(self, assignment, **kwargs):
         """
         
         
@@ -719,7 +175,430 @@ class CatalogApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(catalog_id, partial_catalog, callback=callback_function)
+        >>> thread = api.catalogs_assignments_post(assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param CatalogAssignment assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.catalogs_assignments_post_with_http_info(assignment, **kwargs)
+        else:
+            (data) = self.catalogs_assignments_post_with_http_info(assignment, **kwargs)
+            return data
+
+    def catalogs_assignments_post_with_http_info(self, assignment, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_assignments_post_with_http_info(assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param CatalogAssignment assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['assignment']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method catalogs_assignments_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'assignment' is set
+        if ('assignment' not in params) or (params['assignment'] is None):
+            raise ValueError("Missing the required parameter `assignment` when calling `catalogs_assignments_post`")
+
+        resource_path = '/catalogs/assignments'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'assignment' in params:
+            body_params = params['assignment']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def catalogs_catalog_id_assignments_delete(self, catalog_id, buyer_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_catalog_id_assignments_delete(catalog_id, buyer_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
+        :param str buyer_id: ID of the buyer. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.catalogs_catalog_id_assignments_delete_with_http_info(catalog_id, buyer_id, **kwargs)
+        else:
+            (data) = self.catalogs_catalog_id_assignments_delete_with_http_info(catalog_id, buyer_id, **kwargs)
+            return data
+
+    def catalogs_catalog_id_assignments_delete_with_http_info(self, catalog_id, buyer_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_catalog_id_assignments_delete_with_http_info(catalog_id, buyer_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
+        :param str buyer_id: ID of the buyer. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['catalog_id', 'buyer_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method catalogs_catalog_id_assignments_delete" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `catalogs_catalog_id_assignments_delete`")
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `catalogs_catalog_id_assignments_delete`")
+
+        resource_path = '/catalogs/{catalogID}/assignments'.replace('{format}', 'json')
+        path_params = {}
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
+
+        query_params = {}
+        if 'buyer_id' in params:
+            query_params['buyerID'] = params['buyer_id']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def catalogs_catalog_id_delete(self, catalog_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_catalog_id_delete(catalog_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.catalogs_catalog_id_delete_with_http_info(catalog_id, **kwargs)
+        else:
+            (data) = self.catalogs_catalog_id_delete_with_http_info(catalog_id, **kwargs)
+            return data
+
+    def catalogs_catalog_id_delete_with_http_info(self, catalog_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_catalog_id_delete_with_http_info(catalog_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['catalog_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method catalogs_catalog_id_delete" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `catalogs_catalog_id_delete`")
+
+        resource_path = '/catalogs/{catalogID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def catalogs_catalog_id_get(self, catalog_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_catalog_id_get(catalog_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
+        :return: Catalog
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.catalogs_catalog_id_get_with_http_info(catalog_id, **kwargs)
+        else:
+            (data) = self.catalogs_catalog_id_get_with_http_info(catalog_id, **kwargs)
+            return data
+
+    def catalogs_catalog_id_get_with_http_info(self, catalog_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_catalog_id_get_with_http_info(catalog_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog. (required)
+        :return: Catalog
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['catalog_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method catalogs_catalog_id_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `catalogs_catalog_id_get`")
+
+        resource_path = '/catalogs/{catalogID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Catalog',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def catalogs_catalog_id_patch(self, catalog_id, partial_catalog, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_catalog_id_patch(catalog_id, partial_catalog, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -731,12 +610,12 @@ class CatalogApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(catalog_id, partial_catalog, **kwargs)
+            return self.catalogs_catalog_id_patch_with_http_info(catalog_id, partial_catalog, **kwargs)
         else:
-            (data) = self.patch_with_http_info(catalog_id, partial_catalog, **kwargs)
+            (data) = self.catalogs_catalog_id_patch_with_http_info(catalog_id, partial_catalog, **kwargs)
             return data
 
-    def patch_with_http_info(self, catalog_id, partial_catalog, **kwargs):
+    def catalogs_catalog_id_patch_with_http_info(self, catalog_id, partial_catalog, **kwargs):
         """
         
         
@@ -747,7 +626,7 @@ class CatalogApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(catalog_id, partial_catalog, callback=callback_function)
+        >>> thread = api.catalogs_catalog_id_patch_with_http_info(catalog_id, partial_catalog, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -767,16 +646,16 @@ class CatalogApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method patch" % key
+                    " to method catalogs_catalog_id_patch" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'catalog_id' is set
         if ('catalog_id' not in params) or (params['catalog_id'] is None):
-            raise ValueError("Missing the required parameter `catalog_id` when calling `patch`")
+            raise ValueError("Missing the required parameter `catalog_id` when calling `catalogs_catalog_id_patch`")
         # verify the required parameter 'partial_catalog' is set
         if ('partial_catalog' not in params) or (params['partial_catalog'] is None):
-            raise ValueError("Missing the required parameter `partial_catalog` when calling `patch`")
+            raise ValueError("Missing the required parameter `partial_catalog` when calling `catalogs_catalog_id_patch`")
 
         resource_path = '/catalogs/{catalogID}'.replace('{format}', 'json')
         path_params = {}
@@ -819,7 +698,7 @@ class CatalogApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def save_assignment(self, assignment, **kwargs):
+    def catalogs_catalog_id_productassignments_product_id_delete(self, catalog_id, product_id, **kwargs):
         """
         
         
@@ -830,23 +709,24 @@ class CatalogApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_assignment(assignment, callback=callback_function)
+        >>> thread = api.catalogs_catalog_id_productassignments_product_id_delete(catalog_id, product_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param CatalogAssignment assignment:  (required)
+        :param str catalog_id: ID of the catalog. (required)
+        :param str product_id: ID of the product. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.save_assignment_with_http_info(assignment, **kwargs)
+            return self.catalogs_catalog_id_productassignments_product_id_delete_with_http_info(catalog_id, product_id, **kwargs)
         else:
-            (data) = self.save_assignment_with_http_info(assignment, **kwargs)
+            (data) = self.catalogs_catalog_id_productassignments_product_id_delete_with_http_info(catalog_id, product_id, **kwargs)
             return data
 
-    def save_assignment_with_http_info(self, assignment, **kwargs):
+    def catalogs_catalog_id_productassignments_product_id_delete_with_http_info(self, catalog_id, product_id, **kwargs):
         """
         
         
@@ -857,17 +737,18 @@ class CatalogApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_assignment_with_http_info(assignment, callback=callback_function)
+        >>> thread = api.catalogs_catalog_id_productassignments_product_id_delete_with_http_info(catalog_id, product_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param CatalogAssignment assignment:  (required)
+        :param str catalog_id: ID of the catalog. (required)
+        :param str product_id: ID of the product. (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['assignment']
+        all_params = ['catalog_id', 'product_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -876,16 +757,23 @@ class CatalogApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method save_assignment" % key
+                    " to method catalogs_catalog_id_productassignments_product_id_delete" % key
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'assignment' is set
-        if ('assignment' not in params) or (params['assignment'] is None):
-            raise ValueError("Missing the required parameter `assignment` when calling `save_assignment`")
+        # verify the required parameter 'catalog_id' is set
+        if ('catalog_id' not in params) or (params['catalog_id'] is None):
+            raise ValueError("Missing the required parameter `catalog_id` when calling `catalogs_catalog_id_productassignments_product_id_delete`")
+        # verify the required parameter 'product_id' is set
+        if ('product_id' not in params) or (params['product_id'] is None):
+            raise ValueError("Missing the required parameter `product_id` when calling `catalogs_catalog_id_productassignments_product_id_delete`")
 
-        resource_path = '/catalogs/assignments'.replace('{format}', 'json')
+        resource_path = '/catalogs/{catalogID}/productassignments/{productID}'.replace('{format}', 'json')
         path_params = {}
+        if 'catalog_id' in params:
+            path_params['catalogID'] = params['catalog_id']
+        if 'product_id' in params:
+            path_params['productID'] = params['product_id']
 
         query_params = {}
 
@@ -895,8 +783,6 @@ class CatalogApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'assignment' in params:
-            body_params = params['assignment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -911,7 +797,7 @@ class CatalogApi(object):
         # Authentication setting
         auth_settings = ['oauth2']
 
-        return self.api_client.call_api(resource_path, 'POST',
+        return self.api_client.call_api(resource_path, 'DELETE',
                                             path_params,
                                             query_params,
                                             header_params,
@@ -923,7 +809,7 @@ class CatalogApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, catalog_id, catalog, **kwargs):
+    def catalogs_catalog_id_put(self, catalog_id, catalog, **kwargs):
         """
         
         
@@ -934,7 +820,7 @@ class CatalogApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(catalog_id, catalog, callback=callback_function)
+        >>> thread = api.catalogs_catalog_id_put(catalog_id, catalog, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -946,12 +832,12 @@ class CatalogApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(catalog_id, catalog, **kwargs)
+            return self.catalogs_catalog_id_put_with_http_info(catalog_id, catalog, **kwargs)
         else:
-            (data) = self.update_with_http_info(catalog_id, catalog, **kwargs)
+            (data) = self.catalogs_catalog_id_put_with_http_info(catalog_id, catalog, **kwargs)
             return data
 
-    def update_with_http_info(self, catalog_id, catalog, **kwargs):
+    def catalogs_catalog_id_put_with_http_info(self, catalog_id, catalog, **kwargs):
         """
         
         
@@ -962,7 +848,7 @@ class CatalogApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(catalog_id, catalog, callback=callback_function)
+        >>> thread = api.catalogs_catalog_id_put_with_http_info(catalog_id, catalog, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -982,16 +868,16 @@ class CatalogApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
+                    " to method catalogs_catalog_id_put" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'catalog_id' is set
         if ('catalog_id' not in params) or (params['catalog_id'] is None):
-            raise ValueError("Missing the required parameter `catalog_id` when calling `update`")
+            raise ValueError("Missing the required parameter `catalog_id` when calling `catalogs_catalog_id_put`")
         # verify the required parameter 'catalog' is set
         if ('catalog' not in params) or (params['catalog'] is None):
-            raise ValueError("Missing the required parameter `catalog` when calling `update`")
+            raise ValueError("Missing the required parameter `catalog` when calling `catalogs_catalog_id_put`")
 
         resource_path = '/catalogs/{catalogID}'.replace('{format}', 'json')
         path_params = {}
@@ -1030,6 +916,444 @@ class CatalogApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='Catalog',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def catalogs_get(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the catalog.
+        :param list[str] search_on: Search on of the catalog.
+        :param list[str] sort_by: Sort by of the catalog.
+        :param int page: Page of the catalog.
+        :param int page_size: Page size of the catalog.
+        :return: ListCatalog
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.catalogs_get_with_http_info(**kwargs)
+        else:
+            (data) = self.catalogs_get_with_http_info(**kwargs)
+            return data
+
+    def catalogs_get_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the catalog.
+        :param list[str] search_on: Search on of the catalog.
+        :param list[str] sort_by: Sort by of the catalog.
+        :param int page: Page of the catalog.
+        :param int page_size: Page size of the catalog.
+        :return: ListCatalog
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method catalogs_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/catalogs'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListCatalog',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def catalogs_post(self, catalog, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_post(catalog, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Catalog catalog:  (required)
+        :return: Catalog
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.catalogs_post_with_http_info(catalog, **kwargs)
+        else:
+            (data) = self.catalogs_post_with_http_info(catalog, **kwargs)
+            return data
+
+    def catalogs_post_with_http_info(self, catalog, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_post_with_http_info(catalog, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Catalog catalog:  (required)
+        :return: Catalog
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['catalog']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method catalogs_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'catalog' is set
+        if ('catalog' not in params) or (params['catalog'] is None):
+            raise ValueError("Missing the required parameter `catalog` when calling `catalogs_post`")
+
+        resource_path = '/catalogs'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'catalog' in params:
+            body_params = params['catalog']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Catalog',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def catalogs_productassignments_get(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_productassignments_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog.
+        :param str product_id: ID of the product.
+        :param int page: Page of the catalog.
+        :param int page_size: Page size of the catalog.
+        :return: ListProductCatalogAssignment
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.catalogs_productassignments_get_with_http_info(**kwargs)
+        else:
+            (data) = self.catalogs_productassignments_get_with_http_info(**kwargs)
+            return data
+
+    def catalogs_productassignments_get_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_productassignments_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str catalog_id: ID of the catalog.
+        :param str product_id: ID of the product.
+        :param int page: Page of the catalog.
+        :param int page_size: Page size of the catalog.
+        :return: ListProductCatalogAssignment
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['catalog_id', 'product_id', 'page', 'page_size']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method catalogs_productassignments_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/catalogs/productassignments'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'catalog_id' in params:
+            query_params['catalogID'] = params['catalog_id']
+        if 'product_id' in params:
+            query_params['productID'] = params['product_id']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListProductCatalogAssignment',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def catalogs_productassignments_post(self, product_assignment, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_productassignments_post(product_assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param ProductCatalogAssignment product_assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.catalogs_productassignments_post_with_http_info(product_assignment, **kwargs)
+        else:
+            (data) = self.catalogs_productassignments_post_with_http_info(product_assignment, **kwargs)
+            return data
+
+    def catalogs_productassignments_post_with_http_info(self, product_assignment, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.catalogs_productassignments_post_with_http_info(product_assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param ProductCatalogAssignment product_assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['product_assignment']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method catalogs_productassignments_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'product_assignment' is set
+        if ('product_assignment' not in params) or (params['product_assignment'] is None):
+            raise ValueError("Missing the required parameter `product_assignment` when calling `catalogs_productassignments_post`")
+
+        resource_path = '/catalogs/productassignments'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'product_assignment' in params:
+            body_params = params['product_assignment']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

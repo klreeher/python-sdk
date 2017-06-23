@@ -11,6 +11,7 @@ from .catalog_api import CatalogApi
 from .category_api import CategoryApi
 from .cost_center_api import CostCenterApi
 from .credit_card_api import CreditCardApi
+from .impersonation_config_api import ImpersonationConfigApi
 from .line_item_api import LineItemApi
 from .me_api import MeApi
 from .message_senders_api import MessageSendersApi
@@ -24,5 +25,8 @@ from .security_profile_api import SecurityProfileApi
 from .shipment_api import ShipmentApi
 from .spec_api import SpecApi
 from .spending_account_api import SpendingAccountApi
+from .supplier_api import SupplierApi
+from .supplier_user_api import SupplierUserApi
+from .supplier_user_group_api import SupplierUserGroupApi
 from .user_api import UserApi
 from .user_group_api import UserGroupApi

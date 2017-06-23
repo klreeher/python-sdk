@@ -51,7 +51,7 @@ class SecurityProfileApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def delete_assignment(self, security_profile_id, **kwargs):
+    def securityprofiles_assignments_get(self, **kwargs):
         """
         
         
@@ -62,7 +62,361 @@ class SecurityProfileApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_assignment(security_profile_id, callback=callback_function)
+        >>> thread = api.securityprofiles_assignments_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer.
+        :param str supplier_id: ID of the supplier.
+        :param str security_profile_id: ID of the security profile.
+        :param str user_id: ID of the user.
+        :param str user_group_id: ID of the user group.
+        :param str commerce_role: Commerce role of the security profile.
+        :param str level: Level of the security profile.
+        :param int page: Page of the security profile.
+        :param int page_size: Page size of the security profile.
+        :return: ListSecurityProfileAssignment
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.securityprofiles_assignments_get_with_http_info(**kwargs)
+        else:
+            (data) = self.securityprofiles_assignments_get_with_http_info(**kwargs)
+            return data
+
+    def securityprofiles_assignments_get_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.securityprofiles_assignments_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer.
+        :param str supplier_id: ID of the supplier.
+        :param str security_profile_id: ID of the security profile.
+        :param str user_id: ID of the user.
+        :param str user_group_id: ID of the user group.
+        :param str commerce_role: Commerce role of the security profile.
+        :param str level: Level of the security profile.
+        :param int page: Page of the security profile.
+        :param int page_size: Page size of the security profile.
+        :return: ListSecurityProfileAssignment
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['buyer_id', 'supplier_id', 'security_profile_id', 'user_id', 'user_group_id', 'commerce_role', 'level', 'page', 'page_size']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method securityprofiles_assignments_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/securityprofiles/assignments'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'buyer_id' in params:
+            query_params['buyerID'] = params['buyer_id']
+        if 'supplier_id' in params:
+            query_params['supplierID'] = params['supplier_id']
+        if 'security_profile_id' in params:
+            query_params['securityProfileID'] = params['security_profile_id']
+        if 'user_id' in params:
+            query_params['userID'] = params['user_id']
+        if 'user_group_id' in params:
+            query_params['userGroupID'] = params['user_group_id']
+        if 'commerce_role' in params:
+            query_params['commerceRole'] = params['commerce_role']
+        if 'level' in params:
+            query_params['level'] = params['level']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListSecurityProfileAssignment',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def securityprofiles_assignments_post(self, assignment, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.securityprofiles_assignments_post(assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param SecurityProfileAssignment assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.securityprofiles_assignments_post_with_http_info(assignment, **kwargs)
+        else:
+            (data) = self.securityprofiles_assignments_post_with_http_info(assignment, **kwargs)
+            return data
+
+    def securityprofiles_assignments_post_with_http_info(self, assignment, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.securityprofiles_assignments_post_with_http_info(assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param SecurityProfileAssignment assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['assignment']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method securityprofiles_assignments_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'assignment' is set
+        if ('assignment' not in params) or (params['assignment'] is None):
+            raise ValueError("Missing the required parameter `assignment` when calling `securityprofiles_assignments_post`")
+
+        resource_path = '/securityprofiles/assignments'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'assignment' in params:
+            body_params = params['assignment']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def securityprofiles_get(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.securityprofiles_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the security profile.
+        :param list[str] search_on: Search on of the security profile.
+        :param list[str] sort_by: Sort by of the security profile.
+        :param int page: Page of the security profile.
+        :param int page_size: Page size of the security profile.
+        :return: ListSecurityProfile
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.securityprofiles_get_with_http_info(**kwargs)
+        else:
+            (data) = self.securityprofiles_get_with_http_info(**kwargs)
+            return data
+
+    def securityprofiles_get_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.securityprofiles_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the security profile.
+        :param list[str] search_on: Search on of the security profile.
+        :param list[str] sort_by: Sort by of the security profile.
+        :param int page: Page of the security profile.
+        :param int page_size: Page size of the security profile.
+        :return: ListSecurityProfile
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method securityprofiles_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/securityprofiles'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListSecurityProfile',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def securityprofiles_security_profile_id_assignments_delete(self, security_profile_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.securityprofiles_security_profile_id_assignments_delete(security_profile_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -76,12 +430,12 @@ class SecurityProfileApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_assignment_with_http_info(security_profile_id, **kwargs)
+            return self.securityprofiles_security_profile_id_assignments_delete_with_http_info(security_profile_id, **kwargs)
         else:
-            (data) = self.delete_assignment_with_http_info(security_profile_id, **kwargs)
+            (data) = self.securityprofiles_security_profile_id_assignments_delete_with_http_info(security_profile_id, **kwargs)
             return data
 
-    def delete_assignment_with_http_info(self, security_profile_id, **kwargs):
+    def securityprofiles_security_profile_id_assignments_delete_with_http_info(self, security_profile_id, **kwargs):
         """
         
         
@@ -92,7 +446,7 @@ class SecurityProfileApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_assignment_with_http_info(security_profile_id, callback=callback_function)
+        >>> thread = api.securityprofiles_security_profile_id_assignments_delete_with_http_info(security_profile_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -114,13 +468,13 @@ class SecurityProfileApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete_assignment" % key
+                    " to method securityprofiles_security_profile_id_assignments_delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'security_profile_id' is set
         if ('security_profile_id' not in params) or (params['security_profile_id'] is None):
-            raise ValueError("Missing the required parameter `security_profile_id` when calling `delete_assignment`")
+            raise ValueError("Missing the required parameter `security_profile_id` when calling `securityprofiles_security_profile_id_assignments_delete`")
 
         resource_path = '/securityprofiles/{securityProfileID}/assignments'.replace('{format}', 'json')
         path_params = {}
@@ -167,7 +521,7 @@ class SecurityProfileApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get(self, security_profile_id, **kwargs):
+    def securityprofiles_security_profile_id_get(self, security_profile_id, **kwargs):
         """
         
         
@@ -178,7 +532,7 @@ class SecurityProfileApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get(security_profile_id, callback=callback_function)
+        >>> thread = api.securityprofiles_security_profile_id_get(security_profile_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -189,12 +543,12 @@ class SecurityProfileApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_with_http_info(security_profile_id, **kwargs)
+            return self.securityprofiles_security_profile_id_get_with_http_info(security_profile_id, **kwargs)
         else:
-            (data) = self.get_with_http_info(security_profile_id, **kwargs)
+            (data) = self.securityprofiles_security_profile_id_get_with_http_info(security_profile_id, **kwargs)
             return data
 
-    def get_with_http_info(self, security_profile_id, **kwargs):
+    def securityprofiles_security_profile_id_get_with_http_info(self, security_profile_id, **kwargs):
         """
         
         
@@ -205,7 +559,7 @@ class SecurityProfileApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_with_http_info(security_profile_id, callback=callback_function)
+        >>> thread = api.securityprofiles_security_profile_id_get_with_http_info(security_profile_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -224,13 +578,13 @@ class SecurityProfileApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get" % key
+                    " to method securityprofiles_security_profile_id_get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'security_profile_id' is set
         if ('security_profile_id' not in params) or (params['security_profile_id'] is None):
-            raise ValueError("Missing the required parameter `security_profile_id` when calling `get`")
+            raise ValueError("Missing the required parameter `security_profile_id` when calling `securityprofiles_security_profile_id_get`")
 
         resource_path = '/securityprofiles/{securityProfileID}'.replace('{format}', 'json')
         path_params = {}
@@ -267,356 +621,6 @@ class SecurityProfileApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='SecurityProfile',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListSecurityProfile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.list_with_http_info(**kwargs)
-        else:
-            (data) = self.list_with_http_info(**kwargs)
-            return data
-
-    def list_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListSecurityProfile
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/securityprofiles'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-        if 'filters' in params:
-            query_params['filters'] = params['filters']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListSecurityProfile',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list_assignments(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_assignments(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer.
-        :param str security_profile_id: ID of the security profile.
-        :param str user_id: ID of the user.
-        :param str user_group_id: ID of the user group.
-        :param str level: Level of the security profile.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: ListSecurityProfileAssignment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.list_assignments_with_http_info(**kwargs)
-        else:
-            (data) = self.list_assignments_with_http_info(**kwargs)
-            return data
-
-    def list_assignments_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_assignments_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer.
-        :param str security_profile_id: ID of the security profile.
-        :param str user_id: ID of the user.
-        :param str user_group_id: ID of the user group.
-        :param str level: Level of the security profile.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :return: ListSecurityProfileAssignment
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'security_profile_id', 'user_id', 'user_group_id', 'level', 'page', 'page_size']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list_assignments" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/securityprofiles/assignments'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'buyer_id' in params:
-            query_params['buyerID'] = params['buyer_id']
-        if 'security_profile_id' in params:
-            query_params['securityProfileID'] = params['security_profile_id']
-        if 'user_id' in params:
-            query_params['userID'] = params['user_id']
-        if 'user_group_id' in params:
-            query_params['userGroupID'] = params['user_group_id']
-        if 'level' in params:
-            query_params['level'] = params['level']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListSecurityProfileAssignment',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def save_assignment(self, assignment, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.save_assignment(assignment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param SecurityProfileAssignment assignment:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.save_assignment_with_http_info(assignment, **kwargs)
-        else:
-            (data) = self.save_assignment_with_http_info(assignment, **kwargs)
-            return data
-
-    def save_assignment_with_http_info(self, assignment, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.save_assignment_with_http_info(assignment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param SecurityProfileAssignment assignment:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['assignment']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method save_assignment" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'assignment' is set
-        if ('assignment' not in params) or (params['assignment'] is None):
-            raise ValueError("Missing the required parameter `assignment` when calling `save_assignment`")
-
-        resource_path = '/securityprofiles/assignments'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'assignment' in params:
-            body_params = params['assignment']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))

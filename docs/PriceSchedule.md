@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **max_quantity** | **int** |  | [optional] 
 **use_cumulative_quantity** | **bool** |  | [optional] 
 **restricted_quantity** | **bool** |  | [optional] 
-**order_type** | **str** |  | [optional] 
 **price_breaks** | [**list[PriceBreak]**](PriceBreak.md) |  | [optional] 
 **xp** | **object** |  | [optional] 
 

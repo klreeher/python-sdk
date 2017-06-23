@@ -51,7 +51,7 @@ class PromotionApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, promo, **kwargs):
+    def promotions_assignments_get(self, **kwargs):
         """
         
         
@@ -62,559 +62,7 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(promo, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param Promotion promo:  (required)
-        :return: Promotion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.create_with_http_info(promo, **kwargs)
-        else:
-            (data) = self.create_with_http_info(promo, **kwargs)
-            return data
-
-    def create_with_http_info(self, promo, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.create_with_http_info(promo, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param Promotion promo:  (required)
-        :return: Promotion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['promo']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'promo' is set
-        if ('promo' not in params) or (params['promo'] is None):
-            raise ValueError("Missing the required parameter `promo` when calling `create`")
-
-        resource_path = '/promotions'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'promo' in params:
-            body_params = params['promo']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Promotion',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def delete(self, promotion_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete(promotion_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str promotion_id: ID of the promotion. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.delete_with_http_info(promotion_id, **kwargs)
-        else:
-            (data) = self.delete_with_http_info(promotion_id, **kwargs)
-            return data
-
-    def delete_with_http_info(self, promotion_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_with_http_info(promotion_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str promotion_id: ID of the promotion. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['promotion_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'promotion_id' is set
-        if ('promotion_id' not in params) or (params['promotion_id'] is None):
-            raise ValueError("Missing the required parameter `promotion_id` when calling `delete`")
-
-        resource_path = '/promotions/{promotionID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'promotion_id' in params:
-            path_params['promotionID'] = params['promotion_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def delete_assignment(self, promotion_id, buyer_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_assignment(promotion_id, buyer_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str promotion_id: ID of the promotion. (required)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str user_id: ID of the user.
-        :param str user_group_id: ID of the user group.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.delete_assignment_with_http_info(promotion_id, buyer_id, **kwargs)
-        else:
-            (data) = self.delete_assignment_with_http_info(promotion_id, buyer_id, **kwargs)
-            return data
-
-    def delete_assignment_with_http_info(self, promotion_id, buyer_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.delete_assignment_with_http_info(promotion_id, buyer_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str promotion_id: ID of the promotion. (required)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str user_id: ID of the user.
-        :param str user_group_id: ID of the user group.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['promotion_id', 'buyer_id', 'user_id', 'user_group_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_assignment" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'promotion_id' is set
-        if ('promotion_id' not in params) or (params['promotion_id'] is None):
-            raise ValueError("Missing the required parameter `promotion_id` when calling `delete_assignment`")
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `delete_assignment`")
-
-        resource_path = '/promotions/{promotionID}/assignments'.replace('{format}', 'json')
-        path_params = {}
-        if 'promotion_id' in params:
-            path_params['promotionID'] = params['promotion_id']
-
-        query_params = {}
-        if 'buyer_id' in params:
-            query_params['buyerID'] = params['buyer_id']
-        if 'user_id' in params:
-            query_params['userID'] = params['user_id']
-        if 'user_group_id' in params:
-            query_params['userGroupID'] = params['user_group_id']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def get(self, promotion_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get(promotion_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str promotion_id: ID of the promotion. (required)
-        :return: Promotion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.get_with_http_info(promotion_id, **kwargs)
-        else:
-            (data) = self.get_with_http_info(promotion_id, **kwargs)
-            return data
-
-    def get_with_http_info(self, promotion_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.get_with_http_info(promotion_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str promotion_id: ID of the promotion. (required)
-        :return: Promotion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['promotion_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'promotion_id' is set
-        if ('promotion_id' not in params) or (params['promotion_id'] is None):
-            raise ValueError("Missing the required parameter `promotion_id` when calling `get`")
-
-        resource_path = '/promotions/{promotionID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'promotion_id' in params:
-            path_params['promotionID'] = params['promotion_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Promotion',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListPromotion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.list_with_http_info(**kwargs)
-        else:
-            (data) = self.list_with_http_info(**kwargs)
-            return data
-
-    def list_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListPromotion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/promotions'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-        if 'filters' in params:
-            query_params['filters'] = params['filters']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListPromotion',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def list_assignments(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_assignments(callback=callback_function)
+        >>> thread = api.promotions_assignments_get(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -623,20 +71,20 @@ class PromotionApi(object):
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :param str level: Level of the promotion.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param int page: Page of the promotion.
+        :param int page_size: Page size of the promotion.
         :return: ListPromotionAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.list_assignments_with_http_info(**kwargs)
+            return self.promotions_assignments_get_with_http_info(**kwargs)
         else:
-            (data) = self.list_assignments_with_http_info(**kwargs)
+            (data) = self.promotions_assignments_get_with_http_info(**kwargs)
             return data
 
-    def list_assignments_with_http_info(self, **kwargs):
+    def promotions_assignments_get_with_http_info(self, **kwargs):
         """
         
         
@@ -647,7 +95,7 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list_assignments_with_http_info(callback=callback_function)
+        >>> thread = api.promotions_assignments_get_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -656,8 +104,8 @@ class PromotionApi(object):
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
         :param str level: Level of the promotion.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param int page: Page of the promotion.
+        :param int page_size: Page size of the promotion.
         :return: ListPromotionAssignment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -672,7 +120,7 @@ class PromotionApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method list_assignments" % key
+                    " to method promotions_assignments_get" % key
                 )
             params[key] = val
         del params['kwargs']
@@ -728,7 +176,7 @@ class PromotionApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def patch(self, promotion_id, partial_promotion, **kwargs):
+    def promotions_assignments_post(self, assignment, **kwargs):
         """
         
         
@@ -739,7 +187,659 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch(promotion_id, partial_promotion, callback=callback_function)
+        >>> thread = api.promotions_assignments_post(assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param PromotionAssignment assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.promotions_assignments_post_with_http_info(assignment, **kwargs)
+        else:
+            (data) = self.promotions_assignments_post_with_http_info(assignment, **kwargs)
+            return data
+
+    def promotions_assignments_post_with_http_info(self, assignment, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_assignments_post_with_http_info(assignment, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param PromotionAssignment assignment:  (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['assignment']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method promotions_assignments_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'assignment' is set
+        if ('assignment' not in params) or (params['assignment'] is None):
+            raise ValueError("Missing the required parameter `assignment` when calling `promotions_assignments_post`")
+
+        resource_path = '/promotions/assignments'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'assignment' in params:
+            body_params = params['assignment']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def promotions_get(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the promotion.
+        :param list[str] search_on: Search on of the promotion.
+        :param list[str] sort_by: Sort by of the promotion.
+        :param int page: Page of the promotion.
+        :param int page_size: Page size of the promotion.
+        :return: ListPromotion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.promotions_get_with_http_info(**kwargs)
+        else:
+            (data) = self.promotions_get_with_http_info(**kwargs)
+            return data
+
+    def promotions_get_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the promotion.
+        :param list[str] search_on: Search on of the promotion.
+        :param list[str] sort_by: Sort by of the promotion.
+        :param int page: Page of the promotion.
+        :param int page_size: Page size of the promotion.
+        :return: ListPromotion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method promotions_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/promotions'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListPromotion',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def promotions_post(self, promo, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_post(promo, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Promotion promo:  (required)
+        :return: Promotion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.promotions_post_with_http_info(promo, **kwargs)
+        else:
+            (data) = self.promotions_post_with_http_info(promo, **kwargs)
+            return data
+
+    def promotions_post_with_http_info(self, promo, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_post_with_http_info(promo, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Promotion promo:  (required)
+        :return: Promotion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['promo']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method promotions_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'promo' is set
+        if ('promo' not in params) or (params['promo'] is None):
+            raise ValueError("Missing the required parameter `promo` when calling `promotions_post`")
+
+        resource_path = '/promotions'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'promo' in params:
+            body_params = params['promo']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Promotion',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def promotions_promotion_id_assignments_delete(self, promotion_id, buyer_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_promotion_id_assignments_delete(promotion_id, buyer_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str promotion_id: ID of the promotion. (required)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str user_id: ID of the user.
+        :param str user_group_id: ID of the user group.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.promotions_promotion_id_assignments_delete_with_http_info(promotion_id, buyer_id, **kwargs)
+        else:
+            (data) = self.promotions_promotion_id_assignments_delete_with_http_info(promotion_id, buyer_id, **kwargs)
+            return data
+
+    def promotions_promotion_id_assignments_delete_with_http_info(self, promotion_id, buyer_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_promotion_id_assignments_delete_with_http_info(promotion_id, buyer_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str promotion_id: ID of the promotion. (required)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str user_id: ID of the user.
+        :param str user_group_id: ID of the user group.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['promotion_id', 'buyer_id', 'user_id', 'user_group_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method promotions_promotion_id_assignments_delete" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'promotion_id' is set
+        if ('promotion_id' not in params) or (params['promotion_id'] is None):
+            raise ValueError("Missing the required parameter `promotion_id` when calling `promotions_promotion_id_assignments_delete`")
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `promotions_promotion_id_assignments_delete`")
+
+        resource_path = '/promotions/{promotionID}/assignments'.replace('{format}', 'json')
+        path_params = {}
+        if 'promotion_id' in params:
+            path_params['promotionID'] = params['promotion_id']
+
+        query_params = {}
+        if 'buyer_id' in params:
+            query_params['buyerID'] = params['buyer_id']
+        if 'user_id' in params:
+            query_params['userID'] = params['user_id']
+        if 'user_group_id' in params:
+            query_params['userGroupID'] = params['user_group_id']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def promotions_promotion_id_delete(self, promotion_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_promotion_id_delete(promotion_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str promotion_id: ID of the promotion. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.promotions_promotion_id_delete_with_http_info(promotion_id, **kwargs)
+        else:
+            (data) = self.promotions_promotion_id_delete_with_http_info(promotion_id, **kwargs)
+            return data
+
+    def promotions_promotion_id_delete_with_http_info(self, promotion_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_promotion_id_delete_with_http_info(promotion_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str promotion_id: ID of the promotion. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['promotion_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method promotions_promotion_id_delete" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'promotion_id' is set
+        if ('promotion_id' not in params) or (params['promotion_id'] is None):
+            raise ValueError("Missing the required parameter `promotion_id` when calling `promotions_promotion_id_delete`")
+
+        resource_path = '/promotions/{promotionID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'promotion_id' in params:
+            path_params['promotionID'] = params['promotion_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def promotions_promotion_id_get(self, promotion_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_promotion_id_get(promotion_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str promotion_id: ID of the promotion. (required)
+        :return: Promotion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.promotions_promotion_id_get_with_http_info(promotion_id, **kwargs)
+        else:
+            (data) = self.promotions_promotion_id_get_with_http_info(promotion_id, **kwargs)
+            return data
+
+    def promotions_promotion_id_get_with_http_info(self, promotion_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_promotion_id_get_with_http_info(promotion_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str promotion_id: ID of the promotion. (required)
+        :return: Promotion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['promotion_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method promotions_promotion_id_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'promotion_id' is set
+        if ('promotion_id' not in params) or (params['promotion_id'] is None):
+            raise ValueError("Missing the required parameter `promotion_id` when calling `promotions_promotion_id_get`")
+
+        resource_path = '/promotions/{promotionID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'promotion_id' in params:
+            path_params['promotionID'] = params['promotion_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Promotion',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def promotions_promotion_id_patch(self, promotion_id, partial_promotion, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.promotions_promotion_id_patch(promotion_id, partial_promotion, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -751,12 +851,12 @@ class PromotionApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(promotion_id, partial_promotion, **kwargs)
+            return self.promotions_promotion_id_patch_with_http_info(promotion_id, partial_promotion, **kwargs)
         else:
-            (data) = self.patch_with_http_info(promotion_id, partial_promotion, **kwargs)
+            (data) = self.promotions_promotion_id_patch_with_http_info(promotion_id, partial_promotion, **kwargs)
             return data
 
-    def patch_with_http_info(self, promotion_id, partial_promotion, **kwargs):
+    def promotions_promotion_id_patch_with_http_info(self, promotion_id, partial_promotion, **kwargs):
         """
         
         
@@ -767,7 +867,7 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(promotion_id, partial_promotion, callback=callback_function)
+        >>> thread = api.promotions_promotion_id_patch_with_http_info(promotion_id, partial_promotion, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -787,16 +887,16 @@ class PromotionApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method patch" % key
+                    " to method promotions_promotion_id_patch" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'promotion_id' is set
         if ('promotion_id' not in params) or (params['promotion_id'] is None):
-            raise ValueError("Missing the required parameter `promotion_id` when calling `patch`")
+            raise ValueError("Missing the required parameter `promotion_id` when calling `promotions_promotion_id_patch`")
         # verify the required parameter 'partial_promotion' is set
         if ('partial_promotion' not in params) or (params['partial_promotion'] is None):
-            raise ValueError("Missing the required parameter `partial_promotion` when calling `patch`")
+            raise ValueError("Missing the required parameter `partial_promotion` when calling `promotions_promotion_id_patch`")
 
         resource_path = '/promotions/{promotionID}'.replace('{format}', 'json')
         path_params = {}
@@ -839,7 +939,7 @@ class PromotionApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def save_assignment(self, assignment, **kwargs):
+    def promotions_promotion_id_put(self, promotion_id, promo, **kwargs):
         """
         
         
@@ -850,111 +950,7 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.save_assignment(assignment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param PromotionAssignment assignment:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.save_assignment_with_http_info(assignment, **kwargs)
-        else:
-            (data) = self.save_assignment_with_http_info(assignment, **kwargs)
-            return data
-
-    def save_assignment_with_http_info(self, assignment, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.save_assignment_with_http_info(assignment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param PromotionAssignment assignment:  (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['assignment']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method save_assignment" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'assignment' is set
-        if ('assignment' not in params) or (params['assignment'] is None):
-            raise ValueError("Missing the required parameter `assignment` when calling `save_assignment`")
-
-        resource_path = '/promotions/assignments'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'assignment' in params:
-            body_params = params['assignment']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def update(self, promotion_id, promo, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.update(promotion_id, promo, callback=callback_function)
+        >>> thread = api.promotions_promotion_id_put(promotion_id, promo, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -966,12 +962,12 @@ class PromotionApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(promotion_id, promo, **kwargs)
+            return self.promotions_promotion_id_put_with_http_info(promotion_id, promo, **kwargs)
         else:
-            (data) = self.update_with_http_info(promotion_id, promo, **kwargs)
+            (data) = self.promotions_promotion_id_put_with_http_info(promotion_id, promo, **kwargs)
             return data
 
-    def update_with_http_info(self, promotion_id, promo, **kwargs):
+    def promotions_promotion_id_put_with_http_info(self, promotion_id, promo, **kwargs):
         """
         
         
@@ -982,7 +978,7 @@ class PromotionApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(promotion_id, promo, callback=callback_function)
+        >>> thread = api.promotions_promotion_id_put_with_http_info(promotion_id, promo, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -1002,16 +998,16 @@ class PromotionApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
+                    " to method promotions_promotion_id_put" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'promotion_id' is set
         if ('promotion_id' not in params) or (params['promotion_id'] is None):
-            raise ValueError("Missing the required parameter `promotion_id` when calling `update`")
+            raise ValueError("Missing the required parameter `promotion_id` when calling `promotions_promotion_id_put`")
         # verify the required parameter 'promo' is set
         if ('promo' not in params) or (params['promo'] is None):
-            raise ValueError("Missing the required parameter `promo` when calling `update`")
+            raise ValueError("Missing the required parameter `promo` when calling `promotions_promotion_id_put`")
 
         resource_path = '/promotions/{promotionID}'.replace('{format}', 'json')
         path_params = {}

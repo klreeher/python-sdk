@@ -4,11 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
+**from_user** | [**User**](User.md) |  | [optional] 
 **from_company_id** | **str** |  | [optional] 
 **from_user_id** | **str** |  | [optional] 
-**from_user_first_name** | **str** |  | [optional] 
-**from_user_last_name** | **str** |  | [optional] 
 **billing_address_id** | **str** |  | [optional] 
 **billing_address** | [**Address**](Address.md) |  | [optional] 
 **shipping_address_id** | **str** |  | [optional] 

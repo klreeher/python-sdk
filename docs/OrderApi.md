@@ -4,32 +4,30 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_promotion**](OrderApi.md#add_promotion) | **POST** /buyers/{buyerID}/orders/{orderID}/promotions/{promoCode} | 
-[**approve**](OrderApi.md#approve) | **POST** /buyers/{buyerID}/orders/{orderID}/approve | 
-[**cancel**](OrderApi.md#cancel) | **POST** /buyers/{buyerID}/orders/{orderID}/cancel | 
-[**create**](OrderApi.md#create) | **POST** /buyers/{buyerID}/orders | 
-[**decline**](OrderApi.md#decline) | **POST** /buyers/{buyerID}/orders/{orderID}/decline | 
-[**delete**](OrderApi.md#delete) | **DELETE** /buyers/{buyerID}/orders/{orderID} | 
-[**get**](OrderApi.md#get) | **GET** /buyers/{buyerID}/orders/{orderID} | 
-[**list_approvals**](OrderApi.md#list_approvals) | **GET** /buyers/{buyerID}/orders/{orderID}/approvals | 
-[**list_eligible_approvers**](OrderApi.md#list_eligible_approvers) | **GET** /buyers/{buyerID}/orders/{orderID}/eligibleapprovers | 
-[**list_incoming**](OrderApi.md#list_incoming) | **GET** /orders/incoming | 
-[**list_outgoing**](OrderApi.md#list_outgoing) | **GET** /orders/outgoing | 
-[**list_promotions**](OrderApi.md#list_promotions) | **GET** /buyers/{buyerID}/orders/{orderID}/promotions | 
-[**patch**](OrderApi.md#patch) | **PATCH** /buyers/{buyerID}/orders/{orderID} | 
-[**patch_billing_address**](OrderApi.md#patch_billing_address) | **PATCH** /buyers/{buyerID}/orders/{orderID}/billto | 
-[**patch_shipping_address**](OrderApi.md#patch_shipping_address) | **PATCH** /buyers/{buyerID}/orders/{orderID}/shipto | 
-[**remove_promotion**](OrderApi.md#remove_promotion) | **DELETE** /buyers/{buyerID}/orders/{orderID}/promotions/{promoCode} | 
-[**set_billing_address**](OrderApi.md#set_billing_address) | **PUT** /buyers/{buyerID}/orders/{orderID}/billto | 
-[**set_shipping_address**](OrderApi.md#set_shipping_address) | **PUT** /buyers/{buyerID}/orders/{orderID}/shipto | 
-[**ship**](OrderApi.md#ship) | **POST** /buyers/{buyerID}/orders/{orderID}/ship | 
-[**submit**](OrderApi.md#submit) | **POST** /buyers/{buyerID}/orders/{orderID}/submit | 
-[**transfer_temp_user_order**](OrderApi.md#transfer_temp_user_order) | **PUT** /buyers/{buyerID}/orders | 
-[**update**](OrderApi.md#update) | **PUT** /buyers/{buyerID}/orders/{orderID} | 
+[**orders_direction_get**](OrderApi.md#orders_direction_get) | **GET** /orders/{direction} | 
+[**orders_direction_order_id_approvals_get**](OrderApi.md#orders_direction_order_id_approvals_get) | **GET** /orders/{direction}/{orderID}/approvals | 
+[**orders_direction_order_id_approve_post**](OrderApi.md#orders_direction_order_id_approve_post) | **POST** /orders/{direction}/{orderID}/approve | 
+[**orders_direction_order_id_billto_patch**](OrderApi.md#orders_direction_order_id_billto_patch) | **PATCH** /orders/{direction}/{orderID}/billto | 
+[**orders_direction_order_id_billto_put**](OrderApi.md#orders_direction_order_id_billto_put) | **PUT** /orders/{direction}/{orderID}/billto | 
+[**orders_direction_order_id_cancel_post**](OrderApi.md#orders_direction_order_id_cancel_post) | **POST** /orders/{direction}/{orderID}/cancel | 
+[**orders_direction_order_id_decline_post**](OrderApi.md#orders_direction_order_id_decline_post) | **POST** /orders/{direction}/{orderID}/decline | 
+[**orders_direction_order_id_delete**](OrderApi.md#orders_direction_order_id_delete) | **DELETE** /orders/{direction}/{orderID} | 
+[**orders_direction_order_id_eligibleapprovers_get**](OrderApi.md#orders_direction_order_id_eligibleapprovers_get) | **GET** /orders/{direction}/{orderID}/eligibleapprovers | 
+[**orders_direction_order_id_get**](OrderApi.md#orders_direction_order_id_get) | **GET** /orders/{direction}/{orderID} | 
+[**orders_direction_order_id_patch**](OrderApi.md#orders_direction_order_id_patch) | **PATCH** /orders/{direction}/{orderID} | 
+[**orders_direction_order_id_promotions_get**](OrderApi.md#orders_direction_order_id_promotions_get) | **GET** /orders/{direction}/{orderID}/promotions | 
+[**orders_direction_order_id_promotions_promo_code_delete**](OrderApi.md#orders_direction_order_id_promotions_promo_code_delete) | **DELETE** /orders/{direction}/{orderID}/promotions/{promoCode} | 
+[**orders_direction_order_id_promotions_promo_code_post**](OrderApi.md#orders_direction_order_id_promotions_promo_code_post) | **POST** /orders/{direction}/{orderID}/promotions/{promoCode} | 
+[**orders_direction_order_id_put**](OrderApi.md#orders_direction_order_id_put) | **PUT** /orders/{direction}/{orderID} | 
+[**orders_direction_order_id_ship_post**](OrderApi.md#orders_direction_order_id_ship_post) | **POST** /orders/{direction}/{orderID}/ship | 
+[**orders_direction_order_id_shipto_patch**](OrderApi.md#orders_direction_order_id_shipto_patch) | **PATCH** /orders/{direction}/{orderID}/shipto | 
+[**orders_direction_order_id_shipto_put**](OrderApi.md#orders_direction_order_id_shipto_put) | **PUT** /orders/{direction}/{orderID}/shipto | 
+[**orders_direction_order_id_submit_post**](OrderApi.md#orders_direction_order_id_submit_post) | **POST** /orders/{direction}/{orderID}/submit | 
+[**orders_direction_post**](OrderApi.md#orders_direction_post) | **POST** /orders/{direction} | 
 
 
-# **add_promotion**
-> Promotion add_promotion(buyer_id, order_id, promo_code)
+# **orders_direction_get**
+> ListOrder orders_direction_get(direction, buyer_id=buyer_id, supplier_id=supplier_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -41,28 +39,42 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-promo_code = 'promo_code_example' # str | Promo code of the order.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
+supplier_id = 'supplier_id_example' # str | ID of the supplier. (optional)
+_from = '_from_example' # str | Lower bound of date range that the order was created. (optional)
+to = 'to_example' # str | Upper bound of date range that the order was created. (optional)
+search = 'search_example' # str | Search of the order. (optional)
+search_on = ['search_on_example'] # list[str] | Search on of the order. (optional)
+sort_by = ['sort_by_example'] # list[str] | Sort by of the order. (optional)
+page = 56 # int | Page of the order. (optional)
+page_size = 56 # int | Page size of the order. (optional)
 
 try: 
-    response = OrderApi.add_promotion(buyer_id, order_id, promo_code)
+    response = OrderApi.orders_direction_get(direction, buyer_id=buyer_id, supplier_id=supplier_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->add_promotion: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **promo_code** | **str**| Promo code of the order. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **buyer_id** | **str**| ID of the buyer. | [optional] 
+ **supplier_id** | **str**| ID of the supplier. | [optional] 
+ **_from** | **str**| Lower bound of date range that the order was created. | [optional] 
+ **to** | **str**| Upper bound of date range that the order was created. | [optional] 
+ **search** | **str**| Search of the order. | [optional] 
+ **search_on** | [**list[str]**](str.md)| Search on of the order. | [optional] 
+ **sort_by** | [**list[str]**](str.md)| Sort by of the order. | [optional] 
+ **page** | **int**| Page of the order. | [optional] 
+ **page_size** | **int**| Page size of the order. | [optional] 
 
 ### Return type
 
-[**Promotion**](Promotion.md)
+[**ListOrder**](ListOrder.md)
 
 ### Authorization
 
@@ -75,8 +87,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **approve**
-> Order approve(buyer_id, order_id, comments=comments)
+# **orders_direction_order_id_approvals_get**
+> ListOrderApproval orders_direction_order_id_approvals_get(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -88,24 +100,79 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
-comments = 'comments_example' # str | Comments to be saved with the order approval. (optional)
+search = 'search_example' # str | Search of the order. (optional)
+search_on = ['search_on_example'] # list[str] | Search on of the order. (optional)
+sort_by = ['sort_by_example'] # list[str] | Sort by of the order. (optional)
+page = 56 # int | Page of the order. (optional)
+page_size = 56 # int | Page size of the order. (optional)
 
 try: 
-    response = OrderApi.approve(buyer_id, order_id, comments=comments)
+    response = OrderApi.orders_direction_order_id_approvals_get(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->approve: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_approvals_get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
- **comments** | **str**| Comments to be saved with the order approval. | [optional] 
+ **search** | **str**| Search of the order. | [optional] 
+ **search_on** | [**list[str]**](str.md)| Search on of the order. | [optional] 
+ **sort_by** | [**list[str]**](str.md)| Sort by of the order. | [optional] 
+ **page** | **int**| Page of the order. | [optional] 
+ **page_size** | **int**| Page size of the order. | [optional] 
+
+### Return type
+
+[**ListOrderApproval**](ListOrderApproval.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_order_id_approve_post**
+> Order orders_direction_order_id_approve_post(direction, order_id, info)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+info = OrderCloud.OrderApprovalInfo() # OrderApprovalInfo | 
+
+try: 
+    response = OrderApi.orders_direction_order_id_approve_post(direction, order_id, info)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_order_id_approve_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **info** | [**OrderApprovalInfo**](OrderApprovalInfo.md)|  | 
 
 ### Return type
 
@@ -122,8 +189,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **cancel**
-> Order cancel(buyer_id, order_id)
+# **orders_direction_order_id_billto_patch**
+> Order orders_direction_order_id_billto_patch(direction, order_id, address)
 
 
 
@@ -135,21 +202,115 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
+address = OrderCloud.Address() # Address | 
 
 try: 
-    response = OrderApi.cancel(buyer_id, order_id)
+    response = OrderApi.orders_direction_order_id_billto_patch(direction, order_id, address)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->cancel: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_billto_patch: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **address** | [**Address**](Address.md)|  | 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_order_id_billto_put**
+> Order orders_direction_order_id_billto_put(direction, order_id, address)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+address = OrderCloud.Address() # Address | 
+
+try: 
+    response = OrderApi.orders_direction_order_id_billto_put(direction, order_id, address)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_order_id_billto_put: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **address** | [**Address**](Address.md)|  | 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_order_id_cancel_post**
+> Order orders_direction_order_id_cancel_post(direction, order_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+
+try: 
+    response = OrderApi.orders_direction_order_id_cancel_post(direction, order_id)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_order_id_cancel_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
 
 ### Return type
@@ -167,8 +328,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **create**
-> Order create(buyer_id, order)
+# **orders_direction_order_id_decline_post**
+> Order orders_direction_order_id_decline_post(direction, order_id, info)
 
 
 
@@ -180,69 +341,24 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order = OrderCloud.Order() # Order | 
-
-try: 
-    response = OrderApi.create(buyer_id, order)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order** | [**Order**](Order.md)|  | 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **decline**
-> Order decline(buyer_id, order_id, comments=comments)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
-comments = 'comments_example' # str | Comments to be saved with the order denial. (optional)
+info = OrderCloud.OrderApprovalInfo() # OrderApprovalInfo | 
 
 try: 
-    response = OrderApi.decline(buyer_id, order_id, comments=comments)
+    response = OrderApi.orders_direction_order_id_decline_post(direction, order_id, info)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->decline: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_decline_post: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
- **comments** | **str**| Comments to be saved with the order denial. | [optional] 
+ **info** | [**OrderApprovalInfo**](OrderApprovalInfo.md)|  | 
 
 ### Return type
 
@@ -259,8 +375,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete**
-> delete(buyer_id, order_id)
+# **orders_direction_order_id_delete**
+> orders_direction_order_id_delete(direction, order_id)
 
 
 
@@ -272,20 +388,20 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 
 try: 
-    OrderApi.delete(buyer_id, order_id)
+    OrderApi.orders_direction_order_id_delete(direction, order_id)
 except ApiException as e:
-    print("Exception when calling OrderApi->delete: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_delete: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
 
 ### Return type
@@ -303,8 +419,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get**
-> Order get(buyer_id, order_id)
+# **orders_direction_order_id_eligibleapprovers_get**
+> ListUser orders_direction_order_id_eligibleapprovers_get(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -316,21 +432,76 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
+search = 'search_example' # str | Search of the order. (optional)
+search_on = ['search_on_example'] # list[str] | Search on of the order. (optional)
+sort_by = ['sort_by_example'] # list[str] | Sort by of the order. (optional)
+page = 56 # int | Page of the order. (optional)
+page_size = 56 # int | Page size of the order. (optional)
 
 try: 
-    response = OrderApi.get(buyer_id, order_id)
+    response = OrderApi.orders_direction_order_id_eligibleapprovers_get(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->get: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_eligibleapprovers_get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **search** | **str**| Search of the order. | [optional] 
+ **search_on** | [**list[str]**](str.md)| Search on of the order. | [optional] 
+ **sort_by** | [**list[str]**](str.md)| Sort by of the order. | [optional] 
+ **page** | **int**| Page of the order. | [optional] 
+ **page_size** | **int**| Page size of the order. | [optional] 
+
+### Return type
+
+[**ListUser**](ListUser.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_order_id_get**
+> Order orders_direction_order_id_get(direction, order_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+
+try: 
+    response = OrderApi.orders_direction_order_id_get(direction, order_id)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_order_id_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
 
 ### Return type
@@ -348,8 +519,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_approvals**
-> ListOrderApproval list_approvals(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+# **orders_direction_order_id_patch**
+> Order orders_direction_order_id_patch(direction, order_id, partial_order)
 
 
 
@@ -361,311 +532,22 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = OrderApi.list_approvals(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->list_approvals: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListOrderApproval**](ListOrderApproval.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_eligible_approvers**
-> ListUser list_eligible_approvers(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = OrderApi.list_eligible_approvers(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->list_eligible_approvers: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListUser**](ListUser.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_incoming**
-> ListOrder list_incoming(buyer_id=buyer_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
-_from = '_from_example' # str | Lower bound of date range that the order was submitted. (optional)
-to = 'to_example' # str | Upper bound of date range that the order was submitted. (optional)
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = OrderApi.list_incoming(buyer_id=buyer_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->list_incoming: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | [optional] 
- **_from** | **str**| Lower bound of date range that the order was submitted. | [optional] 
- **to** | **str**| Upper bound of date range that the order was submitted. | [optional] 
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListOrder**](ListOrder.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_outgoing**
-> ListOrder list_outgoing(buyer_id=buyer_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
-_from = '_from_example' # str | Lower bound of date range that the order was created. (optional)
-to = 'to_example' # str | Upper bound of date range that the order was created. (optional)
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = OrderApi.list_outgoing(buyer_id=buyer_id, _from=_from, to=to, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->list_outgoing: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | [optional] 
- **_from** | **str**| Lower bound of date range that the order was created. | [optional] 
- **to** | **str**| Upper bound of date range that the order was created. | [optional] 
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListOrder**](ListOrder.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_promotions**
-> ListOrderPromotion list_promotions(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = OrderApi.list_promotions(buyer_id, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->list_promotions: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListOrderPromotion**](ListOrderPromotion.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **patch**
-> Order patch(buyer_id, order_id, partial_order)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 partial_order = OrderCloud.Order() # Order | 
 
 try: 
-    response = OrderApi.patch(buyer_id, order_id, partial_order)
+    response = OrderApi.orders_direction_order_id_patch(direction, order_id, partial_order)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->patch: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_patch: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **partial_order** | [**Order**](Order.md)|  | 
 
@@ -684,8 +566,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patch_billing_address**
-> Order patch_billing_address(buyer_id, order_id, address)
+# **orders_direction_order_id_promotions_get**
+> ListOrderPromotion orders_direction_order_id_promotions_get(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -697,28 +579,36 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
-address = OrderCloud.Address() # Address | 
+search = 'search_example' # str | Search of the order. (optional)
+search_on = ['search_on_example'] # list[str] | Search on of the order. (optional)
+sort_by = ['sort_by_example'] # list[str] | Sort by of the order. (optional)
+page = 56 # int | Page of the order. (optional)
+page_size = 56 # int | Page size of the order. (optional)
 
 try: 
-    response = OrderApi.patch_billing_address(buyer_id, order_id, address)
+    response = OrderApi.orders_direction_order_id_promotions_get(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->patch_billing_address: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_promotions_get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
- **address** | [**Address**](Address.md)|  | 
+ **search** | **str**| Search of the order. | [optional] 
+ **search_on** | [**list[str]**](str.md)| Search on of the order. | [optional] 
+ **sort_by** | [**list[str]**](str.md)| Sort by of the order. | [optional] 
+ **page** | **int**| Page of the order. | [optional] 
+ **page_size** | **int**| Page size of the order. | [optional] 
 
 ### Return type
 
-[**Order**](Order.md)
+[**ListOrderPromotion**](ListOrderPromotion.md)
 
 ### Authorization
 
@@ -731,8 +621,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patch_shipping_address**
-> Order patch_shipping_address(buyer_id, order_id, address)
+# **orders_direction_order_id_promotions_promo_code_delete**
+> Order orders_direction_order_id_promotions_promo_code_delete(direction, order_id, promo_code)
 
 
 
@@ -744,69 +634,22 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-address = OrderCloud.Address() # Address | 
-
-try: 
-    response = OrderApi.patch_shipping_address(buyer_id, order_id, address)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->patch_shipping_address: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **address** | [**Address**](Address.md)|  | 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **remove_promotion**
-> Order remove_promotion(buyer_id, order_id, promo_code)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 promo_code = 'promo_code_example' # str | Promo code of the order.
 
 try: 
-    response = OrderApi.remove_promotion(buyer_id, order_id, promo_code)
+    response = OrderApi.orders_direction_order_id_promotions_promo_code_delete(direction, order_id, promo_code)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->remove_promotion: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_promotions_promo_code_delete: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **promo_code** | **str**| Promo code of the order. | 
 
@@ -825,8 +668,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **set_billing_address**
-> Order set_billing_address(buyer_id, order_id, address)
+# **orders_direction_order_id_promotions_promo_code_post**
+> Promotion orders_direction_order_id_promotions_promo_code_post(direction, order_id, promo_code)
 
 
 
@@ -838,28 +681,28 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
-address = OrderCloud.Address() # Address | 
+promo_code = 'promo_code_example' # str | Promo code of the order.
 
 try: 
-    response = OrderApi.set_billing_address(buyer_id, order_id, address)
+    response = OrderApi.orders_direction_order_id_promotions_promo_code_post(direction, order_id, promo_code)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->set_billing_address: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_promotions_promo_code_post: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
- **address** | [**Address**](Address.md)|  | 
+ **promo_code** | **str**| Promo code of the order. | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**Promotion**](Promotion.md)
 
 ### Authorization
 
@@ -872,8 +715,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **set_shipping_address**
-> Order set_shipping_address(buyer_id, order_id, address)
+# **orders_direction_order_id_put**
+> Order orders_direction_order_id_put(direction, order_id, order)
 
 
 
@@ -885,206 +728,254 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-address = OrderCloud.Address() # Address | 
-
-try: 
-    response = OrderApi.set_shipping_address(buyer_id, order_id, address)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->set_shipping_address: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **address** | [**Address**](Address.md)|  | 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ship**
-> Order ship(buyer_id, order_id, shipment)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-shipment = OrderCloud.Shipment() # Shipment | 
-
-try: 
-    response = OrderApi.ship(buyer_id, order_id, shipment)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->ship: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
- **shipment** | [**Shipment**](Shipment.md)|  | 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **submit**
-> Order submit(buyer_id, order_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-order_id = 'order_id_example' # str | ID of the order.
-
-try: 
-    response = OrderApi.submit(buyer_id, order_id)
-    print(response)
-except ApiException as e:
-    print("Exception when calling OrderApi->submit: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **order_id** | **str**| ID of the order. | 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **transfer_temp_user_order**
-> transfer_temp_user_order(buyer_id, temp_user_token)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-temp_user_token = 'temp_user_token_example' # str | Temp user token of the order.
-
-try: 
-    OrderApi.transfer_temp_user_order(buyer_id, temp_user_token)
-except ApiException as e:
-    print("Exception when calling OrderApi->transfer_temp_user_order: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **temp_user_token** | **str**| Temp user token of the order. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update**
-> Order update(buyer_id, order_id, order)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-OrderApi = OrderCloud.OrderApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 order = OrderCloud.Order() # Order | 
 
 try: 
-    response = OrderApi.update(buyer_id, order_id, order)
+    response = OrderApi.orders_direction_order_id_put(direction, order_id, order)
     print(response)
 except ApiException as e:
-    print("Exception when calling OrderApi->update: %s\n" % e)
+    print("Exception when calling OrderApi->orders_direction_order_id_put: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order_id** | **str**| ID of the order. | 
+ **order** | [**Order**](Order.md)|  | 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_order_id_ship_post**
+> Order orders_direction_order_id_ship_post(direction, order_id, shipment)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+shipment = OrderCloud.BuyerShipment() # BuyerShipment | 
+
+try: 
+    response = OrderApi.orders_direction_order_id_ship_post(direction, order_id, shipment)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_order_id_ship_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **shipment** | [**BuyerShipment**](BuyerShipment.md)|  | 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_order_id_shipto_patch**
+> Order orders_direction_order_id_shipto_patch(direction, order_id, address)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+address = OrderCloud.Address() # Address | 
+
+try: 
+    response = OrderApi.orders_direction_order_id_shipto_patch(direction, order_id, address)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_order_id_shipto_patch: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **address** | [**Address**](Address.md)|  | 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_order_id_shipto_put**
+> Order orders_direction_order_id_shipto_put(direction, order_id, address)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+address = OrderCloud.Address() # Address | 
+
+try: 
+    response = OrderApi.orders_direction_order_id_shipto_put(direction, order_id, address)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_order_id_shipto_put: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **address** | [**Address**](Address.md)|  | 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_order_id_submit_post**
+> Order orders_direction_order_id_submit_post(direction, order_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+
+try: 
+    response = OrderApi.orders_direction_order_id_submit_post(direction, order_id)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_order_id_submit_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **orders_direction_post**
+> Order orders_direction_post(direction, order)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+OrderApi = OrderCloud.OrderApi
+direction = 'direction_example' # str | Direction of the order. Possible values: Incoming, Outgoing.
+order = OrderCloud.Order() # Order | 
+
+try: 
+    response = OrderApi.orders_direction_post(direction, order)
+    print(response)
+except ApiException as e:
+    print("Exception when calling OrderApi->orders_direction_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order. Possible values: Incoming, Outgoing. | 
  **order** | [**Order**](Order.md)|  | 
 
 ### Return type

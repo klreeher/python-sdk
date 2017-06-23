@@ -42,9 +42,9 @@ class TestPasswordResetApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_reset_password(self):
+    def test_reset_password_by_verification_code(self):
         """
-        Test case for reset_password
+        Test case for reset_password_by_verification_code
 
         
         """

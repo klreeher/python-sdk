@@ -4,30 +4,183 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](ProductApi.md#create) | **POST** /products | 
-[**delete**](ProductApi.md#delete) | **DELETE** /products/{productID} | 
-[**delete_assignment**](ProductApi.md#delete_assignment) | **DELETE** /products/{productID}/assignments/{buyerID} | 
-[**generate_variants**](ProductApi.md#generate_variants) | **POST** /products/{productID}/variants/generate | 
-[**get**](ProductApi.md#get) | **GET** /products/{productID} | 
-[**get_inventory**](ProductApi.md#get_inventory) | **GET** /products/{productID}/inventory | 
-[**get_variant**](ProductApi.md#get_variant) | **GET** /products/{productID}/variants/{variantID} | 
-[**get_variant_inventory**](ProductApi.md#get_variant_inventory) | **GET** /products/{productID}/variants/inventory/{variantID} | 
-[**list**](ProductApi.md#list) | **GET** /products | 
-[**list_assignments**](ProductApi.md#list_assignments) | **GET** /products/assignments | 
-[**list_inventory**](ProductApi.md#list_inventory) | **GET** /products/inventory | 
-[**list_variant_inventory**](ProductApi.md#list_variant_inventory) | **GET** /products/{productID}/variants/inventory | 
-[**list_variants**](ProductApi.md#list_variants) | **GET** /products/{productID}/variants | 
-[**patch**](ProductApi.md#patch) | **PATCH** /products/{productID} | 
-[**patch_variant**](ProductApi.md#patch_variant) | **PATCH** /products/{productID}/variants/{variantID} | 
-[**save_assignment**](ProductApi.md#save_assignment) | **POST** /products/assignments | 
-[**update**](ProductApi.md#update) | **PUT** /products/{productID} | 
-[**update_inventory**](ProductApi.md#update_inventory) | **PUT** /products/{productID}/inventory/{inventory} | 
-[**update_variant**](ProductApi.md#update_variant) | **PUT** /products/{productID}/variants/{variantID} | 
-[**update_variant_inventory**](ProductApi.md#update_variant_inventory) | **PUT** /products/{productID}/variants/inventory/{variantID}/{inventory} | 
+[**products_assignments_get**](ProductApi.md#products_assignments_get) | **GET** /products/assignments | 
+[**products_assignments_post**](ProductApi.md#products_assignments_post) | **POST** /products/assignments | 
+[**products_get**](ProductApi.md#products_get) | **GET** /products | 
+[**products_post**](ProductApi.md#products_post) | **POST** /products | 
+[**products_product_id_assignments_buyer_id_delete**](ProductApi.md#products_product_id_assignments_buyer_id_delete) | **DELETE** /products/{productID}/assignments/{buyerID} | 
+[**products_product_id_delete**](ProductApi.md#products_product_id_delete) | **DELETE** /products/{productID} | 
+[**products_product_id_get**](ProductApi.md#products_product_id_get) | **GET** /products/{productID} | 
+[**products_product_id_patch**](ProductApi.md#products_product_id_patch) | **PATCH** /products/{productID} | 
+[**products_product_id_put**](ProductApi.md#products_product_id_put) | **PUT** /products/{productID} | 
+[**products_product_id_suppliers_get**](ProductApi.md#products_product_id_suppliers_get) | **GET** /products/{productID}/suppliers | 
+[**products_product_id_suppliers_supplier_id_delete**](ProductApi.md#products_product_id_suppliers_supplier_id_delete) | **DELETE** /products/{productID}/suppliers/{supplierID} | 
+[**products_product_id_suppliers_supplier_id_put**](ProductApi.md#products_product_id_suppliers_supplier_id_put) | **PUT** /products/{productID}/suppliers/{supplierID} | 
+[**products_product_id_variants_generate_post**](ProductApi.md#products_product_id_variants_generate_post) | **POST** /products/{productID}/variants/generate | 
+[**products_product_id_variants_get**](ProductApi.md#products_product_id_variants_get) | **GET** /products/{productID}/variants | 
+[**products_product_id_variants_variant_id_get**](ProductApi.md#products_product_id_variants_variant_id_get) | **GET** /products/{productID}/variants/{variantID} | 
+[**products_product_id_variants_variant_id_patch**](ProductApi.md#products_product_id_variants_variant_id_patch) | **PATCH** /products/{productID}/variants/{variantID} | 
+[**products_product_id_variants_variant_id_put**](ProductApi.md#products_product_id_variants_variant_id_put) | **PUT** /products/{productID}/variants/{variantID} | 
 
 
-# **create**
-> Product create(product)
+# **products_assignments_get**
+> ListProductAssignment products_assignments_get(product_id=product_id, price_schedule_id=price_schedule_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_id = 'product_id_example' # str | ID of the product. (optional)
+price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule. (optional)
+buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
+user_id = 'user_id_example' # str | ID of the user. (optional)
+user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
+level = 'level_example' # str | Level of the product. (optional)
+page = 56 # int | Page of the product. (optional)
+page_size = 56 # int | Page size of the product. (optional)
+
+try: 
+    response = ProductApi.products_assignments_get(product_id=product_id, price_schedule_id=price_schedule_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_assignments_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| ID of the product. | [optional] 
+ **price_schedule_id** | **str**| ID of the price schedule. | [optional] 
+ **buyer_id** | **str**| ID of the buyer. | [optional] 
+ **user_id** | **str**| ID of the user. | [optional] 
+ **user_group_id** | **str**| ID of the user group. | [optional] 
+ **level** | **str**| Level of the product. | [optional] 
+ **page** | **int**| Page of the product. | [optional] 
+ **page_size** | **int**| Page size of the product. | [optional] 
+
+### Return type
+
+[**ListProductAssignment**](ListProductAssignment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_assignments_post**
+> products_assignments_post(product_assignment)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_assignment = OrderCloud.ProductAssignment() # ProductAssignment | 
+
+try: 
+    ProductApi.products_assignments_post(product_assignment)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_assignments_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_assignment** | [**ProductAssignment**](ProductAssignment.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_get**
+> ListProduct products_get(catalog_id=catalog_id, category_id=category_id, supplier_id=supplier_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+catalog_id = 'catalog_id_example' # str | ID of the catalog. (optional)
+category_id = 'category_id_example' # str | ID of the category. (optional)
+supplier_id = 'supplier_id_example' # str | ID of the supplier. (optional)
+search = 'search_example' # str | Search of the product. (optional)
+search_on = ['search_on_example'] # list[str] | Search on of the product. (optional)
+sort_by = ['sort_by_example'] # list[str] | Sort by of the product. (optional)
+page = 56 # int | Page of the product. (optional)
+page_size = 56 # int | Page size of the product. (optional)
+
+try: 
+    response = ProductApi.products_get(catalog_id=catalog_id, category_id=category_id, supplier_id=supplier_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **catalog_id** | **str**| ID of the catalog. | [optional] 
+ **category_id** | **str**| ID of the category. | [optional] 
+ **supplier_id** | **str**| ID of the supplier. | [optional] 
+ **search** | **str**| Search of the product. | [optional] 
+ **search_on** | [**list[str]**](str.md)| Search on of the product. | [optional] 
+ **sort_by** | [**list[str]**](str.md)| Sort by of the product. | [optional] 
+ **page** | **int**| Page of the product. | [optional] 
+ **page_size** | **int**| Page size of the product. | [optional] 
+
+### Return type
+
+[**ListProduct**](ListProduct.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_post**
+> Product products_post(product)
 
 
 
@@ -42,10 +195,10 @@ ProductApi = OrderCloud.ProductApi
 product = OrderCloud.Product() # Product | 
 
 try: 
-    response = ProductApi.create(product)
+    response = ProductApi.products_post(product)
     print(response)
 except ApiException as e:
-    print("Exception when calling ProductApi->create: %s\n" % e)
+    print("Exception when calling ProductApi->products_post: %s\n" % e)
 ```
 
 ### Parameters
@@ -69,8 +222,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete**
-> delete(product_id)
+# **products_product_id_assignments_buyer_id_delete**
+> products_product_id_assignments_buyer_id_delete(product_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
 
 
 
@@ -83,64 +236,22 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
-
-try: 
-    ProductApi.delete(product_id)
-except ApiException as e:
-    print("Exception when calling ProductApi->delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_assignment**
-> delete_assignment(buyer_id, product_id, user_id=user_id, user_group_id=user_group_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
-product_id = 'product_id_example' # str | ID of the product.
 user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 
 try: 
-    ProductApi.delete_assignment(buyer_id, product_id, user_id=user_id, user_group_id=user_group_id)
+    ProductApi.products_product_id_assignments_buyer_id_delete(product_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
 except ApiException as e:
-    print("Exception when calling ProductApi->delete_assignment: %s\n" % e)
+    print("Exception when calling ProductApi->products_product_id_assignments_buyer_id_delete: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
  **product_id** | **str**| ID of the product. | 
+ **buyer_id** | **str**| ID of the buyer. | 
  **user_id** | **str**| ID of the user. | [optional] 
  **user_group_id** | **str**| ID of the user group. | [optional] 
 
@@ -159,8 +270,324 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **generate_variants**
-> Product generate_variants(product_id, overwrite_existing=overwrite_existing)
+# **products_product_id_delete**
+> products_product_id_delete(product_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_id = 'product_id_example' # str | ID of the product.
+
+try: 
+    ProductApi.products_product_id_delete(product_id)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_product_id_delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| ID of the product. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_product_id_get**
+> Product products_product_id_get(product_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_id = 'product_id_example' # str | ID of the product.
+
+try: 
+    response = ProductApi.products_product_id_get(product_id)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_product_id_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| ID of the product. | 
+
+### Return type
+
+[**Product**](Product.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_product_id_patch**
+> Product products_product_id_patch(product_id, product)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_id = 'product_id_example' # str | ID of the product.
+product = OrderCloud.Product() # Product | 
+
+try: 
+    response = ProductApi.products_product_id_patch(product_id, product)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_product_id_patch: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| ID of the product. | 
+ **product** | [**Product**](Product.md)|  | 
+
+### Return type
+
+[**Product**](Product.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_product_id_put**
+> Product products_product_id_put(product_id, product)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_id = 'product_id_example' # str | ID of the product.
+product = OrderCloud.Product() # Product | 
+
+try: 
+    response = ProductApi.products_product_id_put(product_id, product)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_product_id_put: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| ID of the product. | 
+ **product** | [**Product**](Product.md)|  | 
+
+### Return type
+
+[**Product**](Product.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_product_id_suppliers_get**
+> ListSupplier products_product_id_suppliers_get(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_id = 'product_id_example' # str | ID of the product.
+search = 'search_example' # str | Search of the product. (optional)
+search_on = ['search_on_example'] # list[str] | Search on of the product. (optional)
+sort_by = ['sort_by_example'] # list[str] | Sort by of the product. (optional)
+page = 56 # int | Page of the product. (optional)
+page_size = 56 # int | Page size of the product. (optional)
+
+try: 
+    response = ProductApi.products_product_id_suppliers_get(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_product_id_suppliers_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| ID of the product. | 
+ **search** | **str**| Search of the product. | [optional] 
+ **search_on** | [**list[str]**](str.md)| Search on of the product. | [optional] 
+ **sort_by** | [**list[str]**](str.md)| Sort by of the product. | [optional] 
+ **page** | **int**| Page of the product. | [optional] 
+ **page_size** | **int**| Page size of the product. | [optional] 
+
+### Return type
+
+[**ListSupplier**](ListSupplier.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_product_id_suppliers_supplier_id_delete**
+> products_product_id_suppliers_supplier_id_delete(product_id, supplier_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_id = 'product_id_example' # str | ID of the product.
+supplier_id = 'supplier_id_example' # str | ID of the supplier.
+
+try: 
+    ProductApi.products_product_id_suppliers_supplier_id_delete(product_id, supplier_id)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_product_id_suppliers_supplier_id_delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| ID of the product. | 
+ **supplier_id** | **str**| ID of the supplier. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_product_id_suppliers_supplier_id_put**
+> products_product_id_suppliers_supplier_id_put(product_id, supplier_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ProductApi = OrderCloud.ProductApi
+product_id = 'product_id_example' # str | ID of the product.
+supplier_id = 'supplier_id_example' # str | ID of the supplier.
+
+try: 
+    ProductApi.products_product_id_suppliers_supplier_id_put(product_id, supplier_id)
+except ApiException as e:
+    print("Exception when calling ProductApi->products_product_id_suppliers_supplier_id_put: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **product_id** | **str**| ID of the product. | 
+ **supplier_id** | **str**| ID of the supplier. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **products_product_id_variants_generate_post**
+> Product products_product_id_variants_generate_post(product_id, overwrite_existing=overwrite_existing)
 
 
 
@@ -176,10 +603,10 @@ product_id = 'product_id_example' # str | ID of the product.
 overwrite_existing = true # bool | Overwrite existing of the product. (optional)
 
 try: 
-    response = ProductApi.generate_variants(product_id, overwrite_existing=overwrite_existing)
+    response = ProductApi.products_product_id_variants_generate_post(product_id, overwrite_existing=overwrite_existing)
     print(response)
 except ApiException as e:
-    print("Exception when calling ProductApi->generate_variants: %s\n" % e)
+    print("Exception when calling ProductApi->products_product_id_variants_generate_post: %s\n" % e)
 ```
 
 ### Parameters
@@ -204,8 +631,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get**
-> Product get(product_id)
+# **products_product_id_variants_get**
+> ListVariant products_product_id_variants_get(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
 
 
 
@@ -218,12 +645,17 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
+search = 'search_example' # str | Search of the product. (optional)
+search_on = ['search_on_example'] # list[str] | Search on of the product. (optional)
+sort_by = ['sort_by_example'] # list[str] | Sort by of the product. (optional)
+page = 56 # int | Page of the product. (optional)
+page_size = 56 # int | Page size of the product. (optional)
 
 try: 
-    response = ProductApi.get(product_id)
+    response = ProductApi.products_product_id_variants_get(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
     print(response)
 except ApiException as e:
-    print("Exception when calling ProductApi->get: %s\n" % e)
+    print("Exception when calling ProductApi->products_product_id_variants_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -231,412 +663,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **product_id** | **str**| ID of the product. | 
-
-### Return type
-
-[**Product**](Product.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_inventory**
-> Inventory get_inventory(product_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product.
-
-try: 
-    response = ProductApi.get_inventory(product_id)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->get_inventory: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
-
-### Return type
-
-[**Inventory**](Inventory.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_variant**
-> Variant get_variant(product_id, variant_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product.
-variant_id = 'variant_id_example' # str | ID of the variant.
-
-try: 
-    response = ProductApi.get_variant(product_id, variant_id)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->get_variant: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
- **variant_id** | **str**| ID of the variant. | 
-
-### Return type
-
-[**Variant**](Variant.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_variant_inventory**
-> Inventory get_variant_inventory(product_id, variant_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product.
-variant_id = 'variant_id_example' # str | ID of the variant.
-
-try: 
-    response = ProductApi.get_variant_inventory(product_id, variant_id)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->get_variant_inventory: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
- **variant_id** | **str**| ID of the variant. | 
-
-### Return type
-
-[**Inventory**](Inventory.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list**
-> ListProduct list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = ProductApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListProduct**](ListProduct.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_assignments**
-> ListProductAssignment list_assignments(product_id=product_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, price_schedule_id=price_schedule_id, page=page, page_size=page_size)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product. (optional)
-buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
-user_id = 'user_id_example' # str | ID of the user. (optional)
-user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
-level = 'level_example' # str | Level of the product. (optional)
-price_schedule_id = 'price_schedule_id_example' # str | ID of the price schedule. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-
-try: 
-    response = ProductApi.list_assignments(product_id=product_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, price_schedule_id=price_schedule_id, page=page, page_size=page_size)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->list_assignments: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | [optional] 
- **buyer_id** | **str**| ID of the buyer. | [optional] 
- **user_id** | **str**| ID of the user. | [optional] 
- **user_group_id** | **str**| ID of the user group. | [optional] 
- **level** | **str**| Level of the product. | [optional] 
- **price_schedule_id** | **str**| ID of the price schedule. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
-
-### Return type
-
-[**ListProductAssignment**](ListProductAssignment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_inventory**
-> ListInventory list_inventory(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = ProductApi.list_inventory(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->list_inventory: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListInventory**](ListInventory.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_variant_inventory**
-> ListInventory list_variant_inventory(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product.
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = ProductApi.list_variant_inventory(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->list_variant_inventory: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
-
-### Return type
-
-[**ListInventory**](ListInventory.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_variants**
-> ListVariant list_variants(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product.
-search = 'search_example' # str | Word or phrase to search for. (optional)
-search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
-sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
-page = 56 # int | Page of results to return. Default: 1 (optional)
-page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
-filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
-
-try: 
-    response = ProductApi.list_variants(product_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->list_variants: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
- **search** | **str**| Word or phrase to search for. | [optional] 
- **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
- **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
- **page** | **int**| Page of results to return. Default: 1 | [optional] 
- **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
- **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
+ **search** | **str**| Search of the product. | [optional] 
+ **search_on** | [**list[str]**](str.md)| Search on of the product. | [optional] 
+ **sort_by** | [**list[str]**](str.md)| Sort by of the product. | [optional] 
+ **page** | **int**| Page of the product. | [optional] 
+ **page_size** | **int**| Page size of the product. | [optional] 
 
 ### Return type
 
@@ -653,8 +684,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patch**
-> Product patch(product_id, product)
+# **products_product_id_variants_variant_id_get**
+> Variant products_product_id_variants_variant_id_get(product_id, variant_id)
 
 
 
@@ -667,13 +698,13 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 ProductApi = OrderCloud.ProductApi
 product_id = 'product_id_example' # str | ID of the product.
-product = OrderCloud.Product() # Product | 
+variant_id = 'variant_id_example' # str | ID of the variant.
 
 try: 
-    response = ProductApi.patch(product_id, product)
+    response = ProductApi.products_product_id_variants_variant_id_get(product_id, variant_id)
     print(response)
 except ApiException as e:
-    print("Exception when calling ProductApi->patch: %s\n" % e)
+    print("Exception when calling ProductApi->products_product_id_variants_variant_id_get: %s\n" % e)
 ```
 
 ### Parameters
@@ -681,11 +712,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **product_id** | **str**| ID of the product. | 
- **product** | [**Product**](Product.md)|  | 
+ **variant_id** | **str**| ID of the variant. | 
 
 ### Return type
 
-[**Product**](Product.md)
+[**Variant**](Variant.md)
 
 ### Authorization
 
@@ -698,8 +729,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patch_variant**
-> Variant patch_variant(product_id, variant_id, variant)
+# **products_product_id_variants_variant_id_patch**
+> Variant products_product_id_variants_variant_id_patch(product_id, variant_id, variant)
 
 
 
@@ -716,10 +747,10 @@ variant_id = 'variant_id_example' # str | ID of the variant.
 variant = OrderCloud.Variant() # Variant | 
 
 try: 
-    response = ProductApi.patch_variant(product_id, variant_id, variant)
+    response = ProductApi.products_product_id_variants_variant_id_patch(product_id, variant_id, variant)
     print(response)
 except ApiException as e:
-    print("Exception when calling ProductApi->patch_variant: %s\n" % e)
+    print("Exception when calling ProductApi->products_product_id_variants_variant_id_patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -745,140 +776,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **save_assignment**
-> save_assignment(product_assignment)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_assignment = OrderCloud.ProductAssignment() # ProductAssignment | 
-
-try: 
-    ProductApi.save_assignment(product_assignment)
-except ApiException as e:
-    print("Exception when calling ProductApi->save_assignment: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_assignment** | [**ProductAssignment**](ProductAssignment.md)|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update**
-> Product update(product_id, product)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product.
-product = OrderCloud.Product() # Product | 
-
-try: 
-    response = ProductApi.update(product_id, product)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
- **product** | [**Product**](Product.md)|  | 
-
-### Return type
-
-[**Product**](Product.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_inventory**
-> Inventory update_inventory(product_id, inventory)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product.
-inventory = 56 # int | Inventory of the product.
-
-try: 
-    response = ProductApi.update_inventory(product_id, inventory)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->update_inventory: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
- **inventory** | **int**| Inventory of the product. | 
-
-### Return type
-
-[**Inventory**](Inventory.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_variant**
-> Variant update_variant(product_id, variant_id, variant)
+# **products_product_id_variants_variant_id_put**
+> Variant products_product_id_variants_variant_id_put(product_id, variant_id, variant)
 
 
 
@@ -895,10 +794,10 @@ variant_id = 'variant_id_example' # str | ID of the variant.
 variant = OrderCloud.Variant() # Variant | 
 
 try: 
-    response = ProductApi.update_variant(product_id, variant_id, variant)
+    response = ProductApi.products_product_id_variants_variant_id_put(product_id, variant_id, variant)
     print(response)
 except ApiException as e:
-    print("Exception when calling ProductApi->update_variant: %s\n" % e)
+    print("Exception when calling ProductApi->products_product_id_variants_variant_id_put: %s\n" % e)
 ```
 
 ### Parameters
@@ -912,53 +811,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Variant**](Variant.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_variant_inventory**
-> Inventory update_variant_inventory(product_id, variant_id, inventory)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ProductApi = OrderCloud.ProductApi
-product_id = 'product_id_example' # str | ID of the product.
-variant_id = 'variant_id_example' # str | ID of the variant.
-inventory = 56 # int | Inventory of the product.
-
-try: 
-    response = ProductApi.update_variant_inventory(product_id, variant_id, inventory)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ProductApi->update_variant_inventory: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **product_id** | **str**| ID of the product. | 
- **variant_id** | **str**| ID of the variant. | 
- **inventory** | **int**| Inventory of the product. | 
-
-### Return type
-
-[**Inventory**](Inventory.md)
 
 ### Authorization
 

@@ -90,17 +90,17 @@ class TestMeApi(unittest.TestCase):
         """
         pass
 
-    def test_get_credit_card(self):
+    def test_get_catalog(self):
         """
-        Test case for get_credit_card
+        Test case for get_catalog
 
         
         """
         pass
 
-    def test_get_order(self):
+    def test_get_credit_card(self):
         """
-        Test case for get_order
+        Test case for get_credit_card
 
         
         """
@@ -117,6 +117,14 @@ class TestMeApi(unittest.TestCase):
     def test_get_promotion(self):
         """
         Test case for get_promotion
+
+        
+        """
+        pass
+
+    def test_get_shipment(self):
+        """
+        Test case for get_shipment
 
         
         """
@@ -146,6 +154,22 @@ class TestMeApi(unittest.TestCase):
         """
         pass
 
+    def test_list_approvable_orders(self):
+        """
+        Test case for list_approvable_orders
+
+        
+        """
+        pass
+
+    def test_list_catalogs(self):
+        """
+        Test case for list_catalogs
+
+        
+        """
+        pass
+
     def test_list_categories(self):
         """
         Test case for list_categories
@@ -170,17 +194,9 @@ class TestMeApi(unittest.TestCase):
         """
         pass
 
-    def test_list_incoming_orders(self):
+    def test_list_orders(self):
         """
-        Test case for list_incoming_orders
-
-        
-        """
-        pass
-
-    def test_list_outgoing_orders(self):
-        """
-        Test case for list_outgoing_orders
+        Test case for list_orders
 
         
         """
@@ -197,6 +213,22 @@ class TestMeApi(unittest.TestCase):
     def test_list_promotions(self):
         """
         Test case for list_promotions
+
+        
+        """
+        pass
+
+    def test_list_shipment_items(self):
+        """
+        Test case for list_shipment_items
+
+        
+        """
+        pass
+
+    def test_list_shipments(self):
+        """
+        Test case for list_shipments
 
         
         """
@@ -245,6 +277,30 @@ class TestMeApi(unittest.TestCase):
     def test_patch_credit_card(self):
         """
         Test case for patch_credit_card
+
+        
+        """
+        pass
+
+    def test_register(self):
+        """
+        Test case for register
+
+        
+        """
+        pass
+
+    def test_reset_password_by_token(self):
+        """
+        Test case for reset_password_by_token
+
+        
+        """
+        pass
+
+    def test_transfer_anon_user_order(self):
+        """
+        Test case for transfer_anon_user_order
 
         
         """

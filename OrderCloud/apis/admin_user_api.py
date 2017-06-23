@@ -51,7 +51,7 @@ class AdminUserApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def create(self, user, **kwargs):
+    def adminusers_get(self, **kwargs):
         """
         
         
@@ -62,7 +62,124 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create(user, callback=callback_function)
+        >>> thread = api.adminusers_get(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the admin user.
+        :param list[str] search_on: Search on of the admin user.
+        :param list[str] sort_by: Sort by of the admin user.
+        :param int page: Page of the admin user.
+        :param int page_size: Page size of the admin user.
+        :return: ListUser
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.adminusers_get_with_http_info(**kwargs)
+        else:
+            (data) = self.adminusers_get_with_http_info(**kwargs)
+            return data
+
+    def adminusers_get_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.adminusers_get_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Search of the admin user.
+        :param list[str] search_on: Search on of the admin user.
+        :param list[str] sort_by: Sort by of the admin user.
+        :param int page: Page of the admin user.
+        :param int page_size: Page size of the admin user.
+        :return: ListUser
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method adminusers_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/adminusers'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListUser',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def adminusers_post(self, user, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.adminusers_post(user, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -73,12 +190,12 @@ class AdminUserApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.create_with_http_info(user, **kwargs)
+            return self.adminusers_post_with_http_info(user, **kwargs)
         else:
-            (data) = self.create_with_http_info(user, **kwargs)
+            (data) = self.adminusers_post_with_http_info(user, **kwargs)
             return data
 
-    def create_with_http_info(self, user, **kwargs):
+    def adminusers_post_with_http_info(self, user, **kwargs):
         """
         
         
@@ -89,7 +206,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.create_with_http_info(user, callback=callback_function)
+        >>> thread = api.adminusers_post_with_http_info(user, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -108,13 +225,13 @@ class AdminUserApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method create" % key
+                    " to method adminusers_post" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'user' is set
         if ('user' not in params) or (params['user'] is None):
-            raise ValueError("Missing the required parameter `user` when calling `create`")
+            raise ValueError("Missing the required parameter `user` when calling `adminusers_post`")
 
         resource_path = '/adminusers'.replace('{format}', 'json')
         path_params = {}
@@ -155,7 +272,7 @@ class AdminUserApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def delete(self, user_id, **kwargs):
+    def adminusers_user_id_delete(self, user_id, **kwargs):
         """
         
         
@@ -166,7 +283,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete(user_id, callback=callback_function)
+        >>> thread = api.adminusers_user_id_delete(user_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -177,12 +294,12 @@ class AdminUserApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.delete_with_http_info(user_id, **kwargs)
+            return self.adminusers_user_id_delete_with_http_info(user_id, **kwargs)
         else:
-            (data) = self.delete_with_http_info(user_id, **kwargs)
+            (data) = self.adminusers_user_id_delete_with_http_info(user_id, **kwargs)
             return data
 
-    def delete_with_http_info(self, user_id, **kwargs):
+    def adminusers_user_id_delete_with_http_info(self, user_id, **kwargs):
         """
         
         
@@ -193,7 +310,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.delete_with_http_info(user_id, callback=callback_function)
+        >>> thread = api.adminusers_user_id_delete_with_http_info(user_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -212,13 +329,13 @@ class AdminUserApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method delete" % key
+                    " to method adminusers_user_id_delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'user_id' is set
         if ('user_id' not in params) or (params['user_id'] is None):
-            raise ValueError("Missing the required parameter `user_id` when calling `delete`")
+            raise ValueError("Missing the required parameter `user_id` when calling `adminusers_user_id_delete`")
 
         resource_path = '/adminusers/{userID}'.replace('{format}', 'json')
         path_params = {}
@@ -259,7 +376,7 @@ class AdminUserApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def get(self, user_id, **kwargs):
+    def adminusers_user_id_get(self, user_id, **kwargs):
         """
         
         
@@ -270,7 +387,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get(user_id, callback=callback_function)
+        >>> thread = api.adminusers_user_id_get(user_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -281,12 +398,12 @@ class AdminUserApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.get_with_http_info(user_id, **kwargs)
+            return self.adminusers_user_id_get_with_http_info(user_id, **kwargs)
         else:
-            (data) = self.get_with_http_info(user_id, **kwargs)
+            (data) = self.adminusers_user_id_get_with_http_info(user_id, **kwargs)
             return data
 
-    def get_with_http_info(self, user_id, **kwargs):
+    def adminusers_user_id_get_with_http_info(self, user_id, **kwargs):
         """
         
         
@@ -297,7 +414,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.get_with_http_info(user_id, callback=callback_function)
+        >>> thread = api.adminusers_user_id_get_with_http_info(user_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -316,13 +433,13 @@ class AdminUserApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get" % key
+                    " to method adminusers_user_id_get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'user_id' is set
         if ('user_id' not in params) or (params['user_id'] is None):
-            raise ValueError("Missing the required parameter `user_id` when calling `get`")
+            raise ValueError("Missing the required parameter `user_id` when calling `adminusers_user_id_get`")
 
         resource_path = '/adminusers/{userID}'.replace('{format}', 'json')
         path_params = {}
@@ -363,7 +480,7 @@ class AdminUserApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def list(self, **kwargs):
+    def adminusers_user_id_patch(self, user_id, user, **kwargs):
         """
         
         
@@ -374,128 +491,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.list(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListUser
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.list_with_http_info(**kwargs)
-        else:
-            (data) = self.list_with_http_info(**kwargs)
-            return data
-
-    def list_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.list_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Word or phrase to search for.
-        :param str search_on: Comma-delimited list of fields to search on.
-        :param str sort_by: Comma-delimited list of fields to sort by.
-        :param int page: Page of results to return. Default: 1
-        :param int page_size: Number of results to return per page. Default: 20, max: 100.
-        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
-        :return: ListUser
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method list" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/adminusers'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-        if 'filters' in params:
-            query_params['filters'] = params['filters']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListUser',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def patch(self, user_id, user, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.patch(user_id, user, callback=callback_function)
+        >>> thread = api.adminusers_user_id_patch(user_id, user, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -507,12 +503,12 @@ class AdminUserApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.patch_with_http_info(user_id, user, **kwargs)
+            return self.adminusers_user_id_patch_with_http_info(user_id, user, **kwargs)
         else:
-            (data) = self.patch_with_http_info(user_id, user, **kwargs)
+            (data) = self.adminusers_user_id_patch_with_http_info(user_id, user, **kwargs)
             return data
 
-    def patch_with_http_info(self, user_id, user, **kwargs):
+    def adminusers_user_id_patch_with_http_info(self, user_id, user, **kwargs):
         """
         
         
@@ -523,7 +519,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.patch_with_http_info(user_id, user, callback=callback_function)
+        >>> thread = api.adminusers_user_id_patch_with_http_info(user_id, user, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -543,16 +539,16 @@ class AdminUserApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method patch" % key
+                    " to method adminusers_user_id_patch" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'user_id' is set
         if ('user_id' not in params) or (params['user_id'] is None):
-            raise ValueError("Missing the required parameter `user_id` when calling `patch`")
+            raise ValueError("Missing the required parameter `user_id` when calling `adminusers_user_id_patch`")
         # verify the required parameter 'user' is set
         if ('user' not in params) or (params['user'] is None):
-            raise ValueError("Missing the required parameter `user` when calling `patch`")
+            raise ValueError("Missing the required parameter `user` when calling `adminusers_user_id_patch`")
 
         resource_path = '/adminusers/{userID}'.replace('{format}', 'json')
         path_params = {}
@@ -595,7 +591,7 @@ class AdminUserApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def update(self, user_id, user, **kwargs):
+    def adminusers_user_id_put(self, user_id, user, **kwargs):
         """
         
         
@@ -606,7 +602,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update(user_id, user, callback=callback_function)
+        >>> thread = api.adminusers_user_id_put(user_id, user, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -618,12 +614,12 @@ class AdminUserApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.update_with_http_info(user_id, user, **kwargs)
+            return self.adminusers_user_id_put_with_http_info(user_id, user, **kwargs)
         else:
-            (data) = self.update_with_http_info(user_id, user, **kwargs)
+            (data) = self.adminusers_user_id_put_with_http_info(user_id, user, **kwargs)
             return data
 
-    def update_with_http_info(self, user_id, user, **kwargs):
+    def adminusers_user_id_put_with_http_info(self, user_id, user, **kwargs):
         """
         
         
@@ -634,7 +630,7 @@ class AdminUserApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.update_with_http_info(user_id, user, callback=callback_function)
+        >>> thread = api.adminusers_user_id_put_with_http_info(user_id, user, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -654,16 +650,16 @@ class AdminUserApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method update" % key
+                    " to method adminusers_user_id_put" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'user_id' is set
         if ('user_id' not in params) or (params['user_id'] is None):
-            raise ValueError("Missing the required parameter `user_id` when calling `update`")
+            raise ValueError("Missing the required parameter `user_id` when calling `adminusers_user_id_put`")
         # verify the required parameter 'user' is set
         if ('user' not in params) or (params['user'] is None):
-            raise ValueError("Missing the required parameter `user` when calling `update`")
+            raise ValueError("Missing the required parameter `user` when calling `adminusers_user_id_put`")
 
         resource_path = '/adminusers/{userID}'.replace('{format}', 'json')
         path_params = {}

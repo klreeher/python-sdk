@@ -28,13 +28,13 @@ from __future__ import absolute_import
 from .models.access_token import AccessToken
 from .models.address import Address
 from .models.address_assignment import AddressAssignment
-from .models.admin_company import AdminCompany
 from .models.approval_rule import ApprovalRule
 from .models.base_spec import BaseSpec
 from .models.buyer import Buyer
 from .models.buyer_address import BuyerAddress
 from .models.buyer_credit_card import BuyerCreditCard
 from .models.buyer_product import BuyerProduct
+from .models.buyer_shipment import BuyerShipment
 from .models.buyer_spec import BuyerSpec
 from .models.catalog import Catalog
 from .models.catalog_assignment import CatalogAssignment
@@ -46,18 +46,20 @@ from .models.cost_center_assignment import CostCenterAssignment
 from .models.credit_card import CreditCard
 from .models.credit_card_assignment import CreditCardAssignment
 from .models.impersonate_token_request import ImpersonateTokenRequest
+from .models.impersonation_config import ImpersonationConfig
 from .models.inventory import Inventory
 from .models.line_item import LineItem
 from .models.line_item_product import LineItemProduct
 from .models.line_item_spec import LineItemSpec
 from .models.list_address import ListAddress
 from .models.list_address_assignment import ListAddressAssignment
-from .models.list_admin_company import ListAdminCompany
 from .models.list_approval_rule import ListApprovalRule
+from .models.list_args import ListArgs
 from .models.list_buyer import ListBuyer
 from .models.list_buyer_address import ListBuyerAddress
 from .models.list_buyer_credit_card import ListBuyerCreditCard
 from .models.list_buyer_product import ListBuyerProduct
+from .models.list_buyer_shipment import ListBuyerShipment
 from .models.list_buyer_spec import ListBuyerSpec
 from .models.list_catalog import ListCatalog
 from .models.list_catalog_assignment import ListCatalogAssignment
@@ -68,9 +70,10 @@ from .models.list_cost_center import ListCostCenter
 from .models.list_cost_center_assignment import ListCostCenterAssignment
 from .models.list_credit_card import ListCreditCard
 from .models.list_credit_card_assignment import ListCreditCardAssignment
-from .models.list_inventory import ListInventory
+from .models.list_impersonation_config import ListImpersonationConfig
 from .models.list_line_item import ListLineItem
 from .models.list_message_cc_listener_assignment import ListMessageCCListenerAssignment
+from .models.list_message_config import ListMessageConfig
 from .models.list_message_sender import ListMessageSender
 from .models.list_message_sender_assignment import ListMessageSenderAssignment
 from .models.list_order import ListOrder
@@ -80,37 +83,44 @@ from .models.list_payment import ListPayment
 from .models.list_price_schedule import ListPriceSchedule
 from .models.list_product import ListProduct
 from .models.list_product_assignment import ListProductAssignment
+from .models.list_product_catalog_assignment import ListProductCatalogAssignment
 from .models.list_promotion import ListPromotion
 from .models.list_promotion_assignment import ListPromotionAssignment
 from .models.list_security_profile import ListSecurityProfile
 from .models.list_security_profile_assignment import ListSecurityProfileAssignment
 from .models.list_shipment import ListShipment
+from .models.list_shipment_item import ListShipmentItem
 from .models.list_spec import ListSpec
 from .models.list_spec_option import ListSpecOption
 from .models.list_spec_product_assignment import ListSpecProductAssignment
 from .models.list_spending_account import ListSpendingAccount
 from .models.list_spending_account_assignment import ListSpendingAccountAssignment
+from .models.list_supplier import ListSupplier
 from .models.list_user import ListUser
 from .models.list_user_group import ListUserGroup
 from .models.list_user_group_assignment import ListUserGroupAssignment
 from .models.list_variant import ListVariant
-from .models.list_xp_index import ListXpIndex
+from .models.me_buyer import MeBuyer
+from .models.me_user import MeUser
 from .models.message_cc_listener_assignment import MessageCCListenerAssignment
+from .models.message_config import MessageConfig
 from .models.message_sender import MessageSender
 from .models.message_sender_assignment import MessageSenderAssignment
 from .models.meta import Meta
 from .models.order import Order
 from .models.order_approval import OrderApproval
+from .models.order_approval_info import OrderApprovalInfo
 from .models.order_promotion import OrderPromotion
 from .models.password_reset import PasswordReset
 from .models.password_reset_request import PasswordResetRequest
 from .models.payment import Payment
 from .models.payment_transaction import PaymentTransaction
-from .models.ping_response import PingResponse
 from .models.price_break import PriceBreak
 from .models.price_schedule import PriceSchedule
 from .models.product import Product
 from .models.product_assignment import ProductAssignment
+from .models.product_base import ProductBase
+from .models.product_catalog_assignment import ProductCatalogAssignment
 from .models.promotion import Promotion
 from .models.promotion_assignment import PromotionAssignment
 from .models.security_profile import SecurityProfile
@@ -122,12 +132,12 @@ from .models.spec_option import SpecOption
 from .models.spec_product_assignment import SpecProductAssignment
 from .models.spending_account import SpendingAccount
 from .models.spending_account_assignment import SpendingAccountAssignment
-from .models.stripe_credit_card import StripeCreditCard
+from .models.supplier import Supplier
+from .models.token_password_reset import TokenPasswordReset
 from .models.user import User
 from .models.user_group import UserGroup
 from .models.user_group_assignment import UserGroupAssignment
 from .models.variant import Variant
-from .models.xp_index import XpIndex
 
 # import apis into sdk package
 from .apis.address_api import AddressApi
@@ -150,6 +160,8 @@ from .apis.cost_center_api import CostCenterApi
 CostCenterApi = CostCenterApi()
 from .apis.credit_card_api import CreditCardApi
 CreditCardApi = CreditCardApi()
+from .apis.impersonation_config_api import ImpersonationConfigApi
+ImpersonationConfigApi = ImpersonationConfigApi()
 from .apis.line_item_api import LineItemApi
 LineItemApi = LineItemApi()
 from .apis.me_api import MeApi
@@ -176,6 +188,12 @@ from .apis.spec_api import SpecApi
 SpecApi = SpecApi()
 from .apis.spending_account_api import SpendingAccountApi
 SpendingAccountApi = SpendingAccountApi()
+from .apis.supplier_api import SupplierApi
+SupplierApi = SupplierApi()
+from .apis.supplier_user_api import SupplierUserApi
+SupplierUserApi = SupplierUserApi()
+from .apis.supplier_user_group_api import SupplierUserGroupApi
+SupplierUserGroupApi = SupplierUserGroupApi()
 from .apis.user_api import UserApi
 UserApi = UserApi()
 from .apis.user_group_api import UserGroupApi
@@ -189,7 +207,7 @@ from .configuration import Configuration
 configuration = Configuration()
 
 #import the auth class
-from .api_auth import Auth
-from .api_auth import Impersonation
+from .apis.auth_api import Auth
+from .apis.auth_api import Impersonation
 auth = Auth()
 impersonation = Impersonation()
