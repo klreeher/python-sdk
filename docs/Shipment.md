@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**buyer_id** | **str** |  | [optional] 
 **id** | **str** |  | [optional] 
+**buyer_id** | **str** |  | [optional] 
 **shipper** | **str** |  | [optional] 
 **date_shipped** | **str** |  | [optional] 
 **date_delivered** | **str** |  | [optional] 

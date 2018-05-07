@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**xp** | **object** |  | [optional] 
 **id** | **str** |  | [optional] 
 **product_id** | **str** |  | [optional] 
 **quantity** | **int** |  | [optional] 
@@ -19,7 +20,6 @@ Name | Type | Description | Notes
 **shipping_address** | [**Address**](Address.md) |  | [optional] 
 **ship_from_address** | [**Address**](Address.md) |  | [optional] 
 **specs** | [**list[LineItemSpec]**](LineItemSpec.md) |  | [optional] 
-**xp** | **object** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

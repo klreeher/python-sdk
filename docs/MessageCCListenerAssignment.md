@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message_sender_assignment** | [**MessageSenderAssignment**](MessageSenderAssignment.md) |  | [optional] 
 **message_config_name** | **str** |  | [optional] 
+**message_config_description** | **str** |  | [optional] 
 **message_type** | **str** |  | [optional] 
 **buyer_id** | **str** |  | [optional] 
 **user_group_id** | **str** |  | [optional] 

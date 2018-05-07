@@ -4,16 +4,59 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**buyers_buyer_id_delete**](BuyerApi.md#buyers_buyer_id_delete) | **DELETE** /buyers/{buyerID} | 
-[**buyers_buyer_id_get**](BuyerApi.md#buyers_buyer_id_get) | **GET** /buyers/{buyerID} | 
-[**buyers_buyer_id_patch**](BuyerApi.md#buyers_buyer_id_patch) | **PATCH** /buyers/{buyerID} | 
-[**buyers_buyer_id_put**](BuyerApi.md#buyers_buyer_id_put) | **PUT** /buyers/{buyerID} | 
-[**buyers_get**](BuyerApi.md#buyers_get) | **GET** /buyers | 
-[**buyers_post**](BuyerApi.md#buyers_post) | **POST** /buyers | 
+[**create**](BuyerApi.md#create) | **POST** /buyers | 
+[**delete**](BuyerApi.md#delete) | **DELETE** /buyers/{buyerID} | 
+[**get**](BuyerApi.md#get) | **GET** /buyers/{buyerID} | 
+[**list**](BuyerApi.md#list) | **GET** /buyers | 
+[**patch**](BuyerApi.md#patch) | **PATCH** /buyers/{buyerID} | 
+[**save**](BuyerApi.md#save) | **PUT** /buyers/{buyerID} | 
 
 
-# **buyers_buyer_id_delete**
-> buyers_buyer_id_delete(buyer_id)
+# **create**
+> Buyer create(buyer)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+BuyerApi = OrderCloud.BuyerApi
+buyer = OrderCloud.Buyer() # Buyer | 
+
+try: 
+    response = BuyerApi.create(buyer)
+    print(response)
+except ApiException as e:
+    print("Exception when calling BuyerApi->create: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **buyer** | [**Buyer**](Buyer.md)|  | 
+
+### Return type
+
+[**Buyer**](Buyer.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete**
+> delete(buyer_id)
 
 
 
@@ -28,9 +71,9 @@ BuyerApi = OrderCloud.BuyerApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 
 try: 
-    BuyerApi.buyers_buyer_id_delete(buyer_id)
+    BuyerApi.delete(buyer_id)
 except ApiException as e:
-    print("Exception when calling BuyerApi->buyers_buyer_id_delete: %s\n" % e)
+    print("Exception when calling BuyerApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -54,8 +97,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **buyers_buyer_id_get**
-> Buyer buyers_buyer_id_get(buyer_id)
+# **get**
+> Buyer get(buyer_id)
 
 
 
@@ -70,10 +113,10 @@ BuyerApi = OrderCloud.BuyerApi
 buyer_id = 'buyer_id_example' # str | ID of the buyer.
 
 try: 
-    response = BuyerApi.buyers_buyer_id_get(buyer_id)
+    response = BuyerApi.get(buyer_id)
     print(response)
 except ApiException as e:
-    print("Exception when calling BuyerApi->buyers_buyer_id_get: %s\n" % e)
+    print("Exception when calling BuyerApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -97,8 +140,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **buyers_buyer_id_patch**
-> Buyer buyers_buyer_id_patch(buyer_id, company)
+# **list**
+> ListBuyer list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
@@ -110,118 +153,30 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 BuyerApi = OrderCloud.BuyerApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-company = OrderCloud.Buyer() # Buyer | 
+search = 'search_example' # str | Word or phrase to search for. (optional)
+search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
+sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = BuyerApi.buyers_buyer_id_patch(buyer_id, company)
+    response = BuyerApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
-    print("Exception when calling BuyerApi->buyers_buyer_id_patch: %s\n" % e)
+    print("Exception when calling BuyerApi->list: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **company** | [**Buyer**](Buyer.md)|  | 
-
-### Return type
-
-[**Buyer**](Buyer.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **buyers_buyer_id_put**
-> Buyer buyers_buyer_id_put(buyer_id, company)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-BuyerApi = OrderCloud.BuyerApi
-buyer_id = 'buyer_id_example' # str | ID of the buyer.
-company = OrderCloud.Buyer() # Buyer | 
-
-try: 
-    response = BuyerApi.buyers_buyer_id_put(buyer_id, company)
-    print(response)
-except ApiException as e:
-    print("Exception when calling BuyerApi->buyers_buyer_id_put: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **buyer_id** | **str**| ID of the buyer. | 
- **company** | [**Buyer**](Buyer.md)|  | 
-
-### Return type
-
-[**Buyer**](Buyer.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **buyers_get**
-> ListBuyer buyers_get(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-BuyerApi = OrderCloud.BuyerApi
-search = 'search_example' # str | Search of the buyer. (optional)
-search_on = ['search_on_example'] # list[str] | Search on of the buyer. (optional)
-sort_by = ['sort_by_example'] # list[str] | Sort by of the buyer. (optional)
-page = 56 # int | Page of the buyer. (optional)
-page_size = 56 # int | Page size of the buyer. (optional)
-
-try: 
-    response = BuyerApi.buyers_get(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    print(response)
-except ApiException as e:
-    print("Exception when calling BuyerApi->buyers_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **str**| Search of the buyer. | [optional] 
- **search_on** | [**list[str]**](str.md)| Search on of the buyer. | [optional] 
- **sort_by** | [**list[str]**](str.md)| Sort by of the buyer. | [optional] 
- **page** | **int**| Page of the buyer. | [optional] 
- **page_size** | **int**| Page size of the buyer. | [optional] 
+ **search** | **str**| Word or phrase to search for. | [optional] 
+ **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
+ **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
@@ -238,8 +193,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **buyers_post**
-> Buyer buyers_post(company)
+# **patch**
+> Buyer patch(buyer_id, partial_buyer)
 
 
 
@@ -251,20 +206,67 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 BuyerApi = OrderCloud.BuyerApi
-company = OrderCloud.Buyer() # Buyer | 
+buyer_id = 'buyer_id_example' # str | ID of the buyer.
+partial_buyer = OrderCloud.Buyer() # Buyer | 
 
 try: 
-    response = BuyerApi.buyers_post(company)
+    response = BuyerApi.patch(buyer_id, partial_buyer)
     print(response)
 except ApiException as e:
-    print("Exception when calling BuyerApi->buyers_post: %s\n" % e)
+    print("Exception when calling BuyerApi->patch: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **company** | [**Buyer**](Buyer.md)|  | 
+ **buyer_id** | **str**| ID of the buyer. | 
+ **partial_buyer** | [**Buyer**](Buyer.md)|  | 
+
+### Return type
+
+[**Buyer**](Buyer.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **save**
+> Buyer save(buyer_id, buyer)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+BuyerApi = OrderCloud.BuyerApi
+buyer_id = 'buyer_id_example' # str | ID of the buyer.
+buyer = OrderCloud.Buyer() # Buyer | 
+
+try: 
+    response = BuyerApi.save(buyer_id, buyer)
+    print(response)
+except ApiException as e:
+    print("Exception when calling BuyerApi->save: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **buyer_id** | **str**| ID of the buyer. | 
+ **buyer** | [**Buyer**](Buyer.md)|  | 
 
 ### Return type
 

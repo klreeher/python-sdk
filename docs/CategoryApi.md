@@ -4,22 +4,22 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**catalogs_catalog_id_categories_assignments_get**](CategoryApi.md#catalogs_catalog_id_categories_assignments_get) | **GET** /catalogs/{catalogID}/categories/assignments | 
-[**catalogs_catalog_id_categories_assignments_post**](CategoryApi.md#catalogs_catalog_id_categories_assignments_post) | **POST** /catalogs/{catalogID}/categories/assignments | 
-[**catalogs_catalog_id_categories_category_id_assignments_delete**](CategoryApi.md#catalogs_catalog_id_categories_category_id_assignments_delete) | **DELETE** /catalogs/{catalogID}/categories/{categoryID}/assignments | 
-[**catalogs_catalog_id_categories_category_id_delete**](CategoryApi.md#catalogs_catalog_id_categories_category_id_delete) | **DELETE** /catalogs/{catalogID}/categories/{categoryID} | 
-[**catalogs_catalog_id_categories_category_id_get**](CategoryApi.md#catalogs_catalog_id_categories_category_id_get) | **GET** /catalogs/{catalogID}/categories/{categoryID} | 
-[**catalogs_catalog_id_categories_category_id_patch**](CategoryApi.md#catalogs_catalog_id_categories_category_id_patch) | **PATCH** /catalogs/{catalogID}/categories/{categoryID} | 
-[**catalogs_catalog_id_categories_category_id_productassignments_product_id_delete**](CategoryApi.md#catalogs_catalog_id_categories_category_id_productassignments_product_id_delete) | **DELETE** /catalogs/{catalogID}/categories/{categoryID}/productassignments/{productID} | 
-[**catalogs_catalog_id_categories_category_id_put**](CategoryApi.md#catalogs_catalog_id_categories_category_id_put) | **PUT** /catalogs/{catalogID}/categories/{categoryID} | 
-[**catalogs_catalog_id_categories_get**](CategoryApi.md#catalogs_catalog_id_categories_get) | **GET** /catalogs/{catalogID}/categories | 
-[**catalogs_catalog_id_categories_post**](CategoryApi.md#catalogs_catalog_id_categories_post) | **POST** /catalogs/{catalogID}/categories | 
-[**catalogs_catalog_id_categories_productassignments_get**](CategoryApi.md#catalogs_catalog_id_categories_productassignments_get) | **GET** /catalogs/{catalogID}/categories/productassignments | 
-[**catalogs_catalog_id_categories_productassignments_post**](CategoryApi.md#catalogs_catalog_id_categories_productassignments_post) | **POST** /catalogs/{catalogID}/categories/productassignments | 
+[**create**](CategoryApi.md#create) | **POST** /catalogs/{catalogID}/categories | 
+[**delete**](CategoryApi.md#delete) | **DELETE** /catalogs/{catalogID}/categories/{categoryID} | 
+[**delete_assignment**](CategoryApi.md#delete_assignment) | **DELETE** /catalogs/{catalogID}/categories/{categoryID}/assignments | 
+[**delete_product_assignment**](CategoryApi.md#delete_product_assignment) | **DELETE** /catalogs/{catalogID}/categories/{categoryID}/productassignments/{productID} | 
+[**get**](CategoryApi.md#get) | **GET** /catalogs/{catalogID}/categories/{categoryID} | 
+[**list**](CategoryApi.md#list) | **GET** /catalogs/{catalogID}/categories | 
+[**list_assignments**](CategoryApi.md#list_assignments) | **GET** /catalogs/{catalogID}/categories/assignments | 
+[**list_product_assignments**](CategoryApi.md#list_product_assignments) | **GET** /catalogs/{catalogID}/categories/productassignments | 
+[**patch**](CategoryApi.md#patch) | **PATCH** /catalogs/{catalogID}/categories/{categoryID} | 
+[**save**](CategoryApi.md#save) | **PUT** /catalogs/{catalogID}/categories/{categoryID} | 
+[**save_assignment**](CategoryApi.md#save_assignment) | **POST** /catalogs/{catalogID}/categories/assignments | 
+[**save_product_assignment**](CategoryApi.md#save_product_assignment) | **POST** /catalogs/{catalogID}/categories/productassignments | 
 
 
-# **catalogs_catalog_id_categories_assignments_get**
-> ListCategoryAssignment catalogs_catalog_id_categories_assignments_get(catalog_id, category_id=category_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+# **create**
+> Category create(catalog_id, category)
 
 
 
@@ -32,19 +32,13 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 CategoryApi = OrderCloud.CategoryApi
 catalog_id = 'catalog_id_example' # str | ID of the catalog.
-category_id = 'category_id_example' # str | ID of the category. (optional)
-buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
-user_id = 'user_id_example' # str | ID of the user. (optional)
-user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
-level = 'level_example' # str | Level of the category. (optional)
-page = 56 # int | Page of the category. (optional)
-page_size = 56 # int | Page size of the category. (optional)
+category = OrderCloud.Category() # Category | 
 
 try: 
-    response = CategoryApi.catalogs_catalog_id_categories_assignments_get(catalog_id, category_id=category_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    response = CategoryApi.create(catalog_id, category)
     print(response)
 except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_assignments_get: %s\n" % e)
+    print("Exception when calling CategoryApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -52,17 +46,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalog_id** | **str**| ID of the catalog. | 
- **category_id** | **str**| ID of the category. | [optional] 
- **buyer_id** | **str**| ID of the buyer. | [optional] 
- **user_id** | **str**| ID of the user. | [optional] 
- **user_group_id** | **str**| ID of the user group. | [optional] 
- **level** | **str**| Level of the category. | [optional] 
- **page** | **int**| Page of the category. | [optional] 
- **page_size** | **int**| Page size of the category. | [optional] 
+ **category** | [**Category**](Category.md)|  | 
 
 ### Return type
 
-[**ListCategoryAssignment**](ListCategoryAssignment.md)
+[**Category**](Category.md)
 
 ### Authorization
 
@@ -75,8 +63,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **catalogs_catalog_id_categories_assignments_post**
-> catalogs_catalog_id_categories_assignments_post(catalog_id, category_assignment)
+# **delete**
+> delete(catalog_id, category_id)
 
 
 
@@ -89,12 +77,12 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 CategoryApi = OrderCloud.CategoryApi
 catalog_id = 'catalog_id_example' # str | ID of the catalog.
-category_assignment = OrderCloud.CategoryAssignment() # CategoryAssignment | 
+category_id = 'category_id_example' # str | ID of the category.
 
 try: 
-    CategoryApi.catalogs_catalog_id_categories_assignments_post(catalog_id, category_assignment)
+    CategoryApi.delete(catalog_id, category_id)
 except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_assignments_post: %s\n" % e)
+    print("Exception when calling CategoryApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -102,7 +90,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalog_id** | **str**| ID of the catalog. | 
- **category_assignment** | [**CategoryAssignment**](CategoryAssignment.md)|  | 
+ **category_id** | **str**| ID of the category. | 
 
 ### Return type
 
@@ -119,8 +107,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **catalogs_catalog_id_categories_category_id_assignments_delete**
-> catalogs_catalog_id_categories_category_id_assignments_delete(catalog_id, category_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
+# **delete_assignment**
+> delete_assignment(catalog_id, category_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
 
 
 
@@ -139,9 +127,9 @@ user_id = 'user_id_example' # str | ID of the user. (optional)
 user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
 
 try: 
-    CategoryApi.catalogs_catalog_id_categories_category_id_assignments_delete(catalog_id, category_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
+    CategoryApi.delete_assignment(catalog_id, category_id, buyer_id, user_id=user_id, user_group_id=user_group_id)
 except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_category_id_assignments_delete: %s\n" % e)
+    print("Exception when calling CategoryApi->delete_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -169,144 +157,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **catalogs_catalog_id_categories_category_id_delete**
-> catalogs_catalog_id_categories_category_id_delete(catalog_id, category_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi
-catalog_id = 'catalog_id_example' # str | ID of the catalog.
-category_id = 'category_id_example' # str | ID of the category.
-
-try: 
-    CategoryApi.catalogs_catalog_id_categories_category_id_delete(catalog_id, category_id)
-except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_category_id_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **catalog_id** | **str**| ID of the catalog. | 
- **category_id** | **str**| ID of the category. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **catalogs_catalog_id_categories_category_id_get**
-> Category catalogs_catalog_id_categories_category_id_get(catalog_id, category_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi
-catalog_id = 'catalog_id_example' # str | ID of the catalog.
-category_id = 'category_id_example' # str | ID of the category.
-
-try: 
-    response = CategoryApi.catalogs_catalog_id_categories_category_id_get(catalog_id, category_id)
-    print(response)
-except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_category_id_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **catalog_id** | **str**| ID of the catalog. | 
- **category_id** | **str**| ID of the category. | 
-
-### Return type
-
-[**Category**](Category.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **catalogs_catalog_id_categories_category_id_patch**
-> Category catalogs_catalog_id_categories_category_id_patch(catalog_id, category_id, category)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi
-catalog_id = 'catalog_id_example' # str | ID of the catalog.
-category_id = 'category_id_example' # str | ID of the category.
-category = OrderCloud.Category() # Category | 
-
-try: 
-    response = CategoryApi.catalogs_catalog_id_categories_category_id_patch(catalog_id, category_id, category)
-    print(response)
-except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_category_id_patch: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **catalog_id** | **str**| ID of the catalog. | 
- **category_id** | **str**| ID of the category. | 
- **category** | [**Category**](Category.md)|  | 
-
-### Return type
-
-[**Category**](Category.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **catalogs_catalog_id_categories_category_id_productassignments_product_id_delete**
-> catalogs_catalog_id_categories_category_id_productassignments_product_id_delete(catalog_id, category_id, product_id)
+# **delete_product_assignment**
+> delete_product_assignment(catalog_id, category_id, product_id)
 
 
 
@@ -323,9 +175,9 @@ category_id = 'category_id_example' # str | ID of the category.
 product_id = 'product_id_example' # str | ID of the product.
 
 try: 
-    CategoryApi.catalogs_catalog_id_categories_category_id_productassignments_product_id_delete(catalog_id, category_id, product_id)
+    CategoryApi.delete_product_assignment(catalog_id, category_id, product_id)
 except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_category_id_productassignments_product_id_delete: %s\n" % e)
+    print("Exception when calling CategoryApi->delete_product_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -351,8 +203,265 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **catalogs_catalog_id_categories_category_id_put**
-> Category catalogs_catalog_id_categories_category_id_put(catalog_id, category_id, category)
+# **get**
+> Category get(catalog_id, category_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+CategoryApi = OrderCloud.CategoryApi
+catalog_id = 'catalog_id_example' # str | ID of the catalog.
+category_id = 'category_id_example' # str | ID of the category.
+
+try: 
+    response = CategoryApi.get(catalog_id, category_id)
+    print(response)
+except ApiException as e:
+    print("Exception when calling CategoryApi->get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **catalog_id** | **str**| ID of the catalog. | 
+ **category_id** | **str**| ID of the category. | 
+
+### Return type
+
+[**Category**](Category.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list**
+> ListCategory list(catalog_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+CategoryApi = OrderCloud.CategoryApi
+catalog_id = 'catalog_id_example' # str | ID of the catalog.
+depth = 'depth_example' # str | Depth of the category. (optional)
+search = 'search_example' # str | Word or phrase to search for. (optional)
+search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
+sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
+
+try: 
+    response = CategoryApi.list(catalog_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+    print(response)
+except ApiException as e:
+    print("Exception when calling CategoryApi->list: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **catalog_id** | **str**| ID of the catalog. | 
+ **depth** | **str**| Depth of the category. | [optional] 
+ **search** | **str**| Word or phrase to search for. | [optional] 
+ **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
+ **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
+
+### Return type
+
+[**ListCategory**](ListCategory.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_assignments**
+> ListCategoryAssignment list_assignments(catalog_id, category_id=category_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+CategoryApi = OrderCloud.CategoryApi
+catalog_id = 'catalog_id_example' # str | ID of the catalog.
+category_id = 'category_id_example' # str | ID of the category. (optional)
+buyer_id = 'buyer_id_example' # str | ID of the buyer. (optional)
+user_id = 'user_id_example' # str | ID of the user. (optional)
+user_group_id = 'user_group_id_example' # str | ID of the user group. (optional)
+level = 'level_example' # str | Level of the category assignment. Possible values: User, Group, Company. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+
+try: 
+    response = CategoryApi.list_assignments(catalog_id, category_id=category_id, buyer_id=buyer_id, user_id=user_id, user_group_id=user_group_id, level=level, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling CategoryApi->list_assignments: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **catalog_id** | **str**| ID of the catalog. | 
+ **category_id** | **str**| ID of the category. | [optional] 
+ **buyer_id** | **str**| ID of the buyer. | [optional] 
+ **user_id** | **str**| ID of the user. | [optional] 
+ **user_group_id** | **str**| ID of the user group. | [optional] 
+ **level** | **str**| Level of the category assignment. Possible values: User, Group, Company. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+
+### Return type
+
+[**ListCategoryAssignment**](ListCategoryAssignment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_product_assignments**
+> ListCategoryProductAssignment list_product_assignments(catalog_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+CategoryApi = OrderCloud.CategoryApi
+catalog_id = 'catalog_id_example' # str | ID of the catalog.
+category_id = 'category_id_example' # str | ID of the category. (optional)
+product_id = 'product_id_example' # str | ID of the product. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+
+try: 
+    response = CategoryApi.list_product_assignments(catalog_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
+    print(response)
+except ApiException as e:
+    print("Exception when calling CategoryApi->list_product_assignments: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **catalog_id** | **str**| ID of the catalog. | 
+ **category_id** | **str**| ID of the category. | [optional] 
+ **product_id** | **str**| ID of the product. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+
+### Return type
+
+[**ListCategoryProductAssignment**](ListCategoryProductAssignment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch**
+> Category patch(catalog_id, category_id, partial_category)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+CategoryApi = OrderCloud.CategoryApi
+catalog_id = 'catalog_id_example' # str | ID of the catalog.
+category_id = 'category_id_example' # str | ID of the category.
+partial_category = OrderCloud.Category() # Category | 
+
+try: 
+    response = CategoryApi.patch(catalog_id, category_id, partial_category)
+    print(response)
+except ApiException as e:
+    print("Exception when calling CategoryApi->patch: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **catalog_id** | **str**| ID of the catalog. | 
+ **category_id** | **str**| ID of the category. | 
+ **partial_category** | [**Category**](Category.md)|  | 
+
+### Return type
+
+[**Category**](Category.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **save**
+> Category save(catalog_id, category_id, category)
 
 
 
@@ -369,10 +478,10 @@ category_id = 'category_id_example' # str | ID of the category.
 category = OrderCloud.Category() # Category | 
 
 try: 
-    response = CategoryApi.catalogs_catalog_id_categories_category_id_put(catalog_id, category_id, category)
+    response = CategoryApi.save(catalog_id, category_id, category)
     print(response)
 except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_category_id_put: %s\n" % e)
+    print("Exception when calling CategoryApi->save: %s\n" % e)
 ```
 
 ### Parameters
@@ -398,8 +507,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **catalogs_catalog_id_categories_get**
-> ListCategory catalogs_catalog_id_categories_get(catalog_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+# **save_assignment**
+> save_assignment(catalog_id, category_assignment)
 
 
 
@@ -412,18 +521,12 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 CategoryApi = OrderCloud.CategoryApi
 catalog_id = 'catalog_id_example' # str | ID of the catalog.
-depth = 'depth_example' # str | Depth of the category. (optional)
-search = 'search_example' # str | Search of the category. (optional)
-search_on = ['search_on_example'] # list[str] | Search on of the category. (optional)
-sort_by = ['sort_by_example'] # list[str] | Sort by of the category. (optional)
-page = 56 # int | Page of the category. (optional)
-page_size = 56 # int | Page size of the category. (optional)
+category_assignment = OrderCloud.CategoryAssignment() # CategoryAssignment | 
 
 try: 
-    response = CategoryApi.catalogs_catalog_id_categories_get(catalog_id, depth=depth, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    print(response)
+    CategoryApi.save_assignment(catalog_id, category_assignment)
 except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_get: %s\n" % e)
+    print("Exception when calling CategoryApi->save_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -431,16 +534,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalog_id** | **str**| ID of the catalog. | 
- **depth** | **str**| Depth of the category. | [optional] 
- **search** | **str**| Search of the category. | [optional] 
- **search_on** | [**list[str]**](str.md)| Search on of the category. | [optional] 
- **sort_by** | [**list[str]**](str.md)| Sort by of the category. | [optional] 
- **page** | **int**| Page of the category. | [optional] 
- **page_size** | **int**| Page size of the category. | [optional] 
+ **category_assignment** | [**CategoryAssignment**](CategoryAssignment.md)|  | 
 
 ### Return type
 
-[**ListCategory**](ListCategory.md)
+void (empty response body)
 
 ### Authorization
 
@@ -453,8 +551,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **catalogs_catalog_id_categories_post**
-> Category catalogs_catalog_id_categories_post(catalog_id, category)
+# **save_product_assignment**
+> save_product_assignment(catalog_id, category_product_assignment)
 
 
 
@@ -467,13 +565,12 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 CategoryApi = OrderCloud.CategoryApi
 catalog_id = 'catalog_id_example' # str | ID of the catalog.
-category = OrderCloud.Category() # Category | 
+category_product_assignment = OrderCloud.CategoryProductAssignment() # CategoryProductAssignment | 
 
 try: 
-    response = CategoryApi.catalogs_catalog_id_categories_post(catalog_id, category)
-    print(response)
+    CategoryApi.save_product_assignment(catalog_id, category_product_assignment)
 except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_post: %s\n" % e)
+    print("Exception when calling CategoryApi->save_product_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -481,102 +578,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalog_id** | **str**| ID of the catalog. | 
- **category** | [**Category**](Category.md)|  | 
-
-### Return type
-
-[**Category**](Category.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **catalogs_catalog_id_categories_productassignments_get**
-> ListCategoryProductAssignment catalogs_catalog_id_categories_productassignments_get(catalog_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi
-catalog_id = 'catalog_id_example' # str | ID of the catalog.
-category_id = 'category_id_example' # str | ID of the category. (optional)
-product_id = 'product_id_example' # str | ID of the product. (optional)
-page = 56 # int | Page of the category. (optional)
-page_size = 56 # int | Page size of the category. (optional)
-
-try: 
-    response = CategoryApi.catalogs_catalog_id_categories_productassignments_get(catalog_id, category_id=category_id, product_id=product_id, page=page, page_size=page_size)
-    print(response)
-except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_productassignments_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **catalog_id** | **str**| ID of the catalog. | 
- **category_id** | **str**| ID of the category. | [optional] 
- **product_id** | **str**| ID of the product. | [optional] 
- **page** | **int**| Page of the category. | [optional] 
- **page_size** | **int**| Page size of the category. | [optional] 
-
-### Return type
-
-[**ListCategoryProductAssignment**](ListCategoryProductAssignment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **catalogs_catalog_id_categories_productassignments_post**
-> catalogs_catalog_id_categories_productassignments_post(catalog_id, product_assignment)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-CategoryApi = OrderCloud.CategoryApi
-catalog_id = 'catalog_id_example' # str | ID of the catalog.
-product_assignment = OrderCloud.CategoryProductAssignment() # CategoryProductAssignment | 
-
-try: 
-    CategoryApi.catalogs_catalog_id_categories_productassignments_post(catalog_id, product_assignment)
-except ApiException as e:
-    print("Exception when calling CategoryApi->catalogs_catalog_id_categories_productassignments_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **catalog_id** | **str**| ID of the catalog. | 
- **product_assignment** | [**CategoryProductAssignment**](CategoryProductAssignment.md)|  | 
+ **category_product_assignment** | [**CategoryProductAssignment**](CategoryProductAssignment.md)|  | 
 
 ### Return type
 

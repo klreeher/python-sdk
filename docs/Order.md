@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**xp** | **object** |  | [optional] 
 **id** | **str** |  | [optional] 
 **from_user** | [**User**](User.md) |  | [optional] 
 **from_company_id** | **str** |  | [optional] 
@@ -25,7 +26,6 @@ Name | Type | Description | Notes
 **promotion_discount** | **float** |  | [optional] 
 **total** | **float** |  | [optional] 
 **is_submitted** | **bool** |  | [optional] 
-**xp** | **object** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
