@@ -4,20 +4,241 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**shipments_get**](ShipmentApi.md#shipments_get) | **GET** /shipments | 
-[**shipments_post**](ShipmentApi.md#shipments_post) | **POST** /shipments | 
-[**shipments_shipment_id_delete**](ShipmentApi.md#shipments_shipment_id_delete) | **DELETE** /shipments/{shipmentID} | 
-[**shipments_shipment_id_get**](ShipmentApi.md#shipments_shipment_id_get) | **GET** /shipments/{shipmentID} | 
-[**shipments_shipment_id_items_get**](ShipmentApi.md#shipments_shipment_id_items_get) | **GET** /shipments/{shipmentID}/items | 
-[**shipments_shipment_id_items_order_id_line_item_id_delete**](ShipmentApi.md#shipments_shipment_id_items_order_id_line_item_id_delete) | **DELETE** /shipments/{shipmentID}/items/{orderID}/{lineItemID} | 
-[**shipments_shipment_id_items_order_id_line_item_id_get**](ShipmentApi.md#shipments_shipment_id_items_order_id_line_item_id_get) | **GET** /shipments/{shipmentID}/items/{orderID}/{lineItemID} | 
-[**shipments_shipment_id_items_post**](ShipmentApi.md#shipments_shipment_id_items_post) | **POST** /shipments/{shipmentID}/items | 
-[**shipments_shipment_id_patch**](ShipmentApi.md#shipments_shipment_id_patch) | **PATCH** /shipments/{shipmentID} | 
-[**shipments_shipment_id_put**](ShipmentApi.md#shipments_shipment_id_put) | **PUT** /shipments/{shipmentID} | 
+[**create**](ShipmentApi.md#create) | **POST** /shipments | 
+[**delete**](ShipmentApi.md#delete) | **DELETE** /shipments/{shipmentID} | 
+[**delete_item**](ShipmentApi.md#delete_item) | **DELETE** /shipments/{shipmentID}/items/{orderID}/{lineItemID} | 
+[**get**](ShipmentApi.md#get) | **GET** /shipments/{shipmentID} | 
+[**get_item**](ShipmentApi.md#get_item) | **GET** /shipments/{shipmentID}/items/{orderID}/{lineItemID} | 
+[**list**](ShipmentApi.md#list) | **GET** /shipments | 
+[**list_items**](ShipmentApi.md#list_items) | **GET** /shipments/{shipmentID}/items | 
+[**patch**](ShipmentApi.md#patch) | **PATCH** /shipments/{shipmentID} | 
+[**save**](ShipmentApi.md#save) | **PUT** /shipments/{shipmentID} | 
+[**save_item**](ShipmentApi.md#save_item) | **POST** /shipments/{shipmentID}/items | 
 
 
-# **shipments_get**
-> ListShipment shipments_get(order_id=order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+# **create**
+> Shipment create(shipment)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ShipmentApi = OrderCloud.ShipmentApi
+shipment = OrderCloud.Shipment() # Shipment | 
+
+try: 
+    response = ShipmentApi.create(shipment)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ShipmentApi->create: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shipment** | [**Shipment**](Shipment.md)|  | 
+
+### Return type
+
+[**Shipment**](Shipment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete**
+> delete(shipment_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ShipmentApi = OrderCloud.ShipmentApi
+shipment_id = 'shipment_id_example' # str | ID of the shipment.
+
+try: 
+    ShipmentApi.delete(shipment_id)
+except ApiException as e:
+    print("Exception when calling ShipmentApi->delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shipment_id** | **str**| ID of the shipment. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_item**
+> delete_item(shipment_id, order_id, line_item_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ShipmentApi = OrderCloud.ShipmentApi
+shipment_id = 'shipment_id_example' # str | ID of the shipment.
+order_id = 'order_id_example' # str | ID of the order.
+line_item_id = 'line_item_id_example' # str | ID of the line item.
+
+try: 
+    ShipmentApi.delete_item(shipment_id, order_id, line_item_id)
+except ApiException as e:
+    print("Exception when calling ShipmentApi->delete_item: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shipment_id** | **str**| ID of the shipment. | 
+ **order_id** | **str**| ID of the order. | 
+ **line_item_id** | **str**| ID of the line item. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get**
+> Shipment get(shipment_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ShipmentApi = OrderCloud.ShipmentApi
+shipment_id = 'shipment_id_example' # str | ID of the shipment.
+
+try: 
+    response = ShipmentApi.get(shipment_id)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ShipmentApi->get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shipment_id** | **str**| ID of the shipment. | 
+
+### Return type
+
+[**Shipment**](Shipment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_item**
+> ShipmentItem get_item(shipment_id, order_id, line_item_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+ShipmentApi = OrderCloud.ShipmentApi
+shipment_id = 'shipment_id_example' # str | ID of the shipment.
+order_id = 'order_id_example' # str | ID of the order.
+line_item_id = 'line_item_id_example' # str | ID of the line item.
+
+try: 
+    response = ShipmentApi.get_item(shipment_id, order_id, line_item_id)
+    print(response)
+except ApiException as e:
+    print("Exception when calling ShipmentApi->get_item: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shipment_id** | **str**| ID of the shipment. | 
+ **order_id** | **str**| ID of the order. | 
+ **line_item_id** | **str**| ID of the line item. | 
+
+### Return type
+
+[**ShipmentItem**](ShipmentItem.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list**
+> ListShipment list(order_id=order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
@@ -30,17 +251,18 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 ShipmentApi = OrderCloud.ShipmentApi
 order_id = 'order_id_example' # str | ID of the order. (optional)
-search = 'search_example' # str | Search of the shipment. (optional)
-search_on = ['search_on_example'] # list[str] | Search on of the shipment. (optional)
-sort_by = ['sort_by_example'] # list[str] | Sort by of the shipment. (optional)
-page = 56 # int | Page of the shipment. (optional)
-page_size = 56 # int | Page size of the shipment. (optional)
+search = 'search_example' # str | Word or phrase to search for. (optional)
+search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
+sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    response = ShipmentApi.shipments_get(order_id=order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = ShipmentApi.list(order_id=order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_get: %s\n" % e)
+    print("Exception when calling ShipmentApi->list: %s\n" % e)
 ```
 
 ### Parameters
@@ -48,11 +270,12 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order_id** | **str**| ID of the order. | [optional] 
- **search** | **str**| Search of the shipment. | [optional] 
- **search_on** | [**list[str]**](str.md)| Search on of the shipment. | [optional] 
- **sort_by** | [**list[str]**](str.md)| Sort by of the shipment. | [optional] 
- **page** | **int**| Page of the shipment. | [optional] 
- **page_size** | **int**| Page size of the shipment. | [optional] 
+ **search** | **str**| Word or phrase to search for. | [optional] 
+ **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
+ **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
@@ -69,51 +292,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shipments_post**
-> Shipment shipments_post(shipment)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ShipmentApi = OrderCloud.ShipmentApi
-shipment = OrderCloud.Shipment() # Shipment | 
-
-try: 
-    response = ShipmentApi.shipments_post(shipment)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **shipment** | [**Shipment**](Shipment.md)|  | 
-
-### Return type
-
-[**Shipment**](Shipment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **shipments_shipment_id_delete**
-> shipments_shipment_id_delete(shipment_id)
+# **list_items**
+> ListShipmentItem list_items(shipment_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
 
 
 
@@ -126,54 +306,18 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 ShipmentApi = OrderCloud.ShipmentApi
 shipment_id = 'shipment_id_example' # str | ID of the shipment.
+search = 'search_example' # str | Word or phrase to search for. (optional)
+search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
+sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
 
 try: 
-    ShipmentApi.shipments_shipment_id_delete(shipment_id)
-except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_shipment_id_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **shipment_id** | **str**| ID of the shipment. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **shipments_shipment_id_get**
-> Shipment shipments_shipment_id_get(shipment_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ShipmentApi = OrderCloud.ShipmentApi
-shipment_id = 'shipment_id_example' # str | ID of the shipment.
-
-try: 
-    response = ShipmentApi.shipments_shipment_id_get(shipment_id)
+    response = ShipmentApi.list_items(shipment_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
     print(response)
 except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_shipment_id_get: %s\n" % e)
+    print("Exception when calling ShipmentApi->list_items: %s\n" % e)
 ```
 
 ### Parameters
@@ -181,59 +325,12 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **shipment_id** | **str**| ID of the shipment. | 
-
-### Return type
-
-[**Shipment**](Shipment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **shipments_shipment_id_items_get**
-> ListShipmentItem shipments_shipment_id_items_get(shipment_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ShipmentApi = OrderCloud.ShipmentApi
-shipment_id = 'shipment_id_example' # str | ID of the shipment.
-search = 'search_example' # str | Search of the shipment. (optional)
-search_on = ['search_on_example'] # list[str] | Search on of the shipment. (optional)
-sort_by = ['sort_by_example'] # list[str] | Sort by of the shipment. (optional)
-page = 56 # int | Page of the shipment. (optional)
-page_size = 56 # int | Page size of the shipment. (optional)
-
-try: 
-    response = ShipmentApi.shipments_shipment_id_items_get(shipment_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_shipment_id_items_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **shipment_id** | **str**| ID of the shipment. | 
- **search** | **str**| Search of the shipment. | [optional] 
- **search_on** | [**list[str]**](str.md)| Search on of the shipment. | [optional] 
- **sort_by** | [**list[str]**](str.md)| Sort by of the shipment. | [optional] 
- **page** | **int**| Page of the shipment. | [optional] 
- **page_size** | **int**| Page size of the shipment. | [optional] 
+ **search** | **str**| Word or phrase to search for. | [optional] 
+ **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
+ **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
 
 ### Return type
 
@@ -250,8 +347,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shipments_shipment_id_items_order_id_line_item_id_delete**
-> shipments_shipment_id_items_order_id_line_item_id_delete(shipment_id, order_id, line_item_id)
+# **patch**
+> Shipment patch(shipment_id, partial_shipment)
 
 
 
@@ -264,60 +361,13 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 ShipmentApi = OrderCloud.ShipmentApi
 shipment_id = 'shipment_id_example' # str | ID of the shipment.
-order_id = 'order_id_example' # str | ID of the order.
-line_item_id = 'line_item_id_example' # str | ID of the line item.
+partial_shipment = OrderCloud.Shipment() # Shipment | 
 
 try: 
-    ShipmentApi.shipments_shipment_id_items_order_id_line_item_id_delete(shipment_id, order_id, line_item_id)
-except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_shipment_id_items_order_id_line_item_id_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **shipment_id** | **str**| ID of the shipment. | 
- **order_id** | **str**| ID of the order. | 
- **line_item_id** | **str**| ID of the line item. | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **shipments_shipment_id_items_order_id_line_item_id_get**
-> ShipmentItem shipments_shipment_id_items_order_id_line_item_id_get(shipment_id, order_id, line_item_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ShipmentApi = OrderCloud.ShipmentApi
-shipment_id = 'shipment_id_example' # str | ID of the shipment.
-order_id = 'order_id_example' # str | ID of the order.
-line_item_id = 'line_item_id_example' # str | ID of the line item.
-
-try: 
-    response = ShipmentApi.shipments_shipment_id_items_order_id_line_item_id_get(shipment_id, order_id, line_item_id)
+    response = ShipmentApi.patch(shipment_id, partial_shipment)
     print(response)
 except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_shipment_id_items_order_id_line_item_id_get: %s\n" % e)
+    print("Exception when calling ShipmentApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -325,12 +375,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **shipment_id** | **str**| ID of the shipment. | 
- **order_id** | **str**| ID of the order. | 
- **line_item_id** | **str**| ID of the line item. | 
+ **partial_shipment** | [**Shipment**](Shipment.md)|  | 
 
 ### Return type
 
-[**ShipmentItem**](ShipmentItem.md)
+[**Shipment**](Shipment.md)
 
 ### Authorization
 
@@ -343,53 +392,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shipments_shipment_id_items_post**
-> ShipmentItem shipments_shipment_id_items_post(shipment_id, item)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-ShipmentApi = OrderCloud.ShipmentApi
-shipment_id = 'shipment_id_example' # str | ID of the shipment.
-item = OrderCloud.ShipmentItem() # ShipmentItem | 
-
-try: 
-    response = ShipmentApi.shipments_shipment_id_items_post(shipment_id, item)
-    print(response)
-except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_shipment_id_items_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **shipment_id** | **str**| ID of the shipment. | 
- **item** | [**ShipmentItem**](ShipmentItem.md)|  | 
-
-### Return type
-
-[**ShipmentItem**](ShipmentItem.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **shipments_shipment_id_patch**
-> Shipment shipments_shipment_id_patch(shipment_id, shipment)
+# **save**
+> Shipment save(shipment_id, shipment)
 
 
 
@@ -405,10 +409,10 @@ shipment_id = 'shipment_id_example' # str | ID of the shipment.
 shipment = OrderCloud.Shipment() # Shipment | 
 
 try: 
-    response = ShipmentApi.shipments_shipment_id_patch(shipment_id, shipment)
+    response = ShipmentApi.save(shipment_id, shipment)
     print(response)
 except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_shipment_id_patch: %s\n" % e)
+    print("Exception when calling ShipmentApi->save: %s\n" % e)
 ```
 
 ### Parameters
@@ -433,8 +437,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **shipments_shipment_id_put**
-> Shipment shipments_shipment_id_put(shipment_id, shipment)
+# **save_item**
+> ShipmentItem save_item(shipment_id, shipment_item)
 
 
 
@@ -447,13 +451,13 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 ShipmentApi = OrderCloud.ShipmentApi
 shipment_id = 'shipment_id_example' # str | ID of the shipment.
-shipment = OrderCloud.Shipment() # Shipment | 
+shipment_item = OrderCloud.ShipmentItem() # ShipmentItem | 
 
 try: 
-    response = ShipmentApi.shipments_shipment_id_put(shipment_id, shipment)
+    response = ShipmentApi.save_item(shipment_id, shipment_item)
     print(response)
 except ApiException as e:
-    print("Exception when calling ShipmentApi->shipments_shipment_id_put: %s\n" % e)
+    print("Exception when calling ShipmentApi->save_item: %s\n" % e)
 ```
 
 ### Parameters
@@ -461,11 +465,11 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **shipment_id** | **str**| ID of the shipment. | 
- **shipment** | [**Shipment**](Shipment.md)|  | 
+ **shipment_item** | [**ShipmentItem**](ShipmentItem.md)|  | 
 
 ### Return type
 
-[**Shipment**](Shipment.md)
+[**ShipmentItem**](ShipmentItem.md)
 
 ### Authorization
 

@@ -4,12 +4,12 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**password_reset_post**](PasswordResetApi.md#password_reset_post) | **POST** /password/reset | 
-[**password_reset_verification_code_put**](PasswordResetApi.md#password_reset_verification_code_put) | **PUT** /password/reset/{verificationCode} | 
+[**reset_password_by_verification_code**](PasswordResetApi.md#reset_password_by_verification_code) | **PUT** /password/reset/{verificationCode} | 
+[**send_verification_code**](PasswordResetApi.md#send_verification_code) | **POST** /password/reset | 
 
 
-# **password_reset_post**
-> password_reset_post(password_reset_request)
+# **reset_password_by_verification_code**
+> reset_password_by_verification_code(verification_code, password_reset)
 
 
 
@@ -21,19 +21,21 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PasswordResetApi = OrderCloud.PasswordResetApi
-password_reset_request = OrderCloud.PasswordResetRequest() # PasswordResetRequest | 
+verification_code = 'verification_code_example' # str | Verification code of the password reset.
+password_reset = OrderCloud.PasswordReset() # PasswordReset | 
 
 try: 
-    PasswordResetApi.password_reset_post(password_reset_request)
+    PasswordResetApi.reset_password_by_verification_code(verification_code, password_reset)
 except ApiException as e:
-    print("Exception when calling PasswordResetApi->password_reset_post: %s\n" % e)
+    print("Exception when calling PasswordResetApi->reset_password_by_verification_code: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **password_reset_request** | [**PasswordResetRequest**](PasswordResetRequest.md)|  | 
+ **verification_code** | **str**| Verification code of the password reset. | 
+ **password_reset** | [**PasswordReset**](PasswordReset.md)|  | 
 
 ### Return type
 
@@ -50,8 +52,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **password_reset_verification_code_put**
-> password_reset_verification_code_put(verification_code, password_reset)
+# **send_verification_code**
+> send_verification_code(password_reset_request)
 
 
 
@@ -63,21 +65,19 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PasswordResetApi = OrderCloud.PasswordResetApi
-verification_code = 'verification_code_example' # str | Verification code of the forgotten password.
-password_reset = OrderCloud.PasswordReset() # PasswordReset | 
+password_reset_request = OrderCloud.PasswordResetRequest() # PasswordResetRequest | 
 
 try: 
-    PasswordResetApi.password_reset_verification_code_put(verification_code, password_reset)
+    PasswordResetApi.send_verification_code(password_reset_request)
 except ApiException as e:
-    print("Exception when calling PasswordResetApi->password_reset_verification_code_put: %s\n" % e)
+    print("Exception when calling PasswordResetApi->send_verification_code: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **verification_code** | **str**| Verification code of the forgotten password. | 
- **password_reset** | [**PasswordReset**](PasswordReset.md)|  | 
+ **password_reset_request** | [**PasswordResetRequest**](PasswordResetRequest.md)|  | 
 
 ### Return type
 

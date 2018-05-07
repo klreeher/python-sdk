@@ -51,7 +51,7 @@ class SupplierApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def suppliers_get(self, **kwargs):
+    def create(self, supplier, **kwargs):
         """
         
         
@@ -62,27 +62,23 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_get(callback=callback_function)
+        >>> thread = api.create(supplier, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str search: Search of the supplier.
-        :param list[str] search_on: Search on of the supplier.
-        :param list[str] sort_by: Sort by of the supplier.
-        :param int page: Page of the supplier.
-        :param int page_size: Page size of the supplier.
-        :return: ListSupplier
+        :param Supplier supplier:  (required)
+        :return: Supplier
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.suppliers_get_with_http_info(**kwargs)
+            return self.create_with_http_info(supplier, **kwargs)
         else:
-            (data) = self.suppliers_get_with_http_info(**kwargs)
+            (data) = self.create_with_http_info(supplier, **kwargs)
             return data
 
-    def suppliers_get_with_http_info(self, **kwargs):
+    def create_with_http_info(self, supplier, **kwargs):
         """
         
         
@@ -93,21 +89,17 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_get_with_http_info(callback=callback_function)
+        >>> thread = api.create_with_http_info(supplier, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str search: Search of the supplier.
-        :param list[str] search_on: Search on of the supplier.
-        :param list[str] sort_by: Sort by of the supplier.
-        :param int page: Page of the supplier.
-        :param int page_size: Page size of the supplier.
-        :return: ListSupplier
+        :param Supplier supplier:  (required)
+        :return: Supplier
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['supplier']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -116,122 +108,13 @@ class SupplierApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method suppliers_get" % key
+                    " to method create" % key
                 )
             params[key] = val
         del params['kwargs']
-
-        resource_path = '/suppliers'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListSupplier',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def suppliers_post(self, company, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.suppliers_post(company, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param Supplier company:  (required)
-        :return: Supplier
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.suppliers_post_with_http_info(company, **kwargs)
-        else:
-            (data) = self.suppliers_post_with_http_info(company, **kwargs)
-            return data
-
-    def suppliers_post_with_http_info(self, company, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.suppliers_post_with_http_info(company, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param Supplier company:  (required)
-        :return: Supplier
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['company']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method suppliers_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'company' is set
-        if ('company' not in params) or (params['company'] is None):
-            raise ValueError("Missing the required parameter `company` when calling `suppliers_post`")
+        # verify the required parameter 'supplier' is set
+        if ('supplier' not in params) or (params['supplier'] is None):
+            raise ValueError("Missing the required parameter `supplier` when calling `create`")
 
         resource_path = '/suppliers'.replace('{format}', 'json')
         path_params = {}
@@ -244,8 +127,8 @@ class SupplierApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'company' in params:
-            body_params = params['company']
+        if 'supplier' in params:
+            body_params = params['supplier']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -272,7 +155,7 @@ class SupplierApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def suppliers_supplier_id_delete(self, supplier_id, **kwargs):
+    def delete(self, supplier_id, **kwargs):
         """
         
         
@@ -283,7 +166,7 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_supplier_id_delete(supplier_id, callback=callback_function)
+        >>> thread = api.delete(supplier_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -294,12 +177,12 @@ class SupplierApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.suppliers_supplier_id_delete_with_http_info(supplier_id, **kwargs)
+            return self.delete_with_http_info(supplier_id, **kwargs)
         else:
-            (data) = self.suppliers_supplier_id_delete_with_http_info(supplier_id, **kwargs)
+            (data) = self.delete_with_http_info(supplier_id, **kwargs)
             return data
 
-    def suppliers_supplier_id_delete_with_http_info(self, supplier_id, **kwargs):
+    def delete_with_http_info(self, supplier_id, **kwargs):
         """
         
         
@@ -310,7 +193,7 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_supplier_id_delete_with_http_info(supplier_id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(supplier_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -329,13 +212,13 @@ class SupplierApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method suppliers_supplier_id_delete" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'supplier_id' is set
         if ('supplier_id' not in params) or (params['supplier_id'] is None):
-            raise ValueError("Missing the required parameter `supplier_id` when calling `suppliers_supplier_id_delete`")
+            raise ValueError("Missing the required parameter `supplier_id` when calling `delete`")
 
         resource_path = '/suppliers/{supplierID}'.replace('{format}', 'json')
         path_params = {}
@@ -376,7 +259,7 @@ class SupplierApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def suppliers_supplier_id_get(self, supplier_id, **kwargs):
+    def get(self, supplier_id, **kwargs):
         """
         
         
@@ -387,7 +270,7 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_supplier_id_get(supplier_id, callback=callback_function)
+        >>> thread = api.get(supplier_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -398,12 +281,12 @@ class SupplierApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.suppliers_supplier_id_get_with_http_info(supplier_id, **kwargs)
+            return self.get_with_http_info(supplier_id, **kwargs)
         else:
-            (data) = self.suppliers_supplier_id_get_with_http_info(supplier_id, **kwargs)
+            (data) = self.get_with_http_info(supplier_id, **kwargs)
             return data
 
-    def suppliers_supplier_id_get_with_http_info(self, supplier_id, **kwargs):
+    def get_with_http_info(self, supplier_id, **kwargs):
         """
         
         
@@ -414,7 +297,7 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_supplier_id_get_with_http_info(supplier_id, callback=callback_function)
+        >>> thread = api.get_with_http_info(supplier_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -433,13 +316,13 @@ class SupplierApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method suppliers_supplier_id_get" % key
+                    " to method get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'supplier_id' is set
         if ('supplier_id' not in params) or (params['supplier_id'] is None):
-            raise ValueError("Missing the required parameter `supplier_id` when calling `suppliers_supplier_id_get`")
+            raise ValueError("Missing the required parameter `supplier_id` when calling `get`")
 
         resource_path = '/suppliers/{supplierID}'.replace('{format}', 'json')
         path_params = {}
@@ -480,7 +363,7 @@ class SupplierApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def suppliers_supplier_id_patch(self, supplier_id, company, **kwargs):
+    def list(self, **kwargs):
         """
         
         
@@ -491,24 +374,28 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_supplier_id_patch(supplier_id, company, callback=callback_function)
+        >>> thread = api.list(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str supplier_id: ID of the supplier. (required)
-        :param Supplier company:  (required)
-        :return: Supplier
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListSupplier
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.suppliers_supplier_id_patch_with_http_info(supplier_id, company, **kwargs)
+            return self.list_with_http_info(**kwargs)
         else:
-            (data) = self.suppliers_supplier_id_patch_with_http_info(supplier_id, company, **kwargs)
+            (data) = self.list_with_http_info(**kwargs)
             return data
 
-    def suppliers_supplier_id_patch_with_http_info(self, supplier_id, company, **kwargs):
+    def list_with_http_info(self, **kwargs):
         """
         
         
@@ -519,18 +406,22 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_supplier_id_patch_with_http_info(supplier_id, company, callback=callback_function)
+        >>> thread = api.list_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str supplier_id: ID of the supplier. (required)
-        :param Supplier company:  (required)
-        :return: Supplier
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListSupplier
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['supplier_id', 'company']
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -539,16 +430,129 @@ class SupplierApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method suppliers_supplier_id_patch" % key
+                    " to method list" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/suppliers'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListSupplier',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def patch(self, supplier_id, partial_supplier, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch(supplier_id, partial_supplier, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str supplier_id: ID of the supplier. (required)
+        :param Supplier partial_supplier:  (required)
+        :return: Supplier
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.patch_with_http_info(supplier_id, partial_supplier, **kwargs)
+        else:
+            (data) = self.patch_with_http_info(supplier_id, partial_supplier, **kwargs)
+            return data
+
+    def patch_with_http_info(self, supplier_id, partial_supplier, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_with_http_info(supplier_id, partial_supplier, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str supplier_id: ID of the supplier. (required)
+        :param Supplier partial_supplier:  (required)
+        :return: Supplier
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['supplier_id', 'partial_supplier']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'supplier_id' is set
         if ('supplier_id' not in params) or (params['supplier_id'] is None):
-            raise ValueError("Missing the required parameter `supplier_id` when calling `suppliers_supplier_id_patch`")
-        # verify the required parameter 'company' is set
-        if ('company' not in params) or (params['company'] is None):
-            raise ValueError("Missing the required parameter `company` when calling `suppliers_supplier_id_patch`")
+            raise ValueError("Missing the required parameter `supplier_id` when calling `patch`")
+        # verify the required parameter 'partial_supplier' is set
+        if ('partial_supplier' not in params) or (params['partial_supplier'] is None):
+            raise ValueError("Missing the required parameter `partial_supplier` when calling `patch`")
 
         resource_path = '/suppliers/{supplierID}'.replace('{format}', 'json')
         path_params = {}
@@ -563,8 +567,8 @@ class SupplierApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'company' in params:
-            body_params = params['company']
+        if 'partial_supplier' in params:
+            body_params = params['partial_supplier']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -591,7 +595,7 @@ class SupplierApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def suppliers_supplier_id_put(self, supplier_id, company, **kwargs):
+    def save(self, supplier_id, supplier, **kwargs):
         """
         
         
@@ -602,24 +606,24 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_supplier_id_put(supplier_id, company, callback=callback_function)
+        >>> thread = api.save(supplier_id, supplier, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str supplier_id: ID of the supplier. (required)
-        :param Supplier company:  (required)
+        :param Supplier supplier:  (required)
         :return: Supplier
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.suppliers_supplier_id_put_with_http_info(supplier_id, company, **kwargs)
+            return self.save_with_http_info(supplier_id, supplier, **kwargs)
         else:
-            (data) = self.suppliers_supplier_id_put_with_http_info(supplier_id, company, **kwargs)
+            (data) = self.save_with_http_info(supplier_id, supplier, **kwargs)
             return data
 
-    def suppliers_supplier_id_put_with_http_info(self, supplier_id, company, **kwargs):
+    def save_with_http_info(self, supplier_id, supplier, **kwargs):
         """
         
         
@@ -630,18 +634,18 @@ class SupplierApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.suppliers_supplier_id_put_with_http_info(supplier_id, company, callback=callback_function)
+        >>> thread = api.save_with_http_info(supplier_id, supplier, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str supplier_id: ID of the supplier. (required)
-        :param Supplier company:  (required)
+        :param Supplier supplier:  (required)
         :return: Supplier
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['supplier_id', 'company']
+        all_params = ['supplier_id', 'supplier']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -650,16 +654,16 @@ class SupplierApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method suppliers_supplier_id_put" % key
+                    " to method save" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'supplier_id' is set
         if ('supplier_id' not in params) or (params['supplier_id'] is None):
-            raise ValueError("Missing the required parameter `supplier_id` when calling `suppliers_supplier_id_put`")
-        # verify the required parameter 'company' is set
-        if ('company' not in params) or (params['company'] is None):
-            raise ValueError("Missing the required parameter `company` when calling `suppliers_supplier_id_put`")
+            raise ValueError("Missing the required parameter `supplier_id` when calling `save`")
+        # verify the required parameter 'supplier' is set
+        if ('supplier' not in params) or (params['supplier'] is None):
+            raise ValueError("Missing the required parameter `supplier` when calling `save`")
 
         resource_path = '/suppliers/{supplierID}'.replace('{format}', 'json')
         path_params = {}
@@ -674,8 +678,8 @@ class SupplierApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'company' in params:
-            body_params = params['company']
+        if 'supplier' in params:
+            body_params = params['supplier']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\

@@ -51,7 +51,7 @@ class OrderApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def orders_direction_get(self, direction, **kwargs):
+    def add_promotion(self, direction, order_id, promo_code, **kwargs):
         """
         
         
@@ -62,1599 +62,25 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_get(direction, callback=callback_function)
+        >>> thread = api.add_promotion(direction, order_id, promo_code, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str buyer_id: ID of the buyer.
-        :param str supplier_id: ID of the supplier.
-        :param str _from: Lower bound of date range that the order was created.
-        :param str to: Upper bound of date range that the order was created.
-        :param str search: Search of the order.
-        :param list[str] search_on: Search on of the order.
-        :param list[str] sort_by: Sort by of the order.
-        :param int page: Page of the order.
-        :param int page_size: Page size of the order.
-        :return: ListOrder
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_get_with_http_info(direction, **kwargs)
-        else:
-            (data) = self.orders_direction_get_with_http_info(direction, **kwargs)
-            return data
-
-    def orders_direction_get_with_http_info(self, direction, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_get_with_http_info(direction, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str buyer_id: ID of the buyer.
-        :param str supplier_id: ID of the supplier.
-        :param str _from: Lower bound of date range that the order was created.
-        :param str to: Upper bound of date range that the order was created.
-        :param str search: Search of the order.
-        :param list[str] search_on: Search on of the order.
-        :param list[str] sort_by: Sort by of the order.
-        :param int page: Page of the order.
-        :param int page_size: Page size of the order.
-        :return: ListOrder
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'buyer_id', 'supplier_id', '_from', 'to', 'search', 'search_on', 'sort_by', 'page', 'page_size']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_get`")
-
-        resource_path = '/orders/{direction}'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-
-        query_params = {}
-        if 'buyer_id' in params:
-            query_params['buyerID'] = params['buyer_id']
-        if 'supplier_id' in params:
-            query_params['supplierID'] = params['supplier_id']
-        if '_from' in params:
-            query_params['from'] = params['_from']
-        if 'to' in params:
-            query_params['to'] = params['to']
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListOrder',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_approvals_get(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_approvals_get(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
-        :param str search: Search of the order.
-        :param list[str] search_on: Search on of the order.
-        :param list[str] sort_by: Sort by of the order.
-        :param int page: Page of the order.
-        :param int page_size: Page size of the order.
-        :return: ListOrderApproval
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_approvals_get_with_http_info(direction, order_id, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_approvals_get_with_http_info(direction, order_id, **kwargs)
-            return data
-
-    def orders_direction_order_id_approvals_get_with_http_info(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_approvals_get_with_http_info(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param str search: Search of the order.
-        :param list[str] search_on: Search on of the order.
-        :param list[str] sort_by: Sort by of the order.
-        :param int page: Page of the order.
-        :param int page_size: Page size of the order.
-        :return: ListOrderApproval
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_approvals_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_approvals_get`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_approvals_get`")
-
-        resource_path = '/orders/{direction}/{orderID}/approvals'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListOrderApproval',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_approve_post(self, direction, order_id, info, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_approve_post(direction, order_id, info, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param OrderApprovalInfo info:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_approve_post_with_http_info(direction, order_id, info, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_approve_post_with_http_info(direction, order_id, info, **kwargs)
-            return data
-
-    def orders_direction_order_id_approve_post_with_http_info(self, direction, order_id, info, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_approve_post_with_http_info(direction, order_id, info, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param OrderApprovalInfo info:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'info']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_approve_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_approve_post`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_approve_post`")
-        # verify the required parameter 'info' is set
-        if ('info' not in params) or (params['info'] is None):
-            raise ValueError("Missing the required parameter `info` when calling `orders_direction_order_id_approve_post`")
-
-        resource_path = '/orders/{direction}/{orderID}/approve'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'info' in params:
-            body_params = params['info']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_billto_patch(self, direction, order_id, address, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_billto_patch(direction, order_id, address, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param Address address:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_billto_patch_with_http_info(direction, order_id, address, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_billto_patch_with_http_info(direction, order_id, address, **kwargs)
-            return data
-
-    def orders_direction_order_id_billto_patch_with_http_info(self, direction, order_id, address, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_billto_patch_with_http_info(direction, order_id, address, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param Address address:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'address']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_billto_patch" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_billto_patch`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_billto_patch`")
-        # verify the required parameter 'address' is set
-        if ('address' not in params) or (params['address'] is None):
-            raise ValueError("Missing the required parameter `address` when calling `orders_direction_order_id_billto_patch`")
-
-        resource_path = '/orders/{direction}/{orderID}/billto'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'address' in params:
-            body_params = params['address']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PATCH',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_billto_put(self, direction, order_id, address, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_billto_put(direction, order_id, address, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param Address address:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_billto_put_with_http_info(direction, order_id, address, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_billto_put_with_http_info(direction, order_id, address, **kwargs)
-            return data
-
-    def orders_direction_order_id_billto_put_with_http_info(self, direction, order_id, address, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_billto_put_with_http_info(direction, order_id, address, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param Address address:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'address']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_billto_put" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_billto_put`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_billto_put`")
-        # verify the required parameter 'address' is set
-        if ('address' not in params) or (params['address'] is None):
-            raise ValueError("Missing the required parameter `address` when calling `orders_direction_order_id_billto_put`")
-
-        resource_path = '/orders/{direction}/{orderID}/billto'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'address' in params:
-            body_params = params['address']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PUT',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_cancel_post(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_cancel_post(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_cancel_post_with_http_info(direction, order_id, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_cancel_post_with_http_info(direction, order_id, **kwargs)
-            return data
-
-    def orders_direction_order_id_cancel_post_with_http_info(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_cancel_post_with_http_info(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_cancel_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_cancel_post`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_cancel_post`")
-
-        resource_path = '/orders/{direction}/{orderID}/cancel'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_decline_post(self, direction, order_id, info, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_decline_post(direction, order_id, info, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param OrderApprovalInfo info:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_decline_post_with_http_info(direction, order_id, info, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_decline_post_with_http_info(direction, order_id, info, **kwargs)
-            return data
-
-    def orders_direction_order_id_decline_post_with_http_info(self, direction, order_id, info, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_decline_post_with_http_info(direction, order_id, info, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param OrderApprovalInfo info:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'info']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_decline_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_decline_post`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_decline_post`")
-        # verify the required parameter 'info' is set
-        if ('info' not in params) or (params['info'] is None):
-            raise ValueError("Missing the required parameter `info` when calling `orders_direction_order_id_decline_post`")
-
-        resource_path = '/orders/{direction}/{orderID}/decline'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'info' in params:
-            body_params = params['info']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_delete(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_delete(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_delete_with_http_info(direction, order_id, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_delete_with_http_info(direction, order_id, **kwargs)
-            return data
-
-    def orders_direction_order_id_delete_with_http_info(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_delete_with_http_info(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_delete" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_delete`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_delete`")
-
-        resource_path = '/orders/{direction}/{orderID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_eligibleapprovers_get(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_eligibleapprovers_get(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param str search: Search of the order.
-        :param list[str] search_on: Search on of the order.
-        :param list[str] sort_by: Sort by of the order.
-        :param int page: Page of the order.
-        :param int page_size: Page size of the order.
-        :return: ListUser
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_eligibleapprovers_get_with_http_info(direction, order_id, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_eligibleapprovers_get_with_http_info(direction, order_id, **kwargs)
-            return data
-
-    def orders_direction_order_id_eligibleapprovers_get_with_http_info(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_eligibleapprovers_get_with_http_info(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param str search: Search of the order.
-        :param list[str] search_on: Search on of the order.
-        :param list[str] sort_by: Sort by of the order.
-        :param int page: Page of the order.
-        :param int page_size: Page size of the order.
-        :return: ListUser
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_eligibleapprovers_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_eligibleapprovers_get`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_eligibleapprovers_get`")
-
-        resource_path = '/orders/{direction}/{orderID}/eligibleapprovers'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListUser',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_get(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_get(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_get_with_http_info(direction, order_id, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_get_with_http_info(direction, order_id, **kwargs)
-            return data
-
-    def orders_direction_order_id_get_with_http_info(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_get_with_http_info(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_get`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_get`")
-
-        resource_path = '/orders/{direction}/{orderID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_patch(self, direction, order_id, partial_order, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_patch(direction, order_id, partial_order, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param Order partial_order:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_patch_with_http_info(direction, order_id, partial_order, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_patch_with_http_info(direction, order_id, partial_order, **kwargs)
-            return data
-
-    def orders_direction_order_id_patch_with_http_info(self, direction, order_id, partial_order, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_patch_with_http_info(direction, order_id, partial_order, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param Order partial_order:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'partial_order']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_patch" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_patch`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_patch`")
-        # verify the required parameter 'partial_order' is set
-        if ('partial_order' not in params) or (params['partial_order'] is None):
-            raise ValueError("Missing the required parameter `partial_order` when calling `orders_direction_order_id_patch`")
-
-        resource_path = '/orders/{direction}/{orderID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'partial_order' in params:
-            body_params = params['partial_order']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PATCH',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_promotions_get(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_promotions_get(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param str search: Search of the order.
-        :param list[str] search_on: Search on of the order.
-        :param list[str] sort_by: Sort by of the order.
-        :param int page: Page of the order.
-        :param int page_size: Page size of the order.
-        :return: ListOrderPromotion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_promotions_get_with_http_info(direction, order_id, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_promotions_get_with_http_info(direction, order_id, **kwargs)
-            return data
-
-    def orders_direction_order_id_promotions_get_with_http_info(self, direction, order_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_promotions_get_with_http_info(direction, order_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param str search: Search of the order.
-        :param list[str] search_on: Search on of the order.
-        :param list[str] sort_by: Sort by of the order.
-        :param int page: Page of the order.
-        :param int page_size: Page size of the order.
-        :return: ListOrderPromotion
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_promotions_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_promotions_get`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_promotions_get`")
-
-        resource_path = '/orders/{direction}/{orderID}/promotions'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListOrderPromotion',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_promotions_promo_code_delete(self, direction, order_id, promo_code, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_promotions_promo_code_delete(direction, order_id, promo_code, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param str promo_code: Promo code of the order. (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_promotions_promo_code_delete_with_http_info(direction, order_id, promo_code, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_promotions_promo_code_delete_with_http_info(direction, order_id, promo_code, **kwargs)
-            return data
-
-    def orders_direction_order_id_promotions_promo_code_delete_with_http_info(self, direction, order_id, promo_code, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_promotions_promo_code_delete_with_http_info(direction, order_id, promo_code, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param str promo_code: Promo code of the order. (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'promo_code']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_promotions_promo_code_delete" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_promotions_promo_code_delete`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_promotions_promo_code_delete`")
-        # verify the required parameter 'promo_code' is set
-        if ('promo_code' not in params) or (params['promo_code'] is None):
-            raise ValueError("Missing the required parameter `promo_code` when calling `orders_direction_order_id_promotions_promo_code_delete`")
-
-        resource_path = '/orders/{direction}/{orderID}/promotions/{promoCode}'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-        if 'promo_code' in params:
-            path_params['promoCode'] = params['promo_code']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_promotions_promo_code_post(self, direction, order_id, promo_code, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_promotions_promo_code_post(direction, order_id, promo_code, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param str promo_code: Promo code of the order. (required)
+        :param str promo_code: Promo code of the promotion. (required)
         :return: Promotion
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.orders_direction_order_id_promotions_promo_code_post_with_http_info(direction, order_id, promo_code, **kwargs)
+            return self.add_promotion_with_http_info(direction, order_id, promo_code, **kwargs)
         else:
-            (data) = self.orders_direction_order_id_promotions_promo_code_post_with_http_info(direction, order_id, promo_code, **kwargs)
+            (data) = self.add_promotion_with_http_info(direction, order_id, promo_code, **kwargs)
             return data
 
-    def orders_direction_order_id_promotions_promo_code_post_with_http_info(self, direction, order_id, promo_code, **kwargs):
+    def add_promotion_with_http_info(self, direction, order_id, promo_code, **kwargs):
         """
         
         
@@ -1665,13 +91,13 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_promotions_promo_code_post_with_http_info(direction, order_id, promo_code, callback=callback_function)
+        >>> thread = api.add_promotion_with_http_info(direction, order_id, promo_code, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
-        :param str promo_code: Promo code of the order. (required)
+        :param str promo_code: Promo code of the promotion. (required)
         :return: Promotion
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1686,19 +112,19 @@ class OrderApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_promotions_promo_code_post" % key
+                    " to method add_promotion" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'direction' is set
         if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_promotions_promo_code_post`")
+            raise ValueError("Missing the required parameter `direction` when calling `add_promotion`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_promotions_promo_code_post`")
+            raise ValueError("Missing the required parameter `order_id` when calling `add_promotion`")
         # verify the required parameter 'promo_code' is set
         if ('promo_code' not in params) or (params['promo_code'] is None):
-            raise ValueError("Missing the required parameter `promo_code` when calling `orders_direction_order_id_promotions_promo_code_post`")
+            raise ValueError("Missing the required parameter `promo_code` when calling `add_promotion`")
 
         resource_path = '/orders/{direction}/{orderID}/promotions/{promoCode}'.replace('{format}', 'json')
         path_params = {}
@@ -1743,7 +169,7 @@ class OrderApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def orders_direction_order_id_put(self, direction, order_id, order, **kwargs):
+    def approve(self, direction, order_id, order_approval_info, **kwargs):
         """
         
         
@@ -1754,11 +180,1830 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_put(direction, order_id, order, callback=callback_function)
+        >>> thread = api.approve(direction, order_id, order_approval_info, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param OrderApprovalInfo order_approval_info:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.approve_with_http_info(direction, order_id, order_approval_info, **kwargs)
+        else:
+            (data) = self.approve_with_http_info(direction, order_id, order_approval_info, **kwargs)
+            return data
+
+    def approve_with_http_info(self, direction, order_id, order_approval_info, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.approve_with_http_info(direction, order_id, order_approval_info, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param OrderApprovalInfo order_approval_info:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'order_approval_info']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method approve" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `approve`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `approve`")
+        # verify the required parameter 'order_approval_info' is set
+        if ('order_approval_info' not in params) or (params['order_approval_info'] is None):
+            raise ValueError("Missing the required parameter `order_approval_info` when calling `approve`")
+
+        resource_path = '/orders/{direction}/{orderID}/approve'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'order_approval_info' in params:
+            body_params = params['order_approval_info']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def cancel(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.cancel(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.cancel_with_http_info(direction, order_id, **kwargs)
+        else:
+            (data) = self.cancel_with_http_info(direction, order_id, **kwargs)
+            return data
+
+    def cancel_with_http_info(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.cancel_with_http_info(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method cancel" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `cancel`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `cancel`")
+
+        resource_path = '/orders/{direction}/{orderID}/cancel'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def create(self, direction, order, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.create(direction, order, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param Order order:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.create_with_http_info(direction, order, **kwargs)
+        else:
+            (data) = self.create_with_http_info(direction, order, **kwargs)
+            return data
+
+    def create_with_http_info(self, direction, order, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.create_with_http_info(direction, order, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param Order order:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `create`")
+        # verify the required parameter 'order' is set
+        if ('order' not in params) or (params['order'] is None):
+            raise ValueError("Missing the required parameter `order` when calling `create`")
+
+        resource_path = '/orders/{direction}'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'order' in params:
+            body_params = params['order']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def decline(self, direction, order_id, order_approval_info, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.decline(direction, order_id, order_approval_info, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param OrderApprovalInfo order_approval_info:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.decline_with_http_info(direction, order_id, order_approval_info, **kwargs)
+        else:
+            (data) = self.decline_with_http_info(direction, order_id, order_approval_info, **kwargs)
+            return data
+
+    def decline_with_http_info(self, direction, order_id, order_approval_info, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.decline_with_http_info(direction, order_id, order_approval_info, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param OrderApprovalInfo order_approval_info:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'order_approval_info']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method decline" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `decline`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `decline`")
+        # verify the required parameter 'order_approval_info' is set
+        if ('order_approval_info' not in params) or (params['order_approval_info'] is None):
+            raise ValueError("Missing the required parameter `order_approval_info` when calling `decline`")
+
+        resource_path = '/orders/{direction}/{orderID}/decline'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'order_approval_info' in params:
+            body_params = params['order_approval_info']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def delete(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_with_http_info(direction, order_id, **kwargs)
+        else:
+            (data) = self.delete_with_http_info(direction, order_id, **kwargs)
+            return data
+
+    def delete_with_http_info(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_with_http_info(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `delete`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `delete`")
+
+        resource_path = '/orders/{direction}/{orderID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def get(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_with_http_info(direction, order_id, **kwargs)
+        else:
+            (data) = self.get_with_http_info(direction, order_id, **kwargs)
+            return data
+
+    def get_with_http_info(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_with_http_info(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `get`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `get`")
+
+        resource_path = '/orders/{direction}/{orderID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list(self, direction, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list(direction, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str buyer_id: ID of the buyer.
+        :param str supplier_id: ID of the supplier.
+        :param str _from: Lower bound of date range that the order was created.
+        :param str to: Upper bound of date range that the order was created.
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListOrder
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_with_http_info(direction, **kwargs)
+        else:
+            (data) = self.list_with_http_info(direction, **kwargs)
+            return data
+
+    def list_with_http_info(self, direction, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_with_http_info(direction, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str buyer_id: ID of the buyer.
+        :param str supplier_id: ID of the supplier.
+        :param str _from: Lower bound of date range that the order was created.
+        :param str to: Upper bound of date range that the order was created.
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListOrder
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'buyer_id', 'supplier_id', '_from', 'to', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `list`")
+
+        resource_path = '/orders/{direction}'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+
+        query_params = {}
+        if 'buyer_id' in params:
+            query_params['buyerID'] = params['buyer_id']
+        if 'supplier_id' in params:
+            query_params['supplierID'] = params['supplier_id']
+        if '_from' in params:
+            query_params['from'] = params['_from']
+        if 'to' in params:
+            query_params['to'] = params['to']
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListOrder',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list_approvals(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_approvals(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListOrderApproval
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_approvals_with_http_info(direction, order_id, **kwargs)
+        else:
+            (data) = self.list_approvals_with_http_info(direction, order_id, **kwargs)
+            return data
+
+    def list_approvals_with_http_info(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_approvals_with_http_info(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListOrderApproval
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_approvals" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `list_approvals`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `list_approvals`")
+
+        resource_path = '/orders/{direction}/{orderID}/approvals'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListOrderApproval',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list_eligible_approvers(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_eligible_approvers(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListUser
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_eligible_approvers_with_http_info(direction, order_id, **kwargs)
+        else:
+            (data) = self.list_eligible_approvers_with_http_info(direction, order_id, **kwargs)
+            return data
+
+    def list_eligible_approvers_with_http_info(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_eligible_approvers_with_http_info(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListUser
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_eligible_approvers" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `list_eligible_approvers`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `list_eligible_approvers`")
+
+        resource_path = '/orders/{direction}/{orderID}/eligibleapprovers'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListUser',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list_promotions(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_promotions(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListOrderPromotion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_promotions_with_http_info(direction, order_id, **kwargs)
+        else:
+            (data) = self.list_promotions_with_http_info(direction, order_id, **kwargs)
+            return data
+
+    def list_promotions_with_http_info(self, direction, order_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_promotions_with_http_info(direction, order_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListOrderPromotion
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_promotions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `list_promotions`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `list_promotions`")
+
+        resource_path = '/orders/{direction}/{orderID}/promotions'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListOrderPromotion',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def patch(self, direction, order_id, partial_order, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch(direction, order_id, partial_order, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param Order partial_order:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.patch_with_http_info(direction, order_id, partial_order, **kwargs)
+        else:
+            (data) = self.patch_with_http_info(direction, order_id, partial_order, **kwargs)
+            return data
+
+    def patch_with_http_info(self, direction, order_id, partial_order, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_with_http_info(direction, order_id, partial_order, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param Order partial_order:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'partial_order']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `patch`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `patch`")
+        # verify the required parameter 'partial_order' is set
+        if ('partial_order' not in params) or (params['partial_order'] is None):
+            raise ValueError("Missing the required parameter `partial_order` when calling `patch`")
+
+        resource_path = '/orders/{direction}/{orderID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'partial_order' in params:
+            body_params = params['partial_order']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'PATCH',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def patch_billing_address(self, direction, order_id, partial_address, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_billing_address(direction, order_id, partial_address, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param Address partial_address:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.patch_billing_address_with_http_info(direction, order_id, partial_address, **kwargs)
+        else:
+            (data) = self.patch_billing_address_with_http_info(direction, order_id, partial_address, **kwargs)
+            return data
+
+    def patch_billing_address_with_http_info(self, direction, order_id, partial_address, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_billing_address_with_http_info(direction, order_id, partial_address, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param Address partial_address:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'partial_address']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_billing_address" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `patch_billing_address`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `patch_billing_address`")
+        # verify the required parameter 'partial_address' is set
+        if ('partial_address' not in params) or (params['partial_address'] is None):
+            raise ValueError("Missing the required parameter `partial_address` when calling `patch_billing_address`")
+
+        resource_path = '/orders/{direction}/{orderID}/billto'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'partial_address' in params:
+            body_params = params['partial_address']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'PATCH',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def patch_from_user(self, direction, order_id, partial_user, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_from_user(direction, order_id, partial_user, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param User partial_user:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.patch_from_user_with_http_info(direction, order_id, partial_user, **kwargs)
+        else:
+            (data) = self.patch_from_user_with_http_info(direction, order_id, partial_user, **kwargs)
+            return data
+
+    def patch_from_user_with_http_info(self, direction, order_id, partial_user, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_from_user_with_http_info(direction, order_id, partial_user, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param User partial_user:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'partial_user']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_from_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `patch_from_user`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `patch_from_user`")
+        # verify the required parameter 'partial_user' is set
+        if ('partial_user' not in params) or (params['partial_user'] is None):
+            raise ValueError("Missing the required parameter `partial_user` when calling `patch_from_user`")
+
+        resource_path = '/orders/{direction}/{orderID}/fromuser'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'partial_user' in params:
+            body_params = params['partial_user']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'PATCH',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def patch_shipping_address(self, direction, order_id, partial_address, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_shipping_address(direction, order_id, partial_address, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param Address partial_address:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.patch_shipping_address_with_http_info(direction, order_id, partial_address, **kwargs)
+        else:
+            (data) = self.patch_shipping_address_with_http_info(direction, order_id, partial_address, **kwargs)
+            return data
+
+    def patch_shipping_address_with_http_info(self, direction, order_id, partial_address, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_shipping_address_with_http_info(direction, order_id, partial_address, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param Address partial_address:  (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'partial_address']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_shipping_address" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `patch_shipping_address`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `patch_shipping_address`")
+        # verify the required parameter 'partial_address' is set
+        if ('partial_address' not in params) or (params['partial_address'] is None):
+            raise ValueError("Missing the required parameter `partial_address` when calling `patch_shipping_address`")
+
+        resource_path = '/orders/{direction}/{orderID}/shipto'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'partial_address' in params:
+            body_params = params['partial_address']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'PATCH',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def remove_promotion(self, direction, order_id, promo_code, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_promotion(direction, order_id, promo_code, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param str promo_code: Promo code of the order. (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.remove_promotion_with_http_info(direction, order_id, promo_code, **kwargs)
+        else:
+            (data) = self.remove_promotion_with_http_info(direction, order_id, promo_code, **kwargs)
+            return data
+
+    def remove_promotion_with_http_info(self, direction, order_id, promo_code, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_promotion_with_http_info(direction, order_id, promo_code, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
+        :param str promo_code: Promo code of the order. (required)
+        :return: Order
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['direction', 'order_id', 'promo_code']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method remove_promotion" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'direction' is set
+        if ('direction' not in params) or (params['direction'] is None):
+            raise ValueError("Missing the required parameter `direction` when calling `remove_promotion`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `remove_promotion`")
+        # verify the required parameter 'promo_code' is set
+        if ('promo_code' not in params) or (params['promo_code'] is None):
+            raise ValueError("Missing the required parameter `promo_code` when calling `remove_promotion`")
+
+        resource_path = '/orders/{direction}/{orderID}/promotions/{promoCode}'.replace('{format}', 'json')
+        path_params = {}
+        if 'direction' in params:
+            path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
+        if 'promo_code' in params:
+            path_params['promoCode'] = params['promo_code']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Order',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def save(self, direction, order_id, order, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.save(direction, order_id, order, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param Order order:  (required)
         :return: Order
@@ -1767,12 +2012,12 @@ class OrderApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.orders_direction_order_id_put_with_http_info(direction, order_id, order, **kwargs)
+            return self.save_with_http_info(direction, order_id, order, **kwargs)
         else:
-            (data) = self.orders_direction_order_id_put_with_http_info(direction, order_id, order, **kwargs)
+            (data) = self.save_with_http_info(direction, order_id, order, **kwargs)
             return data
 
-    def orders_direction_order_id_put_with_http_info(self, direction, order_id, order, **kwargs):
+    def save_with_http_info(self, direction, order_id, order, **kwargs):
         """
         
         
@@ -1783,11 +2028,11 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_put_with_http_info(direction, order_id, order, callback=callback_function)
+        >>> thread = api.save_with_http_info(direction, order_id, order, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param Order order:  (required)
         :return: Order
@@ -1804,19 +2049,19 @@ class OrderApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_put" % key
+                    " to method save" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'direction' is set
         if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_put`")
+            raise ValueError("Missing the required parameter `direction` when calling `save`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_put`")
+            raise ValueError("Missing the required parameter `order_id` when calling `save`")
         # verify the required parameter 'order' is set
         if ('order' not in params) or (params['order'] is None):
-            raise ValueError("Missing the required parameter `order` when calling `orders_direction_order_id_put`")
+            raise ValueError("Missing the required parameter `order` when calling `save`")
 
         resource_path = '/orders/{direction}/{orderID}'.replace('{format}', 'json')
         path_params = {}
@@ -1861,7 +2106,7 @@ class OrderApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def orders_direction_order_id_ship_post(self, direction, order_id, shipment, **kwargs):
+    def set_billing_address(self, direction, order_id, address, **kwargs):
         """
         
         
@@ -1872,129 +2117,11 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_ship_post(direction, order_id, shipment, callback=callback_function)
+        >>> thread = api.set_billing_address(direction, order_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param BuyerShipment shipment:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.orders_direction_order_id_ship_post_with_http_info(direction, order_id, shipment, **kwargs)
-        else:
-            (data) = self.orders_direction_order_id_ship_post_with_http_info(direction, order_id, shipment, **kwargs)
-            return data
-
-    def orders_direction_order_id_ship_post_with_http_info(self, direction, order_id, shipment, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_ship_post_with_http_info(direction, order_id, shipment, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param str order_id: ID of the order. (required)
-        :param BuyerShipment shipment:  (required)
-        :return: Order
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['direction', 'order_id', 'shipment']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_ship_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'direction' is set
-        if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_ship_post`")
-        # verify the required parameter 'order_id' is set
-        if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_ship_post`")
-        # verify the required parameter 'shipment' is set
-        if ('shipment' not in params) or (params['shipment'] is None):
-            raise ValueError("Missing the required parameter `shipment` when calling `orders_direction_order_id_ship_post`")
-
-        resource_path = '/orders/{direction}/{orderID}/ship'.replace('{format}', 'json')
-        path_params = {}
-        if 'direction' in params:
-            path_params['direction'] = params['direction']
-        if 'order_id' in params:
-            path_params['orderID'] = params['order_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'shipment' in params:
-            body_params = params['shipment']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Order',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def orders_direction_order_id_shipto_patch(self, direction, order_id, address, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.orders_direction_order_id_shipto_patch(direction, order_id, address, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param Address address:  (required)
         :return: Order
@@ -2003,12 +2130,12 @@ class OrderApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.orders_direction_order_id_shipto_patch_with_http_info(direction, order_id, address, **kwargs)
+            return self.set_billing_address_with_http_info(direction, order_id, address, **kwargs)
         else:
-            (data) = self.orders_direction_order_id_shipto_patch_with_http_info(direction, order_id, address, **kwargs)
+            (data) = self.set_billing_address_with_http_info(direction, order_id, address, **kwargs)
             return data
 
-    def orders_direction_order_id_shipto_patch_with_http_info(self, direction, order_id, address, **kwargs):
+    def set_billing_address_with_http_info(self, direction, order_id, address, **kwargs):
         """
         
         
@@ -2019,11 +2146,11 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_shipto_patch_with_http_info(direction, order_id, address, callback=callback_function)
+        >>> thread = api.set_billing_address_with_http_info(direction, order_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param Address address:  (required)
         :return: Order
@@ -2040,21 +2167,21 @@ class OrderApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_shipto_patch" % key
+                    " to method set_billing_address" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'direction' is set
         if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_shipto_patch`")
+            raise ValueError("Missing the required parameter `direction` when calling `set_billing_address`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_shipto_patch`")
+            raise ValueError("Missing the required parameter `order_id` when calling `set_billing_address`")
         # verify the required parameter 'address' is set
         if ('address' not in params) or (params['address'] is None):
-            raise ValueError("Missing the required parameter `address` when calling `orders_direction_order_id_shipto_patch`")
+            raise ValueError("Missing the required parameter `address` when calling `set_billing_address`")
 
-        resource_path = '/orders/{direction}/{orderID}/shipto'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/billto'.replace('{format}', 'json')
         path_params = {}
         if 'direction' in params:
             path_params['direction'] = params['direction']
@@ -2085,7 +2212,7 @@ class OrderApi(object):
         # Authentication setting
         auth_settings = ['oauth2']
 
-        return self.api_client.call_api(resource_path, 'PATCH',
+        return self.api_client.call_api(resource_path, 'PUT',
                                             path_params,
                                             query_params,
                                             header_params,
@@ -2097,7 +2224,7 @@ class OrderApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def orders_direction_order_id_shipto_put(self, direction, order_id, address, **kwargs):
+    def set_shipping_address(self, direction, order_id, address, **kwargs):
         """
         
         
@@ -2108,11 +2235,11 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_shipto_put(direction, order_id, address, callback=callback_function)
+        >>> thread = api.set_shipping_address(direction, order_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param Address address:  (required)
         :return: Order
@@ -2121,12 +2248,12 @@ class OrderApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.orders_direction_order_id_shipto_put_with_http_info(direction, order_id, address, **kwargs)
+            return self.set_shipping_address_with_http_info(direction, order_id, address, **kwargs)
         else:
-            (data) = self.orders_direction_order_id_shipto_put_with_http_info(direction, order_id, address, **kwargs)
+            (data) = self.set_shipping_address_with_http_info(direction, order_id, address, **kwargs)
             return data
 
-    def orders_direction_order_id_shipto_put_with_http_info(self, direction, order_id, address, **kwargs):
+    def set_shipping_address_with_http_info(self, direction, order_id, address, **kwargs):
         """
         
         
@@ -2137,11 +2264,11 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_shipto_put_with_http_info(direction, order_id, address, callback=callback_function)
+        >>> thread = api.set_shipping_address_with_http_info(direction, order_id, address, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
         :param Address address:  (required)
         :return: Order
@@ -2158,19 +2285,19 @@ class OrderApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_shipto_put" % key
+                    " to method set_shipping_address" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'direction' is set
         if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_shipto_put`")
+            raise ValueError("Missing the required parameter `direction` when calling `set_shipping_address`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_shipto_put`")
+            raise ValueError("Missing the required parameter `order_id` when calling `set_shipping_address`")
         # verify the required parameter 'address' is set
         if ('address' not in params) or (params['address'] is None):
-            raise ValueError("Missing the required parameter `address` when calling `orders_direction_order_id_shipto_put`")
+            raise ValueError("Missing the required parameter `address` when calling `set_shipping_address`")
 
         resource_path = '/orders/{direction}/{orderID}/shipto'.replace('{format}', 'json')
         path_params = {}
@@ -2215,7 +2342,7 @@ class OrderApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def orders_direction_order_id_submit_post(self, direction, order_id, **kwargs):
+    def ship(self, direction, order_id, shipment, **kwargs):
         """
         
         
@@ -2226,24 +2353,25 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_submit_post(direction, order_id, callback=callback_function)
+        >>> thread = api.ship(direction, order_id, shipment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
+        :param Shipment shipment:  (required)
         :return: Order
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.orders_direction_order_id_submit_post_with_http_info(direction, order_id, **kwargs)
+            return self.ship_with_http_info(direction, order_id, shipment, **kwargs)
         else:
-            (data) = self.orders_direction_order_id_submit_post_with_http_info(direction, order_id, **kwargs)
+            (data) = self.ship_with_http_info(direction, order_id, shipment, **kwargs)
             return data
 
-    def orders_direction_order_id_submit_post_with_http_info(self, direction, order_id, **kwargs):
+    def ship_with_http_info(self, direction, order_id, shipment, **kwargs):
         """
         
         
@@ -2254,18 +2382,19 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_order_id_submit_post_with_http_info(direction, order_id, callback=callback_function)
+        >>> thread = api.ship_with_http_info(direction, order_id, shipment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
         :param str order_id: ID of the order. (required)
+        :param Shipment shipment:  (required)
         :return: Order
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['direction', 'order_id']
+        all_params = ['direction', 'order_id', 'shipment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -2274,18 +2403,21 @@ class OrderApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_order_id_submit_post" % key
+                    " to method ship" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'direction' is set
         if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_order_id_submit_post`")
+            raise ValueError("Missing the required parameter `direction` when calling `ship`")
         # verify the required parameter 'order_id' is set
         if ('order_id' not in params) or (params['order_id'] is None):
-            raise ValueError("Missing the required parameter `order_id` when calling `orders_direction_order_id_submit_post`")
+            raise ValueError("Missing the required parameter `order_id` when calling `ship`")
+        # verify the required parameter 'shipment' is set
+        if ('shipment' not in params) or (params['shipment'] is None):
+            raise ValueError("Missing the required parameter `shipment` when calling `ship`")
 
-        resource_path = '/orders/{direction}/{orderID}/submit'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/ship'.replace('{format}', 'json')
         path_params = {}
         if 'direction' in params:
             path_params['direction'] = params['direction']
@@ -2300,6 +2432,8 @@ class OrderApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'shipment' in params:
+            body_params = params['shipment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -2326,7 +2460,7 @@ class OrderApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def orders_direction_post(self, direction, order, **kwargs):
+    def submit(self, direction, order_id, **kwargs):
         """
         
         
@@ -2337,24 +2471,24 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_post(direction, order, callback=callback_function)
+        >>> thread = api.submit(direction, order_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param Order order:  (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
         :return: Order
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.orders_direction_post_with_http_info(direction, order, **kwargs)
+            return self.submit_with_http_info(direction, order_id, **kwargs)
         else:
-            (data) = self.orders_direction_post_with_http_info(direction, order, **kwargs)
+            (data) = self.submit_with_http_info(direction, order_id, **kwargs)
             return data
 
-    def orders_direction_post_with_http_info(self, direction, order, **kwargs):
+    def submit_with_http_info(self, direction, order_id, **kwargs):
         """
         
         
@@ -2365,18 +2499,18 @@ class OrderApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.orders_direction_post_with_http_info(direction, order, callback=callback_function)
+        >>> thread = api.submit_with_http_info(direction, order_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str direction: Direction of the order. Possible values: Incoming, Outgoing. (required)
-        :param Order order:  (required)
+        :param str direction: Direction of the order, from the current user's perspective. Possible values: incoming, outgoing. (required)
+        :param str order_id: ID of the order. (required)
         :return: Order
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['direction', 'order']
+        all_params = ['direction', 'order_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -2385,21 +2519,23 @@ class OrderApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method orders_direction_post" % key
+                    " to method submit" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'direction' is set
         if ('direction' not in params) or (params['direction'] is None):
-            raise ValueError("Missing the required parameter `direction` when calling `orders_direction_post`")
-        # verify the required parameter 'order' is set
-        if ('order' not in params) or (params['order'] is None):
-            raise ValueError("Missing the required parameter `order` when calling `orders_direction_post`")
+            raise ValueError("Missing the required parameter `direction` when calling `submit`")
+        # verify the required parameter 'order_id' is set
+        if ('order_id' not in params) or (params['order_id'] is None):
+            raise ValueError("Missing the required parameter `order_id` when calling `submit`")
 
-        resource_path = '/orders/{direction}'.replace('{format}', 'json')
+        resource_path = '/orders/{direction}/{orderID}/submit'.replace('{format}', 'json')
         path_params = {}
         if 'direction' in params:
             path_params['direction'] = params['direction']
+        if 'order_id' in params:
+            path_params['orderID'] = params['order_id']
 
         query_params = {}
 
@@ -2409,8 +2545,6 @@ class OrderApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'order' in params:
-            body_params = params['order']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\

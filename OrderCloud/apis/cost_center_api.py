@@ -51,7 +51,7 @@ class CostCenterApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def buyers_buyer_id_costcenters_assignments_get(self, buyer_id, **kwargs):
+    def create(self, buyer_id, cost_center, **kwargs):
         """
         
         
@@ -62,7 +62,587 @@ class CostCenterApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_costcenters_assignments_get(buyer_id, callback=callback_function)
+        >>> thread = api.create(buyer_id, cost_center, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param CostCenter cost_center:  (required)
+        :return: CostCenter
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.create_with_http_info(buyer_id, cost_center, **kwargs)
+        else:
+            (data) = self.create_with_http_info(buyer_id, cost_center, **kwargs)
+            return data
+
+    def create_with_http_info(self, buyer_id, cost_center, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.create_with_http_info(buyer_id, cost_center, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param CostCenter cost_center:  (required)
+        :return: CostCenter
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['buyer_id', 'cost_center']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `create`")
+        # verify the required parameter 'cost_center' is set
+        if ('cost_center' not in params) or (params['cost_center'] is None):
+            raise ValueError("Missing the required parameter `cost_center` when calling `create`")
+
+        resource_path = '/buyers/{buyerID}/costcenters'.replace('{format}', 'json')
+        path_params = {}
+        if 'buyer_id' in params:
+            path_params['buyerID'] = params['buyer_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'cost_center' in params:
+            body_params = params['cost_center']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='CostCenter',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def delete(self, buyer_id, cost_center_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete(buyer_id, cost_center_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str cost_center_id: ID of the cost center. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_with_http_info(buyer_id, cost_center_id, **kwargs)
+        else:
+            (data) = self.delete_with_http_info(buyer_id, cost_center_id, **kwargs)
+            return data
+
+    def delete_with_http_info(self, buyer_id, cost_center_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_with_http_info(buyer_id, cost_center_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str cost_center_id: ID of the cost center. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['buyer_id', 'cost_center_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `delete`")
+        # verify the required parameter 'cost_center_id' is set
+        if ('cost_center_id' not in params) or (params['cost_center_id'] is None):
+            raise ValueError("Missing the required parameter `cost_center_id` when calling `delete`")
+
+        resource_path = '/buyers/{buyerID}/costcenters/{costCenterID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'buyer_id' in params:
+            path_params['buyerID'] = params['buyer_id']
+        if 'cost_center_id' in params:
+            path_params['costCenterID'] = params['cost_center_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def delete_assignment(self, buyer_id, cost_center_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_assignment(buyer_id, cost_center_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str cost_center_id: ID of the cost center. (required)
+        :param str user_id: ID of the user.
+        :param str user_group_id: ID of the user group.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.delete_assignment_with_http_info(buyer_id, cost_center_id, **kwargs)
+        else:
+            (data) = self.delete_assignment_with_http_info(buyer_id, cost_center_id, **kwargs)
+            return data
+
+    def delete_assignment_with_http_info(self, buyer_id, cost_center_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete_assignment_with_http_info(buyer_id, cost_center_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str cost_center_id: ID of the cost center. (required)
+        :param str user_id: ID of the user.
+        :param str user_group_id: ID of the user group.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['buyer_id', 'cost_center_id', 'user_id', 'user_group_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_assignment" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `delete_assignment`")
+        # verify the required parameter 'cost_center_id' is set
+        if ('cost_center_id' not in params) or (params['cost_center_id'] is None):
+            raise ValueError("Missing the required parameter `cost_center_id` when calling `delete_assignment`")
+
+        resource_path = '/buyers/{buyerID}/costcenters/{costCenterID}/assignments'.replace('{format}', 'json')
+        path_params = {}
+        if 'buyer_id' in params:
+            path_params['buyerID'] = params['buyer_id']
+        if 'cost_center_id' in params:
+            path_params['costCenterID'] = params['cost_center_id']
+
+        query_params = {}
+        if 'user_id' in params:
+            query_params['userID'] = params['user_id']
+        if 'user_group_id' in params:
+            query_params['userGroupID'] = params['user_group_id']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'DELETE',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type=None,
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def get(self, buyer_id, cost_center_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get(buyer_id, cost_center_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str cost_center_id: ID of the cost center. (required)
+        :return: CostCenter
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_with_http_info(buyer_id, cost_center_id, **kwargs)
+        else:
+            (data) = self.get_with_http_info(buyer_id, cost_center_id, **kwargs)
+            return data
+
+    def get_with_http_info(self, buyer_id, cost_center_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_with_http_info(buyer_id, cost_center_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str cost_center_id: ID of the cost center. (required)
+        :return: CostCenter
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['buyer_id', 'cost_center_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `get`")
+        # verify the required parameter 'cost_center_id' is set
+        if ('cost_center_id' not in params) or (params['cost_center_id'] is None):
+            raise ValueError("Missing the required parameter `cost_center_id` when calling `get`")
+
+        resource_path = '/buyers/{buyerID}/costcenters/{costCenterID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'buyer_id' in params:
+            path_params['buyerID'] = params['buyer_id']
+        if 'cost_center_id' in params:
+            path_params['costCenterID'] = params['cost_center_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='CostCenter',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list(self, buyer_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list(buyer_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListCostCenter
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_with_http_info(buyer_id, **kwargs)
+        else:
+            (data) = self.list_with_http_info(buyer_id, **kwargs)
+            return data
+
+    def list_with_http_info(self, buyer_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_with_http_info(buyer_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListCostCenter
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['buyer_id', 'search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `list`")
+
+        resource_path = '/buyers/{buyerID}/costcenters'.replace('{format}', 'json')
+        path_params = {}
+        if 'buyer_id' in params:
+            path_params['buyerID'] = params['buyer_id']
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListCostCenter',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def list_assignments(self, buyer_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_assignments(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -70,21 +650,21 @@ class CostCenterApi(object):
         :param str cost_center_id: ID of the cost center.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
-        :param str level: Level of the cost center.
-        :param int page: Page of the cost center.
-        :param int page_size: Page size of the cost center.
+        :param str level: Level of the cost center assignment. Possible values: User, Group, Company.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :return: ListCostCenterAssignment
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_assignments_get_with_http_info(buyer_id, **kwargs)
+            return self.list_assignments_with_http_info(buyer_id, **kwargs)
         else:
-            (data) = self.buyers_buyer_id_costcenters_assignments_get_with_http_info(buyer_id, **kwargs)
+            (data) = self.list_assignments_with_http_info(buyer_id, **kwargs)
             return data
 
-    def buyers_buyer_id_costcenters_assignments_get_with_http_info(self, buyer_id, **kwargs):
+    def list_assignments_with_http_info(self, buyer_id, **kwargs):
         """
         
         
@@ -95,7 +675,7 @@ class CostCenterApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_costcenters_assignments_get_with_http_info(buyer_id, callback=callback_function)
+        >>> thread = api.list_assignments_with_http_info(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -103,9 +683,9 @@ class CostCenterApi(object):
         :param str cost_center_id: ID of the cost center.
         :param str user_id: ID of the user.
         :param str user_group_id: ID of the user group.
-        :param str level: Level of the cost center.
-        :param int page: Page of the cost center.
-        :param int page_size: Page size of the cost center.
+        :param str level: Level of the cost center assignment. Possible values: User, Group, Company.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
         :return: ListCostCenterAssignment
                  If the method is called asynchronously,
                  returns the request thread.
@@ -120,13 +700,13 @@ class CostCenterApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_assignments_get" % key
+                    " to method list_assignments" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_assignments_get`")
+            raise ValueError("Missing the required parameter `buyer_id` when calling `list_assignments`")
 
         resource_path = '/buyers/{buyerID}/costcenters/assignments'.replace('{format}', 'json')
         path_params = {}
@@ -179,7 +759,7 @@ class CostCenterApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def buyers_buyer_id_costcenters_assignments_post(self, buyer_id, assignment, **kwargs):
+    def patch(self, buyer_id, cost_center_id, partial_cost_center, **kwargs):
         """
         
         
@@ -190,24 +770,25 @@ class CostCenterApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_costcenters_assignments_post(buyer_id, assignment, callback=callback_function)
+        >>> thread = api.patch(buyer_id, cost_center_id, partial_cost_center, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param CostCenterAssignment assignment:  (required)
-        :return: None
+        :param str cost_center_id: ID of the cost center. (required)
+        :param CostCenter partial_cost_center:  (required)
+        :return: CostCenter
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_assignments_post_with_http_info(buyer_id, assignment, **kwargs)
+            return self.patch_with_http_info(buyer_id, cost_center_id, partial_cost_center, **kwargs)
         else:
-            (data) = self.buyers_buyer_id_costcenters_assignments_post_with_http_info(buyer_id, assignment, **kwargs)
+            (data) = self.patch_with_http_info(buyer_id, cost_center_id, partial_cost_center, **kwargs)
             return data
 
-    def buyers_buyer_id_costcenters_assignments_post_with_http_info(self, buyer_id, assignment, **kwargs):
+    def patch_with_http_info(self, buyer_id, cost_center_id, partial_cost_center, **kwargs):
         """
         
         
@@ -218,18 +799,19 @@ class CostCenterApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_costcenters_assignments_post_with_http_info(buyer_id, assignment, callback=callback_function)
+        >>> thread = api.patch_with_http_info(buyer_id, cost_center_id, partial_cost_center, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param CostCenterAssignment assignment:  (required)
-        :return: None
+        :param str cost_center_id: ID of the cost center. (required)
+        :param CostCenter partial_cost_center:  (required)
+        :return: CostCenter
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'assignment']
+        all_params = ['buyer_id', 'cost_center_id', 'partial_cost_center']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -238,246 +820,19 @@ class CostCenterApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_assignments_post" % key
+                    " to method patch" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_assignments_post`")
-        # verify the required parameter 'assignment' is set
-        if ('assignment' not in params) or (params['assignment'] is None):
-            raise ValueError("Missing the required parameter `assignment` when calling `buyers_buyer_id_costcenters_assignments_post`")
-
-        resource_path = '/buyers/{buyerID}/costcenters/assignments'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'assignment' in params:
-            body_params = params['assignment']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def buyers_buyer_id_costcenters_cost_center_id_assignments_delete(self, buyer_id, cost_center_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_assignments_delete(buyer_id, cost_center_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str cost_center_id: ID of the cost center. (required)
-        :param str user_id: ID of the user.
-        :param str user_group_id: ID of the user group.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_cost_center_id_assignments_delete_with_http_info(buyer_id, cost_center_id, **kwargs)
-        else:
-            (data) = self.buyers_buyer_id_costcenters_cost_center_id_assignments_delete_with_http_info(buyer_id, cost_center_id, **kwargs)
-            return data
-
-    def buyers_buyer_id_costcenters_cost_center_id_assignments_delete_with_http_info(self, buyer_id, cost_center_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_assignments_delete_with_http_info(buyer_id, cost_center_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str cost_center_id: ID of the cost center. (required)
-        :param str user_id: ID of the user.
-        :param str user_group_id: ID of the user group.
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'cost_center_id', 'user_id', 'user_group_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_cost_center_id_assignments_delete" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_cost_center_id_assignments_delete`")
+            raise ValueError("Missing the required parameter `buyer_id` when calling `patch`")
         # verify the required parameter 'cost_center_id' is set
         if ('cost_center_id' not in params) or (params['cost_center_id'] is None):
-            raise ValueError("Missing the required parameter `cost_center_id` when calling `buyers_buyer_id_costcenters_cost_center_id_assignments_delete`")
-
-        resource_path = '/buyers/{buyerID}/costcenters/{costCenterID}/assignments'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-        if 'cost_center_id' in params:
-            path_params['costCenterID'] = params['cost_center_id']
-
-        query_params = {}
-        if 'user_id' in params:
-            query_params['userID'] = params['user_id']
-        if 'user_group_id' in params:
-            query_params['userGroupID'] = params['user_group_id']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def buyers_buyer_id_costcenters_cost_center_id_delete(self, buyer_id, cost_center_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_delete(buyer_id, cost_center_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str cost_center_id: ID of the cost center. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_cost_center_id_delete_with_http_info(buyer_id, cost_center_id, **kwargs)
-        else:
-            (data) = self.buyers_buyer_id_costcenters_cost_center_id_delete_with_http_info(buyer_id, cost_center_id, **kwargs)
-            return data
-
-    def buyers_buyer_id_costcenters_cost_center_id_delete_with_http_info(self, buyer_id, cost_center_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_delete_with_http_info(buyer_id, cost_center_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str cost_center_id: ID of the cost center. (required)
-        :return: None
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'cost_center_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_cost_center_id_delete" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_cost_center_id_delete`")
-        # verify the required parameter 'cost_center_id' is set
-        if ('cost_center_id' not in params) or (params['cost_center_id'] is None):
-            raise ValueError("Missing the required parameter `cost_center_id` when calling `buyers_buyer_id_costcenters_cost_center_id_delete`")
+            raise ValueError("Missing the required parameter `cost_center_id` when calling `patch`")
+        # verify the required parameter 'partial_cost_center' is set
+        if ('partial_cost_center' not in params) or (params['partial_cost_center'] is None):
+            raise ValueError("Missing the required parameter `partial_cost_center` when calling `patch`")
 
         resource_path = '/buyers/{buyerID}/costcenters/{costCenterID}'.replace('{format}', 'json')
         path_params = {}
@@ -494,235 +849,8 @@ class CostCenterApi(object):
         local_var_files = {}
 
         body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'DELETE',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type=None,
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def buyers_buyer_id_costcenters_cost_center_id_get(self, buyer_id, cost_center_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_get(buyer_id, cost_center_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str cost_center_id: ID of the cost center. (required)
-        :return: CostCenter
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_cost_center_id_get_with_http_info(buyer_id, cost_center_id, **kwargs)
-        else:
-            (data) = self.buyers_buyer_id_costcenters_cost_center_id_get_with_http_info(buyer_id, cost_center_id, **kwargs)
-            return data
-
-    def buyers_buyer_id_costcenters_cost_center_id_get_with_http_info(self, buyer_id, cost_center_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_get_with_http_info(buyer_id, cost_center_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str cost_center_id: ID of the cost center. (required)
-        :return: CostCenter
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'cost_center_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_cost_center_id_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_cost_center_id_get`")
-        # verify the required parameter 'cost_center_id' is set
-        if ('cost_center_id' not in params) or (params['cost_center_id'] is None):
-            raise ValueError("Missing the required parameter `cost_center_id` when calling `buyers_buyer_id_costcenters_cost_center_id_get`")
-
-        resource_path = '/buyers/{buyerID}/costcenters/{costCenterID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-        if 'cost_center_id' in params:
-            path_params['costCenterID'] = params['cost_center_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='CostCenter',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def buyers_buyer_id_costcenters_cost_center_id_patch(self, buyer_id, cost_center_id, cost_center, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_patch(buyer_id, cost_center_id, cost_center, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str cost_center_id: ID of the cost center. (required)
-        :param CostCenter cost_center:  (required)
-        :return: CostCenter
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_cost_center_id_patch_with_http_info(buyer_id, cost_center_id, cost_center, **kwargs)
-        else:
-            (data) = self.buyers_buyer_id_costcenters_cost_center_id_patch_with_http_info(buyer_id, cost_center_id, cost_center, **kwargs)
-            return data
-
-    def buyers_buyer_id_costcenters_cost_center_id_patch_with_http_info(self, buyer_id, cost_center_id, cost_center, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_patch_with_http_info(buyer_id, cost_center_id, cost_center, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param str cost_center_id: ID of the cost center. (required)
-        :param CostCenter cost_center:  (required)
-        :return: CostCenter
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'cost_center_id', 'cost_center']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_cost_center_id_patch" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_cost_center_id_patch`")
-        # verify the required parameter 'cost_center_id' is set
-        if ('cost_center_id' not in params) or (params['cost_center_id'] is None):
-            raise ValueError("Missing the required parameter `cost_center_id` when calling `buyers_buyer_id_costcenters_cost_center_id_patch`")
-        # verify the required parameter 'cost_center' is set
-        if ('cost_center' not in params) or (params['cost_center'] is None):
-            raise ValueError("Missing the required parameter `cost_center` when calling `buyers_buyer_id_costcenters_cost_center_id_patch`")
-
-        resource_path = '/buyers/{buyerID}/costcenters/{costCenterID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-        if 'cost_center_id' in params:
-            path_params['costCenterID'] = params['cost_center_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'cost_center' in params:
-            body_params = params['cost_center']
+        if 'partial_cost_center' in params:
+            body_params = params['partial_cost_center']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -749,7 +877,7 @@ class CostCenterApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def buyers_buyer_id_costcenters_cost_center_id_put(self, buyer_id, cost_center_id, cost_center, **kwargs):
+    def save(self, buyer_id, cost_center_id, cost_center, **kwargs):
         """
         
         
@@ -760,7 +888,7 @@ class CostCenterApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_put(buyer_id, cost_center_id, cost_center, callback=callback_function)
+        >>> thread = api.save(buyer_id, cost_center_id, cost_center, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -773,12 +901,12 @@ class CostCenterApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_cost_center_id_put_with_http_info(buyer_id, cost_center_id, cost_center, **kwargs)
+            return self.save_with_http_info(buyer_id, cost_center_id, cost_center, **kwargs)
         else:
-            (data) = self.buyers_buyer_id_costcenters_cost_center_id_put_with_http_info(buyer_id, cost_center_id, cost_center, **kwargs)
+            (data) = self.save_with_http_info(buyer_id, cost_center_id, cost_center, **kwargs)
             return data
 
-    def buyers_buyer_id_costcenters_cost_center_id_put_with_http_info(self, buyer_id, cost_center_id, cost_center, **kwargs):
+    def save_with_http_info(self, buyer_id, cost_center_id, cost_center, **kwargs):
         """
         
         
@@ -789,7 +917,7 @@ class CostCenterApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_costcenters_cost_center_id_put_with_http_info(buyer_id, cost_center_id, cost_center, callback=callback_function)
+        >>> thread = api.save_with_http_info(buyer_id, cost_center_id, cost_center, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -810,19 +938,19 @@ class CostCenterApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_cost_center_id_put" % key
+                    " to method save" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_cost_center_id_put`")
+            raise ValueError("Missing the required parameter `buyer_id` when calling `save`")
         # verify the required parameter 'cost_center_id' is set
         if ('cost_center_id' not in params) or (params['cost_center_id'] is None):
-            raise ValueError("Missing the required parameter `cost_center_id` when calling `buyers_buyer_id_costcenters_cost_center_id_put`")
+            raise ValueError("Missing the required parameter `cost_center_id` when calling `save`")
         # verify the required parameter 'cost_center' is set
         if ('cost_center' not in params) or (params['cost_center'] is None):
-            raise ValueError("Missing the required parameter `cost_center` when calling `buyers_buyer_id_costcenters_cost_center_id_put`")
+            raise ValueError("Missing the required parameter `cost_center` when calling `save`")
 
         resource_path = '/buyers/{buyerID}/costcenters/{costCenterID}'.replace('{format}', 'json')
         path_params = {}
@@ -867,7 +995,7 @@ class CostCenterApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def buyers_buyer_id_costcenters_get(self, buyer_id, **kwargs):
+    def save_assignment(self, buyer_id, cost_center_assignment, **kwargs):
         """
         
         
@@ -878,28 +1006,24 @@ class CostCenterApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_costcenters_get(buyer_id, callback=callback_function)
+        >>> thread = api.save_assignment(buyer_id, cost_center_assignment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param str search: Search of the cost center.
-        :param list[str] search_on: Search on of the cost center.
-        :param list[str] sort_by: Sort by of the cost center.
-        :param int page: Page of the cost center.
-        :param int page_size: Page size of the cost center.
-        :return: ListCostCenter
+        :param CostCenterAssignment cost_center_assignment:  (required)
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_get_with_http_info(buyer_id, **kwargs)
+            return self.save_assignment_with_http_info(buyer_id, cost_center_assignment, **kwargs)
         else:
-            (data) = self.buyers_buyer_id_costcenters_get_with_http_info(buyer_id, **kwargs)
+            (data) = self.save_assignment_with_http_info(buyer_id, cost_center_assignment, **kwargs)
             return data
 
-    def buyers_buyer_id_costcenters_get_with_http_info(self, buyer_id, **kwargs):
+    def save_assignment_with_http_info(self, buyer_id, cost_center_assignment, **kwargs):
         """
         
         
@@ -910,22 +1034,18 @@ class CostCenterApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_costcenters_get_with_http_info(buyer_id, callback=callback_function)
+        >>> thread = api.save_assignment_with_http_info(buyer_id, cost_center_assignment, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str buyer_id: ID of the buyer. (required)
-        :param str search: Search of the cost center.
-        :param list[str] search_on: Search on of the cost center.
-        :param list[str] sort_by: Sort by of the cost center.
-        :param int page: Page of the cost center.
-        :param int page_size: Page size of the cost center.
-        :return: ListCostCenter
+        :param CostCenterAssignment cost_center_assignment:  (required)
+        :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['buyer_id', 'search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['buyer_id', 'cost_center_assignment']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -934,134 +1054,18 @@ class CostCenterApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_get" % key
+                    " to method save_assignment" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_get`")
+            raise ValueError("Missing the required parameter `buyer_id` when calling `save_assignment`")
+        # verify the required parameter 'cost_center_assignment' is set
+        if ('cost_center_assignment' not in params) or (params['cost_center_assignment'] is None):
+            raise ValueError("Missing the required parameter `cost_center_assignment` when calling `save_assignment`")
 
-        resource_path = '/buyers/{buyerID}/costcenters'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListCostCenter',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def buyers_buyer_id_costcenters_post(self, buyer_id, cost_center, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_post(buyer_id, cost_center, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param CostCenter cost_center:  (required)
-        :return: CostCenter
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.buyers_buyer_id_costcenters_post_with_http_info(buyer_id, cost_center, **kwargs)
-        else:
-            (data) = self.buyers_buyer_id_costcenters_post_with_http_info(buyer_id, cost_center, **kwargs)
-            return data
-
-    def buyers_buyer_id_costcenters_post_with_http_info(self, buyer_id, cost_center, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_costcenters_post_with_http_info(buyer_id, cost_center, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param CostCenter cost_center:  (required)
-        :return: CostCenter
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'cost_center']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_costcenters_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_costcenters_post`")
-        # verify the required parameter 'cost_center' is set
-        if ('cost_center' not in params) or (params['cost_center'] is None):
-            raise ValueError("Missing the required parameter `cost_center` when calling `buyers_buyer_id_costcenters_post`")
-
-        resource_path = '/buyers/{buyerID}/costcenters'.replace('{format}', 'json')
+        resource_path = '/buyers/{buyerID}/costcenters/assignments'.replace('{format}', 'json')
         path_params = {}
         if 'buyer_id' in params:
             path_params['buyerID'] = params['buyer_id']
@@ -1074,8 +1078,8 @@ class CostCenterApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'cost_center' in params:
-            body_params = params['cost_center']
+        if 'cost_center_assignment' in params:
+            body_params = params['cost_center_assignment']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -1097,7 +1101,7 @@ class CostCenterApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='CostCenter',
+                                            response_type=None,
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
