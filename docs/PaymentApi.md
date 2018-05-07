@@ -4,17 +4,17 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**orders_direction_order_id_payments_get**](PaymentApi.md#orders_direction_order_id_payments_get) | **GET** /orders/{direction}/{orderID}/payments | 
-[**orders_direction_order_id_payments_payment_id_delete**](PaymentApi.md#orders_direction_order_id_payments_payment_id_delete) | **DELETE** /orders/{direction}/{orderID}/payments/{paymentID} | 
-[**orders_direction_order_id_payments_payment_id_get**](PaymentApi.md#orders_direction_order_id_payments_payment_id_get) | **GET** /orders/{direction}/{orderID}/payments/{paymentID} | 
-[**orders_direction_order_id_payments_payment_id_patch**](PaymentApi.md#orders_direction_order_id_payments_payment_id_patch) | **PATCH** /orders/{direction}/{orderID}/payments/{paymentID} | 
-[**orders_direction_order_id_payments_payment_id_transactions_post**](PaymentApi.md#orders_direction_order_id_payments_payment_id_transactions_post) | **POST** /orders/{direction}/{orderID}/payments/{paymentID}/transactions | 
-[**orders_direction_order_id_payments_payment_id_transactions_transaction_id_delete**](PaymentApi.md#orders_direction_order_id_payments_payment_id_transactions_transaction_id_delete) | **DELETE** /orders/{direction}/{orderID}/payments/{paymentID}/transactions/{transactionID} | 
-[**orders_direction_order_id_payments_post**](PaymentApi.md#orders_direction_order_id_payments_post) | **POST** /orders/{direction}/{orderID}/payments | 
+[**create**](PaymentApi.md#create) | **POST** /orders/{direction}/{orderID}/payments | 
+[**create_transaction**](PaymentApi.md#create_transaction) | **POST** /orders/{direction}/{orderID}/payments/{paymentID}/transactions | 
+[**delete**](PaymentApi.md#delete) | **DELETE** /orders/{direction}/{orderID}/payments/{paymentID} | 
+[**delete_transaction**](PaymentApi.md#delete_transaction) | **DELETE** /orders/{direction}/{orderID}/payments/{paymentID}/transactions/{transactionID} | 
+[**get**](PaymentApi.md#get) | **GET** /orders/{direction}/{orderID}/payments/{paymentID} | 
+[**list**](PaymentApi.md#list) | **GET** /orders/{direction}/{orderID}/payments | 
+[**patch**](PaymentApi.md#patch) | **PATCH** /orders/{direction}/{orderID}/payments/{paymentID} | 
 
 
-# **orders_direction_order_id_payments_get**
-> ListPayment orders_direction_order_id_payments_get(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+# **create**
+> Payment create(direction, order_id, payment)
 
 
 
@@ -26,36 +26,28 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
+direction = 'direction_example' # str | Direction of the order, from the current user's perspective. Possible values: incoming, outgoing.
 order_id = 'order_id_example' # str | ID of the order.
-search = 'search_example' # str | Search of the payment. (optional)
-search_on = ['search_on_example'] # list[str] | Search on of the payment. (optional)
-sort_by = ['sort_by_example'] # list[str] | Sort by of the payment. (optional)
-page = 56 # int | Page of the payment. (optional)
-page_size = 56 # int | Page size of the payment. (optional)
+payment = OrderCloud.Payment() # Payment | 
 
 try: 
-    response = PaymentApi.orders_direction_order_id_payments_get(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
+    response = PaymentApi.create(direction, order_id, payment)
     print(response)
 except ApiException as e:
-    print("Exception when calling PaymentApi->orders_direction_order_id_payments_get: %s\n" % e)
+    print("Exception when calling PaymentApi->create: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
+ **direction** | **str**| Direction of the order, from the current user&#39;s perspective. Possible values: incoming, outgoing. | 
  **order_id** | **str**| ID of the order. | 
- **search** | **str**| Search of the payment. | [optional] 
- **search_on** | [**list[str]**](str.md)| Search on of the payment. | [optional] 
- **sort_by** | [**list[str]**](str.md)| Sort by of the payment. | [optional] 
- **page** | **int**| Page of the payment. | [optional] 
- **page_size** | **int**| Page size of the payment. | [optional] 
+ **payment** | [**Payment**](Payment.md)|  | 
 
 ### Return type
 
-[**ListPayment**](ListPayment.md)
+[**Payment**](Payment.md)
 
 ### Authorization
 
@@ -68,8 +60,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **orders_direction_order_id_payments_payment_id_delete**
-> orders_direction_order_id_payments_payment_id_delete(direction, order_id, payment_id)
+# **create_transaction**
+> Payment create_transaction(direction, order_id, payment_id, payment_transaction)
 
 
 
@@ -81,21 +73,70 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
+direction = 'direction_example' # str | Direction of the order, from the current user's perspective. Possible values: incoming, outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
+payment_transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
 
 try: 
-    PaymentApi.orders_direction_order_id_payments_payment_id_delete(direction, order_id, payment_id)
+    response = PaymentApi.create_transaction(direction, order_id, payment_id, payment_transaction)
+    print(response)
 except ApiException as e:
-    print("Exception when calling PaymentApi->orders_direction_order_id_payments_payment_id_delete: %s\n" % e)
+    print("Exception when calling PaymentApi->create_transaction: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
+ **direction** | **str**| Direction of the order, from the current user&#39;s perspective. Possible values: incoming, outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **payment_id** | **str**| ID of the payment. | 
+ **payment_transaction** | [**PaymentTransaction**](PaymentTransaction.md)|  | 
+
+### Return type
+
+[**Payment**](Payment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete**
+> delete(direction, order_id, payment_id)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+PaymentApi = OrderCloud.PaymentApi
+direction = 'direction_example' # str | Direction of the order, from the current user's perspective. Possible values: incoming, outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+payment_id = 'payment_id_example' # str | ID of the payment.
+
+try: 
+    PaymentApi.delete(direction, order_id, payment_id)
+except ApiException as e:
+    print("Exception when calling PaymentApi->delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order, from the current user&#39;s perspective. Possible values: incoming, outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
 
@@ -114,8 +155,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **orders_direction_order_id_payments_payment_id_get**
-> Payment orders_direction_order_id_payments_payment_id_get(direction, order_id, payment_id)
+# **delete_transaction**
+> delete_transaction(direction, order_id, payment_id, transaction_id)
 
 
 
@@ -127,167 +168,22 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
-order_id = 'order_id_example' # str | ID of the order.
-payment_id = 'payment_id_example' # str | ID of the payment.
-
-try: 
-    response = PaymentApi.orders_direction_order_id_payments_payment_id_get(direction, order_id, payment_id)
-    print(response)
-except ApiException as e:
-    print("Exception when calling PaymentApi->orders_direction_order_id_payments_payment_id_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
- **order_id** | **str**| ID of the order. | 
- **payment_id** | **str**| ID of the payment. | 
-
-### Return type
-
-[**Payment**](Payment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **orders_direction_order_id_payments_payment_id_patch**
-> Payment orders_direction_order_id_payments_payment_id_patch(direction, order_id, payment_id, partial_payment)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PaymentApi = OrderCloud.PaymentApi
-direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
-order_id = 'order_id_example' # str | ID of the order.
-payment_id = 'payment_id_example' # str | ID of the payment.
-partial_payment = OrderCloud.Payment() # Payment | 
-
-try: 
-    response = PaymentApi.orders_direction_order_id_payments_payment_id_patch(direction, order_id, payment_id, partial_payment)
-    print(response)
-except ApiException as e:
-    print("Exception when calling PaymentApi->orders_direction_order_id_payments_payment_id_patch: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
- **order_id** | **str**| ID of the order. | 
- **payment_id** | **str**| ID of the payment. | 
- **partial_payment** | [**Payment**](Payment.md)|  | 
-
-### Return type
-
-[**Payment**](Payment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **orders_direction_order_id_payments_payment_id_transactions_post**
-> Payment orders_direction_order_id_payments_payment_id_transactions_post(direction, order_id, payment_id, transaction)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PaymentApi = OrderCloud.PaymentApi
-direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
-order_id = 'order_id_example' # str | ID of the order.
-payment_id = 'payment_id_example' # str | ID of the payment.
-transaction = OrderCloud.PaymentTransaction() # PaymentTransaction | 
-
-try: 
-    response = PaymentApi.orders_direction_order_id_payments_payment_id_transactions_post(direction, order_id, payment_id, transaction)
-    print(response)
-except ApiException as e:
-    print("Exception when calling PaymentApi->orders_direction_order_id_payments_payment_id_transactions_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
- **order_id** | **str**| ID of the order. | 
- **payment_id** | **str**| ID of the payment. | 
- **transaction** | [**PaymentTransaction**](PaymentTransaction.md)|  | 
-
-### Return type
-
-[**Payment**](Payment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **orders_direction_order_id_payments_payment_id_transactions_transaction_id_delete**
-> orders_direction_order_id_payments_payment_id_transactions_transaction_id_delete(direction, order_id, payment_id, transaction_id)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-PaymentApi = OrderCloud.PaymentApi
-direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
+direction = 'direction_example' # str | Direction of the order, from the current user's perspective. Possible values: incoming, outgoing.
 order_id = 'order_id_example' # str | ID of the order.
 payment_id = 'payment_id_example' # str | ID of the payment.
 transaction_id = 'transaction_id_example' # str | ID of the transaction.
 
 try: 
-    PaymentApi.orders_direction_order_id_payments_payment_id_transactions_transaction_id_delete(direction, order_id, payment_id, transaction_id)
+    PaymentApi.delete_transaction(direction, order_id, payment_id, transaction_id)
 except ApiException as e:
-    print("Exception when calling PaymentApi->orders_direction_order_id_payments_payment_id_transactions_transaction_id_delete: %s\n" % e)
+    print("Exception when calling PaymentApi->delete_transaction: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
+ **direction** | **str**| Direction of the order, from the current user&#39;s perspective. Possible values: incoming, outgoing. | 
  **order_id** | **str**| ID of the order. | 
  **payment_id** | **str**| ID of the payment. | 
  **transaction_id** | **str**| ID of the transaction. | 
@@ -307,8 +203,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **orders_direction_order_id_payments_post**
-> Payment orders_direction_order_id_payments_post(direction, order_id, payment)
+# **get**
+> Payment get(direction, order_id, payment_id)
 
 
 
@@ -320,24 +216,130 @@ from OrderCloud.rest import ApiException
 
 # create an instance of the API class
 PaymentApi = OrderCloud.PaymentApi
-direction = 'direction_example' # str | Direction of the payment. Possible values: Incoming, Outgoing.
+direction = 'direction_example' # str | Direction of the order, from the current user's perspective. Possible values: incoming, outgoing.
 order_id = 'order_id_example' # str | ID of the order.
-payment = OrderCloud.Payment() # Payment | 
+payment_id = 'payment_id_example' # str | ID of the payment.
 
 try: 
-    response = PaymentApi.orders_direction_order_id_payments_post(direction, order_id, payment)
+    response = PaymentApi.get(direction, order_id, payment_id)
     print(response)
 except ApiException as e:
-    print("Exception when calling PaymentApi->orders_direction_order_id_payments_post: %s\n" % e)
+    print("Exception when calling PaymentApi->get: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **direction** | **str**| Direction of the payment. Possible values: Incoming, Outgoing. | 
+ **direction** | **str**| Direction of the order, from the current user&#39;s perspective. Possible values: incoming, outgoing. | 
  **order_id** | **str**| ID of the order. | 
- **payment** | [**Payment**](Payment.md)|  | 
+ **payment_id** | **str**| ID of the payment. | 
+
+### Return type
+
+[**Payment**](Payment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list**
+> ListPayment list(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+PaymentApi = OrderCloud.PaymentApi
+direction = 'direction_example' # str | Direction of the order, from the current user's perspective. Possible values: incoming, outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+search = 'search_example' # str | Word or phrase to search for. (optional)
+search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
+sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
+
+try: 
+    response = PaymentApi.list(direction, order_id, search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+    print(response)
+except ApiException as e:
+    print("Exception when calling PaymentApi->list: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order, from the current user&#39;s perspective. Possible values: incoming, outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **search** | **str**| Word or phrase to search for. | [optional] 
+ **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
+ **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
+
+### Return type
+
+[**ListPayment**](ListPayment.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch**
+> Payment patch(direction, order_id, payment_id, partial_payment)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+PaymentApi = OrderCloud.PaymentApi
+direction = 'direction_example' # str | Direction of the order, from the current user's perspective. Possible values: incoming, outgoing.
+order_id = 'order_id_example' # str | ID of the order.
+payment_id = 'payment_id_example' # str | ID of the payment.
+partial_payment = OrderCloud.Payment() # Payment | 
+
+try: 
+    response = PaymentApi.patch(direction, order_id, payment_id, partial_payment)
+    print(response)
+except ApiException as e:
+    print("Exception when calling PaymentApi->patch: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **str**| Direction of the order, from the current user&#39;s perspective. Possible values: incoming, outgoing. | 
+ **order_id** | **str**| ID of the order. | 
+ **payment_id** | **str**| ID of the payment. | 
+ **partial_payment** | [**Payment**](Payment.md)|  | 
 
 ### Return type
 

@@ -51,7 +51,7 @@ class BuyerApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def buyers_buyer_id_delete(self, buyer_id, **kwargs):
+    def create(self, buyer, **kwargs):
         """
         
         
@@ -62,7 +62,111 @@ class BuyerApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_delete(buyer_id, callback=callback_function)
+        >>> thread = api.create(buyer, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Buyer buyer:  (required)
+        :return: Buyer
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.create_with_http_info(buyer, **kwargs)
+        else:
+            (data) = self.create_with_http_info(buyer, **kwargs)
+            return data
+
+    def create_with_http_info(self, buyer, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.create_with_http_info(buyer, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Buyer buyer:  (required)
+        :return: Buyer
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['buyer']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'buyer' is set
+        if ('buyer' not in params) or (params['buyer'] is None):
+            raise ValueError("Missing the required parameter `buyer` when calling `create`")
+
+        resource_path = '/buyers'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'buyer' in params:
+            body_params = params['buyer']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Buyer',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def delete(self, buyer_id, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.delete(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -73,12 +177,12 @@ class BuyerApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.buyers_buyer_id_delete_with_http_info(buyer_id, **kwargs)
+            return self.delete_with_http_info(buyer_id, **kwargs)
         else:
-            (data) = self.buyers_buyer_id_delete_with_http_info(buyer_id, **kwargs)
+            (data) = self.delete_with_http_info(buyer_id, **kwargs)
             return data
 
-    def buyers_buyer_id_delete_with_http_info(self, buyer_id, **kwargs):
+    def delete_with_http_info(self, buyer_id, **kwargs):
         """
         
         
@@ -89,7 +193,7 @@ class BuyerApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_delete_with_http_info(buyer_id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -108,13 +212,13 @@ class BuyerApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_delete" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_delete`")
+            raise ValueError("Missing the required parameter `buyer_id` when calling `delete`")
 
         resource_path = '/buyers/{buyerID}'.replace('{format}', 'json')
         path_params = {}
@@ -155,7 +259,7 @@ class BuyerApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def buyers_buyer_id_get(self, buyer_id, **kwargs):
+    def get(self, buyer_id, **kwargs):
         """
         
         
@@ -166,7 +270,7 @@ class BuyerApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_get(buyer_id, callback=callback_function)
+        >>> thread = api.get(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -177,12 +281,12 @@ class BuyerApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.buyers_buyer_id_get_with_http_info(buyer_id, **kwargs)
+            return self.get_with_http_info(buyer_id, **kwargs)
         else:
-            (data) = self.buyers_buyer_id_get_with_http_info(buyer_id, **kwargs)
+            (data) = self.get_with_http_info(buyer_id, **kwargs)
             return data
 
-    def buyers_buyer_id_get_with_http_info(self, buyer_id, **kwargs):
+    def get_with_http_info(self, buyer_id, **kwargs):
         """
         
         
@@ -193,7 +297,7 @@ class BuyerApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_get_with_http_info(buyer_id, callback=callback_function)
+        >>> thread = api.get_with_http_info(buyer_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -212,13 +316,13 @@ class BuyerApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_get" % key
+                    " to method get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'buyer_id' is set
         if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_get`")
+            raise ValueError("Missing the required parameter `buyer_id` when calling `get`")
 
         resource_path = '/buyers/{buyerID}'.replace('{format}', 'json')
         path_params = {}
@@ -259,7 +363,7 @@ class BuyerApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def buyers_buyer_id_patch(self, buyer_id, company, **kwargs):
+    def list(self, **kwargs):
         """
         
         
@@ -270,249 +374,28 @@ class BuyerApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_buyer_id_patch(buyer_id, company, callback=callback_function)
+        >>> thread = api.list(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param Buyer company:  (required)
-        :return: Buyer
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.buyers_buyer_id_patch_with_http_info(buyer_id, company, **kwargs)
-        else:
-            (data) = self.buyers_buyer_id_patch_with_http_info(buyer_id, company, **kwargs)
-            return data
-
-    def buyers_buyer_id_patch_with_http_info(self, buyer_id, company, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_patch_with_http_info(buyer_id, company, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param Buyer company:  (required)
-        :return: Buyer
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'company']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_patch" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_patch`")
-        # verify the required parameter 'company' is set
-        if ('company' not in params) or (params['company'] is None):
-            raise ValueError("Missing the required parameter `company` when calling `buyers_buyer_id_patch`")
-
-        resource_path = '/buyers/{buyerID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'company' in params:
-            body_params = params['company']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PATCH',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Buyer',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def buyers_buyer_id_put(self, buyer_id, company, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_put(buyer_id, company, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param Buyer company:  (required)
-        :return: Buyer
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.buyers_buyer_id_put_with_http_info(buyer_id, company, **kwargs)
-        else:
-            (data) = self.buyers_buyer_id_put_with_http_info(buyer_id, company, **kwargs)
-            return data
-
-    def buyers_buyer_id_put_with_http_info(self, buyer_id, company, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_buyer_id_put_with_http_info(buyer_id, company, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str buyer_id: ID of the buyer. (required)
-        :param Buyer company:  (required)
-        :return: Buyer
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['buyer_id', 'company']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method buyers_buyer_id_put" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'buyer_id' is set
-        if ('buyer_id' not in params) or (params['buyer_id'] is None):
-            raise ValueError("Missing the required parameter `buyer_id` when calling `buyers_buyer_id_put`")
-        # verify the required parameter 'company' is set
-        if ('company' not in params) or (params['company'] is None):
-            raise ValueError("Missing the required parameter `company` when calling `buyers_buyer_id_put`")
-
-        resource_path = '/buyers/{buyerID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'buyer_id' in params:
-            path_params['buyerID'] = params['buyer_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'company' in params:
-            body_params = params['company']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PUT',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='Buyer',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def buyers_get(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.buyers_get(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Search of the buyer.
-        :param list[str] search_on: Search on of the buyer.
-        :param list[str] sort_by: Sort by of the buyer.
-        :param int page: Page of the buyer.
-        :param int page_size: Page size of the buyer.
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
         :return: ListBuyer
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.buyers_get_with_http_info(**kwargs)
+            return self.list_with_http_info(**kwargs)
         else:
-            (data) = self.buyers_get_with_http_info(**kwargs)
+            (data) = self.list_with_http_info(**kwargs)
             return data
 
-    def buyers_get_with_http_info(self, **kwargs):
+    def list_with_http_info(self, **kwargs):
         """
         
         
@@ -523,21 +406,22 @@ class BuyerApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_get_with_http_info(callback=callback_function)
+        >>> thread = api.list_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str search: Search of the buyer.
-        :param list[str] search_on: Search on of the buyer.
-        :param list[str] sort_by: Sort by of the buyer.
-        :param int page: Page of the buyer.
-        :param int page_size: Page size of the buyer.
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
         :return: ListBuyer
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -546,7 +430,7 @@ class BuyerApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method buyers_get" % key
+                    " to method list" % key
                 )
             params[key] = val
         del params['kwargs']
@@ -565,6 +449,8 @@ class BuyerApi(object):
             query_params['page'] = params['page']
         if 'page_size' in params:
             query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
 
         header_params = {}
 
@@ -598,7 +484,7 @@ class BuyerApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def buyers_post(self, company, **kwargs):
+    def patch(self, buyer_id, partial_buyer, **kwargs):
         """
         
         
@@ -609,23 +495,24 @@ class BuyerApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_post(company, callback=callback_function)
+        >>> thread = api.patch(buyer_id, partial_buyer, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param Buyer company:  (required)
+        :param str buyer_id: ID of the buyer. (required)
+        :param Buyer partial_buyer:  (required)
         :return: Buyer
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.buyers_post_with_http_info(company, **kwargs)
+            return self.patch_with_http_info(buyer_id, partial_buyer, **kwargs)
         else:
-            (data) = self.buyers_post_with_http_info(company, **kwargs)
+            (data) = self.patch_with_http_info(buyer_id, partial_buyer, **kwargs)
             return data
 
-    def buyers_post_with_http_info(self, company, **kwargs):
+    def patch_with_http_info(self, buyer_id, partial_buyer, **kwargs):
         """
         
         
@@ -636,17 +523,18 @@ class BuyerApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.buyers_post_with_http_info(company, callback=callback_function)
+        >>> thread = api.patch_with_http_info(buyer_id, partial_buyer, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param Buyer company:  (required)
+        :param str buyer_id: ID of the buyer. (required)
+        :param Buyer partial_buyer:  (required)
         :return: Buyer
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['company']
+        all_params = ['buyer_id', 'partial_buyer']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -655,16 +543,21 @@ class BuyerApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method buyers_post" % key
+                    " to method patch" % key
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'company' is set
-        if ('company' not in params) or (params['company'] is None):
-            raise ValueError("Missing the required parameter `company` when calling `buyers_post`")
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `patch`")
+        # verify the required parameter 'partial_buyer' is set
+        if ('partial_buyer' not in params) or (params['partial_buyer'] is None):
+            raise ValueError("Missing the required parameter `partial_buyer` when calling `patch`")
 
-        resource_path = '/buyers'.replace('{format}', 'json')
+        resource_path = '/buyers/{buyerID}'.replace('{format}', 'json')
         path_params = {}
+        if 'buyer_id' in params:
+            path_params['buyerID'] = params['buyer_id']
 
         query_params = {}
 
@@ -674,8 +567,8 @@ class BuyerApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'company' in params:
-            body_params = params['company']
+        if 'partial_buyer' in params:
+            body_params = params['partial_buyer']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -690,7 +583,118 @@ class BuyerApi(object):
         # Authentication setting
         auth_settings = ['oauth2']
 
-        return self.api_client.call_api(resource_path, 'POST',
+        return self.api_client.call_api(resource_path, 'PATCH',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Buyer',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def save(self, buyer_id, buyer, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.save(buyer_id, buyer, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param Buyer buyer:  (required)
+        :return: Buyer
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.save_with_http_info(buyer_id, buyer, **kwargs)
+        else:
+            (data) = self.save_with_http_info(buyer_id, buyer, **kwargs)
+            return data
+
+    def save_with_http_info(self, buyer_id, buyer, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.save_with_http_info(buyer_id, buyer, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str buyer_id: ID of the buyer. (required)
+        :param Buyer buyer:  (required)
+        :return: Buyer
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['buyer_id', 'buyer']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method save" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'buyer_id' is set
+        if ('buyer_id' not in params) or (params['buyer_id'] is None):
+            raise ValueError("Missing the required parameter `buyer_id` when calling `save`")
+        # verify the required parameter 'buyer' is set
+        if ('buyer' not in params) or (params['buyer'] is None):
+            raise ValueError("Missing the required parameter `buyer` when calling `save`")
+
+        resource_path = '/buyers/{buyerID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'buyer_id' in params:
+            path_params['buyerID'] = params['buyer_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'buyer' in params:
+            body_params = params['buyer']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'PUT',
                                             path_params,
                                             query_params,
                                             header_params,

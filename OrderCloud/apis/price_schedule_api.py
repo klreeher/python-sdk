@@ -51,7 +51,7 @@ class PriceScheduleApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def priceschedules_get(self, **kwargs):
+    def create(self, price_schedule, **kwargs):
         """
         
         
@@ -62,124 +62,7 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_get(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Search of the price schedule.
-        :param list[str] search_on: Search on of the price schedule.
-        :param list[str] sort_by: Sort by of the price schedule.
-        :param int page: Page of the price schedule.
-        :param int page_size: Page size of the price schedule.
-        :return: ListPriceSchedule
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.priceschedules_get_with_http_info(**kwargs)
-        else:
-            (data) = self.priceschedules_get_with_http_info(**kwargs)
-            return data
-
-    def priceschedules_get_with_http_info(self, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.priceschedules_get_with_http_info(callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str search: Search of the price schedule.
-        :param list[str] search_on: Search on of the price schedule.
-        :param list[str] sort_by: Sort by of the price schedule.
-        :param int page: Page of the price schedule.
-        :param int page_size: Page size of the price schedule.
-        :return: ListPriceSchedule
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method priceschedules_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-
-        resource_path = '/priceschedules'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ListPriceSchedule',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def priceschedules_post(self, price_schedule, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.priceschedules_post(price_schedule, callback=callback_function)
+        >>> thread = api.create(price_schedule, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -190,12 +73,12 @@ class PriceScheduleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.priceschedules_post_with_http_info(price_schedule, **kwargs)
+            return self.create_with_http_info(price_schedule, **kwargs)
         else:
-            (data) = self.priceschedules_post_with_http_info(price_schedule, **kwargs)
+            (data) = self.create_with_http_info(price_schedule, **kwargs)
             return data
 
-    def priceschedules_post_with_http_info(self, price_schedule, **kwargs):
+    def create_with_http_info(self, price_schedule, **kwargs):
         """
         
         
@@ -206,7 +89,7 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_post_with_http_info(price_schedule, callback=callback_function)
+        >>> thread = api.create_with_http_info(price_schedule, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -225,13 +108,13 @@ class PriceScheduleApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method priceschedules_post" % key
+                    " to method create" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'price_schedule' is set
         if ('price_schedule' not in params) or (params['price_schedule'] is None):
-            raise ValueError("Missing the required parameter `price_schedule` when calling `priceschedules_post`")
+            raise ValueError("Missing the required parameter `price_schedule` when calling `create`")
 
         resource_path = '/priceschedules'.replace('{format}', 'json')
         path_params = {}
@@ -272,7 +155,7 @@ class PriceScheduleApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def priceschedules_price_schedule_id_delete(self, price_schedule_id, **kwargs):
+    def delete(self, price_schedule_id, **kwargs):
         """
         
         
@@ -283,7 +166,7 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_price_schedule_id_delete(price_schedule_id, callback=callback_function)
+        >>> thread = api.delete(price_schedule_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -294,12 +177,12 @@ class PriceScheduleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.priceschedules_price_schedule_id_delete_with_http_info(price_schedule_id, **kwargs)
+            return self.delete_with_http_info(price_schedule_id, **kwargs)
         else:
-            (data) = self.priceschedules_price_schedule_id_delete_with_http_info(price_schedule_id, **kwargs)
+            (data) = self.delete_with_http_info(price_schedule_id, **kwargs)
             return data
 
-    def priceschedules_price_schedule_id_delete_with_http_info(self, price_schedule_id, **kwargs):
+    def delete_with_http_info(self, price_schedule_id, **kwargs):
         """
         
         
@@ -310,7 +193,7 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_price_schedule_id_delete_with_http_info(price_schedule_id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(price_schedule_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -329,13 +212,13 @@ class PriceScheduleApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method priceschedules_price_schedule_id_delete" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'price_schedule_id' is set
         if ('price_schedule_id' not in params) or (params['price_schedule_id'] is None):
-            raise ValueError("Missing the required parameter `price_schedule_id` when calling `priceschedules_price_schedule_id_delete`")
+            raise ValueError("Missing the required parameter `price_schedule_id` when calling `delete`")
 
         resource_path = '/priceschedules/{priceScheduleID}'.replace('{format}', 'json')
         path_params = {}
@@ -376,7 +259,7 @@ class PriceScheduleApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def priceschedules_price_schedule_id_get(self, price_schedule_id, **kwargs):
+    def delete_price_break(self, price_schedule_id, quantity, **kwargs):
         """
         
         
@@ -387,222 +270,7 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_price_schedule_id_get(price_schedule_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str price_schedule_id: ID of the price schedule. (required)
-        :return: PriceSchedule
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.priceschedules_price_schedule_id_get_with_http_info(price_schedule_id, **kwargs)
-        else:
-            (data) = self.priceschedules_price_schedule_id_get_with_http_info(price_schedule_id, **kwargs)
-            return data
-
-    def priceschedules_price_schedule_id_get_with_http_info(self, price_schedule_id, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.priceschedules_price_schedule_id_get_with_http_info(price_schedule_id, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str price_schedule_id: ID of the price schedule. (required)
-        :return: PriceSchedule
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['price_schedule_id']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method priceschedules_price_schedule_id_get" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'price_schedule_id' is set
-        if ('price_schedule_id' not in params) or (params['price_schedule_id'] is None):
-            raise ValueError("Missing the required parameter `price_schedule_id` when calling `priceschedules_price_schedule_id_get`")
-
-        resource_path = '/priceschedules/{priceScheduleID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'price_schedule_id' in params:
-            path_params['priceScheduleID'] = params['price_schedule_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'GET',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='PriceSchedule',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def priceschedules_price_schedule_id_patch(self, price_schedule_id, price_schedule, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.priceschedules_price_schedule_id_patch(price_schedule_id, price_schedule, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str price_schedule_id: ID of the price schedule. (required)
-        :param PriceSchedule price_schedule:  (required)
-        :return: PriceSchedule
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.priceschedules_price_schedule_id_patch_with_http_info(price_schedule_id, price_schedule, **kwargs)
-        else:
-            (data) = self.priceschedules_price_schedule_id_patch_with_http_info(price_schedule_id, price_schedule, **kwargs)
-            return data
-
-    def priceschedules_price_schedule_id_patch_with_http_info(self, price_schedule_id, price_schedule, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.priceschedules_price_schedule_id_patch_with_http_info(price_schedule_id, price_schedule, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param str price_schedule_id: ID of the price schedule. (required)
-        :param PriceSchedule price_schedule:  (required)
-        :return: PriceSchedule
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['price_schedule_id', 'price_schedule']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method priceschedules_price_schedule_id_patch" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'price_schedule_id' is set
-        if ('price_schedule_id' not in params) or (params['price_schedule_id'] is None):
-            raise ValueError("Missing the required parameter `price_schedule_id` when calling `priceschedules_price_schedule_id_patch`")
-        # verify the required parameter 'price_schedule' is set
-        if ('price_schedule' not in params) or (params['price_schedule'] is None):
-            raise ValueError("Missing the required parameter `price_schedule` when calling `priceschedules_price_schedule_id_patch`")
-
-        resource_path = '/priceschedules/{priceScheduleID}'.replace('{format}', 'json')
-        path_params = {}
-        if 'price_schedule_id' in params:
-            path_params['priceScheduleID'] = params['price_schedule_id']
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'price_schedule' in params:
-            body_params = params['price_schedule']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'PATCH',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='PriceSchedule',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def priceschedules_price_schedule_id_price_breaks_delete(self, price_schedule_id, quantity, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.priceschedules_price_schedule_id_price_breaks_delete(price_schedule_id, quantity, callback=callback_function)
+        >>> thread = api.delete_price_break(price_schedule_id, quantity, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -614,12 +282,12 @@ class PriceScheduleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.priceschedules_price_schedule_id_price_breaks_delete_with_http_info(price_schedule_id, quantity, **kwargs)
+            return self.delete_price_break_with_http_info(price_schedule_id, quantity, **kwargs)
         else:
-            (data) = self.priceschedules_price_schedule_id_price_breaks_delete_with_http_info(price_schedule_id, quantity, **kwargs)
+            (data) = self.delete_price_break_with_http_info(price_schedule_id, quantity, **kwargs)
             return data
 
-    def priceschedules_price_schedule_id_price_breaks_delete_with_http_info(self, price_schedule_id, quantity, **kwargs):
+    def delete_price_break_with_http_info(self, price_schedule_id, quantity, **kwargs):
         """
         
         
@@ -630,7 +298,7 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_price_schedule_id_price_breaks_delete_with_http_info(price_schedule_id, quantity, callback=callback_function)
+        >>> thread = api.delete_price_break_with_http_info(price_schedule_id, quantity, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -650,16 +318,16 @@ class PriceScheduleApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method priceschedules_price_schedule_id_price_breaks_delete" % key
+                    " to method delete_price_break" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'price_schedule_id' is set
         if ('price_schedule_id' not in params) or (params['price_schedule_id'] is None):
-            raise ValueError("Missing the required parameter `price_schedule_id` when calling `priceschedules_price_schedule_id_price_breaks_delete`")
+            raise ValueError("Missing the required parameter `price_schedule_id` when calling `delete_price_break`")
         # verify the required parameter 'quantity' is set
         if ('quantity' not in params) or (params['quantity'] is None):
-            raise ValueError("Missing the required parameter `quantity` when calling `priceschedules_price_schedule_id_price_breaks_delete`")
+            raise ValueError("Missing the required parameter `quantity` when calling `delete_price_break`")
 
         resource_path = '/priceschedules/{priceScheduleID}/PriceBreaks'.replace('{format}', 'json')
         path_params = {}
@@ -702,7 +370,7 @@ class PriceScheduleApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def priceschedules_price_schedule_id_price_breaks_post(self, price_schedule_id, price_break, **kwargs):
+    def get(self, price_schedule_id, **kwargs):
         """
         
         
@@ -713,24 +381,23 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_price_schedule_id_price_breaks_post(price_schedule_id, price_break, callback=callback_function)
+        >>> thread = api.get(price_schedule_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str price_schedule_id: ID of the price schedule. (required)
-        :param PriceBreak price_break:  (required)
         :return: PriceSchedule
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.priceschedules_price_schedule_id_price_breaks_post_with_http_info(price_schedule_id, price_break, **kwargs)
+            return self.get_with_http_info(price_schedule_id, **kwargs)
         else:
-            (data) = self.priceschedules_price_schedule_id_price_breaks_post_with_http_info(price_schedule_id, price_break, **kwargs)
+            (data) = self.get_with_http_info(price_schedule_id, **kwargs)
             return data
 
-    def priceschedules_price_schedule_id_price_breaks_post_with_http_info(self, price_schedule_id, price_break, **kwargs):
+    def get_with_http_info(self, price_schedule_id, **kwargs):
         """
         
         
@@ -741,18 +408,17 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_price_schedule_id_price_breaks_post_with_http_info(price_schedule_id, price_break, callback=callback_function)
+        >>> thread = api.get_with_http_info(price_schedule_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str price_schedule_id: ID of the price schedule. (required)
-        :param PriceBreak price_break:  (required)
         :return: PriceSchedule
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['price_schedule_id', 'price_break']
+        all_params = ['price_schedule_id']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -761,18 +427,15 @@ class PriceScheduleApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method priceschedules_price_schedule_id_price_breaks_post" % key
+                    " to method get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'price_schedule_id' is set
         if ('price_schedule_id' not in params) or (params['price_schedule_id'] is None):
-            raise ValueError("Missing the required parameter `price_schedule_id` when calling `priceschedules_price_schedule_id_price_breaks_post`")
-        # verify the required parameter 'price_break' is set
-        if ('price_break' not in params) or (params['price_break'] is None):
-            raise ValueError("Missing the required parameter `price_break` when calling `priceschedules_price_schedule_id_price_breaks_post`")
+            raise ValueError("Missing the required parameter `price_schedule_id` when calling `get`")
 
-        resource_path = '/priceschedules/{priceScheduleID}/PriceBreaks'.replace('{format}', 'json')
+        resource_path = '/priceschedules/{priceScheduleID}'.replace('{format}', 'json')
         path_params = {}
         if 'price_schedule_id' in params:
             path_params['priceScheduleID'] = params['price_schedule_id']
@@ -785,8 +448,6 @@ class PriceScheduleApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'price_break' in params:
-            body_params = params['price_break']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -801,7 +462,7 @@ class PriceScheduleApi(object):
         # Authentication setting
         auth_settings = ['oauth2']
 
-        return self.api_client.call_api(resource_path, 'POST',
+        return self.api_client.call_api(resource_path, 'GET',
                                             path_params,
                                             query_params,
                                             header_params,
@@ -813,7 +474,7 @@ class PriceScheduleApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def priceschedules_price_schedule_id_put(self, price_schedule_id, price_schedule, **kwargs):
+    def list(self, **kwargs):
         """
         
         
@@ -824,7 +485,239 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_price_schedule_id_put(price_schedule_id, price_schedule, callback=callback_function)
+        >>> thread = api.list(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListPriceSchedule
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_with_http_info(**kwargs)
+        else:
+            (data) = self.list_with_http_info(**kwargs)
+            return data
+
+    def list_with_http_info(self, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListPriceSchedule
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/priceschedules'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListPriceSchedule',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def patch(self, price_schedule_id, partial_price_schedule, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch(price_schedule_id, partial_price_schedule, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str price_schedule_id: ID of the price schedule. (required)
+        :param PriceSchedule partial_price_schedule:  (required)
+        :return: PriceSchedule
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.patch_with_http_info(price_schedule_id, partial_price_schedule, **kwargs)
+        else:
+            (data) = self.patch_with_http_info(price_schedule_id, partial_price_schedule, **kwargs)
+            return data
+
+    def patch_with_http_info(self, price_schedule_id, partial_price_schedule, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_with_http_info(price_schedule_id, partial_price_schedule, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str price_schedule_id: ID of the price schedule. (required)
+        :param PriceSchedule partial_price_schedule:  (required)
+        :return: PriceSchedule
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['price_schedule_id', 'partial_price_schedule']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'price_schedule_id' is set
+        if ('price_schedule_id' not in params) or (params['price_schedule_id'] is None):
+            raise ValueError("Missing the required parameter `price_schedule_id` when calling `patch`")
+        # verify the required parameter 'partial_price_schedule' is set
+        if ('partial_price_schedule' not in params) or (params['partial_price_schedule'] is None):
+            raise ValueError("Missing the required parameter `partial_price_schedule` when calling `patch`")
+
+        resource_path = '/priceschedules/{priceScheduleID}'.replace('{format}', 'json')
+        path_params = {}
+        if 'price_schedule_id' in params:
+            path_params['priceScheduleID'] = params['price_schedule_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'partial_price_schedule' in params:
+            body_params = params['partial_price_schedule']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'PATCH',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='PriceSchedule',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def save(self, price_schedule_id, price_schedule, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.save(price_schedule_id, price_schedule, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -836,12 +729,12 @@ class PriceScheduleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.priceschedules_price_schedule_id_put_with_http_info(price_schedule_id, price_schedule, **kwargs)
+            return self.save_with_http_info(price_schedule_id, price_schedule, **kwargs)
         else:
-            (data) = self.priceschedules_price_schedule_id_put_with_http_info(price_schedule_id, price_schedule, **kwargs)
+            (data) = self.save_with_http_info(price_schedule_id, price_schedule, **kwargs)
             return data
 
-    def priceschedules_price_schedule_id_put_with_http_info(self, price_schedule_id, price_schedule, **kwargs):
+    def save_with_http_info(self, price_schedule_id, price_schedule, **kwargs):
         """
         
         
@@ -852,7 +745,7 @@ class PriceScheduleApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.priceschedules_price_schedule_id_put_with_http_info(price_schedule_id, price_schedule, callback=callback_function)
+        >>> thread = api.save_with_http_info(price_schedule_id, price_schedule, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -872,16 +765,16 @@ class PriceScheduleApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method priceschedules_price_schedule_id_put" % key
+                    " to method save" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'price_schedule_id' is set
         if ('price_schedule_id' not in params) or (params['price_schedule_id'] is None):
-            raise ValueError("Missing the required parameter `price_schedule_id` when calling `priceschedules_price_schedule_id_put`")
+            raise ValueError("Missing the required parameter `price_schedule_id` when calling `save`")
         # verify the required parameter 'price_schedule' is set
         if ('price_schedule' not in params) or (params['price_schedule'] is None):
-            raise ValueError("Missing the required parameter `price_schedule` when calling `priceschedules_price_schedule_id_put`")
+            raise ValueError("Missing the required parameter `price_schedule` when calling `save`")
 
         resource_path = '/priceschedules/{priceScheduleID}'.replace('{format}', 'json')
         path_params = {}
@@ -913,6 +806,117 @@ class PriceScheduleApi(object):
         auth_settings = ['oauth2']
 
         return self.api_client.call_api(resource_path, 'PUT',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='PriceSchedule',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def save_price_break(self, price_schedule_id, price_break, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.save_price_break(price_schedule_id, price_break, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str price_schedule_id: ID of the price schedule. (required)
+        :param PriceBreak price_break:  (required)
+        :return: PriceSchedule
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.save_price_break_with_http_info(price_schedule_id, price_break, **kwargs)
+        else:
+            (data) = self.save_price_break_with_http_info(price_schedule_id, price_break, **kwargs)
+            return data
+
+    def save_price_break_with_http_info(self, price_schedule_id, price_break, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.save_price_break_with_http_info(price_schedule_id, price_break, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str price_schedule_id: ID of the price schedule. (required)
+        :param PriceBreak price_break:  (required)
+        :return: PriceSchedule
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['price_schedule_id', 'price_break']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method save_price_break" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'price_schedule_id' is set
+        if ('price_schedule_id' not in params) or (params['price_schedule_id'] is None):
+            raise ValueError("Missing the required parameter `price_schedule_id` when calling `save_price_break`")
+        # verify the required parameter 'price_break' is set
+        if ('price_break' not in params) or (params['price_break'] is None):
+            raise ValueError("Missing the required parameter `price_break` when calling `save_price_break`")
+
+        resource_path = '/priceschedules/{priceScheduleID}/PriceBreaks'.replace('{format}', 'json')
+        path_params = {}
+        if 'price_schedule_id' in params:
+            path_params['priceScheduleID'] = params['price_schedule_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'price_break' in params:
+            body_params = params['price_break']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'POST',
                                             path_params,
                                             query_params,
                                             header_params,

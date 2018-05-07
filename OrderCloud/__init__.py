@@ -29,12 +29,10 @@ from .models.access_token import AccessToken
 from .models.address import Address
 from .models.address_assignment import AddressAssignment
 from .models.approval_rule import ApprovalRule
-from .models.base_spec import BaseSpec
 from .models.buyer import Buyer
 from .models.buyer_address import BuyerAddress
 from .models.buyer_credit_card import BuyerCreditCard
 from .models.buyer_product import BuyerProduct
-from .models.buyer_shipment import BuyerShipment
 from .models.buyer_spec import BuyerSpec
 from .models.catalog import Catalog
 from .models.catalog_assignment import CatalogAssignment
@@ -47,6 +45,7 @@ from .models.credit_card import CreditCard
 from .models.credit_card_assignment import CreditCardAssignment
 from .models.impersonate_token_request import ImpersonateTokenRequest
 from .models.impersonation_config import ImpersonationConfig
+from .models.incrementor import Incrementor
 from .models.inventory import Inventory
 from .models.line_item import LineItem
 from .models.line_item_product import LineItemProduct
@@ -54,12 +53,10 @@ from .models.line_item_spec import LineItemSpec
 from .models.list_address import ListAddress
 from .models.list_address_assignment import ListAddressAssignment
 from .models.list_approval_rule import ListApprovalRule
-from .models.list_args import ListArgs
 from .models.list_buyer import ListBuyer
 from .models.list_buyer_address import ListBuyerAddress
 from .models.list_buyer_credit_card import ListBuyerCreditCard
 from .models.list_buyer_product import ListBuyerProduct
-from .models.list_buyer_shipment import ListBuyerShipment
 from .models.list_buyer_spec import ListBuyerSpec
 from .models.list_catalog import ListCatalog
 from .models.list_catalog_assignment import ListCatalogAssignment
@@ -71,9 +68,9 @@ from .models.list_cost_center_assignment import ListCostCenterAssignment
 from .models.list_credit_card import ListCreditCard
 from .models.list_credit_card_assignment import ListCreditCardAssignment
 from .models.list_impersonation_config import ListImpersonationConfig
+from .models.list_incrementor import ListIncrementor
 from .models.list_line_item import ListLineItem
 from .models.list_message_cc_listener_assignment import ListMessageCCListenerAssignment
-from .models.list_message_config import ListMessageConfig
 from .models.list_message_sender import ListMessageSender
 from .models.list_message_sender_assignment import ListMessageSenderAssignment
 from .models.list_order import ListOrder
@@ -103,7 +100,6 @@ from .models.list_variant import ListVariant
 from .models.me_buyer import MeBuyer
 from .models.me_user import MeUser
 from .models.message_cc_listener_assignment import MessageCCListenerAssignment
-from .models.message_config import MessageConfig
 from .models.message_sender import MessageSender
 from .models.message_sender_assignment import MessageSenderAssignment
 from .models.meta import Meta
@@ -111,6 +107,38 @@ from .models.order import Order
 from .models.order_approval import OrderApproval
 from .models.order_approval_info import OrderApprovalInfo
 from .models.order_promotion import OrderPromotion
+from .models.partial_address import PartialAddress
+from .models.partial_approval_rule import PartialApprovalRule
+from .models.partial_buyer import PartialBuyer
+from .models.partial_buyer_address import PartialBuyerAddress
+from .models.partial_buyer_credit_card import PartialBuyerCreditCard
+from .models.partial_catalog import PartialCatalog
+from .models.partial_category import PartialCategory
+from .models.partial_cost_center import PartialCostCenter
+from .models.partial_credit_card import PartialCreditCard
+from .models.partial_impersonation_config import PartialImpersonationConfig
+from .models.partial_incrementor import PartialIncrementor
+from .models.partial_inventory import PartialInventory
+from .models.partial_line_item import PartialLineItem
+from .models.partial_line_item_product import PartialLineItemProduct
+from .models.partial_line_item_spec import PartialLineItemSpec
+from .models.partial_me_buyer import PartialMeBuyer
+from .models.partial_me_user import PartialMeUser
+from .models.partial_order import PartialOrder
+from .models.partial_payment import PartialPayment
+from .models.partial_payment_transaction import PartialPaymentTransaction
+from .models.partial_price_break import PartialPriceBreak
+from .models.partial_price_schedule import PartialPriceSchedule
+from .models.partial_product import PartialProduct
+from .models.partial_promotion import PartialPromotion
+from .models.partial_shipment import PartialShipment
+from .models.partial_spec import PartialSpec
+from .models.partial_spec_option import PartialSpecOption
+from .models.partial_spending_account import PartialSpendingAccount
+from .models.partial_supplier import PartialSupplier
+from .models.partial_user import PartialUser
+from .models.partial_user_group import PartialUserGroup
+from .models.partial_variant import PartialVariant
 from .models.password_reset import PasswordReset
 from .models.password_reset_request import PasswordResetRequest
 from .models.payment import Payment
@@ -119,7 +147,6 @@ from .models.price_break import PriceBreak
 from .models.price_schedule import PriceSchedule
 from .models.product import Product
 from .models.product_assignment import ProductAssignment
-from .models.product_base import ProductBase
 from .models.product_catalog_assignment import ProductCatalogAssignment
 from .models.promotion import Promotion
 from .models.promotion_assignment import PromotionAssignment
@@ -162,12 +189,14 @@ from .apis.credit_card_api import CreditCardApi
 CreditCardApi = CreditCardApi()
 from .apis.impersonation_config_api import ImpersonationConfigApi
 ImpersonationConfigApi = ImpersonationConfigApi()
+from .apis.incrementor_api import IncrementorApi
+IncrementorApi = IncrementorApi()
 from .apis.line_item_api import LineItemApi
 LineItemApi = LineItemApi()
 from .apis.me_api import MeApi
 MeApi = MeApi()
-from .apis.message_senders_api import MessageSendersApi
-MessageSendersApi = MessageSendersApi()
+from .apis.message_sender_api import MessageSenderApi
+MessageSenderApi = MessageSenderApi()
 from .apis.order_api import OrderApi
 OrderApi = OrderApi()
 from .apis.password_reset_api import PasswordResetApi

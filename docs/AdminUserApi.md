@@ -4,67 +4,16 @@ All URIs are relative to *https://api.ordercloud.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adminusers_get**](AdminUserApi.md#adminusers_get) | **GET** /adminusers | 
-[**adminusers_post**](AdminUserApi.md#adminusers_post) | **POST** /adminusers | 
-[**adminusers_user_id_delete**](AdminUserApi.md#adminusers_user_id_delete) | **DELETE** /adminusers/{userID} | 
-[**adminusers_user_id_get**](AdminUserApi.md#adminusers_user_id_get) | **GET** /adminusers/{userID} | 
-[**adminusers_user_id_patch**](AdminUserApi.md#adminusers_user_id_patch) | **PATCH** /adminusers/{userID} | 
-[**adminusers_user_id_put**](AdminUserApi.md#adminusers_user_id_put) | **PUT** /adminusers/{userID} | 
+[**create**](AdminUserApi.md#create) | **POST** /adminusers | 
+[**delete**](AdminUserApi.md#delete) | **DELETE** /adminusers/{userID} | 
+[**get**](AdminUserApi.md#get) | **GET** /adminusers/{userID} | 
+[**list**](AdminUserApi.md#list) | **GET** /adminusers | 
+[**patch**](AdminUserApi.md#patch) | **PATCH** /adminusers/{userID} | 
+[**save**](AdminUserApi.md#save) | **PUT** /adminusers/{userID} | 
 
 
-# **adminusers_get**
-> ListUser adminusers_get(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-
-
-
-### Example 
-```python
-import OrderCloud
-from OrderCloud.rest import ApiException
-# Assuming you've already acquired and set an access_token (see the Getting Started guide)
-
-# create an instance of the API class
-AdminUserApi = OrderCloud.AdminUserApi
-search = 'search_example' # str | Search of the admin user. (optional)
-search_on = ['search_on_example'] # list[str] | Search on of the admin user. (optional)
-sort_by = ['sort_by_example'] # list[str] | Sort by of the admin user. (optional)
-page = 56 # int | Page of the admin user. (optional)
-page_size = 56 # int | Page size of the admin user. (optional)
-
-try: 
-    response = AdminUserApi.adminusers_get(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size)
-    print(response)
-except ApiException as e:
-    print("Exception when calling AdminUserApi->adminusers_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **search** | **str**| Search of the admin user. | [optional] 
- **search_on** | [**list[str]**](str.md)| Search on of the admin user. | [optional] 
- **sort_by** | [**list[str]**](str.md)| Sort by of the admin user. | [optional] 
- **page** | **int**| Page of the admin user. | [optional] 
- **page_size** | **int**| Page size of the admin user. | [optional] 
-
-### Return type
-
-[**ListUser**](ListUser.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain; charset=utf-8
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **adminusers_post**
-> User adminusers_post(user)
+# **create**
+> User create(user)
 
 
 
@@ -79,10 +28,10 @@ AdminUserApi = OrderCloud.AdminUserApi
 user = OrderCloud.User() # User | 
 
 try: 
-    response = AdminUserApi.adminusers_post(user)
+    response = AdminUserApi.create(user)
     print(response)
 except ApiException as e:
-    print("Exception when calling AdminUserApi->adminusers_post: %s\n" % e)
+    print("Exception when calling AdminUserApi->create: %s\n" % e)
 ```
 
 ### Parameters
@@ -106,8 +55,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **adminusers_user_id_delete**
-> adminusers_user_id_delete(user_id)
+# **delete**
+> delete(user_id)
 
 
 
@@ -122,9 +71,9 @@ AdminUserApi = OrderCloud.AdminUserApi
 user_id = 'user_id_example' # str | ID of the user.
 
 try: 
-    AdminUserApi.adminusers_user_id_delete(user_id)
+    AdminUserApi.delete(user_id)
 except ApiException as e:
-    print("Exception when calling AdminUserApi->adminusers_user_id_delete: %s\n" % e)
+    print("Exception when calling AdminUserApi->delete: %s\n" % e)
 ```
 
 ### Parameters
@@ -148,8 +97,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **adminusers_user_id_get**
-> User adminusers_user_id_get(user_id)
+# **get**
+> User get(user_id)
 
 
 
@@ -164,10 +113,10 @@ AdminUserApi = OrderCloud.AdminUserApi
 user_id = 'user_id_example' # str | ID of the user.
 
 try: 
-    response = AdminUserApi.adminusers_user_id_get(user_id)
+    response = AdminUserApi.get(user_id)
     print(response)
 except ApiException as e:
-    print("Exception when calling AdminUserApi->adminusers_user_id_get: %s\n" % e)
+    print("Exception when calling AdminUserApi->get: %s\n" % e)
 ```
 
 ### Parameters
@@ -191,8 +140,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **adminusers_user_id_patch**
-> User adminusers_user_id_patch(user_id, user)
+# **list**
+> ListUser list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+
+
+
+### Example 
+```python
+import OrderCloud
+from OrderCloud.rest import ApiException
+# Assuming you've already acquired and set an access_token (see the Getting Started guide)
+
+# create an instance of the API class
+AdminUserApi = OrderCloud.AdminUserApi
+search = 'search_example' # str | Word or phrase to search for. (optional)
+search_on = 'search_on_example' # str | Comma-delimited list of fields to search on. (optional)
+sort_by = 'sort_by_example' # str | Comma-delimited list of fields to sort by. (optional)
+page = 56 # int | Page of results to return. Default: 1 (optional)
+page_size = 56 # int | Number of results to return per page. Default: 20, max: 100. (optional)
+filters = {'key': 'filters_example'} # dict(str, str) | Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???' (optional)
+
+try: 
+    response = AdminUserApi.list(search=search, search_on=search_on, sort_by=sort_by, page=page, page_size=page_size, filters=filters)
+    print(response)
+except ApiException as e:
+    print("Exception when calling AdminUserApi->list: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search** | **str**| Word or phrase to search for. | [optional] 
+ **search_on** | **str**| Comma-delimited list of fields to search on. | [optional] 
+ **sort_by** | **str**| Comma-delimited list of fields to sort by. | [optional] 
+ **page** | **int**| Page of results to return. Default: 1 | [optional] 
+ **page_size** | **int**| Number of results to return per page. Default: 20, max: 100. | [optional] 
+ **filters** | [**dict(str, str)**](str.md)| Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or &#39;xp.???&#39; | [optional] 
+
+### Return type
+
+[**ListUser**](ListUser.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain; charset=utf-8
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch**
+> User patch(user_id, partial_user)
 
 
 
@@ -205,13 +207,13 @@ from OrderCloud.rest import ApiException
 # create an instance of the API class
 AdminUserApi = OrderCloud.AdminUserApi
 user_id = 'user_id_example' # str | ID of the user.
-user = OrderCloud.User() # User | 
+partial_user = OrderCloud.User() # User | 
 
 try: 
-    response = AdminUserApi.adminusers_user_id_patch(user_id, user)
+    response = AdminUserApi.patch(user_id, partial_user)
     print(response)
 except ApiException as e:
-    print("Exception when calling AdminUserApi->adminusers_user_id_patch: %s\n" % e)
+    print("Exception when calling AdminUserApi->patch: %s\n" % e)
 ```
 
 ### Parameters
@@ -219,7 +221,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**| ID of the user. | 
- **user** | [**User**](User.md)|  | 
+ **partial_user** | [**User**](User.md)|  | 
 
 ### Return type
 
@@ -236,8 +238,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **adminusers_user_id_put**
-> User adminusers_user_id_put(user_id, user)
+# **save**
+> User save(user_id, user)
 
 
 
@@ -253,10 +255,10 @@ user_id = 'user_id_example' # str | ID of the user.
 user = OrderCloud.User() # User | 
 
 try: 
-    response = AdminUserApi.adminusers_user_id_put(user_id, user)
+    response = AdminUserApi.save(user_id, user)
     print(response)
 except ApiException as e:
-    print("Exception when calling AdminUserApi->adminusers_user_id_put: %s\n" % e)
+    print("Exception when calling AdminUserApi->save: %s\n" % e)
 ```
 
 ### Parameters

@@ -51,7 +51,7 @@ class ImpersonationConfigApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def impersonationconfig_get(self, **kwargs):
+    def create(self, impersonation_config, **kwargs):
         """
         
         
@@ -62,27 +62,23 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_get(callback=callback_function)
+        >>> thread = api.create(impersonation_config, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str search: Search of the impersonation config.
-        :param list[str] search_on: Search on of the impersonation config.
-        :param list[str] sort_by: Sort by of the impersonation config.
-        :param int page: Page of the impersonation config.
-        :param int page_size: Page size of the impersonation config.
-        :return: ListImpersonationConfig
+        :param ImpersonationConfig impersonation_config:  (required)
+        :return: ImpersonationConfig
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.impersonationconfig_get_with_http_info(**kwargs)
+            return self.create_with_http_info(impersonation_config, **kwargs)
         else:
-            (data) = self.impersonationconfig_get_with_http_info(**kwargs)
+            (data) = self.create_with_http_info(impersonation_config, **kwargs)
             return data
 
-    def impersonationconfig_get_with_http_info(self, **kwargs):
+    def create_with_http_info(self, impersonation_config, **kwargs):
         """
         
         
@@ -93,21 +89,17 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_get_with_http_info(callback=callback_function)
+        >>> thread = api.create_with_http_info(impersonation_config, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str search: Search of the impersonation config.
-        :param list[str] search_on: Search on of the impersonation config.
-        :param list[str] sort_by: Sort by of the impersonation config.
-        :param int page: Page of the impersonation config.
-        :param int page_size: Page size of the impersonation config.
-        :return: ListImpersonationConfig
+        :param ImpersonationConfig impersonation_config:  (required)
+        :return: ImpersonationConfig
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size']
+        all_params = ['impersonation_config']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -116,25 +108,18 @@ class ImpersonationConfigApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method impersonationconfig_get" % key
+                    " to method create" % key
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'impersonation_config' is set
+        if ('impersonation_config' not in params) or (params['impersonation_config'] is None):
+            raise ValueError("Missing the required parameter `impersonation_config` when calling `create`")
 
         resource_path = '/impersonationconfig'.replace('{format}', 'json')
         path_params = {}
 
         query_params = {}
-        if 'search' in params:
-            query_params['search'] = params['search']
-        if 'search_on' in params:
-            query_params['searchOn'] = params['search_on']
-        if 'sort_by' in params:
-            query_params['sortBy'] = params['sort_by']
-        if 'page' in params:
-            query_params['page'] = params['page']
-        if 'page_size' in params:
-            query_params['pageSize'] = params['page_size']
 
         header_params = {}
 
@@ -142,6 +127,8 @@ class ImpersonationConfigApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'impersonation_config' in params:
+            body_params = params['impersonation_config']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -156,19 +143,19 @@ class ImpersonationConfigApi(object):
         # Authentication setting
         auth_settings = ['oauth2']
 
-        return self.api_client.call_api(resource_path, 'GET',
+        return self.api_client.call_api(resource_path, 'POST',
                                             path_params,
                                             query_params,
                                             header_params,
                                             body=body_params,
                                             post_params=form_params,
                                             files=local_var_files,
-                                            response_type='ListImpersonationConfig',
+                                            response_type='ImpersonationConfig',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def impersonationconfig_impersonation_config_id_delete(self, impersonation_config_id, **kwargs):
+    def delete(self, impersonation_config_id, **kwargs):
         """
         
         
@@ -179,7 +166,7 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_impersonation_config_id_delete(impersonation_config_id, callback=callback_function)
+        >>> thread = api.delete(impersonation_config_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -190,12 +177,12 @@ class ImpersonationConfigApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.impersonationconfig_impersonation_config_id_delete_with_http_info(impersonation_config_id, **kwargs)
+            return self.delete_with_http_info(impersonation_config_id, **kwargs)
         else:
-            (data) = self.impersonationconfig_impersonation_config_id_delete_with_http_info(impersonation_config_id, **kwargs)
+            (data) = self.delete_with_http_info(impersonation_config_id, **kwargs)
             return data
 
-    def impersonationconfig_impersonation_config_id_delete_with_http_info(self, impersonation_config_id, **kwargs):
+    def delete_with_http_info(self, impersonation_config_id, **kwargs):
         """
         
         
@@ -206,7 +193,7 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_impersonation_config_id_delete_with_http_info(impersonation_config_id, callback=callback_function)
+        >>> thread = api.delete_with_http_info(impersonation_config_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -225,13 +212,13 @@ class ImpersonationConfigApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method impersonationconfig_impersonation_config_id_delete" % key
+                    " to method delete" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'impersonation_config_id' is set
         if ('impersonation_config_id' not in params) or (params['impersonation_config_id'] is None):
-            raise ValueError("Missing the required parameter `impersonation_config_id` when calling `impersonationconfig_impersonation_config_id_delete`")
+            raise ValueError("Missing the required parameter `impersonation_config_id` when calling `delete`")
 
         resource_path = '/impersonationconfig/{impersonationConfigID}'.replace('{format}', 'json')
         path_params = {}
@@ -272,7 +259,7 @@ class ImpersonationConfigApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def impersonationconfig_impersonation_config_id_get(self, impersonation_config_id, **kwargs):
+    def get(self, impersonation_config_id, **kwargs):
         """
         
         
@@ -283,7 +270,7 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_impersonation_config_id_get(impersonation_config_id, callback=callback_function)
+        >>> thread = api.get(impersonation_config_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -294,12 +281,12 @@ class ImpersonationConfigApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.impersonationconfig_impersonation_config_id_get_with_http_info(impersonation_config_id, **kwargs)
+            return self.get_with_http_info(impersonation_config_id, **kwargs)
         else:
-            (data) = self.impersonationconfig_impersonation_config_id_get_with_http_info(impersonation_config_id, **kwargs)
+            (data) = self.get_with_http_info(impersonation_config_id, **kwargs)
             return data
 
-    def impersonationconfig_impersonation_config_id_get_with_http_info(self, impersonation_config_id, **kwargs):
+    def get_with_http_info(self, impersonation_config_id, **kwargs):
         """
         
         
@@ -310,7 +297,7 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_impersonation_config_id_get_with_http_info(impersonation_config_id, callback=callback_function)
+        >>> thread = api.get_with_http_info(impersonation_config_id, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -329,13 +316,13 @@ class ImpersonationConfigApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method impersonationconfig_impersonation_config_id_get" % key
+                    " to method get" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'impersonation_config_id' is set
         if ('impersonation_config_id' not in params) or (params['impersonation_config_id'] is None):
-            raise ValueError("Missing the required parameter `impersonation_config_id` when calling `impersonationconfig_impersonation_config_id_get`")
+            raise ValueError("Missing the required parameter `impersonation_config_id` when calling `get`")
 
         resource_path = '/impersonationconfig/{impersonationConfigID}'.replace('{format}', 'json')
         path_params = {}
@@ -376,7 +363,7 @@ class ImpersonationConfigApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def impersonationconfig_impersonation_config_id_patch(self, impersonation_config_id, impersonation_config, **kwargs):
+    def list(self, **kwargs):
         """
         
         
@@ -387,24 +374,28 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_impersonation_config_id_patch(impersonation_config_id, impersonation_config, callback=callback_function)
+        >>> thread = api.list(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str impersonation_config_id: ID of the impersonation config. (required)
-        :param ImpersonationConfig impersonation_config:  (required)
-        :return: ImpersonationConfig
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListImpersonationConfig
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.impersonationconfig_impersonation_config_id_patch_with_http_info(impersonation_config_id, impersonation_config, **kwargs)
+            return self.list_with_http_info(**kwargs)
         else:
-            (data) = self.impersonationconfig_impersonation_config_id_patch_with_http_info(impersonation_config_id, impersonation_config, **kwargs)
+            (data) = self.list_with_http_info(**kwargs)
             return data
 
-    def impersonationconfig_impersonation_config_id_patch_with_http_info(self, impersonation_config_id, impersonation_config, **kwargs):
+    def list_with_http_info(self, **kwargs):
         """
         
         
@@ -415,18 +406,22 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_impersonation_config_id_patch_with_http_info(impersonation_config_id, impersonation_config, callback=callback_function)
+        >>> thread = api.list_with_http_info(callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str impersonation_config_id: ID of the impersonation config. (required)
-        :param ImpersonationConfig impersonation_config:  (required)
-        :return: ImpersonationConfig
+        :param str search: Word or phrase to search for.
+        :param str search_on: Comma-delimited list of fields to search on.
+        :param str sort_by: Comma-delimited list of fields to sort by.
+        :param int page: Page of results to return. Default: 1
+        :param int page_size: Number of results to return per page. Default: 20, max: 100.
+        :param dict(str, str) filters: Any additional key/value pairs passed in the query string are interpretted as filters. Valid keys are top-level properties of the returned model or 'xp.???'
+        :return: ListImpersonationConfig
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['impersonation_config_id', 'impersonation_config']
+        all_params = ['search', 'search_on', 'sort_by', 'page', 'page_size', 'filters']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
 
@@ -435,16 +430,129 @@ class ImpersonationConfigApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method impersonationconfig_impersonation_config_id_patch" % key
+                    " to method list" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        resource_path = '/impersonationconfig'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'search' in params:
+            query_params['search'] = params['search']
+        if 'search_on' in params:
+            query_params['searchOn'] = params['search_on']
+        if 'sort_by' in params:
+            query_params['sortBy'] = params['sort_by']
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'page_size' in params:
+            query_params['pageSize'] = params['page_size']
+        if 'filters' in params:
+            query_params['filters'] = params['filters']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
+
+        # Authentication setting
+        auth_settings = ['oauth2']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='ListImpersonationConfig',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'))
+
+    def patch(self, impersonation_config_id, partial_impersonation_config, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch(impersonation_config_id, partial_impersonation_config, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str impersonation_config_id: ID of the impersonation config. (required)
+        :param ImpersonationConfig partial_impersonation_config:  (required)
+        :return: ImpersonationConfig
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.patch_with_http_info(impersonation_config_id, partial_impersonation_config, **kwargs)
+        else:
+            (data) = self.patch_with_http_info(impersonation_config_id, partial_impersonation_config, **kwargs)
+            return data
+
+    def patch_with_http_info(self, impersonation_config_id, partial_impersonation_config, **kwargs):
+        """
+        
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.patch_with_http_info(impersonation_config_id, partial_impersonation_config, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str impersonation_config_id: ID of the impersonation config. (required)
+        :param ImpersonationConfig partial_impersonation_config:  (required)
+        :return: ImpersonationConfig
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['impersonation_config_id', 'partial_impersonation_config']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'impersonation_config_id' is set
         if ('impersonation_config_id' not in params) or (params['impersonation_config_id'] is None):
-            raise ValueError("Missing the required parameter `impersonation_config_id` when calling `impersonationconfig_impersonation_config_id_patch`")
-        # verify the required parameter 'impersonation_config' is set
-        if ('impersonation_config' not in params) or (params['impersonation_config'] is None):
-            raise ValueError("Missing the required parameter `impersonation_config` when calling `impersonationconfig_impersonation_config_id_patch`")
+            raise ValueError("Missing the required parameter `impersonation_config_id` when calling `patch`")
+        # verify the required parameter 'partial_impersonation_config' is set
+        if ('partial_impersonation_config' not in params) or (params['partial_impersonation_config'] is None):
+            raise ValueError("Missing the required parameter `partial_impersonation_config` when calling `patch`")
 
         resource_path = '/impersonationconfig/{impersonationConfigID}'.replace('{format}', 'json')
         path_params = {}
@@ -459,8 +567,8 @@ class ImpersonationConfigApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'impersonation_config' in params:
-            body_params = params['impersonation_config']
+        if 'partial_impersonation_config' in params:
+            body_params = params['partial_impersonation_config']
 
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.\
@@ -487,7 +595,7 @@ class ImpersonationConfigApi(object):
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'))
 
-    def impersonationconfig_impersonation_config_id_put(self, impersonation_config_id, impersonation_config, **kwargs):
+    def save(self, impersonation_config_id, impersonation_config, **kwargs):
         """
         
         
@@ -498,7 +606,7 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_impersonation_config_id_put(impersonation_config_id, impersonation_config, callback=callback_function)
+        >>> thread = api.save(impersonation_config_id, impersonation_config, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -510,12 +618,12 @@ class ImpersonationConfigApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('callback'):
-            return self.impersonationconfig_impersonation_config_id_put_with_http_info(impersonation_config_id, impersonation_config, **kwargs)
+            return self.save_with_http_info(impersonation_config_id, impersonation_config, **kwargs)
         else:
-            (data) = self.impersonationconfig_impersonation_config_id_put_with_http_info(impersonation_config_id, impersonation_config, **kwargs)
+            (data) = self.save_with_http_info(impersonation_config_id, impersonation_config, **kwargs)
             return data
 
-    def impersonationconfig_impersonation_config_id_put_with_http_info(self, impersonation_config_id, impersonation_config, **kwargs):
+    def save_with_http_info(self, impersonation_config_id, impersonation_config, **kwargs):
         """
         
         
@@ -526,7 +634,7 @@ class ImpersonationConfigApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.impersonationconfig_impersonation_config_id_put_with_http_info(impersonation_config_id, impersonation_config, callback=callback_function)
+        >>> thread = api.save_with_http_info(impersonation_config_id, impersonation_config, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
@@ -546,16 +654,16 @@ class ImpersonationConfigApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method impersonationconfig_impersonation_config_id_put" % key
+                    " to method save" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'impersonation_config_id' is set
         if ('impersonation_config_id' not in params) or (params['impersonation_config_id'] is None):
-            raise ValueError("Missing the required parameter `impersonation_config_id` when calling `impersonationconfig_impersonation_config_id_put`")
+            raise ValueError("Missing the required parameter `impersonation_config_id` when calling `save`")
         # verify the required parameter 'impersonation_config' is set
         if ('impersonation_config' not in params) or (params['impersonation_config'] is None):
-            raise ValueError("Missing the required parameter `impersonation_config` when calling `impersonationconfig_impersonation_config_id_put`")
+            raise ValueError("Missing the required parameter `impersonation_config` when calling `save`")
 
         resource_path = '/impersonationconfig/{impersonationConfigID}'.replace('{format}', 'json')
         path_params = {}
@@ -587,110 +695,6 @@ class ImpersonationConfigApi(object):
         auth_settings = ['oauth2']
 
         return self.api_client.call_api(resource_path, 'PUT',
-                                            path_params,
-                                            query_params,
-                                            header_params,
-                                            body=body_params,
-                                            post_params=form_params,
-                                            files=local_var_files,
-                                            response_type='ImpersonationConfig',
-                                            auth_settings=auth_settings,
-                                            callback=params.get('callback'),
-                                            _return_http_data_only=params.get('_return_http_data_only'))
-
-    def impersonationconfig_post(self, impersonation_config, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.impersonationconfig_post(impersonation_config, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param ImpersonationConfig impersonation_config:  (required)
-        :return: ImpersonationConfig
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('callback'):
-            return self.impersonationconfig_post_with_http_info(impersonation_config, **kwargs)
-        else:
-            (data) = self.impersonationconfig_post_with_http_info(impersonation_config, **kwargs)
-            return data
-
-    def impersonationconfig_post_with_http_info(self, impersonation_config, **kwargs):
-        """
-        
-        
-
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please define a `callback` function
-        to be invoked when receiving the response.
-        >>> def callback_function(response):
-        >>>     pprint(response)
-        >>>
-        >>> thread = api.impersonationconfig_post_with_http_info(impersonation_config, callback=callback_function)
-
-        :param callback function: The callback function
-            for asynchronous request. (optional)
-        :param ImpersonationConfig impersonation_config:  (required)
-        :return: ImpersonationConfig
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['impersonation_config']
-        all_params.append('callback')
-        all_params.append('_return_http_data_only')
-
-        params = locals()
-        for key, val in iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method impersonationconfig_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'impersonation_config' is set
-        if ('impersonation_config' not in params) or (params['impersonation_config'] is None):
-            raise ValueError("Missing the required parameter `impersonation_config` when calling `impersonationconfig_post`")
-
-        resource_path = '/impersonationconfig'.replace('{format}', 'json')
-        path_params = {}
-
-        query_params = {}
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        if 'impersonation_config' in params:
-            body_params = params['impersonation_config']
-
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.\
-            select_header_accept(['application/json'])
-        if not header_params['Accept']:
-            del header_params['Accept']
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.\
-            select_header_content_type(['application/json', 'text/plain; charset=utf-8'])
-
-        # Authentication setting
-        auth_settings = ['oauth2']
-
-        return self.api_client.call_api(resource_path, 'POST',
                                             path_params,
                                             query_params,
                                             header_params,

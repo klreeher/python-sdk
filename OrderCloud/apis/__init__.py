@@ -12,9 +12,10 @@ from .category_api import CategoryApi
 from .cost_center_api import CostCenterApi
 from .credit_card_api import CreditCardApi
 from .impersonation_config_api import ImpersonationConfigApi
+from .incrementor_api import IncrementorApi
 from .line_item_api import LineItemApi
 from .me_api import MeApi
-from .message_senders_api import MessageSendersApi
+from .message_sender_api import MessageSenderApi
 from .order_api import OrderApi
 from .password_reset_api import PasswordResetApi
 from .payment_api import PaymentApi
