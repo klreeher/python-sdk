@@ -26,17 +26,16 @@ from __future__ import absolute_import
 import base64
 import urllib3
 
-try:
-    import httplib
-except ImportError:
-    # for python3
-    import http.client as httplib
+
+import requests
 
 import sys
 import logging
 import json
 
 from six import iteritems
+from ..configuration import Configuration
+from ..api_client import ApiClient
 
 
 def singleton(cls, *args, **kw):
@@ -91,17 +90,23 @@ class Auth(object):
 
       return body
 
-    def _request_access_token(self, body):
-        urllib3.disable_warnings()
+    def _request_access_token(self, config, grant_type):
+        
+        payload = dict()
+        payload["username"] = config.username
+        payload['password'] = config.password
+        payload['client_id'] = config.client_id
+        payload['scope']= config.scopes
+        payload['grant_type'] = grant_type
 
-        resp = urllib3.PoolManager().urlopen("POST", self.tokenurl, body=self.__body_to_string(body))
 
-        if not resp.data:
+        headers = {'Content-Type': 'application/json'}
+        resp =requests.post(self.tokenurl, data= payload, headers=headers)
+
+        if not resp.json():
             raise ValueError("Empty response! Make sure you've set a Default User Context ID in the developer center. This is because the generated access token needs to be associated with some user.")
 
-        data = json.loads(resp.data.decode('utf-8'))
-        if 'error' in data:
-            raise ValueError(data['error'])
+        data = resp.json()
 
         return data['access_token']
 
@@ -109,15 +114,18 @@ class Auth(object):
     #the access token. Optionally supply a client secret for extra security
     def login(self, username, password, client_secret = None):
         config = Configuration()
-        body = self.__base_body_for_auth(config.client_id, "password", config.scopes, client_secret) 
+        
+        
+        config.username = username
+        config.password = password
 
-        body["username"] = username
-        body["password"] = password
-
-        config.access_token = self._request_access_token(body)
+        config.access_token = self._request_access_token(config, 'password')
 
     #Supports client_secret login for backend systems, as well as anonymous login with no client_secret
     def authenticate(self, client_secret = None):
         config = Configuration()
-        body = self.__base_body_for_auth(config.client_id, "client_credentials", config.scopes, client_secret) 
-        config.access_token = self._request_access_token(body)
+        if client_secret:
+            config.client_secret = client_secret
+       
+
+        config.access_token = self._request_access_token(config, 'client_credentials')
